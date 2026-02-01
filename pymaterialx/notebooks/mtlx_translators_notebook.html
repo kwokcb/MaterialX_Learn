@@ -7556,7 +7556,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [138]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mx</span>
@@ -7612,7 +7612,7 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [139]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Look for nodedefs which are translators.</span>
@@ -7634,9 +7634,9 @@ The script is overly packaged to include texture baking as well which is not a r
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 4 translators in the standard library.
 Translator: ND_open_pbr_surface_to_standard_surface for target: 
-Translator: ND_standard_surface_to_gltf_pbr for target: 
 Translator: ND_standard_surface_to_open_pbr_surface for target: 
 Translator: ND_standard_surface_to_UsdPreviewSurface for target: 
+Translator: ND_standard_surface_to_gltf_pbr for target: 
 </pre>
 </div>
 </div>
@@ -7663,7 +7663,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [140]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derive_translator_name_from_targets</span><span class="p">(</span><span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -7688,7 +7688,7 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [141]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get source and target from name</span>
@@ -7712,9 +7712,9 @@ Translator: ND_standard_surface_to_UsdPreviewSurface for target:
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Translator name 'ND_open_pbr_surface_to_standard_surface' maps source: 'open_pbr_surface' to target: 'standard_surface'
-Translator name 'ND_standard_surface_to_gltf_pbr' maps source: 'standard_surface' to target: 'gltf_pbr'
 Translator name 'ND_standard_surface_to_open_pbr_surface' maps source: 'standard_surface' to target: 'open_pbr_surface'
 Translator name 'ND_standard_surface_to_UsdPreviewSurface' maps source: 'standard_surface' to target: 'UsdPreviewSurface'
+Translator name 'ND_standard_surface_to_gltf_pbr' maps source: 'standard_surface' to target: 'gltf_pbr'
 </pre>
 </div>
 </div>
@@ -7725,7 +7725,7 @@ Translator name 'ND_standard_surface_to_UsdPreviewSurface' maps source: 'standar
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [142]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> <span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span><span class="p">:</span>
@@ -7752,9 +7752,9 @@ Translator name 'ND_standard_surface_to_UsdPreviewSurface' maps source: 'standar
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>- Found translator nodedef: 'ND_open_pbr_surface_to_standard_surface' in document.
-- Found translator nodedef: 'ND_standard_surface_to_gltf_pbr' in document.
 - Found translator nodedef: 'ND_standard_surface_to_open_pbr_surface' in document.
 - Found translator nodedef: 'ND_standard_surface_to_UsdPreviewSurface' in document.
+- Found translator nodedef: 'ND_standard_surface_to_gltf_pbr' in document.
 </pre>
 </div>
 </div>
@@ -7779,7 +7779,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [143]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Scan all nodedefs with output type of "surfaceshader"</span>
@@ -7809,11 +7809,11 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 6 shading models in the document:
 - Model: NodeDef identifier ND_disney_principled. Classification: disney_principled. Version: 
-- Model: NodeDef identifier ND_gltf_pbr_surfaceshader. Classification: gltf_pbr. Version: 2.0.1
 - Model: NodeDef identifier ND_open_pbr_surface_surfaceshader. Classification: open_pbr_surface. Version: 1.1
+- Model: NodeDef identifier ND_UsdPreviewSurface_surfaceshader. Classification: UsdPreviewSurface. Version: 2.6
 - Model: NodeDef identifier ND_standard_surface_surfaceshader. Classification: standard_surface. Version: 1.0.1
 - Model: NodeDef identifier ND_standard_surface_surfaceshader_100. Classification: standard_surface. Version: 1.0.0
-- Model: NodeDef identifier ND_UsdPreviewSurface_surfaceshader. Classification: UsdPreviewSurface. Version: 2.6
+- Model: NodeDef identifier ND_gltf_pbr_surfaceshader. Classification: gltf_pbr. Version: 2.0.1
 </pre>
 </div>
 </div>
@@ -7824,7 +7824,7 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [144]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create one of each shading model node</span>
@@ -7880,11 +7880,11 @@ provides the name of shading models that can as input to search for translators.
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>- Created node instance of 'ND_disney_principled' with 0 inputs.
-- Created node instance of 'ND_gltf_pbr_surfaceshader' with 0 inputs.
 - Created node instance of 'ND_open_pbr_surface_surfaceshader' with 0 inputs.
+- Created node instance of 'ND_UsdPreviewSurface_surfaceshader' with 0 inputs.
 - Created node instance of 'ND_standard_surface_surfaceshader' with 0 inputs.
 - Created node instance of 'ND_standard_surface_surfaceshader_100' with 0 inputs.
-- Created node instance of 'ND_UsdPreviewSurface_surfaceshader' with 0 inputs.
+- Created node instance of 'ND_gltf_pbr_surfaceshader' with 0 inputs.
 - Document validation: True. Errors: ''
 </pre>
 </div>
@@ -7895,11 +7895,11 @@ provides the name of shading models that can as input to search for translators.
 <div class="highlight"><pre><span></span><span class="cp">&lt;?xml version="1.0"?&gt;</span>
 <span class="nt">&lt;materialx</span><span class="w"> </span><span class="na">version=</span><span class="s">"1.39"</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;disney_principled</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_disney_principled"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_disney_principled"</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;gltf_pbr</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_gltf_pbr_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_gltf_pbr_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;open_pbr_surface</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_open_pbr_surface_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_open_pbr_surface_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;UsdPreviewSurface</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_UsdPreviewSurface_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_UsdPreviewSurface_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;standard_surface</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_standard_surface_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_standard_surface_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;standard_surface</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_standard_surface_surfaceshader_100"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_standard_surface_surfaceshader_100"</span><span class="w"> </span><span class="nt">/&gt;</span>
-<span class="w">  </span><span class="nt">&lt;UsdPreviewSurface</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_UsdPreviewSurface_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_UsdPreviewSurface_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gltf_pbr</span><span class="w"> </span><span class="na">name=</span><span class="s">"test_ND_gltf_pbr_surfaceshader"</span><span class="w"> </span><span class="na">type=</span><span class="s">"surfaceshader"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_gltf_pbr_surfaceshader"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/materialx&gt;</span>
 </pre></div>
 </div>
@@ -7929,7 +7929,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [145]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -7960,7 +7960,7 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [146]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_surface_shader_nodes</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">mx</span><span class="o">.</span><span class="n">Node</span><span class="p">]:</span>
@@ -7989,11 +7989,11 @@ as it halts if there are any failures, and there is no way to decide which mater
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found 6 surface shader nodes in the document.
 - Surface shader node: 'test_ND_disney_principled' of type 'surfaceshader' with nodedef 'ND_disney_principled'
-- Surface shader node: 'test_ND_gltf_pbr_surfaceshader' of type 'surfaceshader' with nodedef 'ND_gltf_pbr_surfaceshader'
 - Surface shader node: 'test_ND_open_pbr_surface_surfaceshader' of type 'surfaceshader' with nodedef 'ND_open_pbr_surface_surfaceshader'
+- Surface shader node: 'test_ND_UsdPreviewSurface_surfaceshader' of type 'surfaceshader' with nodedef 'ND_UsdPreviewSurface_surfaceshader'
 - Surface shader node: 'test_ND_standard_surface_surfaceshader' of type 'surfaceshader' with nodedef 'ND_standard_surface_surfaceshader'
 - Surface shader node: 'test_ND_standard_surface_surfaceshader_100' of type 'surfaceshader' with nodedef 'ND_standard_surface_surfaceshader_100'
-- Surface shader node: 'test_ND_UsdPreviewSurface_surfaceshader' of type 'surfaceshader' with nodedef 'ND_UsdPreviewSurface_surfaceshader'
+- Surface shader node: 'test_ND_gltf_pbr_surfaceshader' of type 'surfaceshader' with nodedef 'ND_gltf_pbr_surfaceshader'
 </pre>
 </div>
 </div>
@@ -8017,7 +8017,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [147]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8060,11 +8060,11 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>- Failed to translate node 'test_ND_disney_principled' to target 'standard_surface': No translator found from 'disney_principled' to 'standard_surface' for node 'test_ND_disney_principled'
-- Failed to translate node 'test_ND_gltf_pbr_surfaceshader' to target 'standard_surface': No translator found from 'gltf_pbr' to 'standard_surface' for node 'test_ND_gltf_pbr_surfaceshader'
 - Translated node 'test_ND_open_pbr_surface_surfaceshader' to target 'standard_surface'
+- Failed to translate node 'test_ND_UsdPreviewSurface_surfaceshader' to target 'standard_surface': No translator found from 'UsdPreviewSurface' to 'standard_surface' for node 'test_ND_UsdPreviewSurface_surfaceshader'
 - Failed to translate node 'test_ND_standard_surface_surfaceshader' to target 'standard_surface': No translator found from 'standard_surface' to 'standard_surface' for node 'test_ND_standard_surface_surfaceshader'
 - Failed to translate node 'test_ND_standard_surface_surfaceshader_100' to target 'standard_surface': No translator found from 'standard_surface' to 'standard_surface' for node 'test_ND_standard_surface_surfaceshader_100'
-- Failed to translate node 'test_ND_UsdPreviewSurface_surfaceshader' to target 'standard_surface': No translator found from 'UsdPreviewSurface' to 'standard_surface' for node 'test_ND_UsdPreviewSurface_surfaceshader'
+- Failed to translate node 'test_ND_gltf_pbr_surfaceshader' to target 'standard_surface': No translator found from 'gltf_pbr' to 'standard_surface' for node 'test_ND_gltf_pbr_surfaceshader'
 - Writing translated document to 'data/translated_materials.mtlx'
 </pre>
 </div>
@@ -8088,7 +8088,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [148]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">MaterialX</span><span class="w"> </span><span class="kn">import</span> <span class="n">PyMaterialXGenShader</span> <span class="k">as</span> <span class="n">mx_gen_shader</span>
@@ -8114,7 +8114,7 @@ We remove them here as a post cleanup step for clarity.</p>
 <h2 id="Versioning">Versioning<a class="anchor-link" href="#Versioning">¶</a></h2><p>At time of writing there is no support for translating between different versions of the same BXDF shader model.</p>
 <p>One proposal is to add a <code>source_version</code> and <code>target_version</code> attribute to the translator <code>nodedefs</code> to allow for this functionality in the future.</p>
 <p>e.g. We explicitly state which version the source and destination are.</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">"ND_open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">node=</span><span class="s">"open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">"translation"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">"ND_open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">node=</span><span class="s">"open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">"translation"</span><span class="nt">&gt;</span><span class="w">  </span>
 </pre></div>
 <p>would become</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;nodedef</span><span class="w"> </span><span class="na">name=</span><span class="s">"ND_open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">node=</span><span class="s">"open_pbr_surface_to_standard_surface"</span><span class="w"> </span><span class="na">nodegroup=</span><span class="s">"translation"</span>
@@ -8143,6 +8143,8 @@ We remove them here as a post cleanup step for clarity.</p>
 <li>Create a new <code>nodegraph</code> definition with the <code>nodegroup</code> attribute set to <code>translation</code></li>
 <li>The inputs from the destination target become the outputs of the <code>nodegraph</code>.</li>
 <li>The inputs from the source target become the inputs of the <code>nodegraph</code>.</li>
+<li>For convenience if it is known that a source nodedef's input can be (directly) routed to a target nodedef's input, a name mapping can
+be provided. This will result in a default direct routing via a <code>dot</code> node. Users can modify the computation as needed after the fact.</li>
 </ol>
 <p>We will take as an example <code>open_pbr_surface</code> to <code>gltf_pbr</code>.</p>
 </div>
@@ -8153,22 +8155,24 @@ We remove them here as a post cleanup step for clarity.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [149]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">create_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> 
                       <span class="n">source</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
                       <span class="n">source_version</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> <span class="n">target_version</span> <span class="o">=</span> <span class="s2">""</span><span class="p">,</span> 
+                      <span class="n">mappings</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                       <span class="n">output_doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">'''</span>
-<span class="sd">    @brief Create a translator nodedef and nodegraph from source to target.</span>
-<span class="sd">    @param doc The source document containing the nodedefs.</span>
-<span class="sd">    @param source The source nodedef nodeString.</span>
-<span class="sd">    @param source_version The source version string. If empty, use the first source nodedef version found.</span>
-<span class="sd">    @param target_version The target version string. If empty, use the first target nodedef version found.</span>
-<span class="sd">    @param target The target nodedef nodeString.</span>
+<span class="sd">    @brief Create a translator nodedef and nodegraph from source to target definitions.</span>
+<span class="sd">    @param doc The source document containing the definition.</span>
+<span class="sd">    @param source The source definition category.</span>
+<span class="sd">    @param target The target definition category.</span>
+<span class="sd">    @param source_version The source version string. If empty, use the first source definition version found.</span>
+<span class="sd">    @param target_version The target version string. If empty, use the first target definition version found.</span>
+<span class="sd">    @param mappings A dictionary mapping source input names to target input names.</span>
 <span class="sd">    @param output_doc The document to add the translator to. If None, use the source doc.</span>
-<span class="sd">    @return The created translator nodedef.</span>
+<span class="sd">    @return The created translator definition.</span>
 <span class="sd">    '''</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">output_doc</span><span class="p">:</span>
         <span class="n">output_doc</span> <span class="o">=</span> <span class="n">doc</span>
@@ -8252,6 +8256,20 @@ We remove them here as a post cleanup step for clarity.</p>
     <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">translator_nodedef</span><span class="o">.</span><span class="n">getActiveOutputs</span><span class="p">():</span>
         <span class="n">nodegraph</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">getName</span><span class="p">(),</span> <span class="n">output</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
 
+    <span class="k">for</span> <span class="n">source_input_name</span><span class="p">,</span> <span class="n">target_input_name</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">source_input</span> <span class="o">=</span> <span class="n">translator_nodedef</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="n">source_input_name</span><span class="p">)</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="n">target_input_name</span> <span class="o">+</span> <span class="s2">"_out"</span>
+        <span class="n">target_output</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">output_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">source_input</span> <span class="ow">and</span> <span class="n">target_output</span><span class="p">:</span>
+            <span class="n">dot_name</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">createValidChildName</span><span class="p">(</span><span class="n">target_input_name</span><span class="p">)</span>
+            <span class="n">comment</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">addChildOfCategory</span><span class="p">(</span><span class="s2">"comment"</span><span class="p">)</span>
+            <span class="n">comment</span><span class="o">.</span><span class="n">setDocString</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Routing source input: '</span><span class="si">{</span><span class="n">source_input_name</span><span class="si">}</span><span class="s2">' to target input: '</span><span class="si">{</span><span class="n">target_input_name</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+            <span class="n">dot_node</span> <span class="o">=</span> <span class="n">nodegraph</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="s1">'dot'</span><span class="p">,</span> <span class="n">dot_name</span><span class="p">)</span>
+            <span class="n">dot_inpput</span> <span class="o">=</span> <span class="n">dot_node</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">'in'</span><span class="p">,</span> <span class="n">source_input</span><span class="o">.</span><span class="n">getType</span><span class="p">())</span>
+            <span class="n">dot_inpput</span><span class="o">.</span><span class="n">setInterfaceName</span><span class="p">(</span><span class="n">source_input</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span>
+            <span class="n">target_output</span><span class="o">.</span><span class="n">setNodeName</span><span class="p">(</span><span class="n">dot_node</span><span class="o">.</span><span class="n">getName</span><span class="p">())</span> 
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">" - Added connection from input '</span><span class="si">{</span><span class="n">source_input</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="si">}</span><span class="s2">' to output '</span><span class="si">{</span><span class="n">target_output</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">translator_nodedef</span>
 </pre></div>
 </div>
@@ -8275,7 +8293,7 @@ no translator is created.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [150]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">source_target</span> <span class="o">=</span> <span class="s2">"open_pbr_surface"</span>
@@ -8322,6 +8340,7 @@ Failed to create translator nodedef.
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>In this second test we specify existing versions.</p>
 <p>If no version is specified and the first version found is used. It is <em>not</em> recommended to not specify a version as the ordering of definitions stored could be arbitrary.</p>
+<p>We also provide an example of mapping usage. Here we map <code>base_color</code> from the source definition toe <code>base_color</code> on the target definition.</p>
 </div>
 </div>
 </div>
@@ -8330,13 +8349,20 @@ Failed to create translator nodedef.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [151]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">source_version</span> <span class="o">=</span> <span class="s1">'1.1'</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Source and target versions</span>
+<span class="n">source_version</span> <span class="o">=</span> <span class="s1">'1.1'</span>
 <span class="n">target_version</span> <span class="o">=</span> <span class="s1">'2.0.1'</span>
+
+<span class="c1"># Input mappings</span>
+<span class="n">mappings</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">mappings</span><span class="p">[</span><span class="s1">'base_color'</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">'base_color'</span>
+
+<span class="c1"># Create translator with mappings</span>
 <span class="n">new_translator_nodedef</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">NodeDef</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">create_translator</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">source_target</span><span class="p">,</span> <span class="n">dest_target</span><span class="p">,</span> 
-                                                        <span class="n">source_version</span><span class="p">,</span> <span class="n">target_version</span><span class="p">,</span> <span class="n">new_doc</span><span class="p">)</span>
+                                                        <span class="n">source_version</span><span class="p">,</span> <span class="n">target_version</span><span class="p">,</span> <span class="n">mappings</span><span class="p">,</span> <span class="n">new_doc</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">new_translator_nodedef</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Created new translator nodedef: '</span><span class="si">{</span><span class="n">new_translator_nodedef</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="si">}</span><span class="s2">' from '</span><span class="si">{</span><span class="n">source_target</span><span class="si">}</span><span class="s2">' to '</span><span class="si">{</span><span class="n">dest_target</span><span class="si">}</span><span class="s2">'"</span><span class="p">)</span>
     <span class="n">print_doc</span><span class="p">(</span><span class="n">new_doc</span><span class="p">)</span>
@@ -8361,6 +8387,7 @@ Failed to create translator nodedef.
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Found source nodedef: open_pbr_surface version: 1.1
 Found target nodedef: gltf_pbr version: 2.0.1
+ - Added connection from input 'base_color' to output 'base_color_out'
 Created new translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr_surface' to 'gltf_pbr'
 </pre>
 </div>
@@ -8445,7 +8472,7 @@ Created new translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"dispersion_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/nodedef&gt;</span>
 <span class="w">  </span><span class="nt">&lt;nodegraph</span><span class="w"> </span><span class="na">name=</span><span class="s">"NG_open_pbr_surface_to_gltf_pbr"</span><span class="w"> </span><span class="na">nodedef=</span><span class="s">"ND_open_pbr_surface_to_gltf_pbr"</span><span class="w"> </span><span class="na">doc=</span><span class="s">"NodeGraph implementation of translator from 'open_pbr_surface' to 'gltf_pbr'"</span><span class="w"> </span><span class="na">source_version=</span><span class="s">"1.1"</span><span class="w"> </span><span class="na">source=</span><span class="s">"open_pbr_surface"</span><span class="w"> </span><span class="na">target_version=</span><span class="s">"2.0.1"</span><span class="w"> </span><span class="na">target=</span><span class="s">"gltf_pbr"</span><span class="nt">&gt;</span>
-<span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"base_color_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"color3"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"base_color_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"color3"</span><span class="w"> </span><span class="na">nodename=</span><span class="s">"base_color"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"metallic_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"roughness_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"normal_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"vector3"</span><span class="w"> </span><span class="nt">/&gt;</span>
@@ -8474,6 +8501,10 @@ Created new translator nodedef: 'ND_open_pbr_surface_to_gltf_pbr' from 'open_pbr
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"anisotropy_strength_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"anisotropy_rotation_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
 <span class="w">    </span><span class="nt">&lt;output</span><span class="w"> </span><span class="na">name=</span><span class="s">"dispersion_out"</span><span class="w"> </span><span class="na">type=</span><span class="s">"float"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="cm">&lt;!--Routing source input: 'base_color' to target input: 'base_color'--&gt;</span>
+<span class="w">    </span><span class="nt">&lt;dot</span><span class="w"> </span><span class="na">name=</span><span class="s">"base_color"</span><span class="w"> </span><span class="na">type=</span><span class="s">"color3"</span><span class="nt">&gt;</span>
+<span class="w">      </span><span class="nt">&lt;input</span><span class="w"> </span><span class="na">name=</span><span class="s">"in"</span><span class="w"> </span><span class="na">type=</span><span class="s">"color3"</span><span class="w"> </span><span class="na">interfacename=</span><span class="s">"base_color"</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/dot&gt;</span>
 <span class="w">  </span><span class="nt">&lt;/nodegraph&gt;</span>
 <span class="nt">&lt;/materialx&gt;</span>
 </pre></div>
@@ -8507,7 +8538,7 @@ the existing literal string search.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [152]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">find_translator</span><span class="p">(</span><span class="n">doc</span> <span class="p">:</span> <span class="n">mx</span><span class="o">.</span><span class="n">Document</span><span class="p">,</span> 
