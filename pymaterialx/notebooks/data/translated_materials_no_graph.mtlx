@@ -6,5 +6,121 @@
   <standard_surface name="test_ND_standard_surface_surfaceshader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader" />
   <standard_surface name="test_ND_standard_surface_surfaceshader_100" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader_100" />
   <gltf_pbr name="test_ND_gltf_pbr_surfaceshader" type="surfaceshader" nodedef="ND_gltf_pbr_surfaceshader" />
-  <!--NodeGraph implementation for translator 'open_pbr_surface_to_gltf_pbr'-->
+  <standard_surface name="test_ND_open_pbr_surface_surfaceshader_target" type="surfaceshader">
+    <input name="base" type="float" value="1.0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="base_out" />
+    <input name="base_color" type="color3" value="0.8, 0.8, 0.8" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="base_color_out" />
+    <input name="diffuse_roughness" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="diffuse_roughness_out" />
+    <input name="metalness" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="metalness_out" />
+    <input name="specular" type="float" value="1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="specular_out" />
+    <input name="specular_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="specular_color_out" />
+    <input name="specular_roughness" type="float" value="0.2" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="specular_roughness_out" />
+    <input name="specular_IOR" type="float" value="1.5" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="specular_IOR_out" />
+    <input name="specular_anisotropy" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="specular_anisotropy_out" />
+    <input name="specular_rotation" type="float" value="0" />
+    <input name="transmission" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_out" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_color_out" />
+    <input name="transmission_depth" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_depth_out" />
+    <input name="transmission_scatter" type="color3" value="0, 0, 0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_scatter_out" />
+    <input name="transmission_scatter_anisotropy" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_scatter_anisotropy_out" />
+    <input name="transmission_dispersion" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="transmission_dispersion_out" />
+    <input name="transmission_extra_roughness" type="float" value="0" />
+    <input name="subsurface" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="subsurface_out" />
+    <input name="subsurface_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="subsurface_color_out" />
+    <input name="subsurface_radius" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="subsurface_radius_out" />
+    <input name="subsurface_scale" type="float" value="1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="subsurface_scale_out" />
+    <input name="subsurface_anisotropy" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="subsurface_anisotropy_out" />
+    <input name="sheen" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="sheen_out" />
+    <input name="sheen_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="sheen_color_out" />
+    <input name="sheen_roughness" type="float" value="0.3" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="sheen_roughness_out" />
+    <input name="coat" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_out" />
+    <input name="coat_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_color_out" />
+    <input name="coat_roughness" type="float" value="0.1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_roughness_out" />
+    <input name="coat_anisotropy" type="float" value="0.0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_anisotropy_out" />
+    <input name="coat_rotation" type="float" value="0.0" />
+    <input name="coat_IOR" type="float" value="1.5" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_IOR_out" />
+    <input name="coat_normal" type="vector3" />
+    <input name="coat_affect_color" type="float" value="0" />
+    <input name="coat_affect_roughness" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="coat_affect_roughness_out" />
+    <input name="thin_film_thickness" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="thin_film_thickness_out" />
+    <input name="thin_film_IOR" type="float" value="1.5" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="thin_film_IOR_out" />
+    <input name="emission" type="float" value="0" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="emission_out" />
+    <input name="emission_color" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="emission_color_out" />
+    <input name="opacity" type="color3" value="1, 1, 1" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="opacity_out" />
+    <input name="thin_walled" type="boolean" value="false" nodename="test_ND_open_pbr_surface_surfaceshader_translator" output="thin_walled_out" />
+    <input name="normal" type="vector3" />
+    <input name="tangent" type="vector3" />
+  </standard_surface>
+  <open_pbr_surface_to_standard_surface name="test_ND_open_pbr_surface_surfaceshader_translator" type="multioutput" nodedef="ND_open_pbr_surface_to_standard_surface">
+    <input name="base_weight" type="float" value="1.0" />
+    <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
+    <input name="base_diffuse_roughness" type="float" value="0.0" />
+    <input name="base_metalness" type="float" value="0.0" />
+    <input name="specular_weight" type="float" value="1.0" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
+    <input name="specular_roughness" type="float" value="0.3" />
+    <input name="specular_ior" type="float" value="1.5" />
+    <input name="specular_roughness_anisotropy" type="float" value="0.0" />
+    <input name="transmission_weight" type="float" value="0.0" />
+    <input name="transmission_color" type="color3" value="1, 1, 1" />
+    <input name="transmission_depth" type="float" value="0.0" />
+    <input name="transmission_scatter" type="color3" value="0, 0, 0" />
+    <input name="transmission_scatter_anisotropy" type="float" value="0.0" />
+    <input name="transmission_dispersion_scale" type="float" value="0.0" />
+    <input name="subsurface_weight" type="float" value="0" />
+    <input name="subsurface_color" type="color3" value="0.8, 0.8, 0.8" />
+    <input name="subsurface_radius" type="float" value="1.0" />
+    <input name="subsurface_radius_scale" type="color3" value="1.0, 0.5, 0.25" />
+    <input name="subsurface_scatter_anisotropy" type="float" value="0.0" />
+    <input name="fuzz_weight" type="float" value="0.0" />
+    <input name="fuzz_color" type="color3" value="1, 1, 1" />
+    <input name="fuzz_roughness" type="float" value="0.5" />
+    <input name="coat_weight" type="float" value="0.0" />
+    <input name="coat_color" type="color3" value="1, 1, 1" />
+    <input name="coat_roughness" type="float" value="0.0" />
+    <input name="coat_roughness_anisotropy" type="float" value="0.0" />
+    <input name="coat_ior" type="float" value="1.6" />
+    <input name="coat_darkening" type="float" value="1.0" />
+    <input name="thin_film_weight" type="float" value="0" />
+    <input name="thin_film_thickness" type="float" value="0.5" />
+    <input name="thin_film_ior" type="float" value="1.4" />
+    <input name="emission_luminance" type="float" value="0.0" />
+    <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="geometry_opacity" type="float" value="1" />
+    <input name="geometry_thin_walled" type="boolean" value="false" />
+    <output name="base_out" type="float" />
+    <output name="base_color_out" type="color3" />
+    <output name="diffuse_roughness_out" type="float" />
+    <output name="metalness_out" type="float" />
+    <output name="specular_out" type="float" />
+    <output name="specular_color_out" type="color3" />
+    <output name="specular_roughness_out" type="float" />
+    <output name="specular_IOR_out" type="float" />
+    <output name="specular_anisotropy_out" type="float" />
+    <output name="transmission_out" type="float" />
+    <output name="transmission_color_out" type="color3" />
+    <output name="transmission_depth_out" type="float" />
+    <output name="transmission_scatter_out" type="color3" />
+    <output name="transmission_scatter_anisotropy_out" type="float" />
+    <output name="transmission_dispersion_out" type="float" />
+    <output name="subsurface_out" type="float" />
+    <output name="subsurface_color_out" type="color3" />
+    <output name="subsurface_radius_out" type="color3" />
+    <output name="subsurface_scale_out" type="float" />
+    <output name="subsurface_anisotropy_out" type="float" />
+    <output name="sheen_out" type="float" />
+    <output name="sheen_color_out" type="color3" />
+    <output name="sheen_roughness_out" type="float" />
+    <output name="coat_out" type="float" />
+    <output name="coat_color_out" type="color3" />
+    <output name="coat_roughness_out" type="float" />
+    <output name="coat_anisotropy_out" type="float" />
+    <output name="coat_IOR_out" type="float" />
+    <output name="coat_affect_roughness_out" type="float" />
+    <output name="thin_film_thickness_out" type="float" />
+    <output name="thin_film_IOR_out" type="float" />
+    <output name="emission_out" type="float" />
+    <output name="emission_color_out" type="color3" />
+    <output name="opacity_out" type="color3" />
+    <output name="thin_walled_out" type="boolean" />
+  </open_pbr_surface_to_standard_surface>
 </materialx>
