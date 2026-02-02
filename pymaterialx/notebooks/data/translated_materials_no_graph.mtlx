@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <disney_principled name="test_ND_disney_principled" type="surfaceshader" nodedef="ND_disney_principled" />
+  <open_pbr_surface name="test_ND_open_pbr_surface_surfaceshader" type="surfaceshader" nodedef="ND_open_pbr_surface_surfaceshader" />
+  <UsdPreviewSurface name="test_ND_UsdPreviewSurface_surfaceshader" type="surfaceshader" nodedef="ND_UsdPreviewSurface_surfaceshader" />
+  <standard_surface name="test_ND_standard_surface_surfaceshader" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader" />
+  <standard_surface name="test_ND_standard_surface_surfaceshader_100" type="surfaceshader" nodedef="ND_standard_surface_surfaceshader_100" />
+  <gltf_pbr name="test_ND_gltf_pbr_surfaceshader" type="surfaceshader" nodedef="ND_gltf_pbr_surfaceshader" />
+  <!--NodeGraph implementation for translator 'open_pbr_surface_to_gltf_pbr'-->
+</materialx>
