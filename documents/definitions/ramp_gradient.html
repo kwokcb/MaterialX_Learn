@@ -595,6 +595,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -628,30 +636,17 @@ Category: ramp_gradient
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_ramp_gradient_menu"data-bs-toggle="dropdown" aria-expanded="false">x</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_ramp_gradient_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_x" role="tab" aria-controls="pills-ND_ramp_gradient_x" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >x</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_interval1" role="tab" aria-controls="pills-ND_ramp_gradient_interval1" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >interval1</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_interval2" role="tab" aria-controls="pills-ND_ramp_gradient_interval2" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >interval2</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_color1" role="tab" aria-controls="pills-ND_ramp_gradient_color1" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >color1</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_color2" role="tab" aria-controls="pills-ND_ramp_gradient_color2" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >color2</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_interpolation" role="tab" aria-controls="pills-ND_ramp_gradient_interpolation" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >interpolation</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_prev_color" role="tab" aria-controls="pills-ND_ramp_gradient_prev_color" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >prev_color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_interval_num" role="tab" aria-controls="pills-ND_ramp_gradient_interval_num" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >interval_num</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_num_intervals" role="tab" aria-controls="pills-ND_ramp_gradient_num_intervals" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" >num_intervals</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_ramp_gradient_out" role="tab" aria-controls="pills-ND_ramp_gradient_out" aria-selected="true"  onclick="document.getElementById('ND_ramp_gradient_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_x" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_x" aria-selected="true">x</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_interval1" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_interval1" aria-selected="true">interval1</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_interval2" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_interval2" aria-selected="true">interval2</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_color1" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_color1" aria-selected="true">color1</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_color2" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_color2" aria-selected="true">color2</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_interpolation" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_interpolation" aria-selected="true">interpolation</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_prev_color" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_prev_color" aria-selected="true">prev_color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_interval_num" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_interval_num" aria-selected="true">interval_num</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_num_intervals" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_num_intervals" aria-selected="true">num_intervals</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_ramp_gradient_out" type="button" role="tab" aria-controls="pills-ND_ramp_gradient_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>

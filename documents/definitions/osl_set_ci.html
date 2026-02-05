@@ -219,7 +219,7 @@
      <div class="row vh-100 overflow-auto" id="noddict_row">
        <div class="col-auto pt-2 pl-2">
          <div class="container-fluid">
-           <div id="sidebar" class="collapse show collapse-horizontal">
+           <div id="sidebar" class="collapse collapse-horizontal">
 <form class="m-2 d-flex" role="search">
  <input id="searchTOC" class="form-control-sm p-1 ms-2 me-0" type="text" placeholder="Filter value" aria-label="Search">
     <div class="m-0 p-1 btn btn-sm btn-outline-secondary" onclick="return filterTOC()">Filter</div>
@@ -608,6 +608,279 @@
          </div>
        </div>
      </div>
+   </div>
+   <div class="col flex-grow-1 ps-md-0 pt-2">
+       <div class="row vh-100 overflow-auto" id="nodedefrow">
+           <div class="col-12 flex-grow-1 pt-2 pl-2">
+               <div class="container-fluid">
+<div class="ps-2 p-0 nav-item"><a class="nav-link greyhover" data-bs-target="#sidebar" data-bs-toggle="collapse"><img src="../images/layout-text-sidebar.svg">Node Index</a></div>
+<br>
+<b><a id="osl_set_ci" class="ms-2 mb-0">
+Category: osl_set_ci
+</a></b>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_osl_set_ci <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> material</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../images/no_image.png" class="img-thumbnail rounded float-left" alt=images/no_image.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_output_mode" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_output_mode" aria-selected="true">output_mode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_surfaceshader" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_surfaceshader" aria-selected="true">input_surfaceshader</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_material" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_material" aria-selected="true">input_material</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_BSDF" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_BSDF" aria-selected="true">input_BSDF</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_EDF" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_EDF" aria-selected="true">input_EDF</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_float" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_float" aria-selected="true">input_float</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_color3" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_color3" aria-selected="true">input_color3</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_color4" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_color4" aria-selected="true">input_color4</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_vector2" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_vector2" aria-selected="true">input_vector2</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_vector3" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_vector3" aria-selected="true">input_vector3</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_vector4" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_vector4" aria-selected="true">input_vector4</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_integer" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_integer" aria-selected="true">input_integer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_boolean" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_boolean" aria-selected="true">input_boolean</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_matrix33" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_matrix33" aria-selected="true">input_matrix33</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_matrix44" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_matrix44" aria-selected="true">input_matrix44</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_input_displacementshader" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_input_displacementshader" aria-selected="true">input_displacementshader</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_osl_set_ci_out_ci" type="button" role="tab" aria-controls="pills-ND_osl_set_ci_out_ci" aria-selected="true"><b>out_ci</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_osl_set_ci_output_mode"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_output_mode-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_surfaceshader"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_surfaceshader-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="surfaceshader">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_material"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_material-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_BSDF"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_BSDF-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="BSDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_EDF"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_EDF-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="EDF">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_float"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_float-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_color3"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_color3-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color3">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_color4"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_color4-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="color4">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_vector2"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_vector2-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_vector3"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_vector3-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_vector4"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_vector4-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_integer"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_integer-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_boolean"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_boolean-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_matrix33"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_matrix33-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_matrix44"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_matrix44-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_input_displacementshader"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_input_displacementshader-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="displacementshader">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_osl_set_ci_out_ci"
+  role="tabpanel" aria-labelledby="pills-ND_osl_set_ci_out_ci-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="material">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/genosl/genosl/mx_set_ci.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_set_ci.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_set_ci">
+   </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+               </div>
+           </div>
+       </div>
    </div>
 
 <footer class="bg-dark-subtle footer text-white py-2 pt-2" data-bs-theme="dark">
