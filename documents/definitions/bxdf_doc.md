@@ -428,6 +428,7 @@ graph TB
 | **attenuation_color** | color3 | 1, 1, 1 | Attenuation Color | 0, 0, 0 | 1, 1, 1 |  |  |  | Volume |  |  | true |
 | **anisotropy_strength** | float | 0.0 | Anisotropy Strength | 0 | 1 |  |  |  | Anisotropy |  |  |  |
 | **anisotropy_rotation** | float | 0.0 | Anisotropy Rotation | 0 | 6.283185 |  |  |  | Anisotropy |  |  |  |
+| **dispersion** | float | 0.0 | Dispersion | 0 |  |  | 1.0 |  | Dispersion |  |  |  |
 | *out* | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *gltf_colorimage*
 <details open><summary>ND_gltf_colorimage</summary>
@@ -4302,21 +4303,43 @@ graph TB
     style NG_standard_surface_to_gltf_pbr_anisotropy_strength  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_anisotropy_strength{anisotropy_strength}
     NG_standard_surface_to_gltf_pbr_transmission[transmission]
-    NG_standard_surface_to_gltf_pbr_thickness[thickness]
+    NG_standard_surface_to_gltf_pbr_attenuation_distance[attenuation_distance]
     NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor[transmissionAttenuationColor]
     NG_standard_surface_to_gltf_pbr_attenuation_color[attenuation_color]
+    NG_standard_surface_to_gltf_pbr_thin_walled_float[thin_walled_float]
+    NG_standard_surface_to_gltf_pbr_thickness_from_thin_walled[thickness_from_thin_walled]
     NG_standard_surface_to_gltf_pbr_sheen_color[sheen_color]
     NG_standard_surface_to_gltf_pbr_sheen_roughness[sheen_roughness]
+    NG_standard_surface_to_gltf_pbr_sqrt_sheen_roughness[sqrt_sheen_roughness]
     style NG_standard_surface_to_gltf_pbr_clearcoat  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_clearcoat{clearcoat}
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness[clearcoat_roughness]
     NG_standard_surface_to_gltf_pbr_emissive[emissive]
+    NG_standard_surface_to_gltf_pbr_emissive_strength[emissive_strength]
+    NG_standard_surface_to_gltf_pbr_specular[specular]
+    NG_standard_surface_to_gltf_pbr_specular_color[specular_color]
+    NG_standard_surface_to_gltf_pbr_ior[ior]
+    NG_standard_surface_to_gltf_pbr_dispersion_from_abbe[dispersion_from_abbe]
+    style NG_standard_surface_to_gltf_pbr_dispersion  fill:#C72, color:#FFF
+    NG_standard_surface_to_gltf_pbr_dispersion{dispersion}
+    NG_standard_surface_to_gltf_pbr_normal[normal]
+    NG_standard_surface_to_gltf_pbr_tangent[tangent]
+    NG_standard_surface_to_gltf_pbr_opacity_luminance[opacity_luminance]
+    NG_standard_surface_to_gltf_pbr_opacity_luminance_float[opacity_luminance_float]
+    style NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance  fill:#C72, color:#FFF
+    NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance{alpha_mode_from_opacity_luminance}
     style NG_standard_surface_to_gltf_pbr_base_color_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_base_color_out([base_color_out])
     style NG_standard_surface_to_gltf_pbr_metallic_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_metallic_out([metallic_out])
     style NG_standard_surface_to_gltf_pbr_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_roughness_out([roughness_out])
+    style NG_standard_surface_to_gltf_pbr_specular_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_out([specular_out])
+    style NG_standard_surface_to_gltf_pbr_specular_color_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_color_out([specular_color_out])
+    style NG_standard_surface_to_gltf_pbr_ior_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_ior_out([ior_out])
     style NG_standard_surface_to_gltf_pbr_anisotropy_strength_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_anisotropy_strength_out([anisotropy_strength_out])
     style NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out  fill:#0C0, color:#FFF
@@ -4327,6 +4350,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_thickness_out([thickness_out])
     style NG_standard_surface_to_gltf_pbr_attenuation_color_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_attenuation_color_out([attenuation_color_out])
+    style NG_standard_surface_to_gltf_pbr_attenuation_distance_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_attenuation_distance_out([attenuation_distance_out])
     style NG_standard_surface_to_gltf_pbr_sheen_color_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_sheen_color_out([sheen_color_out])
     style NG_standard_surface_to_gltf_pbr_sheen_roughness_out  fill:#0C0, color:#FFF
@@ -4335,8 +4360,20 @@ graph TB
     NG_standard_surface_to_gltf_pbr_clearcoat_out([clearcoat_out])
     style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
+    style NG_standard_surface_to_gltf_pbr_dispersion_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_dispersion_out([dispersion_out])
     style NG_standard_surface_to_gltf_pbr_emissive_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_emissive_out([emissive_out])
+    style NG_standard_surface_to_gltf_pbr_emissive_strength_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_emissive_strength_out([emissive_strength_out])
+    style NG_standard_surface_to_gltf_pbr_normal_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_normal_out([normal_out])
+    style NG_standard_surface_to_gltf_pbr_tangent_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_tangent_out([tangent_out])
+    style NG_standard_surface_to_gltf_pbr_alpha_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_alpha_out([alpha_out])
+    style NG_standard_surface_to_gltf_pbr_alpha_mode_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_alpha_mode_out([alpha_mode_out])
     style NG_standard_surface_to_gltf_pbr_coat_color  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_coat_color([coat_color])
     style NG_standard_surface_to_gltf_pbr_base  fill:#09D, color:#FFF
@@ -4357,6 +4394,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_specular_rotation([specular_rotation])
     style NG_standard_surface_to_gltf_pbr_transmission:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission:in([transmission:in])
+    style NG_standard_surface_to_gltf_pbr_thin_walled  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_thin_walled([thin_walled])
     style NG_standard_surface_to_gltf_pbr_sheen_color:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_sheen_color:in([sheen_color:in])
     style NG_standard_surface_to_gltf_pbr_sheen  fill:#09D, color:#FFF
@@ -4369,6 +4408,20 @@ graph TB
     NG_standard_surface_to_gltf_pbr_emission_color([emission_color])
     style NG_standard_surface_to_gltf_pbr_emission  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_emission([emission])
+    style NG_standard_surface_to_gltf_pbr_specular:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular:in([specular:in])
+    style NG_standard_surface_to_gltf_pbr_specular_color:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_color:in([specular_color:in])
+    style NG_standard_surface_to_gltf_pbr_specular_IOR  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_specular_IOR([specular_IOR])
+    style NG_standard_surface_to_gltf_pbr_transmission_dispersion  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_transmission_dispersion([transmission_dispersion])
+    style NG_standard_surface_to_gltf_pbr_normal:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_normal:in([normal:in])
+    style NG_standard_surface_to_gltf_pbr_tangent:in  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_tangent:in([tangent:in])
+    style NG_standard_surface_to_gltf_pbr_opacity  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_opacity([opacity])
     end
     NG_standard_surface_to_gltf_pbr_constantOneThird --"in"--> NG_standard_surface_to_gltf_pbr_constantOneThirdVector
     NG_standard_surface_to_gltf_pbr_coat_color --"in"--> NG_standard_surface_to_gltf_pbr_coatColorVector
@@ -4408,34 +4461,58 @@ graph TB
     NG_standard_surface_to_gltf_pbr_denumerator --"value2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
     NG_standard_surface_to_gltf_pbr_anisotropy --"in2"--> NG_standard_surface_to_gltf_pbr_anisotropy_strength
     NG_standard_surface_to_gltf_pbr_transmission:in --"in"--> NG_standard_surface_to_gltf_pbr_transmission
-    NG_standard_surface_to_gltf_pbr_transmission_depth --"in"--> NG_standard_surface_to_gltf_pbr_thickness
+    NG_standard_surface_to_gltf_pbr_transmission_depth --"in"--> NG_standard_surface_to_gltf_pbr_attenuation_distance
     NG_standard_surface_to_gltf_pbr_transmission_depth --"value1"--> NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor
     NG_standard_surface_to_gltf_pbr_transmission_color --"in1"--> NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor
     NG_standard_surface_to_gltf_pbr_transmission --"value1"--> NG_standard_surface_to_gltf_pbr_attenuation_color
     NG_standard_surface_to_gltf_pbr_transmissionAttenuationColor --"in1"--> NG_standard_surface_to_gltf_pbr_attenuation_color
+    NG_standard_surface_to_gltf_pbr_thin_walled --"in"--> NG_standard_surface_to_gltf_pbr_thin_walled_float
+    NG_standard_surface_to_gltf_pbr_thin_walled_float --"in2"--> NG_standard_surface_to_gltf_pbr_thickness_from_thin_walled
     NG_standard_surface_to_gltf_pbr_sheen_color:in --"in1"--> NG_standard_surface_to_gltf_pbr_sheen_color
     NG_standard_surface_to_gltf_pbr_sheen --"in2"--> NG_standard_surface_to_gltf_pbr_sheen_color
     NG_standard_surface_to_gltf_pbr_sheen --"value1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness
     NG_standard_surface_to_gltf_pbr_sheen_roughness:in --"in1"--> NG_standard_surface_to_gltf_pbr_sheen_roughness
+    NG_standard_surface_to_gltf_pbr_sheen_roughness --"in"--> NG_standard_surface_to_gltf_pbr_sqrt_sheen_roughness
     NG_standard_surface_to_gltf_pbr_hasCoatColor --"value1"--> NG_standard_surface_to_gltf_pbr_clearcoat
     NG_standard_surface_to_gltf_pbr_coat --"in1"--> NG_standard_surface_to_gltf_pbr_clearcoat
     NG_standard_surface_to_gltf_pbr_weightedCoat --"in2"--> NG_standard_surface_to_gltf_pbr_clearcoat
     NG_standard_surface_to_gltf_pbr_coat_roughness --"in"--> NG_standard_surface_to_gltf_pbr_clearcoat_roughness
-    NG_standard_surface_to_gltf_pbr_emission_color --"in1"--> NG_standard_surface_to_gltf_pbr_emissive
-    NG_standard_surface_to_gltf_pbr_emission --"in2"--> NG_standard_surface_to_gltf_pbr_emissive
+    NG_standard_surface_to_gltf_pbr_emission_color --"in"--> NG_standard_surface_to_gltf_pbr_emissive
+    NG_standard_surface_to_gltf_pbr_emission --"in"--> NG_standard_surface_to_gltf_pbr_emissive_strength
+    NG_standard_surface_to_gltf_pbr_specular:in --"in"--> NG_standard_surface_to_gltf_pbr_specular
+    NG_standard_surface_to_gltf_pbr_specular_color:in --"in"--> NG_standard_surface_to_gltf_pbr_specular_color
+    NG_standard_surface_to_gltf_pbr_specular_IOR --"in"--> NG_standard_surface_to_gltf_pbr_ior
+    NG_standard_surface_to_gltf_pbr_transmission_dispersion --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion_from_abbe
+    NG_standard_surface_to_gltf_pbr_transmission_dispersion --"value1"--> NG_standard_surface_to_gltf_pbr_dispersion
+    NG_standard_surface_to_gltf_pbr_dispersion_from_abbe --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion
+    NG_standard_surface_to_gltf_pbr_normal:in --"in"--> NG_standard_surface_to_gltf_pbr_normal
+    NG_standard_surface_to_gltf_pbr_tangent:in --"in"--> NG_standard_surface_to_gltf_pbr_tangent
+    NG_standard_surface_to_gltf_pbr_opacity --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance
+    NG_standard_surface_to_gltf_pbr_opacity_luminance --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance_float
+    NG_standard_surface_to_gltf_pbr_opacity_luminance_float --"value1"--> NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance
     NG_standard_surface_to_gltf_pbr_base_color --> NG_standard_surface_to_gltf_pbr_base_color_out
     NG_standard_surface_to_gltf_pbr_metallic --> NG_standard_surface_to_gltf_pbr_metallic_out
     NG_standard_surface_to_gltf_pbr_roughness --> NG_standard_surface_to_gltf_pbr_roughness_out
+    NG_standard_surface_to_gltf_pbr_specular --> NG_standard_surface_to_gltf_pbr_specular_out
+    NG_standard_surface_to_gltf_pbr_specular_color --> NG_standard_surface_to_gltf_pbr_specular_color_out
+    NG_standard_surface_to_gltf_pbr_ior --> NG_standard_surface_to_gltf_pbr_ior_out
     NG_standard_surface_to_gltf_pbr_anisotropy_strength --> NG_standard_surface_to_gltf_pbr_anisotropy_strength_out
     NG_standard_surface_to_gltf_pbr_anisotropy_rotation --> NG_standard_surface_to_gltf_pbr_anisotropy_rotation_out
     NG_standard_surface_to_gltf_pbr_transmission --> NG_standard_surface_to_gltf_pbr_transmission_out
-    NG_standard_surface_to_gltf_pbr_thickness --> NG_standard_surface_to_gltf_pbr_thickness_out
+    NG_standard_surface_to_gltf_pbr_thickness_from_thin_walled --> NG_standard_surface_to_gltf_pbr_thickness_out
     NG_standard_surface_to_gltf_pbr_attenuation_color --> NG_standard_surface_to_gltf_pbr_attenuation_color_out
+    NG_standard_surface_to_gltf_pbr_attenuation_distance --> NG_standard_surface_to_gltf_pbr_attenuation_distance_out
     NG_standard_surface_to_gltf_pbr_sheen_color --> NG_standard_surface_to_gltf_pbr_sheen_color_out
-    NG_standard_surface_to_gltf_pbr_sheen_roughness --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
+    NG_standard_surface_to_gltf_pbr_sqrt_sheen_roughness --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
     NG_standard_surface_to_gltf_pbr_clearcoat --> NG_standard_surface_to_gltf_pbr_clearcoat_out
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out
+    NG_standard_surface_to_gltf_pbr_dispersion --> NG_standard_surface_to_gltf_pbr_dispersion_out
     NG_standard_surface_to_gltf_pbr_emissive --> NG_standard_surface_to_gltf_pbr_emissive_out
+    NG_standard_surface_to_gltf_pbr_emissive_strength --> NG_standard_surface_to_gltf_pbr_emissive_strength_out
+    NG_standard_surface_to_gltf_pbr_normal --> NG_standard_surface_to_gltf_pbr_normal_out
+    NG_standard_surface_to_gltf_pbr_tangent --> NG_standard_surface_to_gltf_pbr_tangent_out
+    NG_standard_surface_to_gltf_pbr_opacity_luminance_float --> NG_standard_surface_to_gltf_pbr_alpha_out
+    NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance --> NG_standard_surface_to_gltf_pbr_alpha_mode_out
 ```
  
 
@@ -4444,12 +4521,16 @@ graph TB
 | **base** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
 | **base_color** | color3 | 0.8, 0.8, 0.8 |  |  |  |  |  |  |  |  |  |  |
 | **metalness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **specular** | float | 1.0 |  |  |  |  |  |  |  |  |  |  |
+| **specular_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **specular_anisotropy** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **specular_rotation** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **specular_roughness** | float | 0.2 |  |  |  |  |  |  |  |  |  |  |
+| **specular_IOR** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **transmission** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **transmission_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **transmission_depth** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **transmission_dispersion** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **sheen** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **sheen_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **sheen_roughness** | float | 0.3 |  |  |  |  |  |  |  |  |  |  |
@@ -4458,19 +4539,33 @@ graph TB
 | **coat_roughness** | float | 0.1 |  |  |  |  |  |  |  |  |  |  |
 | **emission** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **emission_color** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **opacity** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
+| **thin_walled** | boolean | False |  |  |  |  |  |  |  |  |  |  |
 | *base_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *metallic_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *specular_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *specular_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+| *ior_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *anisotropy_strength_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *anisotropy_rotation_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *transmission_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *thickness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *attenuation_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+| *attenuation_distance_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *sheen_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *sheen_roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *clearcoat_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *clearcoat_roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *dispersion_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *emissive_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
+| *emissive_strength_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *normal_out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| *tangent_out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| *alpha_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *alpha_mode_out* | integer | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *standard_surface_to_open_pbr_surface*
 <details open><summary>ND_standard_surface_to_open_pbr_surface</summary>
 <p>

@@ -1326,10 +1326,10 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
 
                     builder = MtlxGraphBuilder(ng)
                     builder.execute()
-                    graphio = MxMermaidGraphExporter(builder.getDictionary(), builder.getConnections())
-                    graphio.setOrientation('TB')
+                    graphio = MxMermaidGraphExporter(builder.get_dictionary(), builder.get_connections())
+                    graphio.set_orientation('TB')
                     graphio.execute()
-                    mdoutput = graphio.getGraph(False)
+                    mdoutput = graphio.get_graph(False)
                     mdoutput = mdoutput.replace('```mermaid', '')
                     mdoutput = mdoutput.replace('```', '')
                     mdoutput = mdoutput.replace('/', '_')

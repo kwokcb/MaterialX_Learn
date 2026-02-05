@@ -46,6 +46,9 @@
 ### Node Group: texture3d
 * [triplanarprojection](#node-triplanarprojection) 
 ---------
+### Node Group: undefined
+* [osl_set_ci](#node-osl_set_ci) 
+---------
  
 ### Category: *surfacematerial*
 <details open><summary>ND_surfacematerial</summary>
@@ -2636,8 +2639,8 @@ graph TB
     NG_ramp4_float_valuebl --"bg"--> NG_ramp4_float_N_mixbot_float
     NG_ramp4_float_valuebr --"fg"--> NG_ramp4_float_N_mixbot_float
     NG_ramp4_float_N_s_float --"mix"--> NG_ramp4_float_N_mixbot_float
-    NG_ramp4_float_N_mixtop_float --"bg"--> NG_ramp4_float_N_mix_float
-    NG_ramp4_float_N_mixbot_float --"fg"--> NG_ramp4_float_N_mix_float
+    NG_ramp4_float_N_mixbot_float --"bg"--> NG_ramp4_float_N_mix_float
+    NG_ramp4_float_N_mixtop_float --"fg"--> NG_ramp4_float_N_mix_float
     NG_ramp4_float_N_t_float --"mix"--> NG_ramp4_float_N_mix_float
     NG_ramp4_float_N_mix_float --> NG_ramp4_float_out
 ```
@@ -2693,8 +2696,8 @@ graph TB
     NG_ramp4_color3_valuebl --"bg"--> NG_ramp4_color3_N_mixbot_color3
     NG_ramp4_color3_valuebr --"fg"--> NG_ramp4_color3_N_mixbot_color3
     NG_ramp4_color3_N_s_color3 --"mix"--> NG_ramp4_color3_N_mixbot_color3
-    NG_ramp4_color3_N_mixtop_color3 --"bg"--> NG_ramp4_color3_N_mix_color3
-    NG_ramp4_color3_N_mixbot_color3 --"fg"--> NG_ramp4_color3_N_mix_color3
+    NG_ramp4_color3_N_mixbot_color3 --"bg"--> NG_ramp4_color3_N_mix_color3
+    NG_ramp4_color3_N_mixtop_color3 --"fg"--> NG_ramp4_color3_N_mix_color3
     NG_ramp4_color3_N_t_color3 --"mix"--> NG_ramp4_color3_N_mix_color3
     NG_ramp4_color3_N_mix_color3 --> NG_ramp4_color3_out
 ```
@@ -2750,8 +2753,8 @@ graph TB
     NG_ramp4_color4_valuebl --"bg"--> NG_ramp4_color4_N_mixbot_color4
     NG_ramp4_color4_valuebr --"fg"--> NG_ramp4_color4_N_mixbot_color4
     NG_ramp4_color4_N_s_color4 --"mix"--> NG_ramp4_color4_N_mixbot_color4
-    NG_ramp4_color4_N_mixtop_color4 --"bg"--> NG_ramp4_color4_N_mix_color4
-    NG_ramp4_color4_N_mixbot_color4 --"fg"--> NG_ramp4_color4_N_mix_color4
+    NG_ramp4_color4_N_mixbot_color4 --"bg"--> NG_ramp4_color4_N_mix_color4
+    NG_ramp4_color4_N_mixtop_color4 --"fg"--> NG_ramp4_color4_N_mix_color4
     NG_ramp4_color4_N_t_color4 --"mix"--> NG_ramp4_color4_N_mix_color4
     NG_ramp4_color4_N_mix_color4 --> NG_ramp4_color4_out
 ```
@@ -2807,8 +2810,8 @@ graph TB
     NG_ramp4_vector2_valuebl --"bg"--> NG_ramp4_vector2_N_mixbot_vector2
     NG_ramp4_vector2_valuebr --"fg"--> NG_ramp4_vector2_N_mixbot_vector2
     NG_ramp4_vector2_N_s_vector2 --"mix"--> NG_ramp4_vector2_N_mixbot_vector2
-    NG_ramp4_vector2_N_mixtop_vector2 --"bg"--> NG_ramp4_vector2_N_mix_vector2
-    NG_ramp4_vector2_N_mixbot_vector2 --"fg"--> NG_ramp4_vector2_N_mix_vector2
+    NG_ramp4_vector2_N_mixbot_vector2 --"bg"--> NG_ramp4_vector2_N_mix_vector2
+    NG_ramp4_vector2_N_mixtop_vector2 --"fg"--> NG_ramp4_vector2_N_mix_vector2
     NG_ramp4_vector2_N_t_vector2 --"mix"--> NG_ramp4_vector2_N_mix_vector2
     NG_ramp4_vector2_N_mix_vector2 --> NG_ramp4_vector2_out
 ```
@@ -2864,8 +2867,8 @@ graph TB
     NG_ramp4_vector3_valuebl --"bg"--> NG_ramp4_vector3_N_mixbot_vector3
     NG_ramp4_vector3_valuebr --"fg"--> NG_ramp4_vector3_N_mixbot_vector3
     NG_ramp4_vector3_N_s_vector3 --"mix"--> NG_ramp4_vector3_N_mixbot_vector3
-    NG_ramp4_vector3_N_mixtop_vector3 --"bg"--> NG_ramp4_vector3_N_mix_vector3
-    NG_ramp4_vector3_N_mixbot_vector3 --"fg"--> NG_ramp4_vector3_N_mix_vector3
+    NG_ramp4_vector3_N_mixbot_vector3 --"bg"--> NG_ramp4_vector3_N_mix_vector3
+    NG_ramp4_vector3_N_mixtop_vector3 --"fg"--> NG_ramp4_vector3_N_mix_vector3
     NG_ramp4_vector3_N_t_vector3 --"mix"--> NG_ramp4_vector3_N_mix_vector3
     NG_ramp4_vector3_N_mix_vector3 --> NG_ramp4_vector3_out
 ```
@@ -2921,8 +2924,8 @@ graph TB
     NG_ramp4_vector4_valuebl --"bg"--> NG_ramp4_vector4_N_mixbot_vector4
     NG_ramp4_vector4_valuebr --"fg"--> NG_ramp4_vector4_N_mixbot_vector4
     NG_ramp4_vector4_N_s_vector4 --"mix"--> NG_ramp4_vector4_N_mixbot_vector4
-    NG_ramp4_vector4_N_mixtop_vector4 --"bg"--> NG_ramp4_vector4_N_mix_vector4
-    NG_ramp4_vector4_N_mixbot_vector4 --"fg"--> NG_ramp4_vector4_N_mix_vector4
+    NG_ramp4_vector4_N_mixbot_vector4 --"bg"--> NG_ramp4_vector4_N_mix_vector4
+    NG_ramp4_vector4_N_mixtop_vector4 --"fg"--> NG_ramp4_vector4_N_mix_vector4
     NG_ramp4_vector4_N_t_vector4 --"mix"--> NG_ramp4_vector4_N_mix_vector4
     NG_ramp4_vector4_N_mix_vector4 --> NG_ramp4_vector4_out
 ```
@@ -9086,8 +9089,8 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **iny** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
-| **inx** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **iny** | vector2 | 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **inx** | vector2 | 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector2 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
 <details open><summary>ND_sin_vector3</summary>
@@ -9183,8 +9186,8 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **iny** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
-| **inx** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **iny** | vector3 | 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **inx** | vector3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sin*
 <details open><summary>ND_sin_vector4</summary>
@@ -9280,8 +9283,8 @@ graph TB
 
 | Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| **iny** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
-| **inx** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **iny** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **inx** | vector4 | 1, 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *sqrt*
 <details open><summary>ND_sqrt_float</summary>
@@ -19658,5 +19661,36 @@ graph TB
 | **in** | lightshader |  |  |  |  |  |  |  |  |  |  |  |
 | **note** | string |  |  |  |  |  |  |  |  |  |  | true |
 | *out* | lightshader | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *osl_set_ci*
+<details open><summary>ND_osl_set_ci</summary>
+<p>
+ 
+* *Nodedef*: ND_osl_set_ci
+* *Type*: material
+* *Group*: none
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **output_mode** | integer | None |  |  |  |  |  |  |  |  |  |  |
+| **input_surfaceshader** | surfaceshader | None |  |  |  |  |  |  |  |  |  |  |
+| **input_material** | material | None |  |  |  |  |  |  |  |  |  |  |
+| **input_BSDF** | BSDF | None |  |  |  |  |  |  |  |  |  |  |
+| **input_EDF** | EDF | None |  |  |  |  |  |  |  |  |  |  |
+| **input_float** | float | None |  |  |  |  |  |  |  |  |  |  |
+| **input_color3** | color3 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_color4** | color4 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_vector2** | vector2 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_vector3** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_vector4** | vector4 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_integer** | integer | None |  |  |  |  |  |  |  |  |  |  |
+| **input_boolean** | boolean | None |  |  |  |  |  |  |  |  |  |  |
+| **input_matrix33** | matrix33 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_matrix44** | matrix44 | None |  |  |  |  |  |  |  |  |  |  |
+| **input_displacementshader** | displacementshader | None |  |  |  |  |  |  |  |  |  |  |
+| *out_ci* | material | None |  |  |  |  |  |  |  |  |  |  |
 </p></details>
  
