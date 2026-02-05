@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -647,68 +657,37 @@ Category: gltf_pbr
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_gltf_pbr_surfaceshader_menu"data-bs-toggle="dropdown" aria-expanded="false">base_color</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_gltf_pbr_surfaceshader_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_base_color" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_base_color" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >base_color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_metallic" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_metallic" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >metallic</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_roughness" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_roughness" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >roughness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_normal" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_normal" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >normal</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_tangent" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_tangent" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >tangent</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_occlusion" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_occlusion" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >occlusion</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_transmission" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_transmission" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >transmission</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_specular" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_specular" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >specular</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_specular_color" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_specular_color" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >specular_color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_ior" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_ior" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >ior</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >alpha</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha_mode" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha_mode" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >alpha_mode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha_cutoff" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha_cutoff" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >alpha_cutoff</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >iridescence</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence_ior" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence_ior" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >iridescence_ior</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence_thickness" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence_thickness" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >iridescence_thickness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_sheen_color" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_sheen_color" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >sheen_color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_sheen_roughness" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_sheen_roughness" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >sheen_roughness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >clearcoat</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat_roughness" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat_roughness" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >clearcoat_roughness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat_normal" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat_normal" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >clearcoat_normal</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_emissive" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_emissive" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >emissive</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_emissive_strength" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_emissive_strength" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >emissive_strength</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_thickness" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_thickness" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >thickness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_attenuation_distance" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_attenuation_distance" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >attenuation_distance</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_attenuation_color" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_attenuation_color" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >attenuation_color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_anisotropy_strength" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_anisotropy_strength" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >anisotropy_strength</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_anisotropy_rotation" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_anisotropy_rotation" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" >anisotropy_rotation</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_out" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_out" aria-selected="true"  onclick="document.getElementById('ND_gltf_pbr_surfaceshader_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_base_color" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_base_color" aria-selected="true">base_color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_metallic" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_metallic" aria-selected="true">metallic</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_roughness" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_normal" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_normal" aria-selected="true">normal</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_tangent" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_tangent" aria-selected="true">tangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_occlusion" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_occlusion" aria-selected="true">occlusion</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_transmission" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_transmission" aria-selected="true">transmission</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_specular" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_specular" aria-selected="true">specular</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_specular_color" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_specular_color" aria-selected="true">specular_color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_ior" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_ior" aria-selected="true">ior</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha" aria-selected="true">alpha</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha_mode" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha_mode" aria-selected="true">alpha_mode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_alpha_cutoff" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_alpha_cutoff" aria-selected="true">alpha_cutoff</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence" aria-selected="true">iridescence</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence_ior" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence_ior" aria-selected="true">iridescence_ior</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_iridescence_thickness" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_iridescence_thickness" aria-selected="true">iridescence_thickness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_sheen_color" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_sheen_color" aria-selected="true">sheen_color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_sheen_roughness" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_sheen_roughness" aria-selected="true">sheen_roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat" aria-selected="true">clearcoat</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat_roughness" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat_roughness" aria-selected="true">clearcoat_roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_clearcoat_normal" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_clearcoat_normal" aria-selected="true">clearcoat_normal</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_emissive" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_emissive" aria-selected="true">emissive</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_emissive_strength" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_emissive_strength" aria-selected="true">emissive_strength</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_thickness" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_thickness" aria-selected="true">thickness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_attenuation_distance" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_attenuation_distance" aria-selected="true">attenuation_distance</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_attenuation_color" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_attenuation_color" aria-selected="true">attenuation_color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_anisotropy_strength" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_anisotropy_strength" aria-selected="true">anisotropy_strength</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_anisotropy_rotation" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_anisotropy_rotation" aria-selected="true">anisotropy_rotation</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_dispersion" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_dispersion" aria-selected="true">dispersion</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_gltf_pbr_surfaceshader_out" type="button" role="tab" aria-controls="pills-ND_gltf_pbr_surfaceshader_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1960,6 +1939,50 @@ Category: gltf_pbr
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_gltf_pbr_surfaceshader_dispersion"
+  role="tabpanel" aria-labelledby="pills-ND_gltf_pbr_surfaceshader_dispersion-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_gltf_pbr_surfaceshader_dispersion" type="range" class="form-range form-range-sm" min="0.000000"  step=0.001 value="0" enabled>
+      </div><div class="col">
+          <input id="ND_gltf_pbr_surfaceshader_dispersion_slider" type="number" class="form-control form-control-sm" min="0.000000"  step=0.001 value="0" enabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Name | Grp. | Adv.</label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="Dispersion" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="Dispersion" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="false" disabled>
+ </div>
+</div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_gltf_pbr_surfaceshader_out"
   role="tabpanel" aria-labelledby="pills-ND_gltf_pbr_surfaceshader_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -2249,7 +2272,7 @@ graph TB
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

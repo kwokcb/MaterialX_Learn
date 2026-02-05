@@ -1,4 +1,5 @@
-python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.3 --sourceLibrary ../pymaterialx/python/MaterialX/libraries > ../resources/mtlx_1393_vs_1394.md
+python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.4 --sourceLibrary ../pymaterialx/python/MaterialX/libraries > ../resources/mtlx_1394_vs_1395.md
+python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.3 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.39.4 > ../resources/mtlx_1393_vs_1394.md
 python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.2 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.39.3 > ../resources/mtlx_1392_vs_1393.md
 python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.1 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.39.2 > ../resources/mtlx_1391_vs_1392.md
 python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.39.0 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.39.1 > ../resources/mtlx_1390_vs_1391.md
@@ -14,6 +15,7 @@ python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libra
 python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.38.1 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.38.2 > ../resources/mtlx_1381_vs_1382.md
 python ../pymaterialx/compareVersions.py ../pymaterialx/downloaded_release_libraries/v1.38.0 --sourceLibrary ../pymaterialx/downloaded_release_libraries/v1.38.1 > ../resources/mtlx_1380_vs_1381.md
 
+python mdhtml.py ../resources/mtlx_1394_vs_1395.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1393_vs_1394.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1392_vs_1393.md -t template.html --top ".." -o ../documents
 python mdhtml.py ../resources/mtlx_1391_vs_1392.md -t template.html --top ".." -o ../documents
