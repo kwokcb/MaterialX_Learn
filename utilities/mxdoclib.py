@@ -692,8 +692,8 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
             outputList = nd.getActiveOutputs() if opts.showInherited  else nd.getOutputs()
             totalList = inputList + tokenList + outputList
             
-            # UI Option to show menu dropdown vs expanded list. Default to expanded list.
-            compactParams = False
+            # UI Option to show menu dropdown vs expanded list. Default to expanded list.            
+            compactParams = len(totalList) > 20
             menuid = nd.getName() + "_menu"
 
             firstPortName = 'No Parameters'
