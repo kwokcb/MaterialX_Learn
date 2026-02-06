@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -629,26 +639,15 @@ Category: spot_light
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_spot_light_menu"data-bs-toggle="dropdown" aria-expanded="false">position</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_spot_light_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_position" role="tab" aria-controls="pills-ND_spot_light_position" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >position</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_direction" role="tab" aria-controls="pills-ND_spot_light_direction" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >direction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_color" role="tab" aria-controls="pills-ND_spot_light_color" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >color</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_intensity" role="tab" aria-controls="pills-ND_spot_light_intensity" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >intensity</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_decay_rate" role="tab" aria-controls="pills-ND_spot_light_decay_rate" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >decay_rate</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_inner_angle" role="tab" aria-controls="pills-ND_spot_light_inner_angle" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >inner_angle</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_outer_angle" role="tab" aria-controls="pills-ND_spot_light_outer_angle" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" >outer_angle</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_spot_light_out" role="tab" aria-controls="pills-ND_spot_light_out" aria-selected="true"  onclick="document.getElementById('ND_spot_light_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_position" type="button" role="tab" aria-controls="pills-ND_spot_light_position" aria-selected="true">position</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_direction" type="button" role="tab" aria-controls="pills-ND_spot_light_direction" aria-selected="true">direction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_color" type="button" role="tab" aria-controls="pills-ND_spot_light_color" aria-selected="true">color</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_intensity" type="button" role="tab" aria-controls="pills-ND_spot_light_intensity" aria-selected="true">intensity</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_decay_rate" type="button" role="tab" aria-controls="pills-ND_spot_light_decay_rate" aria-selected="true">decay_rate</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_inner_angle" type="button" role="tab" aria-controls="pills-ND_spot_light_inner_angle" aria-selected="true">inner_angle</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_outer_angle" type="button" role="tab" aria-controls="pills-ND_spot_light_outer_angle" aria-selected="true">outer_angle</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_spot_light_out" type="button" role="tab" aria-controls="pills-ND_spot_light_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -845,6 +844,27 @@ Category: spot_light
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/lights/genslang/mx_spot_light.slang" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_spot_light.slang">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_spot_light">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -874,7 +894,7 @@ Category: spot_light
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

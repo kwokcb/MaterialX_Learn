@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -628,22 +638,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_float_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_float_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_in" role="tab" aria-controls="pills-ND_remap_float_in" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_inlow" role="tab" aria-controls="pills-ND_remap_float_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_inhigh" role="tab" aria-controls="pills-ND_remap_float_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_outlow" role="tab" aria-controls="pills-ND_remap_float_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_outhigh" role="tab" aria-controls="pills-ND_remap_float_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_float_out" role="tab" aria-controls="pills-ND_remap_float_out" aria-selected="true"  onclick="document.getElementById('ND_remap_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_in" type="button" role="tab" aria-controls="pills-ND_remap_float_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_inlow" type="button" role="tab" aria-controls="pills-ND_remap_float_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_float_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_outlow" type="button" role="tab" aria-controls="pills-ND_remap_float_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_float_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_float_out" type="button" role="tab" aria-controls="pills-ND_remap_float_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -829,22 +830,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_color3_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_color3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_in" role="tab" aria-controls="pills-ND_remap_color3_in" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_inlow" role="tab" aria-controls="pills-ND_remap_color3_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_inhigh" role="tab" aria-controls="pills-ND_remap_color3_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_outlow" role="tab" aria-controls="pills-ND_remap_color3_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_outhigh" role="tab" aria-controls="pills-ND_remap_color3_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3_out" role="tab" aria-controls="pills-ND_remap_color3_out" aria-selected="true"  onclick="document.getElementById('ND_remap_color3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_in" type="button" role="tab" aria-controls="pills-ND_remap_color3_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_inlow" type="button" role="tab" aria-controls="pills-ND_remap_color3_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_color3_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_outlow" type="button" role="tab" aria-controls="pills-ND_remap_color3_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_color3_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3_out" type="button" role="tab" aria-controls="pills-ND_remap_color3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1070,22 +1062,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_color4_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_color4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_in" role="tab" aria-controls="pills-ND_remap_color4_in" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_inlow" role="tab" aria-controls="pills-ND_remap_color4_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_inhigh" role="tab" aria-controls="pills-ND_remap_color4_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_outlow" role="tab" aria-controls="pills-ND_remap_color4_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_outhigh" role="tab" aria-controls="pills-ND_remap_color4_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4_out" role="tab" aria-controls="pills-ND_remap_color4_out" aria-selected="true"  onclick="document.getElementById('ND_remap_color4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_in" type="button" role="tab" aria-controls="pills-ND_remap_color4_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_inlow" type="button" role="tab" aria-controls="pills-ND_remap_color4_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_color4_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_outlow" type="button" role="tab" aria-controls="pills-ND_remap_color4_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_color4_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4_out" type="button" role="tab" aria-controls="pills-ND_remap_color4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1326,22 +1309,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector2_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_in" role="tab" aria-controls="pills-ND_remap_vector2_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_inlow" role="tab" aria-controls="pills-ND_remap_vector2_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_inhigh" role="tab" aria-controls="pills-ND_remap_vector2_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_outlow" role="tab" aria-controls="pills-ND_remap_vector2_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_outhigh" role="tab" aria-controls="pills-ND_remap_vector2_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2_out" role="tab" aria-controls="pills-ND_remap_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_in" type="button" role="tab" aria-controls="pills-ND_remap_vector2_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector2_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector2_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector2_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector2_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2_out" type="button" role="tab" aria-controls="pills-ND_remap_vector2_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1537,22 +1511,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_in" role="tab" aria-controls="pills-ND_remap_vector3_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_inlow" role="tab" aria-controls="pills-ND_remap_vector3_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_inhigh" role="tab" aria-controls="pills-ND_remap_vector3_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_outlow" role="tab" aria-controls="pills-ND_remap_vector3_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_outhigh" role="tab" aria-controls="pills-ND_remap_vector3_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3_out" role="tab" aria-controls="pills-ND_remap_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_in" type="button" role="tab" aria-controls="pills-ND_remap_vector3_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector3_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector3_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector3_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector3_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3_out" type="button" role="tab" aria-controls="pills-ND_remap_vector3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1763,22 +1728,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_in" role="tab" aria-controls="pills-ND_remap_vector4_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_inlow" role="tab" aria-controls="pills-ND_remap_vector4_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_inhigh" role="tab" aria-controls="pills-ND_remap_vector4_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_outlow" role="tab" aria-controls="pills-ND_remap_vector4_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_outhigh" role="tab" aria-controls="pills-ND_remap_vector4_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4_out" role="tab" aria-controls="pills-ND_remap_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_in" type="button" role="tab" aria-controls="pills-ND_remap_vector4_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector4_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector4_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector4_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector4_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4_out" type="button" role="tab" aria-controls="pills-ND_remap_vector4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2004,22 +1960,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_color3FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_color3FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_in" role="tab" aria-controls="pills-ND_remap_color3FA_in" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_inlow" role="tab" aria-controls="pills-ND_remap_color3FA_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_inhigh" role="tab" aria-controls="pills-ND_remap_color3FA_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_outlow" role="tab" aria-controls="pills-ND_remap_color3FA_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_outhigh" role="tab" aria-controls="pills-ND_remap_color3FA_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color3FA_out" role="tab" aria-controls="pills-ND_remap_color3FA_out" aria-selected="true"  onclick="document.getElementById('ND_remap_color3FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_in" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_inlow" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_outlow" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color3FA_out" type="button" role="tab" aria-controls="pills-ND_remap_color3FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2213,22 +2160,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_color4FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_color4FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_in" role="tab" aria-controls="pills-ND_remap_color4FA_in" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_inlow" role="tab" aria-controls="pills-ND_remap_color4FA_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_inhigh" role="tab" aria-controls="pills-ND_remap_color4FA_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_outlow" role="tab" aria-controls="pills-ND_remap_color4FA_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_outhigh" role="tab" aria-controls="pills-ND_remap_color4FA_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_color4FA_out" role="tab" aria-controls="pills-ND_remap_color4FA_out" aria-selected="true"  onclick="document.getElementById('ND_remap_color4FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_in" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_inlow" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_outlow" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_color4FA_out" type="button" role="tab" aria-controls="pills-ND_remap_color4FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2425,22 +2363,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector2FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector2FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_in" role="tab" aria-controls="pills-ND_remap_vector2FA_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_inlow" role="tab" aria-controls="pills-ND_remap_vector2FA_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_inhigh" role="tab" aria-controls="pills-ND_remap_vector2FA_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_outlow" role="tab" aria-controls="pills-ND_remap_vector2FA_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_outhigh" role="tab" aria-controls="pills-ND_remap_vector2FA_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector2FA_out" role="tab" aria-controls="pills-ND_remap_vector2FA_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector2FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_in" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector2FA_out" type="button" role="tab" aria-controls="pills-ND_remap_vector2FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2628,22 +2557,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector3FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector3FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_in" role="tab" aria-controls="pills-ND_remap_vector3FA_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_inlow" role="tab" aria-controls="pills-ND_remap_vector3FA_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_inhigh" role="tab" aria-controls="pills-ND_remap_vector3FA_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_outlow" role="tab" aria-controls="pills-ND_remap_vector3FA_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_outhigh" role="tab" aria-controls="pills-ND_remap_vector3FA_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector3FA_out" role="tab" aria-controls="pills-ND_remap_vector3FA_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector3FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_in" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector3FA_out" type="button" role="tab" aria-controls="pills-ND_remap_vector3FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2834,22 +2754,13 @@ Category: remap
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_remap_vector4FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_remap_vector4FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_in" role="tab" aria-controls="pills-ND_remap_vector4FA_in" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_inlow" role="tab" aria-controls="pills-ND_remap_vector4FA_inlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" >inlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_inhigh" role="tab" aria-controls="pills-ND_remap_vector4FA_inhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" >inhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_outlow" role="tab" aria-controls="pills-ND_remap_vector4FA_outlow" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" >outlow</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_outhigh" role="tab" aria-controls="pills-ND_remap_vector4FA_outhigh" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" >outhigh</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_remap_vector4FA_out" role="tab" aria-controls="pills-ND_remap_vector4FA_out" aria-selected="true"  onclick="document.getElementById('ND_remap_vector4FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_in" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_inlow" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_inlow" aria-selected="true">inlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_inhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_inhigh" aria-selected="true">inhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_outlow" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_outlow" aria-selected="true">outlow</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_outhigh" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_outhigh" aria-selected="true">outhigh</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_remap_vector4FA_out" type="button" role="tab" aria-controls="pills-ND_remap_vector4FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -3047,7 +2958,7 @@ Category: remap
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

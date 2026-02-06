@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -628,32 +638,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_float_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_float_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_file" role="tab" aria-controls="pills-ND_image_float_file" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_layer" role="tab" aria-controls="pills-ND_image_float_layer" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_default" role="tab" aria-controls="pills-ND_image_float_default" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_texcoord" role="tab" aria-controls="pills-ND_image_float_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_uaddressmode" role="tab" aria-controls="pills-ND_image_float_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_vaddressmode" role="tab" aria-controls="pills-ND_image_float_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_filtertype" role="tab" aria-controls="pills-ND_image_float_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_framerange" role="tab" aria-controls="pills-ND_image_float_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_frameoffset" role="tab" aria-controls="pills-ND_image_float_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_frameendaction" role="tab" aria-controls="pills-ND_image_float_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_float_out" role="tab" aria-controls="pills-ND_image_float_out" aria-selected="true"  onclick="document.getElementById('ND_image_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_file" type="button" role="tab" aria-controls="pills-ND_image_float_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_layer" type="button" role="tab" aria-controls="pills-ND_image_float_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_default" type="button" role="tab" aria-controls="pills-ND_image_float_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_texcoord" type="button" role="tab" aria-controls="pills-ND_image_float_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_float_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_float_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_filtertype" type="button" role="tab" aria-controls="pills-ND_image_float_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_framerange" type="button" role="tab" aria-controls="pills-ND_image_float_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_float_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_float_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_float_out" type="button" role="tab" aria-controls="pills-ND_image_float_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1138,6 +1134,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_float.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_float.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_float">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -1163,32 +1180,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_color3_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_color3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_file" role="tab" aria-controls="pills-ND_image_color3_file" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_layer" role="tab" aria-controls="pills-ND_image_color3_layer" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_default" role="tab" aria-controls="pills-ND_image_color3_default" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_texcoord" role="tab" aria-controls="pills-ND_image_color3_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_uaddressmode" role="tab" aria-controls="pills-ND_image_color3_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_vaddressmode" role="tab" aria-controls="pills-ND_image_color3_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_filtertype" role="tab" aria-controls="pills-ND_image_color3_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_framerange" role="tab" aria-controls="pills-ND_image_color3_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_frameoffset" role="tab" aria-controls="pills-ND_image_color3_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_frameendaction" role="tab" aria-controls="pills-ND_image_color3_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color3_out" role="tab" aria-controls="pills-ND_image_color3_out" aria-selected="true"  onclick="document.getElementById('ND_image_color3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_file" type="button" role="tab" aria-controls="pills-ND_image_color3_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_layer" type="button" role="tab" aria-controls="pills-ND_image_color3_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_default" type="button" role="tab" aria-controls="pills-ND_image_color3_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_texcoord" type="button" role="tab" aria-controls="pills-ND_image_color3_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_color3_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_color3_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_filtertype" type="button" role="tab" aria-controls="pills-ND_image_color3_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_framerange" type="button" role="tab" aria-controls="pills-ND_image_color3_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_color3_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_color3_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color3_out" type="button" role="tab" aria-controls="pills-ND_image_color3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1689,6 +1692,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_color3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_color3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_color3">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -1714,32 +1738,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_color4_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_color4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_file" role="tab" aria-controls="pills-ND_image_color4_file" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_layer" role="tab" aria-controls="pills-ND_image_color4_layer" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_default" role="tab" aria-controls="pills-ND_image_color4_default" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_texcoord" role="tab" aria-controls="pills-ND_image_color4_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_uaddressmode" role="tab" aria-controls="pills-ND_image_color4_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_vaddressmode" role="tab" aria-controls="pills-ND_image_color4_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_filtertype" role="tab" aria-controls="pills-ND_image_color4_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_framerange" role="tab" aria-controls="pills-ND_image_color4_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_frameoffset" role="tab" aria-controls="pills-ND_image_color4_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_frameendaction" role="tab" aria-controls="pills-ND_image_color4_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_color4_out" role="tab" aria-controls="pills-ND_image_color4_out" aria-selected="true"  onclick="document.getElementById('ND_image_color4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_file" type="button" role="tab" aria-controls="pills-ND_image_color4_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_layer" type="button" role="tab" aria-controls="pills-ND_image_color4_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_default" type="button" role="tab" aria-controls="pills-ND_image_color4_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_texcoord" type="button" role="tab" aria-controls="pills-ND_image_color4_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_color4_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_color4_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_filtertype" type="button" role="tab" aria-controls="pills-ND_image_color4_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_framerange" type="button" role="tab" aria-controls="pills-ND_image_color4_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_color4_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_color4_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_color4_out" type="button" role="tab" aria-controls="pills-ND_image_color4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2246,6 +2256,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_color4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_color4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_color4">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -2271,32 +2302,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_vector2_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_file" role="tab" aria-controls="pills-ND_image_vector2_file" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_layer" role="tab" aria-controls="pills-ND_image_vector2_layer" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_default" role="tab" aria-controls="pills-ND_image_vector2_default" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_texcoord" role="tab" aria-controls="pills-ND_image_vector2_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_uaddressmode" role="tab" aria-controls="pills-ND_image_vector2_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_vaddressmode" role="tab" aria-controls="pills-ND_image_vector2_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_filtertype" role="tab" aria-controls="pills-ND_image_vector2_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_framerange" role="tab" aria-controls="pills-ND_image_vector2_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_frameoffset" role="tab" aria-controls="pills-ND_image_vector2_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_frameendaction" role="tab" aria-controls="pills-ND_image_vector2_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector2_out" role="tab" aria-controls="pills-ND_image_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_image_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_file" type="button" role="tab" aria-controls="pills-ND_image_vector2_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_layer" type="button" role="tab" aria-controls="pills-ND_image_vector2_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_default" type="button" role="tab" aria-controls="pills-ND_image_vector2_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_texcoord" type="button" role="tab" aria-controls="pills-ND_image_vector2_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector2_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector2_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_filtertype" type="button" role="tab" aria-controls="pills-ND_image_vector2_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_framerange" type="button" role="tab" aria-controls="pills-ND_image_vector2_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_vector2_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_vector2_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector2_out" type="button" role="tab" aria-controls="pills-ND_image_vector2_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2785,6 +2802,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_vector2.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_vector2.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_vector2">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -2810,32 +2848,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_vector3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_file" role="tab" aria-controls="pills-ND_image_vector3_file" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_layer" role="tab" aria-controls="pills-ND_image_vector3_layer" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_default" role="tab" aria-controls="pills-ND_image_vector3_default" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_texcoord" role="tab" aria-controls="pills-ND_image_vector3_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_uaddressmode" role="tab" aria-controls="pills-ND_image_vector3_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_vaddressmode" role="tab" aria-controls="pills-ND_image_vector3_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_filtertype" role="tab" aria-controls="pills-ND_image_vector3_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_framerange" role="tab" aria-controls="pills-ND_image_vector3_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_frameoffset" role="tab" aria-controls="pills-ND_image_vector3_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_frameendaction" role="tab" aria-controls="pills-ND_image_vector3_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector3_out" role="tab" aria-controls="pills-ND_image_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_image_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_file" type="button" role="tab" aria-controls="pills-ND_image_vector3_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_layer" type="button" role="tab" aria-controls="pills-ND_image_vector3_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_default" type="button" role="tab" aria-controls="pills-ND_image_vector3_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_texcoord" type="button" role="tab" aria-controls="pills-ND_image_vector3_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector3_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector3_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_filtertype" type="button" role="tab" aria-controls="pills-ND_image_vector3_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_framerange" type="button" role="tab" aria-controls="pills-ND_image_vector3_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_vector3_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_vector3_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector3_out" type="button" role="tab" aria-controls="pills-ND_image_vector3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -3330,6 +3354,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_vector3.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_vector3.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_vector3">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -3355,32 +3400,18 @@ Category: image
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_image_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">file</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_image_vector4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_file" role="tab" aria-controls="pills-ND_image_vector4_file" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >file</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_layer" role="tab" aria-controls="pills-ND_image_vector4_layer" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >layer</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_default" role="tab" aria-controls="pills-ND_image_vector4_default" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >default</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_texcoord" role="tab" aria-controls="pills-ND_image_vector4_texcoord" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >texcoord</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_uaddressmode" role="tab" aria-controls="pills-ND_image_vector4_uaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >uaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_vaddressmode" role="tab" aria-controls="pills-ND_image_vector4_vaddressmode" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >vaddressmode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_filtertype" role="tab" aria-controls="pills-ND_image_vector4_filtertype" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >filtertype</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_framerange" role="tab" aria-controls="pills-ND_image_vector4_framerange" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >framerange</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_frameoffset" role="tab" aria-controls="pills-ND_image_vector4_frameoffset" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >frameoffset</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_frameendaction" role="tab" aria-controls="pills-ND_image_vector4_frameendaction" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" >frameendaction</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_image_vector4_out" role="tab" aria-controls="pills-ND_image_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_image_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_file" type="button" role="tab" aria-controls="pills-ND_image_vector4_file" aria-selected="true">file</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_layer" type="button" role="tab" aria-controls="pills-ND_image_vector4_layer" aria-selected="true">layer</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_default" type="button" role="tab" aria-controls="pills-ND_image_vector4_default" aria-selected="true">default</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_texcoord" type="button" role="tab" aria-controls="pills-ND_image_vector4_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_uaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector4_uaddressmode" aria-selected="true">uaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_vaddressmode" type="button" role="tab" aria-controls="pills-ND_image_vector4_vaddressmode" aria-selected="true">vaddressmode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_filtertype" type="button" role="tab" aria-controls="pills-ND_image_vector4_filtertype" aria-selected="true">filtertype</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_framerange" type="button" role="tab" aria-controls="pills-ND_image_vector4_framerange" aria-selected="true">framerange</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_frameoffset" type="button" role="tab" aria-controls="pills-ND_image_vector4_frameoffset" aria-selected="true">frameoffset</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_frameendaction" type="button" role="tab" aria-controls="pills-ND_image_vector4_frameendaction" aria-selected="true">frameendaction</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_image_vector4_out" type="button" role="tab" aria-controls="pills-ND_image_vector4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -3881,6 +3912,27 @@ Category: image
    </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genslang">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genslang/../genglsl/mx_image_vector4.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="../genglsl/mx_image_vector4.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_image_vector4">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -3910,7 +3962,7 @@ Category: image
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -628,18 +638,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_float_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_float_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_float_in" role="tab" aria-controls="pills-ND_clamp_float_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_float_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_float_low" role="tab" aria-controls="pills-ND_clamp_float_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_float_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_float_high" role="tab" aria-controls="pills-ND_clamp_float_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_float_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_float_out" role="tab" aria-controls="pills-ND_clamp_float_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_float_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_float_in" type="button" role="tab" aria-controls="pills-ND_clamp_float_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_float_low" type="button" role="tab" aria-controls="pills-ND_clamp_float_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_float_high" type="button" role="tab" aria-controls="pills-ND_clamp_float_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_float_out" type="button" role="tab" aria-controls="pills-ND_clamp_float_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -789,18 +792,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_color3_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_color3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3_in" role="tab" aria-controls="pills-ND_clamp_color3_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3_low" role="tab" aria-controls="pills-ND_clamp_color3_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3_high" role="tab" aria-controls="pills-ND_clamp_color3_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3_out" role="tab" aria-controls="pills-ND_clamp_color3_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3_in" type="button" role="tab" aria-controls="pills-ND_clamp_color3_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3_low" type="button" role="tab" aria-controls="pills-ND_clamp_color3_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3_high" type="button" role="tab" aria-controls="pills-ND_clamp_color3_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3_out" type="button" role="tab" aria-controls="pills-ND_clamp_color3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -974,18 +970,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_color4_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_color4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4_in" role="tab" aria-controls="pills-ND_clamp_color4_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4_low" role="tab" aria-controls="pills-ND_clamp_color4_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4_high" role="tab" aria-controls="pills-ND_clamp_color4_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4_out" role="tab" aria-controls="pills-ND_clamp_color4_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4_in" type="button" role="tab" aria-controls="pills-ND_clamp_color4_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4_low" type="button" role="tab" aria-controls="pills-ND_clamp_color4_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4_high" type="button" role="tab" aria-controls="pills-ND_clamp_color4_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4_out" type="button" role="tab" aria-controls="pills-ND_clamp_color4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1168,18 +1157,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector2_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector2_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2_in" role="tab" aria-controls="pills-ND_clamp_vector2_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2_low" role="tab" aria-controls="pills-ND_clamp_vector2_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2_high" role="tab" aria-controls="pills-ND_clamp_vector2_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2_out" role="tab" aria-controls="pills-ND_clamp_vector2_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector2_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector2_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector2_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector2_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1335,18 +1317,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector3_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector3_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3_in" role="tab" aria-controls="pills-ND_clamp_vector3_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3_low" role="tab" aria-controls="pills-ND_clamp_vector3_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3_high" role="tab" aria-controls="pills-ND_clamp_vector3_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3_out" role="tab" aria-controls="pills-ND_clamp_vector3_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector3_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector3_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector3_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector3_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1511,18 +1486,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector4_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector4_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4_in" role="tab" aria-controls="pills-ND_clamp_vector4_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4_low" role="tab" aria-controls="pills-ND_clamp_vector4_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4_high" role="tab" aria-controls="pills-ND_clamp_vector4_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4_out" role="tab" aria-controls="pills-ND_clamp_vector4_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector4_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector4_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector4_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector4_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1696,18 +1664,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_color3FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_color3FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3FA_in" role="tab" aria-controls="pills-ND_clamp_color3FA_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3FA_low" role="tab" aria-controls="pills-ND_clamp_color3FA_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3FA_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3FA_high" role="tab" aria-controls="pills-ND_clamp_color3FA_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3FA_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color3FA_out" role="tab" aria-controls="pills-ND_clamp_color3FA_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_color3FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3FA_in" type="button" role="tab" aria-controls="pills-ND_clamp_color3FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3FA_low" type="button" role="tab" aria-controls="pills-ND_clamp_color3FA_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3FA_high" type="button" role="tab" aria-controls="pills-ND_clamp_color3FA_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color3FA_out" type="button" role="tab" aria-controls="pills-ND_clamp_color3FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1865,18 +1826,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_color4FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_color4FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4FA_in" role="tab" aria-controls="pills-ND_clamp_color4FA_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4FA_low" role="tab" aria-controls="pills-ND_clamp_color4FA_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4FA_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4FA_high" role="tab" aria-controls="pills-ND_clamp_color4FA_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4FA_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_color4FA_out" role="tab" aria-controls="pills-ND_clamp_color4FA_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_color4FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4FA_in" type="button" role="tab" aria-controls="pills-ND_clamp_color4FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4FA_low" type="button" role="tab" aria-controls="pills-ND_clamp_color4FA_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4FA_high" type="button" role="tab" aria-controls="pills-ND_clamp_color4FA_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_color4FA_out" type="button" role="tab" aria-controls="pills-ND_clamp_color4FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2037,18 +1991,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector2FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector2FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2FA_in" role="tab" aria-controls="pills-ND_clamp_vector2FA_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2FA_low" role="tab" aria-controls="pills-ND_clamp_vector2FA_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2FA_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2FA_high" role="tab" aria-controls="pills-ND_clamp_vector2FA_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2FA_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector2FA_out" role="tab" aria-controls="pills-ND_clamp_vector2FA_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector2FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2FA_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector2FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2FA_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector2FA_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2FA_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector2FA_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector2FA_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector2FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2200,18 +2147,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector3FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector3FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3FA_in" role="tab" aria-controls="pills-ND_clamp_vector3FA_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3FA_low" role="tab" aria-controls="pills-ND_clamp_vector3FA_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3FA_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3FA_high" role="tab" aria-controls="pills-ND_clamp_vector3FA_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3FA_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector3FA_out" role="tab" aria-controls="pills-ND_clamp_vector3FA_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector3FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3FA_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector3FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3FA_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector3FA_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3FA_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector3FA_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector3FA_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector3FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2366,18 +2306,11 @@ Category: clamp
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_clamp_vector4FA_menu"data-bs-toggle="dropdown" aria-expanded="false">in</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_clamp_vector4FA_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4FA_in" role="tab" aria-controls="pills-ND_clamp_vector4FA_in" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4FA_menu').textContent = this.textContent;" >in</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4FA_low" role="tab" aria-controls="pills-ND_clamp_vector4FA_low" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4FA_menu').textContent = this.textContent;" >low</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4FA_high" role="tab" aria-controls="pills-ND_clamp_vector4FA_high" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4FA_menu').textContent = this.textContent;" >high</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_clamp_vector4FA_out" role="tab" aria-controls="pills-ND_clamp_vector4FA_out" aria-selected="true"  onclick="document.getElementById('ND_clamp_vector4FA_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4FA_in" type="button" role="tab" aria-controls="pills-ND_clamp_vector4FA_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4FA_low" type="button" role="tab" aria-controls="pills-ND_clamp_vector4FA_low" aria-selected="true">low</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4FA_high" type="button" role="tab" aria-controls="pills-ND_clamp_vector4FA_high" aria-selected="true">high</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_clamp_vector4FA_out" type="button" role="tab" aria-controls="pills-ND_clamp_vector4FA_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -2539,7 +2472,7 @@ Category: clamp
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

@@ -140,6 +140,8 @@
                             <a href="#" class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown">Library
                                 Revisions</a>
                             <ul class="dropdown-menu shadow">
+                                <li><a class="dropdown-item" href="../../documents/mtlx_1394_vs_1395.html">
+                                    1.39.4 vs 1.39.5</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1393_vs_1394.html">
                                     1.39.3 vs 1.39.4</a></li>
                                 <li><a class="dropdown-item" href="../../documents/mtlx_1392_vs_1393.html">
@@ -595,6 +597,14 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="standard_surface_to_open_pbr_surface.html">standard_surface_to_open_pbr_surface</a>
 </div>
 </div>
+<div class="ps-3">
+<button class="btn btn-sm btn-outline-secondary border-0 py-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_undefined" aria-expanded="false" aria-controls="collapse_undefined"> <img src="../images/caret-right-fill.svg"> undefined </button>
+</div>
+<div class="collapse ps-5" id="collapse_undefined">
+<div class="d-grid gap-0 col-6">
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="osl_set_ci.html">osl_set_ci</a>
+</div>
+</div>
 </div>
            </div>
          </div>
@@ -629,36 +639,20 @@ Category: generalized_schlick_bsdf
 </div>
 <div style="font-size:small;" class="col-md-7 border-left pt-2" >
 <div class="card-text"><b>Parameters:</b>
-<ul class="nav nav-pills" role="dropdown">
-<div class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="ND_generalized_schlick_bsdf_menu"data-bs-toggle="dropdown" aria-expanded="false">weight</div>
-<ul class="dropdown-menu overflow-auto" style="max-height: 15em" aria-labelledby="ND_generalized_schlick_bsdf_menu">
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item active"  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_weight" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_weight" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >weight</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_color0" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color0" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >color0</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_color82" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color82" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >color82</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_color90" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color90" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >color90</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_exponent" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_exponent" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >exponent</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_roughness" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_roughness" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >roughness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_thickness" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_thickness" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >thinfilm_thickness</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_ior" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_ior" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >thinfilm_ior</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_normal" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_normal" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >normal</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_tangent" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_tangent" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >tangent</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_distribution" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_distribution" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >distribution</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_scatter_mode" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_scatter_mode" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" >scatter_mode</div></li>
-<li class="nav-item dropdown-item" role="presentation">
- <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_generalized_schlick_bsdf_out" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_out" aria-selected="true"  onclick="document.getElementById('ND_generalized_schlick_bsdf_menu').textContent = this.textContent;" ><b>out</b></div></li>
-</ul>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_weight" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_weight" aria-selected="true">weight</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_color0" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color0" aria-selected="true">color0</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_color82" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color82" aria-selected="true">color82</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_color90" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color90" aria-selected="true">color90</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_exponent" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_exponent" aria-selected="true">exponent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_roughness" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_thickness" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_thickness" aria-selected="true">thinfilm_thickness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_ior" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_ior" aria-selected="true">thinfilm_ior</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_normal" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_normal" aria-selected="true">normal</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_tangent" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_tangent" aria-selected="true">tangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_distribution" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_distribution" aria-selected="true">distribution</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_scatter_mode" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_scatter_mode" aria-selected="true">scatter_mode</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_out" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_out" aria-selected="true"><b>out</b></button>
 </ul>
 </div>
 <br>
@@ -1054,7 +1048,7 @@ Category: generalized_schlick_bsdf
           <img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
               <a href="https://kwokcb.github.io/nanmuconsulting/" target="_blank">
-      &copy; 2022-2025 NanMu Consulting.</a>
+      &copy; 2022-2026 NanMu Consulting.</a>
     </p>      
   </div>
 </footer>

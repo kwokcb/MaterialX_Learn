@@ -361,12 +361,12 @@ def build_nodedef_info(insert_nodegroup=True, input_path='', libraryFolders=['li
 
                         # Add nodegraph
                         if implementation.isA(mx.NodeGraph):
-                            print("Add nodegraph implementation for nodedef:", nodedef_name)
+                            #print("Add nodegraph implementation for nodedef:", nodedef_name)
                             add_nodegraph_node(new_child, implementation)
 
                         # Add non-nodegraph implementation
                         else:
-                            print("Add non-nodegraph implementation for nodedef:", nodedef_name, "name", implementation.getNamePath())
+                            #print("Add non-nodegraph implementation for nodedef:", nodedef_name, "name", implementation.getNamePath())
                             add_implementation_node(new_child, nodedef, implementation, targetNames)
                     else:
                         print(f'-- No implementation for nodedef: {nodedef_name}')

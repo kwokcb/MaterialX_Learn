@@ -692,7 +692,8 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
             outputList = nd.getActiveOutputs() if opts.showInherited  else nd.getOutputs()
             totalList = inputList + tokenList + outputList
             
-            compactParams = True
+            # UI Option to show menu dropdown vs expanded list. Default to expanded list.            
+            compactParams = len(totalList) > 20
             menuid = nd.getName() + "_menu"
 
             firstPortName = 'No Parameters'
@@ -1135,10 +1136,10 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
                         
                         builder = MtlxGraphBuilder(impl)
                         builder.execute()
-                        graphio = MxMermaidGraphExporter(builder.getDictionary(), builder.getConnections())
-                        graphio.setOrientation('TB')
+                        graphio = MxMermaidGraphExporter(builder.get_dictionary(), builder.get_connections())
+                        graphio.set_orientation('TB')
                         graphio.execute()
-                        mdoutput = graphio.getGraph(False)
+                        mdoutput = graphio.get_graph(False)
                         #mdoutput = mdoutput.replace('```mermaid', '')
                         #mdoutput = mdoutput.replace('```', '')
                         #mdoutput = mdoutput.replace('/default', '/default1')
@@ -1325,10 +1326,10 @@ def printNodeDefs(doc, opts, nodedict, f, compareLibDict):
 
                     builder = MtlxGraphBuilder(ng)
                     builder.execute()
-                    graphio = MxMermaidGraphExporter(builder.getDictionary(), builder.getConnections())
-                    graphio.setOrientation('TB')
+                    graphio = MxMermaidGraphExporter(builder.get_dictionary(), builder.get_connections())
+                    graphio.set_orientation('TB')
                     graphio.execute()
-                    mdoutput = graphio.getGraph(False)
+                    mdoutput = graphio.get_graph(False)
                     mdoutput = mdoutput.replace('```mermaid', '')
                     mdoutput = mdoutput.replace('```', '')
                     mdoutput = mdoutput.replace('/', '_')
