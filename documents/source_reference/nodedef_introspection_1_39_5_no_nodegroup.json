@@ -9027,6 +9027,66 @@
             },
             {
               "icon": "bi-usb-plug",
+              "name": "ND_extract_matrix33",
+              "type": "nodedef",
+              "imageurl": "https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/material_extract_matrix33_out_genglsl.png",
+              "nodegroup": "channel",
+              "children": [
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix33_genglsl",
+                  "target": "essl, genglsl, genmsl, genslang",
+                  "type": "implementation",
+                  "doc": "{{in}}[{{index}}]"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix33_genmdl",
+                  "target": "genmdl",
+                  "type": "implementation",
+                  "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix33({{in}}, {{index}})"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix33_genosl",
+                  "target": "genosl",
+                  "type": "implementation",
+                  "doc": "mx_extract({{in}}, {{index}})"
+                }
+              ]
+            },
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_extract_matrix44",
+              "type": "nodedef",
+              "imageurl": "https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/material_extract_matrix44_out_genglsl.png",
+              "nodegroup": "channel",
+              "children": [
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix44_genglsl",
+                  "target": "essl, genglsl, genmsl, genslang",
+                  "type": "implementation",
+                  "doc": "{{in}}[{{index}}]"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix44_genmdl",
+                  "target": "genmdl",
+                  "type": "implementation",
+                  "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix44({{in}}, {{index}})"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_extract_matrix44_genosl",
+                  "target": "genosl",
+                  "type": "implementation",
+                  "doc": "mx_extract({{in}}, {{index}})"
+                }
+              ]
+            },
+            {
+              "icon": "bi-usb-plug",
               "name": "ND_extract_vector2",
               "type": "nodedef",
               "imageurl": "https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/material_extract_vector2_out_genglsl.png",
@@ -9112,6 +9172,82 @@
                   "target": "genosl",
                   "type": "implementation",
                   "doc": "mx_extract({{in}}, {{index}})"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "flake2d",
+          "type": "node",
+          "output_type": "multioutput",
+          "linkurl": "https://kwokcb.github.io/MaterialX_Learn/documents/definitions/flake2d.html",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_flake2d",
+              "type": "nodedef",
+              "imageurl": "https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/material_flake2d_id_genglsl.png",
+              "nodegroup": "procedural2d",
+              "children": [
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_flake2d_genglsl",
+                  "target": "essl, genglsl, genmsl, genslang",
+                  "type": "implementation",
+                  "linkurl": "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main//libraries/stdlib/genglsl/mx_flake2d.glsl"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_flake2d_genmdl",
+                  "target": "genmdl",
+                  "type": "implementation",
+                  "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_flake2d(mxp_size:{{size}}, mxp_roughness:{{roughness}}, mxp_coverage:{{coverage}}, mxp_texcoord:{{texcoord}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_bitangent:{{bitangent}})"
+                },
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined: genosl",
+                  "target": "genosl",
+                  "type": "implementation"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "icon": "bi-key",
+          "name": "flake3d",
+          "type": "node",
+          "output_type": "multioutput",
+          "linkurl": "https://kwokcb.github.io/MaterialX_Learn/documents/definitions/flake3d.html",
+          "children": [
+            {
+              "icon": "bi-usb-plug",
+              "name": "ND_flake3d",
+              "type": "nodedef",
+              "imageurl": "https://kwokcb.github.io/MaterialX_Learn/resources/mtlx/nodedef_materials/material_flake3d_id_genglsl.png",
+              "nodegroup": "procedural3d",
+              "children": [
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_flake3d_genglsl",
+                  "target": "essl, genglsl, genmsl, genslang",
+                  "type": "implementation",
+                  "linkurl": "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main//libraries/stdlib/genglsl/mx_flake3d.glsl"
+                },
+                {
+                  "icon": "bi-file-code",
+                  "name": "IM_flake3d_genmdl",
+                  "target": "genmdl",
+                  "type": "implementation",
+                  "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_flake3d(mxp_size:{{size}}, mxp_roughness:{{roughness}}, mxp_coverage:{{coverage}}, mxp_position:{{position}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_bitangent:{{bitangent}})"
+                },
+                {
+                  "icon": "bi-exclamation-diamond",
+                  "name": "Undefined: genosl",
+                  "target": "genosl",
+                  "type": "implementation"
                 }
               ]
             }
@@ -10716,10 +10852,11 @@
                   "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_hextiledimage_color3({{file}}, {{default}}, {{texcoord}}, {{tiling}}, {{rotation}}, {{rotationrange}}, {{scale}}, {{scalerange}}, {{offset}}, {{offsetrange}}, {{falloff}}, {{falloffcontrast}}, {{lumacoeffs}})"
                 },
                 {
-                  "icon": "bi-exclamation-diamond",
-                  "name": "Undefined: genosl",
+                  "icon": "bi-file-code",
+                  "name": "IM_hextiledimage_color3_genosl",
                   "target": "genosl",
-                  "type": "implementation"
+                  "type": "implementation",
+                  "linkurl": "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main//libraries/stdlib/genosl/mx_hextiledimage_color3.osl"
                 }
               ]
             },
@@ -10745,10 +10882,11 @@
                   "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_hextiledimage_color4({{file}}, {{default}}, {{texcoord}}, {{tiling}}, {{rotation}}, {{rotationrange}}, {{scale}}, {{scalerange}}, {{offset}}, {{offsetrange}}, {{falloff}}, {{falloffcontrast}}, {{lumacoeffs}})"
                 },
                 {
-                  "icon": "bi-exclamation-diamond",
-                  "name": "Undefined: genosl",
+                  "icon": "bi-file-code",
+                  "name": "IM_hextiledimage_color4_genosl",
                   "target": "genosl",
-                  "type": "implementation"
+                  "type": "implementation",
+                  "linkurl": "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main//libraries/stdlib/genosl/mx_hextiledimage_color4.osl"
                 }
               ]
             }
@@ -10783,10 +10921,11 @@
                   "doc": "materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_hextilednormalmap_vector3({{file}}, {{default}}, {{texcoord}}, {{tiling}}, {{rotation}}, {{rotationrange}}, {{scale}}, {{scalerange}}, {{offset}}, {{offsetrange}}, {{falloff}},{{strength}}, {{flip_g}}, {{normal}}, {{tangent}}, {{bitangent}})"
                 },
                 {
-                  "icon": "bi-exclamation-diamond",
-                  "name": "Undefined: genosl",
+                  "icon": "bi-file-code",
+                  "name": "IM_hextilednormalmap_vector3_genosl",
                   "target": "genosl",
-                  "type": "implementation"
+                  "type": "implementation",
+                  "linkurl": "https://raw.githubusercontent.com/AcademySoftwareFoundation/MaterialX/refs/heads/main//libraries/stdlib/genosl/mx_hextilednormalmap_vector3.osl"
                 }
               ]
             }

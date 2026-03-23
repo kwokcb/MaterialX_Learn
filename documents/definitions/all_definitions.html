@@ -520,6 +520,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#circle">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#cloverleaf">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#crosshatch">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#flake2d">flake2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#fractal2d">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#grid">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#hexagon">hexagon</a>
@@ -545,6 +546,7 @@
 <div class="collapse ps-5" id="collapse_procedural3d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#cellnoise3d">cellnoise3d</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#flake3d">flake3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#fractal3d">fractal3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#noise3d">noise3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="#randomcolor">randomcolor</a>
@@ -8913,8 +8915,12 @@ Category: open_pbr_surface
   </div>
   <div class="form-group row g-2">
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-10">
+   <div class="col-8">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
 <div class="form-group row g-1">
@@ -9519,6 +9525,7 @@ graph TB
     NG_open_pbr_surface_surfaceshader_fuzz_layer --"bsdf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_emission_edf --"edf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_geometry_opacity --"opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor
+    NG_open_pbr_surface_surfaceshader_geometry_thin_walled --"thin_walled"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_shader_constructor --> NG_open_pbr_surface_surfaceshader_out
 
 
@@ -13344,7 +13351,9 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[diffuse_bsdf_weight]
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[transmission_bsdf]
-    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount[transmission_mix_amount]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent[transmission_mix_amount_transparent]
+    style IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount{transmission_mix_amount}
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[transmission_mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[specular_roughness]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[specular_bsdf1]
@@ -13369,8 +13378,7 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[emission_edf]
     style IMP_UsdPreviewSurface_surfaceshader_cutout_opacity  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{cutout_opacity}
-    style IMP_UsdPreviewSurface_surfaceshader_opacity_presence  fill:#C72, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacity_presence{opacity_presence}
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence[opacity_presence]
     style IMP_UsdPreviewSurface_surfaceshader_opacity_switch  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity_switch{opacity_switch}
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface_constructor]
@@ -13390,6 +13398,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
     style IMP_UsdPreviewSurface_surfaceshader_opacity  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity([opacity])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     style IMP_UsdPreviewSurface_surfaceshader_roughness  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_roughness([roughness])
     style IMP_UsdPreviewSurface_surfaceshader_specularColor  fill:#09D, color:#FFF
@@ -13400,8 +13410,6 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_clearcoat([clearcoat])
     style IMP_UsdPreviewSurface_surfaceshader_emissiveColor  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor([emissiveColor])
-    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     end
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflow --"in"--> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float
     IMP_UsdPreviewSurface_surfaceshader_normal --"in1"--> IMP_UsdPreviewSurface_surfaceshader_scale_normal
@@ -13415,8 +13423,10 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf
     IMP_UsdPreviewSurface_surfaceshader_ior --"ior"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
-    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent --"in1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf --"fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf --"bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
@@ -13468,8 +13478,9 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor --"color"--> IMP_UsdPreviewSurface_surfaceshader_emission_edf
     IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value2"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
-    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_opacity_presence --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
@@ -22760,15 +22771,15 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">roughness_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_specular_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_specular_out_genglsl.png>
 <div style="font-size: 70%">specular_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_specular_color_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_specular_color_out_genglsl.png>
 <div style="font-size: 70%">specular_color_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_ior_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_ior_out_genglsl.png>
 <div style="font-size: 70%">ior_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
@@ -22792,7 +22803,7 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">attenuation_color_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_distance_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_attenuation_distance_out_genglsl.png>
 <div style="font-size: 70%">attenuation_distance_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
@@ -22812,7 +22823,7 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">clearcoat_roughness_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_dispersion_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_dispersion_out_genglsl.png>
 <div style="font-size: 70%">dispersion_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
@@ -22820,7 +22831,7 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">emissive_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_strength_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_emissive_strength_out_genglsl.png>
 <div style="font-size: 70%">emissive_strength_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
@@ -22828,15 +22839,15 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">normal_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_tangent_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_tangent_out_genglsl.png>
 <div style="font-size: 70%">tangent_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_alpha_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_alpha_out_genglsl.png>
 <div style="font-size: 70%">alpha_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
-<img loading="lazy" src="../images/no_image.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=images/no_image.png>
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_alpha_mode_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_alpha_mode_out_genglsl.png>
 <div style="font-size: 70%">alpha_mode_out</div>
 </div>
 </div>
@@ -50963,6 +50974,27 @@ Category: hextiledimage
     </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_hextiledimage_color3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextiledimage_color3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextiledimage_color3">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -51360,6 +51392,27 @@ Category: hextiledimage
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_hextiledimage_color4({{file}}, {{default}}, {{texcoord}}, {{tiling}}, {{rotation}}, {{rotationrange}}, {{scale}}, {{scalerange}}, {{offset}}, {{offsetrange}}, {{falloff}}, {{falloffcontrast}}, {{lumacoeffs}}) </textarea>
     </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_hextiledimage_color4.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextiledimage_color4.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextiledimage_color4">
+   </div>
   </div>
 <hr>
 </details>
@@ -75239,6 +75292,756 @@ graph TB
 
 </div></code></pre>
 
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+
+<br>
+<b><a id="flake2d" class="ms-2 mb-0">
+Category: flake2d
+</a></b>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_flake2d <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">procedural2d</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> multioutput</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<p class="card-text">
+<div col>
+<div class="row row-cols-3 g-0 d-flex justify-content-start">
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake2d_id_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake2d_id_genglsl.png>
+<div style="font-size: 70%">id</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake2d_rand_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake2d_rand_genglsl.png>
+<div style="font-size: 70%">rand</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake2d_presence_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake2d_presence_genglsl.png>
+<div style="font-size: 70%">presence</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake2d_flakenormal_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake2d_flakenormal_genglsl.png>
+<div style="font-size: 70%">flakenormal</div>
+</div>
+</div>
+</div>
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_size" type="button" role="tab" aria-controls="pills-ND_flake2d_size" aria-selected="true">size</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_roughness" type="button" role="tab" aria-controls="pills-ND_flake2d_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_coverage" type="button" role="tab" aria-controls="pills-ND_flake2d_coverage" aria-selected="true">coverage</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_texcoord" type="button" role="tab" aria-controls="pills-ND_flake2d_texcoord" aria-selected="true">texcoord</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_normal" type="button" role="tab" aria-controls="pills-ND_flake2d_normal" aria-selected="true">normal</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_tangent" type="button" role="tab" aria-controls="pills-ND_flake2d_tangent" aria-selected="true">tangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_bitangent" type="button" role="tab" aria-controls="pills-ND_flake2d_bitangent" aria-selected="true">bitangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_id" type="button" role="tab" aria-controls="pills-ND_flake2d_id" aria-selected="true"><b>id</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_rand" type="button" role="tab" aria-controls="pills-ND_flake2d_rand" aria-selected="true"><b>rand</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_presence" type="button" role="tab" aria-controls="pills-ND_flake2d_presence" aria-selected="true"><b>presence</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake2d_flakenormal" type="button" role="tab" aria-controls="pills-ND_flake2d_flakenormal" aria-selected="true"><b>flakenormal</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_flake2d_size"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_size-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Size of individual flakes. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake2d_size" type="number" class="form-control form-control-sm" step="0.01" value="0.01" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_roughness"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_roughness-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Roughness of the flake normal distribution. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake2d_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_coverage"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_coverage-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Density of flake coverage (0 = no flakes, 1 = full coverage). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake2d_coverage" type="number" class="form-control form-control-sm" step="0.01" value="0.5" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_texcoord"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_texcoord-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>The input 2d space. Default is the first texture coordinates. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="UV0" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_normal"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_normal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface normal; defaults to the current world-space normal. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Nworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_tangent"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_tangent-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface tangent vector, defaults to the current world-space tangent vector. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Tworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_bitangent"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_bitangent-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface bitangent vector, defaults to the current world-space bitangent vector. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Bworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_id"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_id-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Unique identifier for each flake (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake2d_id" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_rand"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_rand-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Random value per flake for additional variation (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake2d_rand" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_presence"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_presence-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Depth-based presence value per flake for additional variation (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake2d_presence" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake2d_flakenormal"
+  role="tabpanel" aria-labelledby="pills-ND_flake2d_flakenormal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>The computed flake normal (base normal if no flake present). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_flake2d.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake2d.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake2d">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_flake2d(mxp_size:{{size}}, mxp_roughness:{{roughness}}, mxp_coverage:{{coverage}}, mxp_texcoord:{{texcoord}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_bitangent:{{bitangent}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+
+<br>
+<b><a id="flake3d" class="ms-2 mb-0">
+Category: flake3d
+</a></b>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_flake3d <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">procedural3d</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> multioutput</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<p class="card-text">
+<div col>
+<div class="row row-cols-3 g-0 d-flex justify-content-start">
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake3d_id_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake3d_id_genglsl.png>
+<div style="font-size: 70%">id</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake3d_rand_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake3d_rand_genglsl.png>
+<div style="font-size: 70%">rand</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake3d_presence_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake3d_presence_genglsl.png>
+<div style="font-size: 70%">presence</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_flake3d_flakenormal_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_flake3d_flakenormal_genglsl.png>
+<div style="font-size: 70%">flakenormal</div>
+</div>
+</div>
+</div>
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_size" type="button" role="tab" aria-controls="pills-ND_flake3d_size" aria-selected="true">size</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_roughness" type="button" role="tab" aria-controls="pills-ND_flake3d_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_coverage" type="button" role="tab" aria-controls="pills-ND_flake3d_coverage" aria-selected="true">coverage</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_position" type="button" role="tab" aria-controls="pills-ND_flake3d_position" aria-selected="true">position</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_normal" type="button" role="tab" aria-controls="pills-ND_flake3d_normal" aria-selected="true">normal</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_tangent" type="button" role="tab" aria-controls="pills-ND_flake3d_tangent" aria-selected="true">tangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_bitangent" type="button" role="tab" aria-controls="pills-ND_flake3d_bitangent" aria-selected="true">bitangent</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_id" type="button" role="tab" aria-controls="pills-ND_flake3d_id" aria-selected="true"><b>id</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_rand" type="button" role="tab" aria-controls="pills-ND_flake3d_rand" aria-selected="true"><b>rand</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_presence" type="button" role="tab" aria-controls="pills-ND_flake3d_presence" aria-selected="true"><b>presence</b></button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_flake3d_flakenormal" type="button" role="tab" aria-controls="pills-ND_flake3d_flakenormal" aria-selected="true"><b>flakenormal</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_flake3d_size"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_size-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Size of individual flakes. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake3d_size" type="number" class="form-control form-control-sm" step="0.01" value="0.01" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_roughness"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_roughness-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Roughness of the flake normal distribution. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake3d_roughness" type="number" class="form-control form-control-sm" step="0.01" value="0.1" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_coverage"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_coverage-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Density of flake coverage (0 = no flakes, 1 = full coverage). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_flake3d_coverage" type="number" class="form-control form-control-sm" step="0.01" value="0.5" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_position"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_position-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>The input 3d space. Default is position in object-space. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Pobject" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_normal"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_normal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface normal; defaults to the current world-space normal. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Nworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_tangent"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_tangent-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface tangent vector, defaults to the current world-space tangent vector. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Tworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_bitangent"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_bitangent-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Surface bitangent vector, defaults to the current world-space bitangent vector. </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Geometry Input: </label>
+      <div class="col-2">
+          <input type="text" class="form-control form-control-sm" value="Bworld" disabled>
+      </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_id"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_id-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Unique identifier for each flake (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake3d_id" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_rand"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_rand-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Random value per flake for additional variation (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake3d_rand" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_presence"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_presence-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>Depth-based presence value per flake for additional variation (0 for no flake). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Disabled Value </label>
+      <div class="col">
+          <input id="ND_flake3d_presence" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_flake3d_flakenormal"
+  role="tabpanel" aria-labelledby="pills-ND_flake3d_flakenormal-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Doc</label>
+    <div class="col-10">
+      <textarea class="form-control form-control-sm" rows="2"
+        style="resize: none;" disabled>The computed flake normal (base normal if no flake present). </textarea>
+    </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genglsl/mx_flake3d.glsl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake3d.glsl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake3d">
+   </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_flake3d(mxp_size:{{size}}, mxp_roughness:{{roughness}}, mxp_coverage:{{coverage}}, mxp_position:{{position}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_bitangent:{{bitangent}}) </textarea>
+    </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -111659,6 +112462,27 @@ Category: hextilednormalmap
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_hextilednormalmap_vector3({{file}}, {{default}}, {{texcoord}}, {{tiling}}, {{rotation}}, {{rotationrange}}, {{scale}}, {{scalerange}}, {{offset}}, {{offsetrange}}, {{falloff}},{{strength}}, {{flip_g}}, {{normal}}, {{tangent}}, {{bitangent}}) </textarea>
     </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_hextilednormalmap_vector3.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextilednormalmap_vector3.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_hextilednormalmap_vector3">
+   </div>
   </div>
 <hr>
 </details>
@@ -159978,6 +160802,403 @@ Category: extract
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_vector4({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_extract_matrix33 <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_extract_matrix33_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_extract_matrix33_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_in" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_index" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_index" aria-selected="true">index</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_out" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_out" aria-selected="true"><b>out</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_extract_matrix33_in"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_in-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix33_index"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_index-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_extract_matrix33_index" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="2" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix33_out"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix33({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_extract_matrix44 <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_extract_matrix44_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_extract_matrix44_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_in" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_index" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_index" aria-selected="true">index</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_out" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_out" aria-selected="true"><b>out</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_extract_matrix44_in"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_in-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix44_index"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_index-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_extract_matrix44_index" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="3" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix44_out"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_3" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix44({{in}}, {{index}}) </textarea>
     </div>
   </div>
 <hr>

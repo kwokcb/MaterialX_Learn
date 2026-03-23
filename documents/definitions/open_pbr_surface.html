@@ -520,6 +520,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="flake2d.html">flake2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
@@ -545,6 +546,7 @@
 <div class="collapse ps-5" id="collapse_procedural3d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cellnoise3d.html">cellnoise3d</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="flake3d.html">flake3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal3d.html">fractal3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="noise3d.html">noise3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="randomcolor.html">randomcolor</a>
@@ -2585,8 +2587,12 @@ Category: open_pbr_surface
   </div>
   <div class="form-group row g-2">
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
-   <div class="col-10">
+   <div class="col-8">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
 <div class="form-group row g-1">
@@ -3191,6 +3197,7 @@ graph TB
     NG_open_pbr_surface_surfaceshader_fuzz_layer --"bsdf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_emission_edf --"edf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_geometry_opacity --"opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor
+    NG_open_pbr_surface_surfaceshader_geometry_thin_walled --"thin_walled"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_shader_constructor --> NG_open_pbr_surface_surfaceshader_out
 
 

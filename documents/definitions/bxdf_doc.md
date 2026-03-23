@@ -1520,6 +1520,7 @@ graph TB
     NG_open_pbr_surface_surfaceshader_fuzz_layer --"bsdf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_emission_edf --"edf"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_geometry_opacity --"opacity"--> NG_open_pbr_surface_surfaceshader_shader_constructor
+    NG_open_pbr_surface_surfaceshader_geometry_thin_walled --"thin_walled"--> NG_open_pbr_surface_surfaceshader_shader_constructor
     NG_open_pbr_surface_surfaceshader_shader_constructor --> NG_open_pbr_surface_surfaceshader_out
 ```
  
@@ -1562,7 +1563,7 @@ graph TB
 | **emission_luminance** | float | 0.0 | Emission Luminance | 0.0 |  |  | 1000.0 |  | Emission |  | The amount of emitted light, as a luminance in nits. |  |
 | **emission_color** | color3 | 1, 1, 1 | Emission Color | 0,0,0 | 1,1,1 |  |  |  | Emission |  | The color of the emitted light. |  |
 | **geometry_opacity** | float | 1.0 | Opacity | 0 | 1 |  |  |  | Geometry |  | The opacity of the entire material. |  |
-| **geometry_thin_walled** | boolean | False | Thin Walled |  |  |  |  |  | Geometry | true | If true the surface is double-sided and represents an infinitesimally thin shell. Suitable for extremely geometrically thin objects such as leaves or paper. |  |
+| **geometry_thin_walled** | boolean | False | Thin Walled |  |  |  |  |  | Geometry | true | If true the surface is double-sided and represents an infinitesimally thin shell. Suitable for extremely geometrically thin objects such as leaves or paper. | true |
 | **geometry_normal** | vector3 | None | Normal |  |  |  |  |  | Geometry |  | Input geometric normal |  |
 | **geometry_coat_normal** | vector3 | None | Coat Normal |  |  |  |  |  | Geometry |  | Input normal for coat layer |  |
 | **geometry_tangent** | vector3 | None | Tangent |  |  |  |  |  | Geometry |  | Input geometric tangent |  |
@@ -2282,7 +2283,9 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf_weight[diffuse_bsdf_weight]
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf[diffuse_bsdf]
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf[transmission_bsdf]
-    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount[transmission_mix_amount]
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent[transmission_mix_amount_transparent]
+    style IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount  fill:#C72, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount{transmission_mix_amount}
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix[transmission_mix]
     IMP_UsdPreviewSurface_surfaceshader_specular_roughness[specular_roughness]
     IMP_UsdPreviewSurface_surfaceshader_specular_bsdf1[specular_bsdf1]
@@ -2307,8 +2310,7 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emission_edf[emission_edf]
     style IMP_UsdPreviewSurface_surfaceshader_cutout_opacity  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity{cutout_opacity}
-    style IMP_UsdPreviewSurface_surfaceshader_opacity_presence  fill:#C72, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacity_presence{opacity_presence}
+    IMP_UsdPreviewSurface_surfaceshader_opacity_presence[opacity_presence]
     style IMP_UsdPreviewSurface_surfaceshader_opacity_switch  fill:#C72, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity_switch{opacity_switch}
     IMP_UsdPreviewSurface_surfaceshader_surface_constructor[surface_constructor]
@@ -2328,6 +2330,8 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold([opacityThreshold])
     style IMP_UsdPreviewSurface_surfaceshader_opacity  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_opacity([opacity])
+    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     style IMP_UsdPreviewSurface_surfaceshader_roughness  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_roughness([roughness])
     style IMP_UsdPreviewSurface_surfaceshader_specularColor  fill:#09D, color:#FFF
@@ -2338,8 +2342,6 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_clearcoat([clearcoat])
     style IMP_UsdPreviewSurface_surfaceshader_emissiveColor  fill:#09D, color:#FFF
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor([emissiveColor])
-    style IMP_UsdPreviewSurface_surfaceshader_opacityMode  fill:#09D, color:#FFF
-    IMP_UsdPreviewSurface_surfaceshader_opacityMode([opacityMode])
     end
     IMP_UsdPreviewSurface_surfaceshader_useSpecularWorkflow --"in"--> IMP_UsdPreviewSurface_surfaceshader_use_specular_workflow_float
     IMP_UsdPreviewSurface_surfaceshader_normal --"in1"--> IMP_UsdPreviewSurface_surfaceshader_scale_normal
@@ -2353,8 +2355,10 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf
     IMP_UsdPreviewSurface_surfaceshader_ior --"ior"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
     IMP_UsdPreviewSurface_surfaceshader_surface_normal --"normal"--> IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf
-    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent
+    IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount_transparent --"in1"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
+    IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount
     IMP_UsdPreviewSurface_surfaceshader_diffuse_bsdf --"fg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_bsdf --"bg"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
     IMP_UsdPreviewSurface_surfaceshader_transmission_mix_amount --"mix"--> IMP_UsdPreviewSurface_surfaceshader_transmission_mix
@@ -2406,8 +2410,9 @@ graph TB
     IMP_UsdPreviewSurface_surfaceshader_emissiveColor --"color"--> IMP_UsdPreviewSurface_surfaceshader_emission_edf
     IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
     IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value2"--> IMP_UsdPreviewSurface_surfaceshader_cutout_opacity
-    IMP_UsdPreviewSurface_surfaceshader_opacity --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
-    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_opacityThreshold --"value1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
+    IMP_UsdPreviewSurface_surfaceshader_opacity --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_presence
     IMP_UsdPreviewSurface_surfaceshader_cutout_opacity --"in1"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_opacity_presence --"in2"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch
     IMP_UsdPreviewSurface_surfaceshader_opacityMode --"which"--> IMP_UsdPreviewSurface_surfaceshader_opacity_switch

@@ -26,6 +26,7 @@
     <input name="attenuation_color" uniform="true" type="color3" value="1, 1, 1" uiname="Attenuation Color" />
     <input name="anisotropy_strength" type="float" value="0" uiname="Anisotropy Strength" />
     <input name="anisotropy_rotation" type="float" value="0" uiname="Anisotropy Rotation" />
+    <input name="dispersion" type="float" value="0" uiname="Dispersion" />
   </gltf_pbr>
   <surfacematerial name="material_gltf_pbr_surfaceshader_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="gltf_pbr_surfaceshader" />
