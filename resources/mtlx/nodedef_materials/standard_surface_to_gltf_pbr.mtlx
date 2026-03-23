@@ -4,12 +4,16 @@
     <input name="base" type="float" value="1" />
     <input name="base_color" type="color3" value="0.8, 0.8, 0.8" />
     <input name="metalness" type="float" value="0" />
+    <input name="specular" type="float" value="1" />
+    <input name="specular_color" type="color3" value="1, 1, 1" />
     <input name="specular_anisotropy" type="float" value="0.0" />
     <input name="specular_rotation" type="float" value="0.0" />
     <input name="specular_roughness" type="float" value="0.2" />
+    <input name="specular_IOR" type="float" value="1.5" />
     <input name="transmission" type="float" value="0" />
     <input name="transmission_color" type="color3" value="1, 1, 1" />
     <input name="transmission_depth" type="float" value="0" />
+    <input name="transmission_dispersion" type="float" value="0" />
     <input name="sheen" type="float" value="0" />
     <input name="sheen_color" type="color3" value="1, 1, 1" />
     <input name="sheen_roughness" type="float" value="0.3" />
@@ -18,6 +22,8 @@
     <input name="coat_roughness" type="float" value="0.1" />
     <input name="emission" type="float" value="0" />
     <input name="emission_color" type="color3" value="1, 1, 1" />
+    <input name="opacity" type="color3" value="1, 1, 1" />
+    <input name="thin_walled" type="boolean" value="false" />
   </standard_surface_to_gltf_pbr>
   <convert name="shader_standard_surface_to_gltf_pbr_base_color_out" type="surfaceshader">
     <input name="in" type="color3" nodename="standard_surface_to_gltf_pbr" output="base_color_out" />
@@ -36,6 +42,24 @@
   </convert>
   <surfacematerial name="material_standard_surface_to_gltf_pbr_roughness_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_specular_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="specular_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_specular_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_specular_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_specular_color_out" type="surfaceshader">
+    <input name="in" type="color3" nodename="standard_surface_to_gltf_pbr" output="specular_color_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_specular_color_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_specular_color_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_ior_out" />
   </surfacematerial>
   <convert name="shader_standard_surface_to_gltf_pbr_anisotropy_strength_out" type="surfaceshader">
     <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="anisotropy_strength_out" />
@@ -67,6 +91,12 @@
   <surfacematerial name="material_standard_surface_to_gltf_pbr_attenuation_color_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_attenuation_color_out" />
   </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_attenuation_distance_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="attenuation_distance_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_attenuation_distance_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_attenuation_distance_out" />
+  </surfacematerial>
   <convert name="shader_standard_surface_to_gltf_pbr_sheen_color_out" type="surfaceshader">
     <input name="in" type="color3" nodename="standard_surface_to_gltf_pbr" output="sheen_color_out" />
   </convert>
@@ -91,10 +121,46 @@
   <surfacematerial name="material_standard_surface_to_gltf_pbr_clearcoat_roughness_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_clearcoat_roughness_out" />
   </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_dispersion_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="dispersion_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_dispersion_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_dispersion_out" />
+  </surfacematerial>
   <convert name="shader_standard_surface_to_gltf_pbr_emissive_out" type="surfaceshader">
     <input name="in" type="color3" nodename="standard_surface_to_gltf_pbr" output="emissive_out" />
   </convert>
   <surfacematerial name="material_standard_surface_to_gltf_pbr_emissive_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_emissive_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_emissive_strength_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="emissive_strength_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_emissive_strength_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_emissive_strength_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_normal_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="standard_surface_to_gltf_pbr" output="normal_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_normal_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_normal_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_tangent_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="standard_surface_to_gltf_pbr" output="tangent_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_tangent_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_tangent_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_alpha_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="alpha_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_alpha_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_alpha_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_alpha_mode_out" type="surfaceshader">
+    <input name="in" type="integer" nodename="standard_surface_to_gltf_pbr" output="alpha_mode_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_alpha_mode_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_alpha_mode_out" />
   </surfacematerial>
 </materialx>

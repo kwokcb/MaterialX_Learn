@@ -32,10 +32,10 @@
 * [constant](#node-constant) [randomfloat](#node-randomfloat) 
 ---------
 ### Node Group: procedural2d
-* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [fractal2d](#node-fractal2d) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp](#node-ramp) [ramp4](#node-ramp4) [ramp_gradient](#node-ramp_gradient) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
+* [cellnoise2d](#node-cellnoise2d) [checkerboard](#node-checkerboard) [circle](#node-circle) [cloverleaf](#node-cloverleaf) [crosshatch](#node-crosshatch) [flake2d](#node-flake2d) [fractal2d](#node-fractal2d) [grid](#node-grid) [hexagon](#node-hexagon) [line](#node-line) [noise2d](#node-noise2d) [ramp](#node-ramp) [ramp4](#node-ramp4) [ramp_gradient](#node-ramp_gradient) [ramplr](#node-ramplr) [ramptb](#node-ramptb) [splitlr](#node-splitlr) [splittb](#node-splittb) [tiledcircles](#node-tiledcircles) [tiledcloverleafs](#node-tiledcloverleafs) [tiledhexagons](#node-tiledhexagons) [unifiednoise2d](#node-unifiednoise2d) [worleynoise2d](#node-worleynoise2d) 
 ---------
 ### Node Group: procedural3d
-* [cellnoise3d](#node-cellnoise3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [randomcolor](#node-randomcolor) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
+* [cellnoise3d](#node-cellnoise3d) [flake3d](#node-flake3d) [fractal3d](#node-fractal3d) [noise3d](#node-noise3d) [randomcolor](#node-randomcolor) [unifiednoise3d](#node-unifiednoise3d) [worleynoise3d](#node-worleynoise3d) 
 ---------
 ### Node Group: shader
 * [convert](#node-convert) [surface_unlit](#node-surface_unlit) 
@@ -4993,6 +4993,56 @@ graph TB
 | **type** | integer | 0 | Noise Type |  |  | 0 | 3 |  | Common |  | Menu to select the type of noise: Perlin, Cell, Worley, or Fractal. Default is Perlin. |  |
 | **style** | integer | 0 | Worley Cell Style |  |  |  |  |  |  |  | Sets the style of cell used when Noise Type is set to Worley. |  |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+### Category: *flake2d*
+<details open><summary>ND_flake2d</summary>
+<p>
+ 
+* *Nodedef*: ND_flake2d
+* *Type*: multioutput
+* *Group*: procedural2d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **size** | float | 0.01 |  |  |  |  |  |  |  |  | Size of individual flakes. |  |
+| **roughness** | float | 0.1 |  |  |  |  |  |  |  |  | Roughness of the flake normal distribution. |  |
+| **coverage** | float | 0.5 |  |  |  |  |  |  |  |  | Density of flake coverage (0 = no flakes, 1 = full coverage). |  |
+| **texcoord** | vector2 | None |  |  |  |  |  |  |  |  | The input 2d space. Default is the first texture coordinates. |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal; defaults to the current world-space normal. |  |
+| **tangent** | vector3 | None |  |  |  |  |  |  |  |  | Surface tangent vector, defaults to the current world-space tangent vector. |  |
+| **bitangent** | vector3 | None |  |  |  |  |  |  |  |  | Surface bitangent vector, defaults to the current world-space bitangent vector. |  |
+| *id* | integer | None |  |  |  |  |  |  |  |  | Unique identifier for each flake (0 for no flake). |  |
+| *rand* | float | None |  |  |  |  |  |  |  |  | Random value per flake for additional variation (0 for no flake). |  |
+| *presence* | float | None |  |  |  |  |  |  |  |  | Depth-based presence value per flake for additional variation (0 for no flake). |  |
+| *flakenormal* | vector3 | None |  |  |  |  |  |  |  |  | The computed flake normal (base normal if no flake present). |  |
+### Category: *flake3d*
+<details open><summary>ND_flake3d</summary>
+<p>
+ 
+* *Nodedef*: ND_flake3d
+* *Type*: multioutput
+* *Group*: procedural3d
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **size** | float | 0.01 |  |  |  |  |  |  |  |  | Size of individual flakes. |  |
+| **roughness** | float | 0.1 |  |  |  |  |  |  |  |  | Roughness of the flake normal distribution. |  |
+| **coverage** | float | 0.5 |  |  |  |  |  |  |  |  | Density of flake coverage (0 = no flakes, 1 = full coverage). |  |
+| **position** | vector3 | None |  |  |  |  |  |  |  |  | The input 3d space. Default is position in object-space. |  |
+| **normal** | vector3 | None |  |  |  |  |  |  |  |  | Surface normal; defaults to the current world-space normal. |  |
+| **tangent** | vector3 | None |  |  |  |  |  |  |  |  | Surface tangent vector, defaults to the current world-space tangent vector. |  |
+| **bitangent** | vector3 | None |  |  |  |  |  |  |  |  | Surface bitangent vector, defaults to the current world-space bitangent vector. |  |
+| *id* | integer | None |  |  |  |  |  |  |  |  | Unique identifier for each flake (0 for no flake). |  |
+| *rand* | float | None |  |  |  |  |  |  |  |  | Random value per flake for additional variation (0 for no flake). |  |
+| *presence* | float | None |  |  |  |  |  |  |  |  | Depth-based presence value per flake for additional variation (0 for no flake). |  |
+| *flakenormal* | vector3 | None |  |  |  |  |  |  |  |  | The computed flake normal (base normal if no flake present). |  |
 ### Category: *randomfloat*
 <details open><summary>ND_randomfloat_float</summary>
 <p>
@@ -18885,6 +18935,38 @@ graph TB
 | **in** | vector4 | 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
 | **index** | integer | 0 |  | 0 | 3 |  |  |  |  |  |  | true |
 | *out* | float | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_extract_matrix33</summary>
+<p>
+ 
+* *Nodedef*: ND_extract_matrix33
+* *Type*: vector3
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | matrix33 | 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **index** | integer | 0 |  | 0 | 2 |  |  |  |  |  |  | true |
+| *out* | vector3 | None |  |  |  |  |  |  |  |  |  |  |
+<details open><summary>ND_extract_matrix44</summary>
+<p>
+ 
+* *Nodedef*: ND_extract_matrix44
+* *Type*: vector4
+* *Group*: channel
+* *Version*: 1.0. Is default: False
+* *Doc*: UNDOCUMENTED
+* *Implementation*: Non-graph
+ 
+
+| Name | Type | Default Value | UI name | UI min | UI max | UI Soft Min | UI Soft Max | UI step | UI group | UI Advanced | Doc | Uniform |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| **in** | matrix44 | 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 |  |  |  |  |  |  |  |  |  |  |
+| **index** | integer | 0 |  | 0 | 3 |  |  |  |  |  |  | true |
+| *out* | vector4 | None |  |  |  |  |  |  |  |  |  |  |
 ### Category: *separate2*
 <details open><summary>ND_separate2_vector2</summary>
 <p>

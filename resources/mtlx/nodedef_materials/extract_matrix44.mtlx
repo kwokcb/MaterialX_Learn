@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <extract name="extract_matrix44" type="vector4">
+    <input name="in" type="matrix44" value="0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0" />
+    <input name="index" type="integer" value="0" uniform="true" />
+  </extract>
+  <convert name="shader_extract_matrix44_out" type="surfaceshader">
+    <input name="in" type="vector4" nodename="extract_matrix44" />
+  </convert>
+  <surfacematerial name="material_extract_matrix44_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_extract_matrix44_out" />
+  </surfacematerial>
+</materialx>
