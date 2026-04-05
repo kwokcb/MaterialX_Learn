@@ -59,21 +59,8 @@ def buildColorTransformDict(doc):
     
     return colordict, targetdict
 
-class GlslRenderer():
-    '''
-    Wrapper for GLSL sample renderer.
-
-    Handles setup of image, geometry and light handlers as well as GLSL code and 
-    program generation. 
-
-    Calls into sample renderer to render and capture images as desired.
-    '''
-    
+class BaseRenderer():
     def __init__(self, desiredRenderSize):
-        # Renderer
-        if desiredRenderSize[0] * desiredRenderSize[1] < 4:
-            desiredRenderSize = self.getDefaultRenderSize()        
-        self.renderSize = desiredRenderSize
         self.renderer = None
 
         # Code Generator
@@ -81,6 +68,11 @@ class GlslRenderer():
         self.activeShader = None
         self.activeShaderErrors = ''
         self.sourceCode = {}
+
+        # Renderer
+        if desiredRenderSize[0] * desiredRenderSize[1] < 4:
+            desiredRenderSize = self.getDefaultRenderSize()        
+        self.renderSize = desiredRenderSize
 
         # Image Handling
         self.capturedImage = None
@@ -155,7 +147,20 @@ class GlslRenderer():
         self.renderLog.append(msg)        
     
     def clearRenderLog(self):
-        self.renderLog = []        
+        self.renderLog = []
+
+class GlslRenderer(BaseRenderer):
+    '''
+    Wrapper for GLSL sample renderer.
+
+    Handles setup of image, geometry and light handlers as well as GLSL code and 
+    program generation. 
+
+    Calls into sample renderer to render and capture images as desired.
+    '''
+    
+    def __init__(self, desiredRenderSize):
+        super().__init__(desiredRenderSize)
 
     def createRenderer(self, bufferFormat):
        return mx_render_glsl.GlslRenderer.create(self.renderSize[0], self.renderSize[1], bufferFormat) 
@@ -555,8 +560,9 @@ def initializeRenderer(stdlib, searchPath,
         renderer.initialize(mx_render.BaseType.UINT8)
         renderer.addToRenderLog('- Initialized MSL renderer')
     else:
-        print('Unsupported target: %s' % target)
-        return None
+        renderer = BaseRenderer([w,h])
+        renderer.addToRenderLog('Unsupported target: %s' % target)
+        return renderer
 
     renderer.addToRenderLog('------------------------')
     renderer.addToRenderLog(' - Have OIIO loader support: %s' % renderer.haveOIIOLoader()) 

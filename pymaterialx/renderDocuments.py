@@ -130,10 +130,11 @@ def main():
             exit(-1)
         renderer = mxrenderer.initializeRenderer(stdlib, searchPath, radianceFilePath, irradianceFilePath, w, h, 
                                                  geometryShape, opts.target)
-        renderer.addToRenderLog('--------------------------')
 
-    if not renderer:
-        logger.error('Error initializing renderer')
+    if not renderer or not renderer.getRenderer():
+        logger.info('Failed to initialize renderer. See render_log.txt for details.')
+        with open('render_log.txt', 'w') as f:
+            f.write('\n'.join(renderer.getRenderLog()))        
         exit(-1)
 
     for fileName in fileList:
