@@ -615,7 +615,7 @@ def initializeRenderer(stdlib, searchPath,
 
     return renderer        
 
-def performRender(renderer, doc, inputFilename, outputPath, searchPath) -> ( bool, str ):
+def performRender(renderer, doc, inputFilename, outputPath, searchPath) -> tuple[ bool, str ]:
 
     rendered = False
     renderErrors = ''
@@ -628,9 +628,6 @@ def performRender(renderer, doc, inputFilename, outputPath, searchPath) -> ( boo
     # Append to search path for image handler
     imageHandler = renderer.getImageHandler()
     imageSearchPathPrev = imageHandler.getSearchPath()
-    imageSearchPath = imageSearchPathPrev
-    #imageSearchPath.append(searchPath)
-    #imageHandler.setSearchPath(imageSearchPath)
     imageHandler.setSearchPath(searchPath)
     renderer.addToRenderLog(' - Using image search path: %s' % imageHandler.getSearchPath().asString())
 
@@ -642,7 +639,7 @@ def performRender(renderer, doc, inputFilename, outputPath, searchPath) -> ( boo
     # Find a renderable and generate the shader for it
     nodes = renderer.findRenderableElements(doc)
     if not nodes:
-        return
+        return False, 'No renderable nodes found in document.'
     printSource = False
 
     # Set up overrides for color space and units. Color space may come from the document,
