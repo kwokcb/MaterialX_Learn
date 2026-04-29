@@ -1,0 +1,239 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net" modified="April 29, 2026" agent="MaterialX DrawIO Exporter" version="0.1.39.5" copyright="Copyright 2026, NanMu Consulting. kwokcb@gmail.com">
+  <diagram id="diagram_1" name="MaterialX Graph">
+    <mxGraphModel dx="1422" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="NG/out_Mix" value="NG/out_Mix" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="910" y="218" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Mix/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Mix">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Mix/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Mix">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Multiply_002" value="NG/out_Multiply_002" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="1350" y="50" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Multiply_002/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Multiply_002">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Multiply_002/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Multiply_002">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Normalmap" value="NG/out_Normalmap" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="910" y="356" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Normalmap/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Normalmap">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/out_Normalmap/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/out_Normalmap">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/RoughnessMin" value="NG/RoughnessMin = &quot;0&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="30" y="434" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/RoughnessMin/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/RoughnessMin">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/RoughnessMax" value="NG/RoughnessMax = &quot;1&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="30" y="178" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/RoughnessMax/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/RoughnessMax">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Texcoord" value="NG/Texcoord = &quot;0&quot;" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="30" y="306" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Texcoord/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Texcoord">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/UVScale" value="NG/UVScale = &quot;2&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="30" y="562" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/UVScale/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/UVScale">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_001" value="NG/Multiply_001" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="250" y="50" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_001/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_001">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_001/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_001">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_001/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_001">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_002" value="NG/Image_002" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="470" y="50" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_002/texcoord" value="texcoord" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_002">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_002/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_002">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Mix" value="NG/Mix" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="690" y="50" width="140" height="158" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Mix/bg" value="bg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Mix">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Mix/mix" value="mix" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Mix">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Mix/fg" value="fg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Mix">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Mix/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Mix">
+          <mxGeometry y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_001" value="NG/Image_001" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="470" y="188" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_001/texcoord" value="texcoord" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_001">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_001/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_001">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/SheenAmount" value="NG/SheenAmount = &quot;0.3&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="30" y="50" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/SheenAmount/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/SheenAmount">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply" value="NG/Multiply" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="910" y="50" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_002" value="NG/Multiply_002" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="1130" y="50" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_002/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_002">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_002/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_002">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Multiply_002/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Multiply_002">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_003" value="NG/Image_003" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="470" y="326" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_003/texcoord" value="texcoord" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_003">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Image_003/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Image_003">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Normalmap" value="NG/Normalmap" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="group_NG">
+          <mxGeometry x="690" y="248" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Normalmap/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Normalmap">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG/Normalmap/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG/Normalmap">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="standard_surface_1" value="standard_surface_1" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="50" width="140" height="158" as="geometry"/>
+        </mxCell>
+        <mxCell id="standard_surface_1/sheen" value="sheen" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="standard_surface_1">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="standard_surface_1/specular_roughness" value="specular_roughness" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="standard_surface_1">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="standard_surface_1/normal" value="normal" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="standard_surface_1">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="standard_surface_1/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="standard_surface_1">
+          <mxGeometry y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="Black_Upholstery" value="Black_Upholstery" style="swimlane;fontColor=#FFF;fillColor=#090;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="50" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="Black_Upholstery/surfaceshader" value="surfaceshader" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="Black_Upholstery">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Texcoord/out" target="NG/Multiply_001/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_1" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/UVScale/out" target="NG/Multiply_001/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_2" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Multiply_001/out" target="NG/Image_002/texcoord">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_3" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/RoughnessMin/out" target="NG/Mix/fg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_4" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/RoughnessMax/out" target="NG/Mix/bg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_5" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Image_002/out" target="NG/Mix/mix">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_6" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Multiply_001/out" target="NG/Image_001/texcoord">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_7" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Mix/out" target="NG/Multiply/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/SheenAmount/out" target="NG/Multiply/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_9" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Image_001/out" target="NG/Multiply_002/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_10" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Multiply/out" target="NG/Multiply_002/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_11" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Multiply_001/out" target="NG/Image_003/texcoord">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_12" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Image_003/out" target="NG/Normalmap/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_13" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Mix/out" target="NG/out_Mix/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Multiply_002/out" target="NG/out_Multiply_002/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/Normalmap/out" target="NG/out_Normalmap/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_16" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/out_Mix/out" target="standard_surface_1/specular_roughness">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_17" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/out_Multiply_002/out" target="standard_surface_1/sheen">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_18" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG/out_Normalmap/out" target="standard_surface_1/normal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_19" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="standard_surface_1/out" target="Black_Upholstery/surfaceshader">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_NG" value="NG" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f4f1f7;strokeColor=#9673a6;fontStyle=1;fontSize=12;opacity=80;" vertex="1" parent="1">
+          <mxGeometry x="20" y="0" width="1520" height="660" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

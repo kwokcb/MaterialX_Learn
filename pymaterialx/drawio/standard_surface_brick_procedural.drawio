@@ -1,0 +1,550 @@
+<mxfile host="Electron" modified="2026-01-20T20:40:56.335Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" copyright="Copyright 2026, NanMu Consulting. kwokcb@gmail.com" version="24.1.0" etag="exeB6MH0pPclhEhtHVTr" type="device">
+  <diagram id="diagram_1" name="MaterialX Graph">
+    <mxGraphModel dx="1725" dy="1527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="N_StandardSurface" value="N_StandardSurface" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="3350" y="50" width="140" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="N_StandardSurface/specular_roughness" value="specular_roughness" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="N_StandardSurface" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="N_StandardSurface/base_color" value="base_color" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="N_StandardSurface" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="N_StandardSurface/normal" value="normal" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="N_StandardSurface" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="N_StandardSurface/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="N_StandardSurface" vertex="1">
+          <mxGeometry y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="M_BrickPattern" value="M_BrickPattern" style="swimlane;fontColor=#FFF;fillColor=#090;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
+          <mxGeometry x="3570" y="50" width="140" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="M_BrickPattern/surfaceshader" value="surfaceshader" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="M_BrickPattern" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_mix_6/out" target="NG_BrickPattern/node_multiply_5/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_1" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_7/out" target="NG_BrickPattern/node_multiply_5/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_2" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_5/out" target="NG_BrickPattern/node_mix_8/fg" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_3" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_9/out" target="NG_BrickPattern/node_mix_8/bg" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_4" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_10/out" target="NG_BrickPattern/node_mix_8/mix" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_5" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_color_11/out" target="NG_BrickPattern/node_multiply_9/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_6" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_7/out" target="NG_BrickPattern/node_multiply_9/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_7" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/brick_color/out" target="NG_BrickPattern/node_rgbtohsv_12/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_14/out" target="NG_BrickPattern/node_combine3_color3_13/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_9" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_15/out" target="NG_BrickPattern/node_combine3_color3_13/in3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_10" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_combine3_color3_13/out" target="NG_BrickPattern/node_add_16/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_11" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_rgbtohsv_12/out" target="NG_BrickPattern/node_add_16/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_12" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_add_16/out" target="NG_BrickPattern/node_hsvtorgb_17/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_13" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_add_19/out" target="NG_BrickPattern/node_subtract_18/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_subtract_18/out" target="NG_BrickPattern/node_multiply_14/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/hue_variation/out" target="NG_BrickPattern/node_multiply_14/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_16" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_add_19/out" target="NG_BrickPattern/node_multiply_15/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_17" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_20/out" target="NG_BrickPattern/node_multiply_15/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_18" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_mix_8/out" target="NG_BrickPattern/node_clamp_0/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_19" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_divide_21/out" target="NG_BrickPattern/node_multiply_1/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_20" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_22/out" target="NG_BrickPattern/node_multiply_1/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_21" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_10/out" target="NG_BrickPattern/node_max_1/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_22" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/roughness_amount/out" target="NG_BrickPattern/node_divide_21/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_23" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_max_1/out" target="NG_BrickPattern/node_divide_21/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_24" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/dirt_color/out" target="NG_BrickPattern/node_mix_6/fg" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_25" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_hsvtorgb_17/out" target="NG_BrickPattern/node_mix_6/bg" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_26" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_23/out" target="NG_BrickPattern/node_mix_6/mix" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_27" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/dirt_amount/out" target="NG_BrickPattern/node_multiply_23/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_28" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_24/out" target="NG_BrickPattern/node_multiply_23/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_29" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/hue_variation/out" target="NG_BrickPattern/node_multiply_25/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_30" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_26/out" target="NG_BrickPattern/node_multiply_25/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_31" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_25/out" target="NG_BrickPattern/node_add_19/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_32" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_7/out" target="NG_BrickPattern/node_add_19/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_33" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/value_variation/out" target="NG_BrickPattern/node_multiply_20/in1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_34" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_float_26/out" target="NG_BrickPattern/node_multiply_20/in2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_35" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_tiledimage_vector3_27/out" target="NG_BrickPattern/node_normalmap_3/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_36" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/uvtiling/out" target="NG_BrickPattern/node_convert_1/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_37" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_vector3_27/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_38" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_float_22/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_39" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_float_10/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_40" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_float_7/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_41" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_float_26/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_42" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_convert_1/out" target="NG_BrickPattern/node_tiledimage_float_24/uvtiling" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_43" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_clamp_0/out" target="NG_BrickPattern/base_color_output/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_44" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_multiply_1/out" target="NG_BrickPattern/specular_roughness_output/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_45" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/node_normalmap_3/out" target="NG_BrickPattern/normal_output/in" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_46" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/base_color_output/out" target="N_StandardSurface/base_color" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_47" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/specular_roughness_output/out" target="N_StandardSurface/specular_roughness" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_48" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="NG_BrickPattern/normal_output/out" target="N_StandardSurface/normal" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_49" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" parent="1" source="N_StandardSurface/out" target="M_BrickPattern/surfaceshader" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="group_NG_BrickPattern" value="NG_BrickPattern" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f4f1f7;strokeColor=#9673a6;fontStyle=1;fontSize=12;opacity=80;" parent="1" vertex="1">
+          <mxGeometry x="20" width="3280" height="1044" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/brick_color" value="NG_BrickPattern/brick_color = &quot;0.661876, 0.19088, 0&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="562" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/brick_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/brick_color" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/hue_variation" value="NG_BrickPattern/hue_variation = &quot;0.083&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="178" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/hue_variation/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/hue_variation" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/value_variation" value="NG_BrickPattern/value_variation = &quot;0.787&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="434" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/value_variation/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/value_variation" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/roughness_amount" value="NG_BrickPattern/roughness_amount = &quot;0.853&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="306" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/roughness_amount/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/roughness_amount" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/dirt_color" value="NG_BrickPattern/dirt_color = &quot;0.56372, 0.56372, 0.56372&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="690" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/dirt_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/dirt_color" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/dirt_amount" value="NG_BrickPattern/dirt_amount = &quot;0.248&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="946" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/dirt_amount/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/dirt_amount" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/uvtiling" value="NG_BrickPattern/uvtiling = &quot;3&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="50" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/uvtiling/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/uvtiling" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/base_color_output" value="NG_BrickPattern/base_color_output" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="3110" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/base_color_output/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/base_color_output" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/base_color_output/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/base_color_output" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/specular_roughness_output" value="NG_BrickPattern/specular_roughness_output" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1350" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/specular_roughness_output/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/specular_roughness_output" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/specular_roughness_output/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/specular_roughness_output" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/normal_output" value="NG_BrickPattern/normal_output" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="910" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/normal_output/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/normal_output" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/normal_output/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/normal_output" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_5" value="NG_BrickPattern/node_multiply_5" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="2450" y="50" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_5/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_5" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_5/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_5" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_5/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_5" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_8" value="NG_BrickPattern/node_mix_8" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="2670" y="50" width="140" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_8/bg" value="bg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_8" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_8/mix" value="mix" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_8" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_8/fg" value="fg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_8" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_8/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_8" vertex="1">
+          <mxGeometry y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_color_11" value="NG_BrickPattern/node_color_11 = &quot;0.263273, 0.263273, 0.263273&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="30" y="818" width="140" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_color_11/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_color_11" vertex="1">
+          <mxGeometry y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_9" value="NG_BrickPattern/node_multiply_9" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="326" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_9/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_9" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_9/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_9" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_9/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_9" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_rgbtohsv_12" value="NG_BrickPattern/node_rgbtohsv_12" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="250" y="188" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_rgbtohsv_12/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_rgbtohsv_12" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_rgbtohsv_12/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_rgbtohsv_12" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_combine3_color3_13" value="NG_BrickPattern/node_combine3_color3_13" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1570" y="50" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_combine3_color3_13/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_combine3_color3_13" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_combine3_color3_13/in3" value="in3" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_combine3_color3_13" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_combine3_color3_13/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_combine3_color3_13" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_16" value="NG_BrickPattern/node_add_16" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1790" y="50" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_16/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_16" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_16/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_16" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_16/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_16" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_hsvtorgb_17" value="NG_BrickPattern/node_hsvtorgb_17" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="2010" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_hsvtorgb_17/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_hsvtorgb_17" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_hsvtorgb_17/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_hsvtorgb_17" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_subtract_18" value="NG_BrickPattern/node_subtract_18" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1130" y="218" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_subtract_18/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_subtract_18" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_subtract_18/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_subtract_18" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_14" value="NG_BrickPattern/node_multiply_14" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1350" y="188" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_14/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_14" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_14/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_14" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_14/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_14" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_15" value="NG_BrickPattern/node_multiply_15" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1130" y="356" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_15/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_15" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_15/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_15" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_15/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_15" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_clamp_0" value="NG_BrickPattern/node_clamp_0" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="2890" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_clamp_0/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_clamp_0" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_clamp_0/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_clamp_0" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_1" value="NG_BrickPattern/node_multiply_1" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="1130" y="50" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_1/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_1" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_1/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_1" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_1/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_1" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_max_1" value="NG_BrickPattern/node_max_1" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="188" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_max_1/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_max_1" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_max_1/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_max_1" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_divide_21" value="NG_BrickPattern/node_divide_21" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="910" y="188" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_divide_21/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_divide_21" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_divide_21/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_divide_21" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_divide_21/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_divide_21" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_6" value="NG_BrickPattern/node_mix_6" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="2230" y="50" width="140" height="158" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_6/bg" value="bg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_6" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_6/mix" value="mix" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_6" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_6/fg" value="fg" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_6" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_mix_6/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_mix_6" vertex="1">
+          <mxGeometry y="120" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_23" value="NG_BrickPattern/node_multiply_23" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="830" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_23/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_23" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_23/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_23" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_23/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_23" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_25" value="NG_BrickPattern/node_multiply_25" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="494" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_25/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_25" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_25/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_25" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_25/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_25" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_19" value="NG_BrickPattern/node_add_19" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="910" y="356" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_19/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_19" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_19/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_19" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_add_19/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_add_19" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_20" value="NG_BrickPattern/node_multiply_20" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="662" width="140" height="128" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_20/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_20" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_20/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_20" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_multiply_20/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_multiply_20" vertex="1">
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_normalmap_3" value="NG_BrickPattern/node_normalmap_3" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="690" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_normalmap_3/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_normalmap_3" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_normalmap_3/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_normalmap_3" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_convert_1" value="NG_BrickPattern/node_convert_1" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="250" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_convert_1/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_convert_1" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_convert_1/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_convert_1" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_vector3_27" value="NG_BrickPattern/node_tiledimage_vector3_27" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="50" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_vector3_27/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_vector3_27" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_vector3_27/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_vector3_27" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_22" value="NG_BrickPattern/node_tiledimage_float_22" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="188" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_22/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_22" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_22/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_22" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_10" value="NG_BrickPattern/node_tiledimage_float_10" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="326" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_10/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_10" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_10/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_10" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_7" value="NG_BrickPattern/node_tiledimage_float_7" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="464" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_7/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_7" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_7/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_7" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_26" value="NG_BrickPattern/node_tiledimage_float_26" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="602" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_26/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_26" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_26/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_26" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_24" value="NG_BrickPattern/node_tiledimage_float_24" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" parent="group_NG_BrickPattern" vertex="1">
+          <mxGeometry x="470" y="740" width="140" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_24/uvtiling" value="uvtiling" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_24" vertex="1">
+          <mxGeometry y="30" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NG_BrickPattern/node_tiledimage_float_24/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" parent="NG_BrickPattern/node_tiledimage_float_24" vertex="1">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
