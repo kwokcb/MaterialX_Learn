@@ -480,6 +480,10 @@ class MxBaseGraphExporter:
         self.node_colors = dict()
         self.node_colors['input'] = ['#09D', '#FFF']
         self.node_colors['output'] = ['#0C0', '#FFF']
+        self.node_colors['gltf_pbr'] = ['#040', '#FFF']
+        self.node_colors['standard_surface'] = ['#040', '#FFF']
+        self.node_colors['surface_unlit'] = ['#040', '#FFF']
+        self.node_colors['gltf_pbr'] = ['#040', '#FFF']
         self.node_colors['surfacematerial'] = ['#090', '#FFF']
         self.node_colors['nodedef'] = ['#00C', '#FFF']
         self.node_colors['token'] = ['#222', '#FFF']
@@ -487,7 +491,7 @@ class MxBaseGraphExporter:
         self.node_colors['ifequal'] = ['#C72', '#FFF']
         self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
         self.node_colors['switch'] = ['#C72', '#FFF']
-        self.default_node_colors = ['#e1d5e7', '#000']
+        self.default_node_colors = ["#999999", '#000']
         self.default_port_colors = ['#FFF', '#000']
 
     def set_connections(self, graphDictionary, connections):
@@ -677,276 +681,6 @@ class MxMermaidGraphExporter (MxBaseGraphExporter):
         mermaidGraph = self.get_graph()
         with open(filename, 'w') as outFile:
             outFile.write(mermaidGraph)
-
-### Old graph builder.
-class MtlxMermaid:
-
-    @staticmethod
-    def emitMermaidEdge_nointerfaces(indent, edge):
-        """
-        Sample utility to print out edge information in Mermaid format
-        Returns a string of form: `(upstream node path) --[downstream node input name]--> (downstream node path)`
-        which represents a connection from an upstream node to a downstream one via a given input port.
-        """
-        outVal = ''
-
-        upstreamElem = edge.getUpstreamElement()
-        downstreamElem = edge.getDownstreamElement()
-        connectingElem = edge.getConnectingElement()
-
-        downstreamPath = ''
-        connectionString = ''
-        if connectingElem:
-            connectionString = ' --".' + connectingElem.getName() + '"--> '
-        else:
-            connectionString = ' --> '
-        downstreamPath  = downstreamElem.getNamePath()
-
-        upstreamPath = upstreamElem.getNamePath()
-
-        # Sanitize names for Mermaid output
-        upstreamPathM = mx.createValidName(upstreamPath)
-        downstreamPathM = mx.createValidName(downstreamPath)
-
-        # Print out information about the edge with an "arrow" to show direction
-        # of data flow  
-        outVal = indent + upstreamPathM + '([' + upstreamPath + '])' + connectionString + downstreamPathM + '([' + downstreamPath + '])'
-        return outVal
-
-    @staticmethod
-    def emitMermaidSubgraphs(subgraphs):
-        """
-        Emit GraphElement dictionary in Mermaid format
-        """
-        subGraphOutput = []
-
-        for subgraph in subgraphs:
-            if subgraph == '':
-                continue
-                
-            subgraphM = mx.createValidName(subgraph)  
-            subGraphOutput.append('subgraph ' + subgraphM + ':')
-            for node in subgraphs[subgraph]:
-                subGraphOutput.append('   ' + mx.createValidName(node))
-            subGraphOutput.append('end')
-
-        return subGraphOutput
-
-    @staticmethod
-    def generateMermaidGraph_nointerfaces(roots, orientation):
-        """
-        Output a Mermaid graph diagram given a set of root nodes
-        """ 
-        subgraphs = {}
-        processedEdges = set()
-
-        # Find all edges, and build up the GraphElement dictionary
-        for root in roots:
-            for edge in root.traverseGraph():
-                if not MtlxTraversal.find_edge(edge,processedEdges):
-                    processedEdges.add(edge)
-                    MtlxMermaid.updateGraphDictionary(edge, subgraphs)
-
-        # Get string output for each edge in Mermaid format
-        edgeOutput = set()
-        for edge in processedEdges:
-            outVal = MtlxMermaid.emitMermaidEdge_nointerfaces('    ', edge)
-            if outVal not in edgeOutput:
-                edgeOutput.add(outVal)
-
-        # Print graph header, edges, and sub-graphs
-        outputGraph = []
-        outputGraph.append('  graph %s;' % orientation)
-        for outVal in edgeOutput:
-            outputGraph.append(outVal)
-        for line in MtlxMermaid.emitMermaidSubgraphs(subgraphs):
-            outputGraph.append(line)
-
-        return outputGraph
-
-    @staticmethod
-    def emitInterfaceInputs(indent, edge, subgraphs, edgeOutput, styleOutput):
-        '''Emit interface inputs:
-        - All inputerface inputs are colored "blue"
-        - The links from interface inputs are drawn with thicker lines.
-        '''
-        outVal = ''
-
-        # Look for upstream interface inputs
-        upstreamElem = edge.getUpstreamElement()
-        for input in upstreamElem.getInputs():
-            # getInterfaceInput() will find the interface input if it exists
-            interfaceInput = input.getInterfaceInput()
-            if interfaceInput:
-
-                # Emit connection from interface input to node input
-                interfaceName = interfaceInput.getName()
-                interfaceNameM = mx.createValidName(interfaceInput.getNamePath())
-                nodeName = mx.createValidName(upstreamElem.getNamePath())
-                outVal = indent + interfaceNameM + '([' + interfaceName + ']) ==".' + input.getName() + '"==> ' + nodeName
-                if outVal not in edgeOutput:
-                    edgeOutput.add(outVal)
-                    styleOutput.add(indent + 'style ' + interfaceNameM + ' fill:#0CF, color:#111')
-
-                # Update subgraphs to include this input
-                MtlxTraversal.update_graph_dictionary_item(interfaceInput, subgraphs)
-
-        return outVal
-
-    @staticmethod
-    def emitMermaidEdge(indent, edge, subgraphs, edgeOutput, styleOutput):
-        "Sample utility to print out edge information in Mermaid format"
-        "The interface getConnectedOuput() is used to determine what output the dowstream input is connected to"
-
-        outVal = ''
-
-        # Current set of conditionals.
-        # Will work even if the standard library is not loaded.
-        conditionals = ['ifequal', 'ifgreater', 'ifgreatereq', 'switch']
-
-        upstreamElem = edge.getUpstreamElement()
-        if upstreamElem.getType() == mx.MATERIAL_TYPE_STRING:
-            print('Material upstream: ' + upstreamElem.getNamePath())
-        downstreamElem = edge.getDownstreamElement()
-        connectingElem = edge.getConnectingElement()
-
-        downstreamPath  = downstreamElem.getNamePath()
-        upstreamPath = upstreamElem.getNamePath()
-        upstreamPathM = mx.createValidName(upstreamPath)
-
-        # Add a connection from the upstream output to the downstream 
-        upstreamOutput = None
-        if connectingElem:
-            outputString = connectingElem.getAttribute("output")
-            if outputString:
-                leftBrace = '(['
-                rightBrace = '])'
-                if upstreamElem.getCategory() in conditionals:
-                    leftBrace = '{'
-                    rightBrace = '}'
-                    styleOutput.add(indent + 'style ' + mx.createValidName(upstreamPath) + ' fill:#F80, color:#111')
-                    
-                upstreamOutput = downstreamElem.getConnectedOutput(connectingElem.getName())
-                if upstreamOutput:
-                    upstreamOutputName = upstreamOutput.getName()
-                    upstreamOutputNameM = mx.createValidName(upstreamOutput.getNamePath())
-                    outConnectionString =  upstreamOutputNameM + leftBrace + upstreamOutputName + rightBrace
-
-                    outVal = indent + upstreamPathM + leftBrace + upstreamPath + rightBrace + ' --> ' + outConnectionString
-                    if outVal not in edgeOutput:
-                        edgeOutput.add(outVal)
-                        styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
-
-                    MtlxTraversal.update_graph_dictionary_item(upstreamOutput, subgraphs)
-
-                    # The upstream output is the upstream path instead of the node.
-                    upstreamPath = upstreamOutput.getNamePath()
-                    upstreamElem = upstreamOutput
-
-                # <output> is not explicitly specified. This occurs for Node outputs
-                else:
-                    upstreamOutputName = outputString
-                    graphElementPath = upstreamElem.getParent().getNamePath()
-                    upstreamOutputPath = graphElementPath + '/' + outputString
-                    upstreamOutputNameM = mx.createValidName(upstreamOutputPath)
-                    outConnectionString =  upstreamOutputNameM + '([' + upstreamOutputName + '])'
-
-                    outVal = indent + upstreamPathM + leftBrace + upstreamPath + rightBrace + ' --> ' + outConnectionString
-                    if outVal not in edgeOutput:
-                        edgeOutput.add(outVal)
-                        styleOutput.add(indent + 'style ' + upstreamOutputNameM + ' fill:#0C0, color:#111')
-
-                    MtlxTraversal.update_graph_dictionary_path(graphElementPath, upstreamOutputPath, subgraphs)
-
-                    # The upstream output is the upstream path instead of the node.
-                    upstreamPath = upstreamOutputPath
-                    upstreamElem = upstreamOutput
-
-        inputConnectionString = ''
-        if connectingElem:
-            inputConnectionString = ' --".' + connectingElem.getName() + '"--> '
-        else:
-            inputConnectionString = ' --> '
-
-        # Sanitize names for Mermaid output
-        upstreamPathM = mx.createValidName(upstreamPath)
-        downstreamPathM = mx.createValidName(downstreamPath)
-
-        # Print out information about the edge with an "arrow" to show direction
-        # of data flow  
-        upConditional = False
-        leftBrace = '(['
-        rightBrace = '])'
-        if upstreamElem and upstreamElem.getCategory() in conditionals:
-            upConditional = True
-            leftBrace = '{'
-            rightBrace = '}'
-        outVal = indent + upstreamPathM
-        outVal = outVal + leftBrace + upstreamPath + rightBrace
-        
-        outVal = outVal + inputConnectionString + downstreamPathM 
-
-        downConditional = False
-        leftBrace = '(['
-        rightBrace = '])'
-        if downstreamElem and downstreamElem.getCategory() in conditionals:
-            downConditional = True
-            leftBrace = '{'
-            rightBrace = '}'
-        outVal = outVal + leftBrace + downstreamPath + rightBrace
-
-        if outVal not in edgeOutput:
-            edgeOutput.add(outVal)
-            if downstreamElem.getType() == mx.MATERIAL_TYPE_STRING:
-                styleOutput.add(indent + 'style ' + downstreamPathM + ' fill:#0C0, color:#111')
-            else:
-                if downConditional:
-                    styleOutput.add(indent + 'style ' + downstreamPathM + ' fill:#F80, color:#111')
-                if upConditional:
-                    styleOutput.add(indent + 'style ' + upstreamPathM + ' fill:#F80, color:#111')
-
-    @staticmethod
-    def generateMermaidGraph(roots, orientation):
-        """
-        Output a Mermaid graph diagram given a set of root nodes
-        """ 
-        subgraphs = {}
-        processedEdges = set()
-
-        # Find all edges, and build up the GraphElement dictionary
-        for root in roots:
-            for edge in root.traverseGraph():
-                if not MtlxTraversal.find_edge(edge,processedEdges):
-                    processedEdges.add(edge)
-                    MtlxTraversal.update_graph_dictionary(edge, subgraphs)
-
-        # Get string output for each edge in Mermaid format
-        edgeOutput = set()
-        styleOutput = set()
-        for edge in processedEdges:
-            outVal = MtlxMermaid.emitMermaidEdge('    ', edge, subgraphs, edgeOutput, styleOutput)
-            if outVal not in edgeOutput:
-                edgeOutput.add(outVal)
-
-        # Include interface input edges
-        for edge in processedEdges:
-            MtlxMermaid.emitInterfaceInputs('    ', edge, subgraphs, edgeOutput, styleOutput)            
-
-        # Print graph header, edges, sub-graphs, and styling
-        outputGraph = []
-        outputGraph.append('  graph %s;' % orientation)
-        for outVal in edgeOutput:
-            outputGraph.append(outVal)
-
-        outputGraph.append('%% Subgraphs')
-        for line in MtlxMermaid.emitMermaidSubgraphs(subgraphs):
-            outputGraph.append(line)
-
-        outputGraph.append('%% Style')
-        for line in styleOutput:
-            outputGraph.append(line)
-
-        return outputGraph
     
 class MxDrawIOExporter(MxBaseGraphExporter):    
     '''
@@ -1277,48 +1011,6 @@ class MxDrawIOExporter(MxBaseGraphExporter):
                 self.next_y = 50
                 self.next_x += node_width + self.horizontal_spacing
                 self.current_row_nodes = 0
-    
-    def collect_node_slots(self, node_name):
-        '''
-        Collect unique input and output slots for a node from connections
-        '''
-        input_slots = {}
-        output_slots = {}
-        
-        for conn in self.connections:
-            source_node = conn[0].split('/')[-1] if '/' in conn[0] else conn[0]
-            target_node = conn[2].split('/')[-1] if '/' in conn[2] else conn[2]
-            
-            # Check if this node is the source (has outputs)
-            if source_node == node_name:
-                slot_name = conn[1] if conn[1] else "out"
-                if slot_name not in output_slots:
-                    output_slots[slot_name] = []
-                output_slots[slot_name].append(conn)
-            
-            # Check if this node is the target (has inputs)
-            if target_node == node_name:
-                slot_name = conn[3] if conn[3] else "in"
-                if slot_name not in input_slots:
-                    input_slots[slot_name] = []
-                input_slots[slot_name].append(conn)
-
-        # Return sorted lists of slot names
-        return list(input_slots.keys()), list(output_slots.keys())
-    
-    def extract_base_node_name(self, node_path):
-        '''
-        Extract the base node name from a path, removing any numeric suffix
-        '''
-        # Get the last part of the path
-        node_name = node_path.split('/')[-1]
-        # Remove any numeric suffix like _1, _2, etc.
-        if '_' in node_name and node_name.split('_')[-1].isdigit():
-            # Remove the numeric suffix
-            parts = node_name.split('_')
-            if len(parts) > 1 and parts[-1].isdigit():
-                node_name = '_'.join(parts[:-1])
-        return node_name
     
     def create_node_instance(self, node_path, node_info):
         '''
@@ -1790,5 +1482,296 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         dom = minidom.parseString(xml_str)
         return dom.toprettyxml(indent='  ')
 
+import json
+import os
+from collections import defaultdict
 
+class MxD3GraphExporter(MxBaseGraphExporter):
+    '''
+    Class to export a MaterialX graph to interactive D3.js HTML format
+    '''
+    def __init__(self, graphDictionary, connections):
+        super().__init__(graphDictionary, connections)
+        self.graph_data = {}
+        self.node_width = 200
+        self.node_header_height = 40
+        self.slot_height = 25
+        self.slot_margin = 4
+        
+        # Slot colors
+        self.slot_colors = {
+            'input': '#3498db',  # Blue
+            'output': '#2ecc71',  # Green
+            'default': "#727272"  # Gray
+        }
+        background_color = "#969aee"
+        text_color = "#000000"
+        self.default_node_colors = [background_color, text_color]
+        
+    def _get_node_slots(self, node_path):
+        """Extract input and output slots for a node from connections"""
+        input_slots = {}
+        output_slots = {}
+        
+        for conn in self.connections:
+            src_path = conn[0]
+            dst_path = conn[2]
+            src_slot = conn[1] if conn[1] else 'out'
+            dst_slot = conn[3] if conn[3] else 'in'
+            
+            # Check if this node is the source (has outputs)
+            if src_path == node_path:
+                output_slots[src_slot] = {
+                    'name': src_slot,
+                    'type': 'output',
+                    'connections': []
+                }
+            
+            # Check if this node is the target (has inputs)
+            if dst_path == node_path:
+                input_slots[dst_slot] = {
+                    'name': dst_slot,
+                    'type': 'input',
+                    'connections': []
+                }
+        
+        return list(input_slots.values()), list(output_slots.values())
+    
+    def _build_graph_data(self):
+        """Build the complete graph data structure"""
+        nodes = []
+        links = []
+        node_id_map = {}
+        
+        # First pass: create all nodes
+        for graph_path in self.graphDictionary:
+            for item in self.graphDictionary[graph_path]:
+                node_path = item[0]
+                
+                # If node_path doesn't contain graph_path, prepend it
+                if graph_path and not node_path.startswith(graph_path):
+                    node_path = f"{graph_path}/{node_path}" if graph_path else node_path
+                
+                # Sanitize ID
+                node_id = node_path.replace('/', '_').replace(' ', '_')
+                
+                # Get slot information
+                input_slots, output_slots = self._get_node_slots(node_path)
+                
+                # Calculate node height based on slots
+                max_slots = max(len(input_slots), len(output_slots))
+                node_height = self.node_header_height + (max_slots * self.slot_height) + 20
+                
+                # Create node data
+                color = self.node_colors.get(item[1], self.default_node_colors)[0]
+                textColor = self.node_colors.get(item[1], self.default_node_colors)[1]
+                #print(f'Color for node {node_path} of type {item[1]}: {color}, textColor: {textColor}')
 
+                node = {
+                    'id': node_id,
+                    'path': node_path,
+                    'label': node_path.split('/')[-1],  # Base name
+                    'type': item[1] if len(item) > 1 else 'node',
+                    'value': item[3] if len(item) > 3 else '',
+                    'graph': graph_path,
+                    'slots': {
+                        'inputs': input_slots,
+                        'outputs': output_slots
+                    },
+                    'position': {
+                        'x': 0,  # Will be set by layout
+                        'y': 0,
+                        'width': self.node_width,
+                        'height': node_height
+                    },
+                    'color': color,
+                    'textColor': textColor
+                }
+                
+                nodes.append(node)
+                node_id_map[node_path] = node_id
+        
+        # Second pass: create links between nodes
+        for i, conn in enumerate(self.connections):
+            src_path = conn[0]
+            dst_path = conn[2]
+            
+            src_id = node_id_map.get(src_path)
+            dst_id = node_id_map.get(dst_path)
+            
+            if src_id and dst_id:
+                link = {
+                    'id': f'link_{i}',
+                    'source': src_id,
+                    'target': dst_id,
+                    'sourceSlot': conn[1] if conn[1] else 'out',
+                    'targetSlot': conn[3] if conn[3] else 'in',
+                    'type': conn[4] if len(conn) > 4 else 'connection',
+                    'color': '#95a5a6',
+                    'width': 2
+                }
+                
+                # Style based on connection type
+                if conn[4] == 'value':
+                    link['color'] = '#e74c3c'
+                    link['dashed'] = True
+                elif conn[4] == 'nodedef':
+                    link['color'] = '#9b59b6'
+                    link['width'] = 3
+                
+                links.append(link)
+        
+        return {
+            'nodes': nodes,
+            'links': links,
+            'metadata': {
+                'totalNodes': len(nodes),
+                'totalLinks': len(links),
+                'nodeWidth': self.node_width,
+                'nodeHeaderHeight': self.node_header_height,
+                'slotHeight': self.slot_height
+            }
+        }
+    
+    def _apply_auto_layout(self, graph_data):
+        """Apply automatic layout to nodes"""
+        nodes = graph_data['nodes']
+        links = graph_data['links']
+        
+        # Build adjacency lists
+        successors = defaultdict(list)
+        predecessors = defaultdict(list)
+        
+        for link in links:
+            successors[link['source']].append(link['target'])
+            predecessors[link['target']].append(link['source'])
+        
+        # Find nodes with no incoming edges (sources)
+        source_nodes = [node for node in nodes if len(predecessors.get(node['id'], [])) == 0]
+        
+        # Simple grid layout
+        cols = 4
+        node_spacing_x = 250
+        node_spacing_y = 200
+        
+        for i, node in enumerate(nodes):
+            row = i // cols
+            col = i % cols
+            node['position']['x'] = 50 + col * node_spacing_x
+            node['position']['y'] = 50 + row * node_spacing_y
+        
+        return graph_data
+    
+    def layout_nodes_hierarchical(self, x_spacing=80, y_spacing=40, start_x=50, start_y=50):
+        """
+        Layout nodes in columns based on connection dependencies (topological sort), using actual node sizes.
+        Updates node['position']['x'] and node['position']['y'] for each node in self.graph_data['nodes'].
+        """
+        nodes = self.graph_data.get('nodes', [])
+        links = self.graph_data.get('links', [])
+        node_map = {n['id']: n for n in nodes}
+        # Build adjacency and reverse adjacency
+        from collections import defaultdict, deque
+        graph = defaultdict(list)
+        reverse_graph = defaultdict(list)
+        all_nodes = set(node_map.keys())
+        for link in links:
+            graph[link['source']].append(link['target'])
+            reverse_graph[link['target']].append(link['source'])
+            all_nodes.add(link['source'])
+            all_nodes.add(link['target'])
+
+        # Kahn's algorithm for topological sort
+        in_degree = {n: 0 for n in all_nodes}
+        for dsts in graph.values():
+            for dst in dsts:
+                in_degree[dst] += 1
+        queue = deque([n for n in all_nodes if in_degree[n] == 0])
+        topo_order = []
+        while queue:
+            n = queue.popleft()
+            topo_order.append(n)
+            for m in graph[n]:
+                in_degree[m] -= 1
+                if in_degree[m] == 0:
+                    queue.append(m)
+
+        # Assign columns by longest path from any input node
+        node_column = {}
+        def get_column(n):
+            if n not in reverse_graph or not reverse_graph[n]:
+                return 0
+            if n in node_column:
+                return node_column[n]
+            col = 1 + max(get_column(p) for p in reverse_graph[n])
+            node_column[n] = col
+            return col
+        for n in topo_order:
+            get_column(n)
+
+        # Group nodes by column
+        from collections import defaultdict
+        columns = defaultdict(list)
+        for n in topo_order:
+            col = node_column.get(n, 0)
+            columns[col].append(n)
+
+        # Assign x/y positions using node sizes
+        for col in sorted(columns):
+            y = start_y
+            for nid in columns[col]:
+                node = node_map.get(nid)
+                if not node:
+                    continue
+                width = node['position']['width']
+                height = node['position']['height']
+                node['position']['x'] = start_x + col * (width + x_spacing)
+                node['position']['y'] = y
+                y += height + y_spacing
+
+        return self.graph_data
+
+    def execute(self):
+        """Generate the complete D3.js graph data"""
+        self.graph_data = self._build_graph_data()
+        self.graph_data = self.layout_nodes_hierarchical()
+        # Alternatively, use simple auto layout
+        #self.graph_data = self._apply_auto_layout(self.graph_data)
+        return self.graph_data
+    
+    def export_json(self, filename):
+        """Export graph data as JSON"""
+        data = self.execute()
+        with open(filename, 'w') as f:
+            json.dump(data, f, indent=2)
+    
+    def export_html(self, filename, template_filename, title="MaterialX Graph"):
+        """Export complete interactive HTML visualization"""
+        data = self.execute()
+        
+        # Load HTML template
+        with open(template_filename, 'r') as f:
+            html_template = f.read()
+        
+        # Format the timestamp
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        template_graph_data_placeholder = 'const graphData = {};'
+        graphData_declaration = f"const graphData = {json.dumps(data, indent=2)};"
+
+        # Replace placeholders
+        html_content = html_template\
+            .replace(template_graph_data_placeholder, graphData_declaration)         
+            #.replace('{{TITLE}}', title)\
+            #.replace('{{TIMESTAMP}}', timestamp)\
+            #.replace('{{NODE_COUNT}}', str(len(data['nodes'])))\
+            #.replace('{{GRAPH_DATA}}', json.dumps(data, indent=2))
+        
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        
+        print(f"HTML visualization exported to: {filename}")
+        print(f"Open this file in your web browser to view the interactive graph.")
+    
+    

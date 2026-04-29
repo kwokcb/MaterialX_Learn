@@ -1,0 +1,788 @@
+{
+  "nodes": [
+    {
+      "id": "NG_out_Mix",
+      "path": "NG/out_Mix",
+      "label": "out_Mix",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 200,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_out_Multiply_002",
+      "path": "NG/out_Multiply_002",
+      "label": "out_Multiply_002",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_out_Normalmap",
+      "path": "NG/out_Normalmap",
+      "label": "out_Normalmap",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 325,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_RoughnessMin",
+      "path": "NG/RoughnessMin",
+      "label": "RoughnessMin",
+      "type": "constant",
+      "value": "0",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_RoughnessMax",
+      "path": "NG/RoughnessMax",
+      "label": "RoughnessMax",
+      "type": "constant",
+      "value": "1",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Texcoord",
+      "path": "NG/Texcoord",
+      "label": "Texcoord",
+      "type": "texcoord",
+      "value": "0",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_UVScale",
+      "path": "NG/UVScale",
+      "label": "UVScale",
+      "type": "constant",
+      "value": "2",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Multiply_001",
+      "path": "NG/Multiply_001",
+      "label": "Multiply_001",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_002",
+      "path": "NG/Image_002",
+      "label": "Image_002",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Mix",
+      "path": "NG/Mix",
+      "label": "Mix",
+      "type": "mix",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "fg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "bg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "mix",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_001",
+      "path": "NG/Image_001",
+      "label": "Image_001",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_SheenAmount",
+      "path": "NG/SheenAmount",
+      "label": "SheenAmount",
+      "type": "constant",
+      "value": "0.3",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Multiply",
+      "path": "NG/Multiply",
+      "label": "Multiply",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Multiply_002",
+      "path": "NG/Multiply_002",
+      "label": "Multiply_002",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_003",
+      "path": "NG/Image_003",
+      "label": "Image_003",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Normalmap",
+      "path": "NG/Normalmap",
+      "label": "Normalmap",
+      "type": "normalmap",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 225,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "standard_surface_1",
+      "path": "standard_surface_1",
+      "label": "standard_surface_1",
+      "type": "standard_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "specular_roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "sheen",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2010,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "Black_Upholstery",
+      "path": "Black_Upholstery",
+      "label": "Black_Upholstery",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 2290,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "NG_Texcoord",
+      "target": "NG_Multiply_001",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "NG_UVScale",
+      "target": "NG_Multiply_001",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_002",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "NG_RoughnessMin",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "fg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "NG_RoughnessMax",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "bg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "NG_Image_002",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "mix",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_001",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "NG_Mix",
+      "target": "NG_Multiply",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "NG_SheenAmount",
+      "target": "NG_Multiply",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "NG_Image_001",
+      "target": "NG_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "NG_Multiply",
+      "target": "NG_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_003",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "NG_Image_003",
+      "target": "NG_Normalmap",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "NG_Mix",
+      "target": "NG_out_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "NG_Multiply_002",
+      "target": "NG_out_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "NG_Normalmap",
+      "target": "NG_out_Normalmap",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "NG_out_Mix",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "specular_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "NG_out_Multiply_002",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "sheen",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "NG_out_Normalmap",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "standard_surface_1",
+      "target": "Black_Upholstery",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 18,
+    "totalLinks": 20,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}

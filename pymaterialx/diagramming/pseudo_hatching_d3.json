@@ -1,0 +1,874 @@
+{
+  "nodes": [
+    {
+      "id": "surfacematerial_material1",
+      "path": "surfacematerial_material1",
+      "label": "surfacematerial_material1",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 2570,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "surface_unlit_surfaceshader1",
+      "path": "surface_unlit_surfaceshader1",
+      "label": "surface_unlit_surfaceshader1",
+      "type": "surface_unlit",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "emission_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2290,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "circular_toon_out",
+      "path": "circular_toon/out",
+      "label": "out",
+      "type": "output",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2010,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "circular_toon_position_vector5",
+      "path": "circular_toon/position_vector5",
+      "label": "position_vector5",
+      "type": "position",
+      "value": "world",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_extract_float2",
+      "path": "circular_toon/extract_float2",
+      "label": "extract_float2",
+      "type": "extract",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_convert_color5",
+      "path": "circular_toon/convert_color5",
+      "label": "convert_color5",
+      "type": "convert",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_extract_float3",
+      "path": "circular_toon/extract_float3",
+      "label": "extract_float3",
+      "type": "extract",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_modulo_float2",
+      "path": "circular_toon/modulo_float2",
+      "label": "modulo_float2",
+      "type": "modulo",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_modulo_float3",
+      "path": "circular_toon/modulo_float3",
+      "label": "modulo_float3",
+      "type": "modulo",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_tiledcircles_color6",
+      "path": "circular_toon/tiledcircles_color6",
+      "label": "tiledcircles_color6",
+      "type": "tiledcircles",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "size",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 200,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_multiply_color5",
+      "path": "circular_toon/multiply_color5",
+      "label": "multiply_color5",
+      "type": "multiply",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_combine2_vector5",
+      "path": "circular_toon/combine2_vector5",
+      "label": "combine2_vector5",
+      "type": "combine2",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_normal_vector5",
+      "path": "circular_toon/normal_vector5",
+      "label": "normal_vector5",
+      "type": "normal",
+      "value": "object",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_viewdirection_vector5",
+      "path": "circular_toon/viewdirection_vector5",
+      "label": "viewdirection_vector5",
+      "type": "viewdirection",
+      "value": "world",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_combine2_vector4",
+      "path": "circular_toon/combine2_vector4",
+      "label": "combine2_vector4",
+      "type": "combine2",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_tiledcircles_color5",
+      "path": "circular_toon/tiledcircles_color5",
+      "label": "tiledcircles_color5",
+      "type": "tiledcircles",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "size",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_multiply_float2",
+      "path": "circular_toon/multiply_float2",
+      "label": "multiply_float2",
+      "type": "multiply",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_facingratio_float2",
+      "path": "circular_toon/facingratio_float2",
+      "label": "facingratio_float2",
+      "type": "facingratio",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "viewdirection",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 300,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_multiply_float3",
+      "path": "circular_toon/multiply_float3",
+      "label": "multiply_float3",
+      "type": "multiply",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "circular_toon_multiply_color6",
+      "path": "circular_toon/multiply_color6",
+      "label": "multiply_color6",
+      "type": "multiply",
+      "value": "",
+      "graph": "circular_toon",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "surface_unlit_surfaceshader1",
+      "target": "surfacematerial_material1",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "circular_toon_out",
+      "target": "surface_unlit_surfaceshader1",
+      "sourceSlot": "out",
+      "targetSlot": "emission_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "circular_toon_position_vector5",
+      "target": "circular_toon_extract_float2",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "circular_toon_facingratio_float2",
+      "target": "circular_toon_convert_color5",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "circular_toon_position_vector5",
+      "target": "circular_toon_extract_float3",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "circular_toon_extract_float2",
+      "target": "circular_toon_modulo_float2",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "circular_toon_extract_float3",
+      "target": "circular_toon_modulo_float3",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "circular_toon_combine2_vector5",
+      "target": "circular_toon_tiledcircles_color6",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "circular_toon_multiply_float3",
+      "target": "circular_toon_tiledcircles_color6",
+      "sourceSlot": "out",
+      "targetSlot": "size",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "circular_toon_tiledcircles_color6",
+      "target": "circular_toon_multiply_color5",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "circular_toon_tiledcircles_color5",
+      "target": "circular_toon_multiply_color5",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "circular_toon_modulo_float3",
+      "target": "circular_toon_combine2_vector5",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "circular_toon_modulo_float2",
+      "target": "circular_toon_combine2_vector4",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "circular_toon_combine2_vector4",
+      "target": "circular_toon_tiledcircles_color5",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "circular_toon_multiply_float2",
+      "target": "circular_toon_tiledcircles_color5",
+      "sourceSlot": "out",
+      "targetSlot": "size",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "circular_toon_facingratio_float2",
+      "target": "circular_toon_multiply_float2",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "circular_toon_viewdirection_vector5",
+      "target": "circular_toon_facingratio_float2",
+      "sourceSlot": "out",
+      "targetSlot": "viewdirection",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "circular_toon_normal_vector5",
+      "target": "circular_toon_facingratio_float2",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "circular_toon_facingratio_float2",
+      "target": "circular_toon_multiply_float3",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "circular_toon_multiply_color6",
+      "target": "circular_toon_out",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_20",
+      "source": "circular_toon_multiply_color5",
+      "target": "circular_toon_multiply_color6",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_21",
+      "source": "circular_toon_convert_color5",
+      "target": "circular_toon_multiply_color6",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 20,
+    "totalLinks": 22,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}

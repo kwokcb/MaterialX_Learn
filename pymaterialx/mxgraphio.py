@@ -1,6 +1,6 @@
 import MaterialX as mx
 import argparse, os
-from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter, MxDrawIOExporter
+from mtlxutils.mxtraversal import MtlxGraphBuilder, MxMermaidGraphExporter, MxDrawIOExporter, MxD3GraphExporter
 
 # Version check
 from mtlxutils.mxbase import *
@@ -89,12 +89,13 @@ def main():
     parser.add_argument('-ec', '--emitCategory', dest='emitCategory', default=False, help='Emit category information in the graph. Default is false.')
     parser.add_argument('-et', '--emitType', dest='emitType', default=False, help='Emit node type information in the graph. Default is false.')
     parser.add_argument('-f', '--format', dest='format', default='mermaid', help='Format of the output graph. Supported formats are: mermaid, drawio. Default is mermaid.')
+    parser.add_argument('-d3html', '--d3html', dest='d3html', default='', help='D3 tempalte HTML file')
 
     opts = parser.parse_args()
 
     # Check output format
     output_format = opts.format.lower()
-    allowed_formats = ['mermaid', 'drawio']
+    allowed_formats = ['mermaid', 'drawio', 'd3']
     if output_format not in allowed_formats:
         print('Error: Unsupported output format "%s". Allowed formats are: %s' % (opts.format, ', '.join(allowed_formats)))
         exit(-1)
@@ -182,6 +183,8 @@ def main():
             # Export graph to specified format
             if output_format == 'mermaid':
                 exporter = MxMermaidGraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
+            elif output_format == 'd3':
+                exporter = MxD3GraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
             elif output_format == 'drawio':
                 exporter = MxDrawIOExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
 
@@ -193,12 +196,25 @@ def main():
             extension = '.md' 
             if output_format == 'drawio':
                 extension = '.drawio'
+            elif output_format == 'd3':
+                #extension = '_d3.html'
+                extension = '_d3.json'
             outputFileName = mx.FilePath(inputFilename.replace('.mtlx', extension))
+
             if opts.outputPath:
                 outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
 
-            print('- Write Mermaid graph to file:' + outputFileName.asString())
-            exporter.export(outputFileName.asString())
+            print('- Write graph to file:' + outputFileName.asString())
+            if output_format == 'd3':
+                exporter.export_json(outputFileName.asString())
+
+                if opts.d3html:
+                    d3html = opts.d3html
+                    outputFileName = outputFileName.asString().replace('_d3.json', '_d3.html')
+                    print('- Write graph to html:' + outputFileName)
+                    exporter.export_html(outputFileName, d3html)
+            else:
+                exporter.export(outputFileName.asString())
 
         except mx.ExceptionFileMissing as err:
             print(err)

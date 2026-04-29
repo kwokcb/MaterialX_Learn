@@ -1,0 +1,1829 @@
+{
+  "nodes": [
+    {
+      "id": "M_BrickPattern",
+      "path": "M_BrickPattern",
+      "label": "M_BrickPattern",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 4530,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "N_StandardSurface",
+      "path": "N_StandardSurface",
+      "label": "N_StandardSurface",
+      "type": "standard_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "specular_roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 4250,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_brick_color",
+      "path": "NG_BrickPattern/brick_color",
+      "label": "brick_color",
+      "type": "input",
+      "value": "0.12941176470588237,0.20392156862745098,0.03529411764705882",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_hue_variation",
+      "path": "NG_BrickPattern/hue_variation",
+      "label": "hue_variation",
+      "type": "input",
+      "value": "0",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_value_variation",
+      "path": "NG_BrickPattern/value_variation",
+      "label": "value_variation",
+      "type": "input",
+      "value": "0",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_roughness_amount",
+      "path": "NG_BrickPattern/roughness_amount",
+      "label": "roughness_amount",
+      "type": "input",
+      "value": "0.853",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 925,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_dirt_color",
+      "path": "NG_BrickPattern/dirt_color",
+      "label": "dirt_color",
+      "type": "input",
+      "value": "0.8392156862745098,0.6431372549019608,0.4196078431372549",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_dirt_amount",
+      "path": "NG_BrickPattern/dirt_amount",
+      "label": "dirt_amount",
+      "type": "input",
+      "value": "9.6",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_uvtiling",
+      "path": "NG_BrickPattern/uvtiling",
+      "label": "uvtiling",
+      "type": "input",
+      "value": "2.8",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_base_color_output",
+      "path": "NG_BrickPattern/base_color_output",
+      "label": "base_color_output",
+      "type": "output",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 3970,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_specular_roughness_output",
+      "path": "NG_BrickPattern/specular_roughness_output",
+      "label": "specular_roughness_output",
+      "type": "output",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_normal_output",
+      "path": "NG_BrickPattern/normal_output",
+      "label": "normal_output",
+      "type": "output",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_5",
+      "path": "NG_BrickPattern/node_multiply_5",
+      "label": "node_multiply_5",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 3130,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_mix_8",
+      "path": "NG_BrickPattern/node_mix_8",
+      "label": "node_mix_8",
+      "type": "mix",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "fg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "bg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "mix",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 3410,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_color_11",
+      "path": "NG_BrickPattern/node_color_11",
+      "label": "node_color_11",
+      "type": "constant",
+      "value": "0.263273,0.263273,0.263273",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 800,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_9",
+      "path": "NG_BrickPattern/node_multiply_9",
+      "label": "node_multiply_9",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 300,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_rgbtohsv_12",
+      "path": "NG_BrickPattern/node_rgbtohsv_12",
+      "label": "node_rgbtohsv_12",
+      "type": "rgbtohsv",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_combine3_color3_13",
+      "path": "NG_BrickPattern/node_combine3_color3_13",
+      "label": "node_combine3_color3_13",
+      "type": "combine3",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in3",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2010,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_add_16",
+      "path": "NG_BrickPattern/node_add_16",
+      "label": "node_add_16",
+      "type": "add",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2290,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_hsvtorgb_17",
+      "path": "NG_BrickPattern/node_hsvtorgb_17",
+      "label": "node_hsvtorgb_17",
+      "type": "hsvtorgb",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2570,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_subtract_18",
+      "path": "NG_BrickPattern/node_subtract_18",
+      "label": "node_subtract_18",
+      "type": "subtract",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 200,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_14",
+      "path": "NG_BrickPattern/node_multiply_14",
+      "label": "node_multiply_14",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 175,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_15",
+      "path": "NG_BrickPattern/node_multiply_15",
+      "label": "node_multiply_15",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 325,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_clamp_0",
+      "path": "NG_BrickPattern/node_clamp_0",
+      "label": "node_clamp_0",
+      "type": "clamp",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 3690,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_1",
+      "path": "NG_BrickPattern/node_multiply_1",
+      "label": "node_multiply_1",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_max_1",
+      "path": "NG_BrickPattern/node_max_1",
+      "label": "node_max_1",
+      "type": "max",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_divide_21",
+      "path": "NG_BrickPattern/node_divide_21",
+      "label": "node_divide_21",
+      "type": "divide",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 175,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_mix_6",
+      "path": "NG_BrickPattern/node_mix_6",
+      "label": "node_mix_6",
+      "type": "mix",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "fg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "bg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "mix",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2850,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_23",
+      "path": "NG_BrickPattern/node_multiply_23",
+      "label": "node_multiply_23",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 750,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_25",
+      "path": "NG_BrickPattern/node_multiply_25",
+      "label": "node_multiply_25",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 450,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_add_19",
+      "path": "NG_BrickPattern/node_add_19",
+      "label": "node_add_19",
+      "type": "add",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 325,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_multiply_20",
+      "path": "NG_BrickPattern/node_multiply_20",
+      "label": "node_multiply_20",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 600,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_convert_1",
+      "path": "NG_BrickPattern/node_convert_1",
+      "label": "node_convert_1",
+      "type": "convert",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_vector3_27",
+      "path": "NG_BrickPattern/node_tiledimage_vector3_27",
+      "label": "node_tiledimage_vector3_27",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_float_22",
+      "path": "NG_BrickPattern/node_tiledimage_float_22",
+      "label": "node_tiledimage_float_22",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_float_10",
+      "path": "NG_BrickPattern/node_tiledimage_float_10",
+      "label": "node_tiledimage_float_10",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_float_7",
+      "path": "NG_BrickPattern/node_tiledimage_float_7",
+      "label": "node_tiledimage_float_7",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_float_26",
+      "path": "NG_BrickPattern/node_tiledimage_float_26",
+      "label": "node_tiledimage_float_26",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_tiledimage_float_24",
+      "path": "NG_BrickPattern/node_tiledimage_float_24",
+      "label": "node_tiledimage_float_24",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "uvtiling",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_BrickPattern_node_normalmap_3",
+      "path": "NG_BrickPattern/node_normalmap_3",
+      "label": "node_normalmap_3",
+      "type": "normalmap",
+      "value": "",
+      "graph": "NG_BrickPattern",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "N_StandardSurface",
+      "target": "M_BrickPattern",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "NG_BrickPattern_node_clamp_0",
+      "target": "NG_BrickPattern_base_color_output",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "NG_BrickPattern_node_multiply_1",
+      "target": "NG_BrickPattern_specular_roughness_output",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "NG_BrickPattern_node_mix_6",
+      "target": "NG_BrickPattern_node_multiply_5",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "NG_BrickPattern_node_tiledimage_float_7",
+      "target": "NG_BrickPattern_node_multiply_5",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "NG_BrickPattern_node_multiply_5",
+      "target": "NG_BrickPattern_node_mix_8",
+      "sourceSlot": "out",
+      "targetSlot": "fg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "NG_BrickPattern_node_multiply_9",
+      "target": "NG_BrickPattern_node_mix_8",
+      "sourceSlot": "out",
+      "targetSlot": "bg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "NG_BrickPattern_node_tiledimage_float_10",
+      "target": "NG_BrickPattern_node_mix_8",
+      "sourceSlot": "out",
+      "targetSlot": "mix",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "NG_BrickPattern_node_color_11",
+      "target": "NG_BrickPattern_node_multiply_9",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "NG_BrickPattern_node_tiledimage_float_7",
+      "target": "NG_BrickPattern_node_multiply_9",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "NG_BrickPattern_brick_color",
+      "target": "NG_BrickPattern_node_rgbtohsv_12",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "NG_BrickPattern_node_multiply_14",
+      "target": "NG_BrickPattern_node_combine3_color3_13",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "NG_BrickPattern_node_multiply_15",
+      "target": "NG_BrickPattern_node_combine3_color3_13",
+      "sourceSlot": "out",
+      "targetSlot": "in3",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "NG_BrickPattern_node_combine3_color3_13",
+      "target": "NG_BrickPattern_node_add_16",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "NG_BrickPattern_node_rgbtohsv_12",
+      "target": "NG_BrickPattern_node_add_16",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "NG_BrickPattern_node_add_16",
+      "target": "NG_BrickPattern_node_hsvtorgb_17",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "NG_BrickPattern_node_add_19",
+      "target": "NG_BrickPattern_node_subtract_18",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "NG_BrickPattern_node_subtract_18",
+      "target": "NG_BrickPattern_node_multiply_14",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "NG_BrickPattern_hue_variation",
+      "target": "NG_BrickPattern_node_multiply_14",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "NG_BrickPattern_node_add_19",
+      "target": "NG_BrickPattern_node_multiply_15",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_20",
+      "source": "NG_BrickPattern_node_multiply_20",
+      "target": "NG_BrickPattern_node_multiply_15",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_21",
+      "source": "NG_BrickPattern_node_mix_8",
+      "target": "NG_BrickPattern_node_clamp_0",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_22",
+      "source": "NG_BrickPattern_node_divide_21",
+      "target": "NG_BrickPattern_node_multiply_1",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_23",
+      "source": "NG_BrickPattern_node_tiledimage_float_22",
+      "target": "NG_BrickPattern_node_multiply_1",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_24",
+      "source": "NG_BrickPattern_node_tiledimage_float_10",
+      "target": "NG_BrickPattern_node_max_1",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_25",
+      "source": "NG_BrickPattern_roughness_amount",
+      "target": "NG_BrickPattern_node_divide_21",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_26",
+      "source": "NG_BrickPattern_node_max_1",
+      "target": "NG_BrickPattern_node_divide_21",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_27",
+      "source": "NG_BrickPattern_dirt_color",
+      "target": "NG_BrickPattern_node_mix_6",
+      "sourceSlot": "out",
+      "targetSlot": "fg",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_28",
+      "source": "NG_BrickPattern_node_hsvtorgb_17",
+      "target": "NG_BrickPattern_node_mix_6",
+      "sourceSlot": "out",
+      "targetSlot": "bg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_29",
+      "source": "NG_BrickPattern_node_multiply_23",
+      "target": "NG_BrickPattern_node_mix_6",
+      "sourceSlot": "out",
+      "targetSlot": "mix",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_30",
+      "source": "NG_BrickPattern_dirt_amount",
+      "target": "NG_BrickPattern_node_multiply_23",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_31",
+      "source": "NG_BrickPattern_node_tiledimage_float_24",
+      "target": "NG_BrickPattern_node_multiply_23",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_32",
+      "source": "NG_BrickPattern_hue_variation",
+      "target": "NG_BrickPattern_node_multiply_25",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_33",
+      "source": "NG_BrickPattern_node_tiledimage_float_26",
+      "target": "NG_BrickPattern_node_multiply_25",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_34",
+      "source": "NG_BrickPattern_node_multiply_25",
+      "target": "NG_BrickPattern_node_add_19",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_35",
+      "source": "NG_BrickPattern_node_tiledimage_float_7",
+      "target": "NG_BrickPattern_node_add_19",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_36",
+      "source": "NG_BrickPattern_value_variation",
+      "target": "NG_BrickPattern_node_multiply_20",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_37",
+      "source": "NG_BrickPattern_node_tiledimage_float_26",
+      "target": "NG_BrickPattern_node_multiply_20",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_38",
+      "source": "NG_BrickPattern_uvtiling",
+      "target": "NG_BrickPattern_node_convert_1",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_39",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_vector3_27",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_40",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_float_22",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_41",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_float_10",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_42",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_float_7",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_43",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_float_26",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_44",
+      "source": "NG_BrickPattern_node_convert_1",
+      "target": "NG_BrickPattern_node_tiledimage_float_24",
+      "sourceSlot": "out",
+      "targetSlot": "uvtiling",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_45",
+      "source": "NG_BrickPattern_node_normalmap_3",
+      "target": "NG_BrickPattern_normal_output",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_46",
+      "source": "NG_BrickPattern_node_tiledimage_vector3_27",
+      "target": "NG_BrickPattern_node_normalmap_3",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_47",
+      "source": "NG_BrickPattern_base_color_output",
+      "target": "N_StandardSurface",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_48",
+      "source": "NG_BrickPattern_specular_roughness_output",
+      "target": "N_StandardSurface",
+      "sourceSlot": "out",
+      "targetSlot": "specular_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_49",
+      "source": "NG_BrickPattern_normal_output",
+      "target": "N_StandardSurface",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 40,
+    "totalLinks": 50,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}
