@@ -115,7 +115,7 @@
       },
       "position": {
         "x": 50,
-        "y": 550,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -141,7 +141,7 @@
       },
       "position": {
         "x": 50,
-        "y": 300,
+        "y": 550,
         "width": 200,
         "height": 85
       },
@@ -167,7 +167,7 @@
       },
       "position": {
         "x": 50,
-        "y": 425,
+        "y": 50,
         "width": 200,
         "height": 85
       },
@@ -193,7 +193,7 @@
       },
       "position": {
         "x": 50,
-        "y": 50,
+        "y": 300,
         "width": 200,
         "height": 85
       },
@@ -362,7 +362,7 @@
       },
       "position": {
         "x": 50,
-        "y": 175,
+        "y": 425,
         "width": 200,
         "height": 85
       },
@@ -546,8 +546,8 @@
         "width": 200,
         "height": 135
       },
-      "color": "#969aee",
-      "textColor": "#000000"
+      "color": "#040",
+      "textColor": "#FFF"
     },
     {
       "id": "Black_Upholstery",

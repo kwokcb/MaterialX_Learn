@@ -65,8 +65,8 @@
         "width": 200,
         "height": 135
       },
-      "color": "#969aee",
-      "textColor": "#000000"
+      "color": "#040",
+      "textColor": "#FFF"
     },
     {
       "id": "NG_BrickPattern_brick_color",
@@ -87,7 +87,7 @@
       },
       "position": {
         "x": 50,
-        "y": 925,
+        "y": 300,
         "width": 200,
         "height": 85
       },
@@ -113,7 +113,7 @@
       },
       "position": {
         "x": 50,
-        "y": 175,
+        "y": 550,
         "width": 200,
         "height": 85
       },
@@ -139,7 +139,7 @@
       },
       "position": {
         "x": 50,
-        "y": 50,
+        "y": 675,
         "width": 200,
         "height": 85
       },
@@ -165,7 +165,7 @@
       },
       "position": {
         "x": 50,
-        "y": 550,
+        "y": 925,
         "width": 200,
         "height": 85
       },
@@ -191,7 +191,7 @@
       },
       "position": {
         "x": 50,
-        "y": 675,
+        "y": 425,
         "width": 200,
         "height": 85
       },
@@ -217,7 +217,7 @@
       },
       "position": {
         "x": 50,
-        "y": 800,
+        "y": 50,
         "width": 200,
         "height": 85
       },
@@ -243,7 +243,7 @@
       },
       "position": {
         "x": 50,
-        "y": 300,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -444,7 +444,7 @@
       },
       "position": {
         "x": 50,
-        "y": 425,
+        "y": 800,
         "width": 200,
         "height": 85
       },

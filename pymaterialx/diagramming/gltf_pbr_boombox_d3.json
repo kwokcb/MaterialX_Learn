@@ -24,7 +24,7 @@
       },
       "position": {
         "x": 50,
-        "y": 50,
+        "y": 425,
         "width": 200,
         "height": 110
       },
@@ -50,7 +50,7 @@
       },
       "position": {
         "x": 50,
-        "y": 450,
+        "y": 50,
         "width": 200,
         "height": 85
       },
@@ -76,7 +76,7 @@
       },
       "position": {
         "x": 50,
-        "y": 200,
+        "y": 300,
         "width": 200,
         "height": 85
       },
@@ -102,7 +102,7 @@
       },
       "position": {
         "x": 50,
-        "y": 325,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -264,8 +264,8 @@
         "width": 200,
         "height": 235
       },
-      "color": "#969aee",
-      "textColor": "#000000"
+      "color": "#040",
+      "textColor": "#FFF"
     },
     {
       "id": "Material_boombox",

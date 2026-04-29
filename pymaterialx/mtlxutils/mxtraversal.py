@@ -480,6 +480,9 @@ class MxBaseGraphExporter:
         self.node_colors = dict()
         self.node_colors['input'] = ['#09D', '#FFF']
         self.node_colors['output'] = ['#0C0', '#FFF']
+        self.node_colors['gltf_pbr'] = ['#040', '#FFF']
+        self.node_colors['standard_surface'] = ['#040', '#FFF']
+        self.node_colors['gltf_pbr'] = ['#040', '#FFF']
         self.node_colors['surfacematerial'] = ['#090', '#FFF']
         self.node_colors['nodedef'] = ['#00C', '#FFF']
         self.node_colors['token'] = ['#222', '#FFF']
@@ -487,7 +490,7 @@ class MxBaseGraphExporter:
         self.node_colors['ifequal'] = ['#C72', '#FFF']
         self.node_colors['ifgreatereq'] = ['#C72', '#FFF']
         self.node_colors['switch'] = ['#C72', '#FFF']
-        self.default_node_colors = ['#e1d5e7', '#000']
+        self.default_node_colors = ["#999999", '#000']
         self.default_port_colors = ['#FFF', '#000']
 
     def set_connections(self, graphDictionary, connections):
@@ -1498,7 +1501,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         self.slot_colors = {
             'input': '#3498db',  # Blue
             'output': '#2ecc71',  # Green
-            'default': '#95a5a6'  # Gray
+            'default': "#727272"  # Gray
         }
         background_color = "#969aee"
         text_color = "#000000"

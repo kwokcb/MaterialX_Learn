@@ -24,7 +24,7 @@
         ]
       },
       "position": {
-        "x": 50,
+        "x": 330,
         "y": 50,
         "width": 200,
         "height": 85
@@ -56,8 +56,8 @@
         ]
       },
       "position": {
-        "x": 300,
-        "y": 50,
+        "x": 330,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -82,13 +82,13 @@
         ]
       },
       "position": {
-        "x": 550,
+        "x": 50,
         "y": 50,
         "width": 200,
         "height": 85
       },
-      "color": "#e1d5e7",
-      "textColor": "#000"
+      "color": "#969aee",
+      "textColor": "#000000"
     },
     {
       "id": "NG_brass1_image_roughness",
@@ -108,13 +108,13 @@
         ]
       },
       "position": {
-        "x": 800,
-        "y": 50,
+        "x": 50,
+        "y": 175,
         "width": 200,
         "height": 85
       },
-      "color": "#e1d5e7",
-      "textColor": "#000"
+      "color": "#969aee",
+      "textColor": "#000000"
     },
     {
       "id": "SR_brass1",
@@ -150,13 +150,13 @@
         ]
       },
       "position": {
-        "x": 50,
-        "y": 250,
+        "x": 610,
+        "y": 50,
         "width": 200,
         "height": 135
       },
-      "color": "#e1d5e7",
-      "textColor": "#000"
+      "color": "#969aee",
+      "textColor": "#000000"
     },
     {
       "id": "Tiled_Brass",
@@ -176,8 +176,8 @@
         "outputs": []
       },
       "position": {
-        "x": 300,
-        "y": 250,
+        "x": 890,
+        "y": 50,
         "width": 200,
         "height": 85
       },

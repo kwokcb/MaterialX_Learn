@@ -151,8 +151,8 @@
         "width": 200,
         "height": 85
       },
-      "color": "#969aee",
-      "textColor": "#000000"
+      "color": "#040",
+      "textColor": "#FFF"
     },
     {
       "id": "unlit_patternMaterial",
@@ -382,8 +382,8 @@
         "width": 200,
         "height": 85
       },
-      "color": "#969aee",
-      "textColor": "#000000"
+      "color": "#040",
+      "textColor": "#FFF"
     },
     {
       "id": "stdsurf_patternMaterial",
@@ -430,7 +430,7 @@
       },
       "position": {
         "x": 50,
-        "y": 425,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -482,7 +482,7 @@
       },
       "position": {
         "x": 50,
-        "y": 175,
+        "y": 425,
         "width": 200,
         "height": 85
       },
