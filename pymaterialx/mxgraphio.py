@@ -205,7 +205,6 @@ def main():
 
             print('- Write graph to file:' + outputFileName.asString())
             if output_format == 'd3':
-                #exporter.export_html(outputFileName.asString())
                 exporter.export_json(outputFileName.asString())
                 outputFileName = outputFileName.asString().replace('_d3.json', '_d3.html')
                 exporter.export_html(outputFileName)

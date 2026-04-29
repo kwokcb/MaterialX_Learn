@@ -2042,7 +2042,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         </div>
         
         <div class="sidebar">
-            <div class="controls">
+            <div class="controls" style="display: none;">
                 <div class="control-group">
                     <label for="layout">Layout:</label>
                     <select id="layout" onchange="changeLayout(this.value)">
@@ -2120,6 +2120,11 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         initGraph();
         
         function initGraph() {
+                        // Ensure d.x and d.y are initialized from position for all nodes
+                        nodes.forEach(d => {
+                            d.x = d.position.x;
+                            d.y = d.position.y;
+                        });
             const svg = d3.select('#graph-svg');
             const width = svg.node().getBoundingClientRect().width;
             const height = svg.node().getBoundingClientRect().height;
@@ -2181,12 +2186,13 @@ class MxD3GraphExporter(MxBaseGraphExporter):
                 .enter().append('g')
                 .attr('class', 'node')
                 .attr('id', d => d.id)
-                .attr('transform', d => `translate(${d.position.x}, ${d.position.y})`)
+                .attr('transform', d => `translate(${typeof d.x === 'number' ? d.x : d.position.x}, ${typeof d.y === 'number' ? d.y : d.position.y})`)
                 .call(d3.drag()
                     .on('start', dragStarted)
                     .on('drag', dragged)
                     .on('end', dragEnded))
                 .on('click', function(event, d) {
+                    if (event.defaultPrevented) return; // dragged, not a click
                     selectNode(d);
                     event.stopPropagation();
                 });
@@ -2370,21 +2376,20 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         
         function dragStarted(event, d) {
             if (!event.active) simulation?.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
         }
         
         function dragged(event, d) {
-            //d.fx = event.x;
-            //d.fy = event.y;
-            d.position.x = event.x;
-            d.position.y = event.y;            
-            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            d.x = event.x;
+            d.y = event.y;
+            // Also update position.x/y so links follow
+            d.position.x = d.x;
+            d.position.y = d.y;
+            d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             updateLinkPaths();
         }
         
         function dragEnded(event, d) {
-            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             if (!event.active) simulation?.alphaTarget(0);
             d.fx = null;
             d.fy = null;
