@@ -50,7 +50,7 @@
 
         .graph-container {
             flex: 1;
-            background: rgb(16, 16, 17);
+            background: rgb(6, 18, 37);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -204,16 +204,18 @@
         }
 
         .tooltip {
-            position: absolute;
+            position: fixed;
             padding: 10px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             color: white;
             border-radius: 5px;
             pointer-events: none;
-            font-size: 12px;
-            max-width: 300px;
+            font-size: 13px;
+            max-width: 350px;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+            transition: opacity 0.15s;
         }
 
         .legend {
@@ -239,7 +241,7 @@
         .zoom-controls {
             position: absolute;
             top: 20px;
-            right: 20px;
+            left: 20px;
             background: white;
             border-radius: 0px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -273,8 +275,8 @@
 
         .selected rect.node-header,
         .selected rect.node-body {
-            stroke: #7fbfff !important;
-            stroke-width: 4 !important;
+            stroke: #ffffff !important;
+            stroke-width: 5 !important;
             filter: none !important;
         }
 
@@ -502,6 +504,15 @@
                 .attr('id', d => d.id)
                 .on('mouseover', function (event, d) {
                     d3.select(this).classed('highlighted', true);
+                    showTooltip(event, `
+                        <strong>Connection</strong><br>
+                        Source: ${d.source}<br>
+                        Target: ${d.target}<br>
+                        Type: ${d.type}<br>
+                        From: ${d.sourceSlot} → To: ${d.targetSlot}
+                    `);
+                })
+                .on('mousemove', function(event, d) {
                     showTooltip(event, `
                         <strong>Connection</strong><br>
                         Source: ${d.source}<br>
@@ -767,13 +778,31 @@
         function showTooltip(event, content) {
             const tooltip = d3.select('#tooltip');
             tooltip.html(content)
-                .style('left', (event.pageX + 10) + 'px')
-                .style('top', (event.pageY - 10) + 'px')
-                .style('opacity', 1);
+                .style('opacity', 1)
+                .style('display', 'block');
+
+            // Use clientX/clientY for viewport-relative position
+            let x = event.clientX + 16;
+            let y = event.clientY + 8;
+            // Prevent tooltip from going off right/bottom edge
+            const tooltipNode = tooltip.node();
+            if (tooltipNode) {
+                const rect = tooltipNode.getBoundingClientRect();
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                if (x + rect.width > vw - 10) x = vw - rect.width - 10;
+                if (y + rect.height > vh - 10) y = vh - rect.height - 10;
+            }
+            tooltip.style('left', x + 'px').style('top', y + 'px');
         }
 
+        // Hide tooltip with a slight delay for easier hover
+        let tooltipHideTimeout = null;
         function hideTooltip() {
-            d3.select('#tooltip').style('opacity', 0);
+            if (tooltipHideTimeout) clearTimeout(tooltipHideTimeout);
+            tooltipHideTimeout = setTimeout(() => {
+                d3.select('#tooltip').style('opacity', 0).style('display', 'none');
+            }, 120);
         }
 
         function populateNodeList() {
