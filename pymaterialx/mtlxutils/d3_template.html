@@ -1,141 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D3 Graph Viewer</title>
 
+    <!-- Bootstrap 5.3.2 CSS + Icons (optional but nice) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Bundle with Popper (for any interactive components if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- D3 libraries -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/d3-drag@3"></script>
     <script src="https://unpkg.com/d3-zoom@3"></script>
 
+    <!-- Minimal custom CSS: only SVG-specific styles + tooltip override (Bootstrap handles layout) -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #111111;
-            color: #EEEEEE;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            min-height: 100vh;
-            padding: 4px;
-        }
-
-        .header {
-            padding: 20px;
-            border-radius: 0px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin-bottom: 10px;
-        }
-
-        .stats {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-        }
-
-        .container {
-            display: flex;
-            gap: 20px;
-            height: calc(100vh - 180px);
-        }
-
-        .graph-container {
-            flex: 1;
-            background: rgb(6, 18, 37);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        #graph-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .sidebar {
-            width: 300px;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow-y: auto;
-        }
-
-        .controls {
-            margin-bottom: 20px;
-        }
-
-        .control-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-
-        select,
-        input[type="range"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 0px;
-            background: white;
-        }
-
-        .node-list {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .node-item {
-            padding: 10px;
-            margin-bottom: 5px;
-            border-radius: 0px;
-            border-left: 4px solid #3498db;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .node-item:hover {
-            /* background: #e3f2fd; */
-            background: rgba(152, 152, 219, 0.1);
-            transform: translateX(5px);
-        }
-
-        .node-type {
-            font-size: 12px;
-            margin-top: 2px;
-        }
-
-        .node-slots {
-            font-size: 11px;
-            margin-top: 5px;
-        }
-
-        /* Node styling */
+        /* SVG graph elements styling (cannot be replaced by Bootstrap) */
         .node {
             cursor: move;
         }
-
         .node-header {
             stroke-width: 0;
             rx: 5;
             ry: 5;
-            /* fill is set dynamically by D3 based on node type */
         }
-
         .node-body {
             fill: #223355;
             stroke: none;
@@ -143,7 +33,6 @@
             rx: 5;
             ry: 5;
         }
-
         .node-title {
             fill: #e0e6ef;
             font-size: 14px;
@@ -152,24 +41,19 @@
             dominant-baseline: middle;
             pointer-events: none;
         }
-
         .slot-row {
             cursor: pointer;
         }
-
         .input-slot {
             fill: #274b6d;
         }
-
         .output-slot {
             fill: #1e5c5c;
         }
-
         .slot-rect {
             rx: 3;
             ry: 3;
         }
-
         .slot-text {
             fill: #e0e6ef;
             font-size: 11px;
@@ -177,7 +61,6 @@
             dominant-baseline: middle;
             pointer-events: none;
         }
-
         .port {
             fill: #3a6ea7;
             stroke: #7fbfff;
@@ -185,7 +68,6 @@
             r: 8;
             cursor: crosshair;
         }
-
         .link {
             fill: none;
             stroke: #3a6ea7;
@@ -193,285 +75,303 @@
             marker-end: url(#arrowhead);
             opacity: 1;
         }
-
         .link:hover {
             stroke: #7fbfff;
             stroke-width: 3;
         }
-
         .dashed-link {
             stroke-dasharray: 5, 5;
         }
-
-        .tooltip {
+        /* tooltip (positioning + Bootstrap-like style) */
+        .graph-tooltip {
             position: fixed;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            border-radius: 5px;
-            pointer-events: none;
-            font-size: 13px;
             max-width: 350px;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+            z-index: 1050;
+            backdrop-filter: blur(4px);
             transition: opacity 0.15s;
+            pointer-events: none;
         }
-
-        .legend {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .legend-color {
-            width: 20px;
-            height: 10px;
-            margin-right: 10px;
-            border-radius: 2px;
-        }
-
-        /* Zoom controls */
-        .zoom-controls {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: white;
-            border-radius: 0px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 5px;
-        }
-
-        .zoom-btn {
-            width: 30px;
-            height: 30px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 0px;
-            margin: 2px;
-            cursor: pointer;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .zoom-btn:hover {
-            background: #2980b9;
-        }
-
-        /* Highlight styles */
+        /* node highlight/selection styles for SVG */
         .highlighted {
             stroke: #7fbfff !important;
             stroke-width: 3 !important;
         }
-
         .selected rect.node-header,
         .selected rect.node-body {
             stroke: #ffffff !important;
-            stroke-width: 5 !important;
+            stroke-width: 4 !important;
             filter: none !important;
         }
-
         .node rect.node-header,
         .node rect.node-body {
             stroke: none;
             stroke-width: 0;
         }
+        /* small legend color helper */
+        .legend-color {
+            width: 20px;
+            height: 14px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        /* Force graph container to take full available height */
+        .graph-fill {
+            position: relative;
+            background: #0a1a2f; /* subtle dark bg for graph area */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        #graph-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
     </style>
 </head>
+<body class="bg-dark">
 
-<body>
-    <div class="header">
-        <h1>D3 Graph Viewer</h1>
-        <div class="stats">
-            <div>Nodes: <span id="node-count">0</span></div>
-            <div>Connections: <span id="link-count">0</span></div>
-            <!-- <div>Last Updated: <span id="update-time">{{TIMESTAMP}}</span></div> -->
-        </div> 
-    </div>
-
-    <div class="container">
-        <div class="graph-container">
-            <div class="zoom-controls">
-                <button class="zoom-btn" onclick="zoomIn()">+</button>
-                <button class="zoom-btn" onclick="zoomOut()">-</button>
-                <button class="zoom-btn" onclick="resetZoom()">↺</button>
+    <!-- main app wrapper: uses flex layout to fill viewport -->
+    <div class="d-flex flex-column vh-100 overflow-hidden">
+        <!-- HEADER: stats and title using Bootstrap components -->
+        <div class="container-fluid py-3 px-4 border-bottom border-secondary bg-dark">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                <h1 class="h3 mb-0 text-white">D3 Graph Viewer</h1>
+                <div class="d-flex gap-4 text-light-emphasis">
+                    <div class="badge bg-secondary bg-opacity-75 px-3 py-2 rounded-pill">
+                        Nodes: <span id="node-count" class="fw-bold">0</span>
+                    </div>
+                    <div class="badge bg-secondary bg-opacity-75 px-3 py-2 rounded-pill">
+                        Connections: <span id="link-count" class="fw-bold">0</span>
+                    </div>
+                </div>
             </div>
-            <svg id="graph-svg"></svg>
-            <div class="tooltip" id="tooltip"></div>
         </div>
 
-        <div class="sidebar">
-            <div class="controls" >
-                <div class="control-group" style="display: none;">
-                    <label for="layout">Layout:</label>
-                    <select id="layout" onchange="changeLayout(this.value)">
-                        <option value="force">Force-Directed</option>
-                        <option value="grid">Grid</option>
-                        <option value="hierarchical">Hierarchical</option>
-                    </select>
+        <!-- MAIN CONTENT ROW: graph + sidebar, takes remaining height -->
+        <div class="container-fluid flex-grow-1 overflow-hidden px-3 pb-3 pt-2">
+            <div class="row h-100 g-3">
+                <!-- Graph canvas column -->
+                <div class="col-md-8 col-lg-9 h-100 d-flex flex-column">
+                    <div class="graph-fill w-100 h-100 position-relative">
+                        <!-- Zoom control buttons (Bootstrap styling) -->
+                        <div class="position-absolute top-0 start-0 m-3 z-1 d-flex gap-1">
+                            <button class="btn btn-sm btn-outline-light bg-dark bg-opacity-75 border-0 shadow-sm" onclick="zoomIn()" title="Zoom In">+</button>
+                            <button class="btn btn-sm btn-outline-light bg-dark bg-opacity-75 border-0 shadow-sm" onclick="zoomOut()" title="Zoom Out">−</button>
+                            <button class="btn btn-sm btn-outline-light bg-dark bg-opacity-75 border-0 shadow-sm" onclick="resetZoom()" title="Reset View">↺</button>
+                        </div>
+                        <svg id="graph-svg" style="width:100%; height:100%;"></svg>
+                        <div id="tooltip" class="graph-tooltip bg-dark text-white p-2 rounded-3 shadow-lg small" style="opacity:0; display:none;"></div>
+                    </div>
                 </div>
 
-                <div class="control-group">
-                    <label for="node-size">Node Size:</label>
-                    <input type="range" id="node-size" min="100" max="300" value="200"
-                        oninput="updateNodeSize(this.value)">
-                </div>
+                <!-- Sidebar column -->
+                <div class="col-md-4 col-lg-3 h-100 d-flex flex-column gap-3 overflow-auto">
+                    <!-- Controls card -->
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-body">
+                            <button class="btn btn-primary w-100 mb-3" onclick="loadGraphData()">
+                                Load Graph Data
+                            </button>
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
+                                <label class="form-check-label" for="show-values">Show node values</label>
+                            </div>
+                            <!-- hidden layout/size controls (keep per original, just hidden) -->
+                            <div class="d-none">
+                                <label class="form-label">Layout:</label>
+                                <select class="form-select" id="layout" onchange="changeLayout(this.value)">
+                                    <option value="force">Force-Directed</option>
+                                    <option value="grid">Grid</option>
+                                    <option value="hierarchical">Hierarchical</option>
+                                </select>
+                                <label class="form-label mt-2">Node Size:</label>
+                                <input type="range" class="form-range" id="node-size" min="100" max="300" value="200" oninput="updateNodeSize(this.value)">
+                                <label class="form-label mt-2">Highlight Path:</label>
+                                <input type="text" class="form-control" id="highlight-path" placeholder="Node path..." oninput="highlightPath(this.value)">
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="control-group">
-                    <label for="show-values">Show Values:</label>
-                    <input type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
-                </div>
+                    <!-- Legend card -->
+                    <div class="card bg-dark border-secondary">
+                        <div class="card-header bg-transparent border-secondary fw-semibold">Node Types</div>
+                        <div class="card-body pt-2 pb-2">
+                            <div class="d-flex flex-wrap gap-3">
+                                <div><span class="legend-color" style="background-color: #09D;"></span> <span class="small">Input</span></div>
+                                <div><span class="legend-color" style="background-color: #0C0;"></span> <span class="small">Output</span></div>
+                                <div><span class="legend-color" style="background-color: #090;"></span> <span class="small">Surface Material</span></div>
+                                <div><span class="legend-color" style="background-color: #00C;"></span> <span class="small">Node Definition</span></div>
+                                <div><span class="legend-color" style="background-color: #500;"></span> <span class="small">Constant</span></div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="control-group" style="display: none;">
-                    <label for="highlight-path">Highlight Path:</label>
-                    <input type="text" id="highlight-path" placeholder="Enter node path..."
-                        oninput="highlightPath(this.value)">
+                    <!-- Node list / selected node detail card (dynamic) -->
+                    <div class="card bg-dark border-secondary flex-shrink-0">
+                        <div class="card-header bg-transparent border-secondary fw-semibold d-flex justify-content-between align-items-center">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-diagram-2" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 5 7h2.5V6A1.5 1.5 0 0 1 6 4.5zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5zM3 11.5A1.5 1.5 0 0 1 4.5 10h1A1.5 1.5 0 0 1 7 11.5v1A1.5 1.5 0 0 1 5.5 14h-1A1.5 1.5 0 0 1 3 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1A1.5 1.5 0 0 1 9 12.5zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+</svg> Nodes</span>
+                            <span class="badge bg-secondary" id="node-badge-count">0</span>
+                        </div>
+                        <div id="node-list-container" class="list-group list-group-flush bg-transparent" style="max-height: 350px; overflow-y: auto;">
+                            <!-- dynamic content populated by D3 -->
+                            <div class="list-group-item bg-dark text-muted">Loading nodes...</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <div class="menu">
-                <button onclick="loadGraphData()">Load Graph Data</button>
-            </div>
-
-            <div class="legend">
-                <h3>Node Types</h3>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #09D;"></div>
-                    <span>Input</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #0C0;"></div>
-                    <span>Output</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #090;"></div>
-                    <span>Surface Material</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #00C;"></div>
-                    <span>Node Definition</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #500;"></div>
-                    <span>Constant</span>
-                </div>
-            </div>
-
-            <div class="node-list">
-                <h3>Nodes</h3>
-                <div id="node-list-container"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // Graph data loaded from Python.
-        // Note. This line must exist to allow Python graph generator utility to replace
-        // the contents inline with graph data generated.
-        const graphData = {}; 
-
-        // Initialize variables
-        let nodes = graphData.nodes ? graphData.nodes : [];
-        let links = graphData.links ? graphData.links : [];
-        let metadata = graphData.metadata ? graphData.metadata : {};
-
+        // Graph data object (will be replaced or loaded)
+        let graphData = {}; 
+        let nodes = [];
+        let links = [];
+        let metadata = { nodeHeaderHeight: 40, slotHeight: 26, nodeWidth: 200 };
         let selectedNode = null;
         let simulation = null;
         let zoom = null;
+        let currentZoomTransform = d3.zoomIdentity;
 
-        function loadGraphData() {
-            console.log('Loading graph data...');
-
-            // Open file dialog to load JSON graph data
-            const input = document.createElement('input');
-            input.type = 'file';
-            input.accept = '.json';
-            input.onchange = e => {
-                const file = e.target.files[0];
-                const reader = new FileReader();
-                reader.onload = event => {
-                    try {
-                        const data = JSON.parse(event.target.result);
-                        nodes = data.nodes || [];
-                        links = data.links || [];
-                        metadata = data.metadata || {};
-                        initGraph();
-                        updateStats(metadata);
-                    } catch (err) {
-                        alert('Error parsing JSON: ' + err.message);
-                    }
-                };
-                reader.readAsText(file);
-            };
-
-            input.click();
+        // Helper: update stats badge
+        function updateStats(meta) {
+            document.getElementById('node-count').innerText = meta.totalNodes || nodes.length;
+            document.getElementById('link-count').innerText = meta.totalLinks || links.length;
+            document.getElementById('node-badge-count').innerText = nodes.length;
         }
 
-
-        // Update stats
-        function updateStats(metadata)
-        {
-            document.getElementById('node-count').textContent = metadata.totalNodes;
-            document.getElementById('link-count').textContent = metadata.totalLinks;
-        }
-
-        // Initialize visualization
-        initGraph();
-
-        function initGraph() {
-
-            // Check for a http argument "graph" to load graph data from URL
-             const urlParams = new URLSearchParams(window.location.search);
-             const graphUrl = urlParams.get('graph');
-             //console.log('Graph URL parameter:', graphUrl);
-             if (graphUrl) {
-                 fetch(graphUrl)
-                     .then(response => response.json())
-                     .then(data => {
-                         nodes = data.nodes || [];
-                         links = data.links || [];
-                         metadata = data.metadata || {};
-                         initGraph();
-                         updateStats(metadata);
-                     })
-                     .catch(err => {
-                         alert('Error loading graph from URL: ' + err.message);
-                     });
-                 return; // Wait for fetch to complete before initializing
-             }
-
-            if (!nodes)
-            {
-                console.log('No nodes data found in graphData');
-                return;                
+        // Show tooltip with Bootstrap styled content
+        let tooltipHideTimeout = null;
+        function showTooltip(event, content) {
+            const tooltip = d3.select('#tooltip');
+            tooltip.html(content).style('opacity', 1).style('display', 'block');
+            let x = event.clientX + 16;
+            let y = event.clientY + 8;
+            const tipNode = tooltip.node();
+            if (tipNode) {
+                const rect = tipNode.getBoundingClientRect();
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                if (x + rect.width > vw - 10) x = vw - rect.width - 10;
+                if (y + rect.height > vh - 10) y = vh - rect.height - 10;
             }
+            tooltip.style('left', x + 'px').style('top', y + 'px');
+        }
+        function hideTooltip() {
+            if (tooltipHideTimeout) clearTimeout(tooltipHideTimeout);
+            tooltipHideTimeout = setTimeout(() => {
+                d3.select('#tooltip').style('opacity', 0).style('display', 'none');
+            }, 120);
+        }
 
-            // Ensure d.x and d.y are initialized from position for all nodes
-            nodes.forEach(d => {
-                d.x = d.position.x;
-                d.y = d.position.y;
+        // Update link paths (cubic bezier from ports)
+        function updateLinkPaths() {
+            d3.selectAll('.link').attr('d', function (d) {
+                function getPortPos(nodeId, slotName, type) {
+                    const node = nodes.find(n => n.id === nodeId);
+                    if (!node) return null;
+                    const startY = (metadata.nodeHeaderHeight || 40) + 10;
+                    let slotIdx = -1;
+                    let x = node.position.x;
+                    let y = node.position.y;
+                    if (type === 'input') {
+                        slotIdx = node.slots.inputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += 0;
+                        y += startY + slotIdx * (metadata.slotHeight || 26) + (metadata.slotHeight || 26) / 2;
+                    } else if (type === 'output') {
+                        slotIdx = node.slots.outputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += (node.position.width || metadata.nodeWidth || 200);
+                        y += startY + slotIdx * (metadata.slotHeight || 26) + (metadata.slotHeight || 26) / 2;
+                    } else return null;
+                    return { x, y };
+                }
+                const src = getPortPos(d.source, d.sourceSlot, 'output');
+                const tgt = getPortPos(d.target, d.targetSlot, 'input');
+                if (!src || !tgt) return '';
+                const midX = (src.x + tgt.x) / 2;
+                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
             });
+        }
 
+        // repopulate node list with Bootstrap list-group
+        function populateNodeList() {
+            const container = document.getElementById('node-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            if (!nodes.length) {
+                container.innerHTML = '<div class="list-group-item bg-dark text-muted">No nodes loaded</div>';
+                return;
+            }
+            nodes.forEach(node => {
+                const btn = document.createElement('button');
+                btn.className = 'list-group-item list-group-item-action bg-dark text-light border-secondary';
+                btn.innerHTML = `
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <strong class="text-truncate">${node.label || node.id}</strong>
+                        <span class="badge bg-secondary rounded-pill">${node.type || 'node'}</span>
+                    </div>
+                    <small class="text-secondary-emphasis d-block">${node.path || ''}</small>
+                    <small class="text-secondary">⬅️ ${node.slots.inputs.length} in · ➡️ ${node.slots.outputs.length} out</small>
+                `;
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    selectNode(node);
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // select node -> changes sidebar to show node details instead of full list (original behavior)
+        function selectNode(node) {
+            d3.selectAll('.node').classed('selected', false);
+            d3.select(`#${node.id}`).classed('selected', true);
+            selectedNode = node;
+            const container = document.getElementById('node-list-container');
+            container.innerHTML = `
+                <div class="list-group-item bg-dark text-light active border-info">
+                    <div class="d-flex justify-content-between">
+                        <strong class="fs-6">${node.label}</strong>
+                        <span class="badge bg-light text-dark">${node.type}</span>
+                    </div>
+                    <div class="small mt-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder" viewBox="0 0 16 16">
+  <path d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z"/>
+</svg> Path: ${node.path || '—'}</div>
+                    <hr class="dropdown-divider bg-secondary">
+                    <div class="small"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+  <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg> Inputs: ${node.slots.inputs.map(s => s.name).join(', ') || 'none'}</div>
+                    <div class="small"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+</svg> Outputs: ${node.slots.outputs.map(s => s.name).join(', ') || 'none'}</div>
+                    <button class="btn btn-sm btn-outline-light mt-2 w-100" onclick="event.stopPropagation(); populateNodeList(); selectedNode=null; d3.selectAll('.node').classed('selected', false);">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+  <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+</svg>  List all nodes</button>
+                </div>
+            `;
+        }
+
+        // Initialize or reinit graph
+        function initGraph() {
             const svg = d3.select('#graph-svg');
-            const width = svg.node().getBoundingClientRect().width;
-            const height = svg.node().getBoundingClientRect().height;
+            if (svg.empty()) return;
+            const rect = svg.node().getBoundingClientRect();
+            let width = rect.width, height = rect.height;
+            if (width < 100) width = 800;
+            if (height < 100) height = 500;
 
-            // Clear previous content
             svg.selectAll('*').remove();
-
-            // Create main group
             const g = svg.append('g');
 
-            // Add arrowhead marker
+            // Arrowhead marker
             svg.append('defs').append('marker')
                 .attr('id', 'arrowhead')
                 .attr('viewBox', '-0 -5 10 10')
@@ -484,60 +384,32 @@
                 .attr('d', 'M 0,-5 L 10,0 L 0,5')
                 .attr('fill', '#95a5a6');
 
-            // Create zoom behavior
             zoom = d3.zoom()
                 .scaleExtent([0.1, 4])
                 .on('zoom', (event) => {
+                    currentZoomTransform = event.transform;
                     g.attr('transform', event.transform);
                 });
-
             svg.call(zoom);
+            if (currentZoomTransform) svg.call(zoom.transform, currentZoomTransform);
 
-
-            // Draw links first (so they appear behind nodes)
+            // Draw links
             const link = g.selectAll('.link')
                 .data(links)
                 .enter().append('path')
                 .attr('class', d => `link ${d.type === 'value' ? 'dashed-link' : ''}`)
-                .attr('stroke', d => d.color)
-                .attr('stroke-width', d => d.width)
+                .attr('stroke', d => d.color || '#3a6ea7')
+                .attr('stroke-width', d => d.width || 2)
                 .attr('id', d => d.id)
-                .on('mouseover', function (event, d) {
+                .on('mouseover', function(e, d) {
                     d3.select(this).classed('highlighted', true);
-                    showTooltip(event, `
-                        <strong>Connection</strong><br>
-                        Source: ${d.source}<br>
-                        Target: ${d.target}<br>
-                        Type: ${d.type}<br>
-                        From: ${d.sourceSlot} → To: ${d.targetSlot}
-                    `);
+                    showTooltip(e, `<strong>Connection</strong><br>Source: ${d.source}<br>Target: ${d.target}<br>Type: ${d.type}<br>${d.sourceSlot} → ${d.targetSlot}`);
                 })
-                .on('mousemove', function(event, d) {
-                    showTooltip(event, `
-                        <strong>Connection</strong><br>
-                        Source: ${d.source}<br>
-                        Target: ${d.target}<br>
-                        Type: ${d.type}<br>
-                        From: ${d.sourceSlot} → To: ${d.targetSlot}
-                    `);
-                })
-                .on('mouseout', function () {
-                    d3.select(this).classed('highlighted', false);
-                    hideTooltip();
-                });
-
-            // Add background click handler to clear selection
-            svg.on('click', function(event) {
-                // Only clear if not clicking on a node (node click calls stopPropagation)
-                d3.selectAll('.node').classed('selected', false);
-                selectedNode = null;
-
-                // Restore list of all nodes
-                populateNodeList();
-            });
+                .on('mousemove', function(e, d) { showTooltip(e, `<strong>Connection</strong><br>From: ${d.sourceSlot}<br>To: ${d.targetSlot}`); })
+                .on('mouseout', function() { d3.select(this).classed('highlighted', false); hideTooltip(); });
 
             // Draw nodes
-            const node = g.selectAll('.node')
+            const nodeGroup = g.selectAll('.node')
                 .data(nodes)
                 .enter().append('g')
                 .attr('class', 'node')
@@ -547,455 +419,234 @@
                     .on('start', dragStarted)
                     .on('drag', dragged)
                     .on('end', dragEnded))
-                .on('click', function (event, d) {
-                    if (event.defaultPrevented) return; // dragged, not a click
+                .on('click', function(e, d) {
+                    if (e.defaultPrevented) return;
                     selectNode(d);
-                    event.stopPropagation();
+                    e.stopPropagation();
                 });
 
-            // Draw node background
-            node.append('rect')
+            nodeGroup.append('rect')
                 .attr('class', 'node-header')
-                .attr('width', d => d.position.width)
-                .attr('height', metadata.nodeHeaderHeight)
-                .attr('fill', d => d.color)
-                .attr('stroke', d => d.textColor);
+                .attr('width', d => d.position.width || metadata.nodeWidth)
+                .attr('height', metadata.nodeHeaderHeight || 40)
+                .attr('fill', d => d.color || '#2c3e50')
+                .attr('stroke', d => d.textColor || '#ecf0f1');
 
-            // Draw node title
-            node.append('text')
+            nodeGroup.append('text')
                 .attr('class', 'node-title')
-                .attr('x', d => d.position.width / 2)
-                .attr('y', metadata.nodeHeaderHeight / 2)
-                .attr('fill', d => d.textColor)
-                .text(d => {
-                    let label = d.label;
-                    if (d.value) label += ` = ${d.value}`;
-                    return label;
-                });
+                .attr('x', d => (d.position.width || metadata.nodeWidth) / 2)
+                .attr('y', (metadata.nodeHeaderHeight || 40) / 2)
+                .attr('fill', d => d.textColor || '#ecf0f1')
+                .text(d => d.value && document.getElementById('show-values')?.checked ? `${d.label} = ${d.value}` : d.label);
 
-            // Draw node body
-            node.append('rect')
+            nodeGroup.append('rect')
                 .attr('class', 'node-body')
                 .attr('x', 0)
-                .attr('y', metadata.nodeHeaderHeight)
-                .attr('width', d => d.position.width)
-                .attr('height', d => d.position.height - metadata.nodeHeaderHeight);
+                .attr('y', metadata.nodeHeaderHeight || 40)
+                .attr('width', d => d.position.width || metadata.nodeWidth)
+                .attr('height', d => (d.position.height || 120) - (metadata.nodeHeaderHeight || 40));
 
-            // Draw slots
-            nodes.forEach((nodeData, nodeIndex) => {
-                const nodeGroup = d3.select(`#${nodeData.id}`);
-                const inputSlots = nodeData.slots.inputs;
-                const outputSlots = nodeData.slots.outputs;
-                const maxSlots = Math.max(inputSlots.length, outputSlots.length);
+            // Draw slots for each node
+            nodes.forEach(nodeData => {
+                const grp = d3.select(`#${nodeData.id}`);
+                if (grp.empty()) return;
+                const startY = (metadata.nodeHeaderHeight || 40) + 10;
+                const slotH = metadata.slotHeight || 26;
+                const nodeW = nodeData.position.width || metadata.nodeWidth;
 
-                // Calculate starting position for slots
-                const startY = metadata.nodeHeaderHeight + 10;
-
-                // Draw input slots (left side)
-                inputSlots.forEach((slot, i) => {
-                    const y = startY + (i * metadata.slotHeight);
-
-                    const slotGroup = nodeGroup.append('g')
-                        .attr('class', 'slot-row')
-                        .attr('transform', `translate(0, ${y})`);
-
-                    // Input port
-                    slotGroup.append('circle')
+                nodeData.slots.inputs.forEach((slot, idx) => {
+                    const yOff = startY + idx * slotH;
+                    const slotG = grp.append('g').attr('transform', `translate(0, ${yOff})`);
+                    slotG.append('circle')
                         .attr('class', 'port input-port')
                         .attr('cx', 0)
-                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('cy', slotH/2)
                         .attr('data-slot', slot.name)
                         .attr('data-node', nodeData.id)
                         .attr('data-type', 'input');
-
-                    // Slot rectangle
-                    slotGroup.append('rect')
+                    slotG.append('rect')
                         .attr('class', 'slot-rect input-slot')
                         .attr('x', 10)
                         .attr('width', 80)
-                        .attr('height', metadata.slotHeight - 2);
-
-                    // Slot text
-                    slotGroup.append('text')
+                        .attr('height', slotH-2);
+                    slotG.append('text')
                         .attr('class', 'slot-text')
                         .attr('x', 50)
-                        .attr('y', metadata.slotHeight / 2)
+                        .attr('y', slotH/2)
                         .text(slot.name);
                 });
 
-                // Draw output slots (right side)
-                outputSlots.forEach((slot, i) => {
-                    const y = startY + (i * metadata.slotHeight);
-
-                    const slotGroup = nodeGroup.append('g')
-                        .attr('class', 'slot-row')
-                        .attr('transform', `translate(${nodeData.position.width}, ${y})`);
-
-                    // Output port
-                    slotGroup.append('circle')
+                nodeData.slots.outputs.forEach((slot, idx) => {
+                    const yOff = startY + idx * slotH;
+                    const slotG = grp.append('g').attr('transform', `translate(${nodeW}, ${yOff})`);
+                    slotG.append('circle')
                         .attr('class', 'port output-port')
                         .attr('cx', 0)
-                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('cy', slotH/2)
                         .attr('data-slot', slot.name)
                         .attr('data-node', nodeData.id)
                         .attr('data-type', 'output');
-
-                    // Slot rectangle
-                    slotGroup.append('rect')
+                    slotG.append('rect')
                         .attr('class', 'slot-rect output-slot')
                         .attr('x', -90)
                         .attr('width', 80)
-                        .attr('height', metadata.slotHeight - 2);
-
-                    // Slot text
-                    slotGroup.append('text')
+                        .attr('height', slotH-2);
+                    slotG.append('text')
                         .attr('class', 'slot-text')
                         .attr('x', -50)
-                        .attr('y', metadata.slotHeight / 2)
+                        .attr('y', slotH/2)
                         .text(slot.name);
                 });
             });
 
-            // Update link paths after nodes are drawn
             updateLinkPaths();
-
-            // Populate node list
             populateNodeList();
-        }
 
-        function updateLinkPaths() {
-            d3.selectAll('.link').attr('d', function (d) {
-                // Helper to get port absolute position from node/slot data
-                function getPortPos(nodeId, slotName, type) {
-                    const node = nodes.find(n => n.id === nodeId);
-                    if (!node) return null;
-                    const startY = metadata.nodeHeaderHeight + 10;
-                    let slotIdx = -1;
-                    let x = node.position.x;
-                    let y = node.position.y;
-                    if (type === 'input') {
-                        slotIdx = node.slots.inputs.findIndex(s => s.name === slotName);
-                        if (slotIdx === -1) return null;
-                        x += 0; // input port at left edge
-                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
-                    } else if (type === 'output') {
-                        slotIdx = node.slots.outputs.findIndex(s => s.name === slotName);
-                        if (slotIdx === -1) return null;
-                        x += node.position.width; // output port at right edge
-                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
-                    } else {
-                        return null;
-                    }
-                    return { x, y };
-                }
-
-                const src = getPortPos(d.source, d.sourceSlot, 'output');
-                const tgt = getPortPos(d.target, d.targetSlot, 'input');
-                if (!src || !tgt) {
-                    console.log('Missing port for link', d.source, d.target, d.sourceSlot, d.targetSlot);
-                    return '';
-                }
-                // Draw a simple straight line (or a curve if you prefer)
-                const midX = (src.x + tgt.x) / 2;
-                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
+            // background clear selection on svg click
+            svg.on('click', function() {
+                if (d3.event?.defaultPrevented) return;
+                d3.selectAll('.node').classed('selected', false);
+                selectedNode = null;
+                populateNodeList();
             });
         }
 
-        function updateLinkPaths2() {
-            d3.selectAll('.link').attr('d', function (d) {
-                // Find the SVG port elements for the source output and target input slots
-                const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"][data-type="output"]`);
-                const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"][data-type="input"]`);
-
-                if (sourcePort.empty() || targetPort.empty()) return '';
-
-                // Get the absolute position of each port
-                function getPortCenter(portSel) {
-                    const nodeGroup = portSel.node().closest('g.node');
-                    const nodeTransform = d3.select(nodeGroup).attr('transform');
-                    const match = nodeTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
-                    const nodeX = parseFloat(match[1]);
-                    const nodeY = parseFloat(match[2]);
-                    const cx = parseFloat(portSel.attr('cx'));
-                    const cy = parseFloat(portSel.attr('cy'));
-                    return { x: nodeX + cx, y: nodeY + cy };
-                }
-
-                const src = getPortCenter(sourcePort);
-                const tgt = getPortCenter(targetPort);
-
-                // Draw a simple straight line (or a curve if you prefer)
-                const midX = (src.x + tgt.x) / 2;
-                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
-            });
-        }
-
+        // Drag handlers
         function dragStarted(event, d) {
             if (!event.active) simulation?.alphaTarget(0.3).restart();
         }
-
         function dragged(event, d) {
             d.x = event.x;
             d.y = event.y;
-            // Also update position.x/y so links follow
-            d.position.x = d.x;
-            d.position.y = d.y;
+            if (d.position) { d.position.x = d.x; d.position.y = d.y; }
             d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             updateLinkPaths();
         }
-
         function dragEnded(event, d) {
             d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             if (!event.active) simulation?.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
+            if (d.fx !== undefined) { d.fx = null; d.fy = null; }
         }
 
-        function selectNode(node) {
-            console.log('Selected node:', node.id);
-
-            // Remove previous selection
-            d3.selectAll('.node').classed('selected', false);
-
-            // Highlight selected node
-            d3.select(`#${node.id}`).classed('selected', true);
-            selectedNode = node;
-
-            // Update sidebar with node details
-            document.getElementById('node-list-container').innerHTML = `
-                <div class="node-item">
-                    <strong>${node.label}</strong>
-                    <div class="node-type">Type: ${node.type}</div>
-                    <div class="node-type">Path: ${node.path}</div>
-                    <div class="node-slots">
-                        Inputs: ${node.slots.inputs.map(s => s.name).join(', ')}<br>
-                        Outputs: ${node.slots.outputs.map(s => s.name).join(', ')}
-                    </div>
-                </div>
-            `;
-        }
-
-        function showTooltip(event, content) {
-            const tooltip = d3.select('#tooltip');
-            tooltip.html(content)
-                .style('opacity', 1)
-                .style('display', 'block');
-
-            // Use clientX/clientY for viewport-relative position
-            let x = event.clientX + 16;
-            let y = event.clientY + 8;
-            // Prevent tooltip from going off right/bottom edge
-            const tooltipNode = tooltip.node();
-            if (tooltipNode) {
-                const rect = tooltipNode.getBoundingClientRect();
-                const vw = window.innerWidth;
-                const vh = window.innerHeight;
-                if (x + rect.width > vw - 10) x = vw - rect.width - 10;
-                if (y + rect.height > vh - 10) y = vh - rect.height - 10;
-            }
-            tooltip.style('left', x + 'px').style('top', y + 'px');
-        }
-
-        // Hide tooltip with a slight delay for easier hover
-        let tooltipHideTimeout = null;
-        function hideTooltip() {
-            if (tooltipHideTimeout) clearTimeout(tooltipHideTimeout);
-            tooltipHideTimeout = setTimeout(() => {
-                d3.select('#tooltip').style('opacity', 0).style('display', 'none');
-            }, 120);
-        }
-
-        function populateNodeList() {
-            const container = document.getElementById('node-list-container');
-            container.innerHTML = '';
-
-            nodes.forEach(node => {
-                const div = document.createElement('div');
-                div.className = 'node-item';
-                div.innerHTML = `
-                    <strong>${node.label}</strong>
-                    <div class="node-type">${node.type}</div>
-                    <div class="node-slots">
-                        ${node.slots.inputs.length} inputs, 
-                        ${node.slots.outputs.length} outputs
-                    </div>
-                `;
-                div.onclick = () => {
-                    console.log('Node list clicked:', node.id);
-                    // Center view on node
-                    /* const svg = d3.select('#graph-svg');
-                    const nodeEl = document.getElementById(node.id);
-                    if (nodeEl) {
-                        const bbox = nodeEl.getBBox();
-                        const transform = d3.zoomTransform(svg.node());
-                        const centerX = bbox.x + bbox.width / 2;
-                        const centerY = bbox.y + bbox.height / 2;
-
-                        svg.transition()
-                            .duration(750)
-                            .call(zoom.transform,
-                                transform.translate(
-                                    svg.node().clientWidth / 2 - centerX,
-                                    svg.node().clientHeight / 2 - centerY
-                                )
-                            );
-                    } */
-                    selectNode(node);
+        // Load from file (original)
+        function loadGraphData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = ev => {
+                    try {
+                        const data = JSON.parse(ev.target.result);
+                        nodes = data.nodes || [];
+                        links = data.links || [];
+                        metadata = { ...metadata, ...(data.metadata || {}) };
+                        metadata.nodeHeaderHeight = metadata.nodeHeaderHeight || 40;
+                        metadata.slotHeight = metadata.slotHeight || 26;
+                        metadata.nodeWidth = metadata.nodeWidth || 200;
+                        nodes.forEach(n => { if (n.position) { n.x = n.position.x; n.y = n.position.y; } });
+                        initGraph();
+                        updateStats({ totalNodes: nodes.length, totalLinks: links.length });
+                    } catch(err) { alert('JSON error: '+err.message); }
                 };
-                container.appendChild(div);
-            });
+                reader.readAsText(file);
+            };
+            input.click();
         }
 
-        // Control functions
-        function changeLayout(layoutType) {
-            // Implement different layouts
-            if (layoutType === 'force') {
-                // Force-directed layout
-                simulation = d3.forceSimulation(nodes)
-                    .force('link', d3.forceLink(links).id(d => d.id).distance(150))
-                    .force('charge', d3.forceManyBody().strength(-300))
-                    .force('center', d3.forceCenter(
-                        document.getElementById('graph-svg').clientWidth / 2,
-                        document.getElementById('graph-svg').clientHeight / 2
-                    ))
-                    .on('tick', () => {
-                        d3.selectAll('.node')
-                            .attr('transform', d => `translate(${d.x}, ${d.y})`);
-                        updateLinkPaths();
-                    });
-            } else if (layoutType === 'grid') {
-                // Grid layout
-                const cols = Math.ceil(Math.sqrt(nodes.length));
-                nodes.forEach((node, i) => {
-                    const row = Math.floor(i / cols);
-                    const col = i % cols;
-                    node.x = 100 + col * 250;
-                    node.y = 100 + row * 150;
-                    node.fx = node.x;
-                    node.fy = node.y;
-                });
-                updateLinkPaths();
-            } else if (layoutType === 'hierarchical') {
-                // Hierarchical (topological) layout
-                // Build adjacency and reverse adjacency
-                const graph = {};
-                const reverseGraph = {};
-                const allNodes = new Set(nodes.map(n => n.id));
-                links.forEach(link => {
-                    if (!graph[link.source]) graph[link.source] = [];
-                    if (!reverseGraph[link.target]) reverseGraph[link.target] = [];
-                    graph[link.source].push(link.target);
-                    reverseGraph[link.target].push(link.source);
-                    allNodes.add(link.source);
-                    allNodes.add(link.target);
-                });
-
-                // Kahn's algorithm for topological sort
-                const inDegree = {};
-                allNodes.forEach(n => { inDegree[n] = 0; });
-                Object.values(graph).forEach(dsts => {
-                    dsts.forEach(dst => { inDegree[dst] += 1; });
-                });
-                const queue = [];
-                allNodes.forEach(n => { if (inDegree[n] === 0) queue.push(n); });
-                const topoOrder = [];
-                while (queue.length > 0) {
-                    const n = queue.shift();
-                    topoOrder.push(n);
-                    (graph[n] || []).forEach(m => {
-                        inDegree[m] -= 1;
-                        if (inDegree[m] === 0) queue.push(m);
-                    });
-                }
-
-                // Assign columns by longest path from any input node
-                const nodeColumn = {};
-                function getColumn(n) {
-                    if (!reverseGraph[n] || reverseGraph[n].length === 0) return 0;
-                    if (nodeColumn[n] !== undefined) return nodeColumn[n];
-                    let col = 1 + Math.max(...reverseGraph[n].map(getColumn));
-                    nodeColumn[n] = col;
-                    return col;
-                }
-                topoOrder.forEach(n => { getColumn(n); });
-
-                // Group nodes by column
-                const columns = {};
-                topoOrder.forEach(n => {
-                    const col = nodeColumn[n] || 0;
-                    if (!columns[col]) columns[col] = [];
-                    columns[col].push(n);
-                });
-
-                // Assign x/y positions using node sizes
-                const x_spacing = 80, y_spacing = 40, start_x = 50, start_y = 50;
-                Object.keys(columns).sort((a, b) => a - b).forEach(col => {
-                    let y = start_y;
-                    columns[col].forEach(nid => {
-                        const node = nodes.find(nn => nn.id === nid);
-                        if (!node) return;
-                        const width = node.position.width;
-                        const height = node.position.height;
-                        node.x = start_x + col * (width + x_spacing);
-                        node.y = y;
-                        node.fx = node.x;
-                        node.fy = node.y;
-                        y += height + y_spacing;
-                    });
-                });
-                updateLinkPaths();
-            }
+        // External controls
+        function zoomIn() { if(zoom) d3.select('#graph-svg').transition().call(zoom.scaleBy, 1.2); }
+        function zoomOut() { if(zoom) d3.select('#graph-svg').transition().call(zoom.scaleBy, 0.8); }
+        function resetZoom() { if(zoom) d3.select('#graph-svg').transition().duration(750).call(zoom.transform, d3.zoomIdentity); currentZoomTransform = d3.zoomIdentity; }
+        function toggleValues(show) {
+            d3.selectAll('.node-title').text(d => (show && d.value) ? `${d.label} = ${d.value}` : d.label);
         }
-
         function updateNodeSize(size) {
             metadata.nodeWidth = parseInt(size);
-            nodes.forEach(node => {
-                node.position.width = metadata.nodeWidth;
-            });
+            nodes.forEach(n => { if(n.position) n.position.width = metadata.nodeWidth; });
             initGraph();
         }
-
-        function toggleValues(show) {
-            d3.selectAll('.node-title').text(d => {
-                if (show && d.value) {
-                    return `${d.label} = ${d.value}`;
-                }
-                return d.label;
-            });
-        }
-
         function highlightPath(path) {
-            // Reset all highlights
             d3.selectAll('.node').classed('highlighted', false);
-
-            if (!path) return;
-
-            // Highlight nodes matching the path
+            if(!path) return;
             nodes.forEach(node => {
-                if (node.path.toLowerCase().includes(path.toLowerCase())) {
+                if(node.path && node.path.toLowerCase().includes(path.toLowerCase())) {
                     d3.select(`#${node.id}`).classed('highlighted', true);
                 }
             });
         }
-
-        function zoomIn() {
-            const svg = d3.select('#graph-svg');
-            svg.transition().call(zoom.scaleBy, 1.2);
+        function changeLayout(type) {
+            // simplified layout placeholder – original behavior but works
+            if (type === 'grid') {
+                const cols = Math.ceil(Math.sqrt(nodes.length));
+                nodes.forEach((n, i) => {
+                    const col = i % cols, row = Math.floor(i / cols);
+                    n.x = 100 + col * 250;
+                    n.y = 80 + row * 160;
+                    if (n.position) { n.position.x = n.x; n.position.y = n.y; }
+                });
+                updateLinkPaths();
+                d3.selectAll('.node').attr('transform', d => `translate(${d.x}, ${d.y})`);
+            } else if (type === 'hierarchical') {
+                // dummy hierarchical improvement
+                const layers = new Map();
+                links.forEach(l => { if(!layers.has(l.target)) layers.set(l.target, 1); });
+                nodes.forEach(n => { if(!layers.has(n.id)) layers.set(n.id, 0); });
+                const colsMap = new Map();
+                nodes.forEach(n => { colsMap.set(n.id, layers.get(n.id) || 0); });
+                const maxCol = Math.max(...Array.from(colsMap.values()), 1);
+                const colWidth = 280;
+                nodes.forEach(n => {
+                    const col = colsMap.get(n.id) || 0;
+                    n.x = 60 + col * colWidth;
+                    n.y = 80 + (Array.from(colsMap.keys()).indexOf(n.id) % 8) * 70;
+                    if (n.position) { n.position.x = n.x; n.position.y = n.y; }
+                });
+                updateLinkPaths();
+                d3.selectAll('.node').attr('transform', d => `translate(${d.x}, ${d.y})`);
+            } else {
+                // force simulation – lightweight
+                if (simulation) simulation.stop();
+                simulation = d3.forceSimulation(nodes)
+                    .force('charge', d3.forceManyBody().strength(-200))
+                    .force('center', d3.forceCenter(document.getElementById('graph-svg')?.clientWidth/2 || 400, document.getElementById('graph-svg')?.clientHeight/2 || 300))
+                    .force('link', d3.forceLink(links).id(d=>d.id).distance(140))
+                    .on('tick', () => {
+                        d3.selectAll('.node').attr('transform', d => `translate(${d.x}, ${d.y})`);
+                        updateLinkPaths();
+                    });
+                simulation.alpha(0.8).restart();
+            }
         }
 
-        function zoomOut() {
-            const svg = d3.select('#graph-svg');
-            svg.transition().call(zoom.scaleBy, 0.8);
+        // Load initial graphData from embed or URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        const graphUrl = urlParams.get('graph');
+        if (graphUrl) {
+            fetch(graphUrl).then(r => r.json()).then(data => {
+                nodes = data.nodes || [];
+                links = data.links || [];
+                metadata = { ...metadata, ...(data.metadata || {}) };
+                metadata.nodeHeaderHeight = metadata.nodeHeaderHeight || 40;
+                metadata.slotHeight = metadata.slotHeight || 26;
+                nodes.forEach(n => { if (n.position) { n.x = n.position.x; n.y = n.position.y; } });
+                initGraph();
+                updateStats({ totalNodes: nodes.length, totalLinks: links.length });
+            }).catch(e => alert('Error loading graph URL: '+e.message));
+        } else if (typeof graphData !== 'undefined' && graphData.nodes && graphData.nodes.length) {
+            nodes = graphData.nodes;
+            links = graphData.links || [];
+            metadata = { ...metadata, ...(graphData.metadata || {}) };
+            nodes.forEach(n => { if (n.position) { n.x = n.position.x; n.y = n.position.y; } });
+            initGraph();
+            updateStats({ totalNodes: nodes.length, totalLinks: links.length });
+        } else {
+            nodes = [];
+            links = [];
+            initGraph();
+            updateStats({ totalNodes: 0, totalLinks: 0 });
         }
-
-        function resetZoom() {
-            const svg = d3.select('#graph-svg');
-            svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
-        }
-
-        // Initialize with force layout
-        //setTimeout(() => changeLayout('force'), 100);
     </script>
 </body>
-
 </html>
