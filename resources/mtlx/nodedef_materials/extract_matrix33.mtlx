@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<materialx version="1.39">
+  <extract name="extract_matrix33" type="vector3">
+    <input name="in" type="matrix33" value="0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0" />
+    <input name="index" type="integer" value="0" uniform="true" />
+  </extract>
+  <convert name="shader_extract_matrix33_out" type="surfaceshader">
+    <input name="in" type="vector3" nodename="extract_matrix33" />
+  </convert>
+  <surfacematerial name="material_extract_matrix33_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_extract_matrix33_out" />
+  </surfacematerial>
+</materialx>

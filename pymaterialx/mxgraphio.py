@@ -10,10 +10,17 @@ if not haveVersion1387:
 
 # Write predicate
 def skipLibraryElement(elem):
+    '''
+    Predicate check if an element is a library element.
+    @param elem: The element to check
+    '''
     return not elem.hasSourceUri()
 
 def getFiles(rootPath):
-    ''''''
+    '''
+    Get a list of all MaterialX files under a given path.
+    @param rootPath: The path to search for MaterialX files. Can be a file or a folder.
+    '''
     filelist = []
     for subdir, dirs, files in os.walk(rootPath):
         for file in files:
@@ -23,6 +30,10 @@ def getFiles(rootPath):
     return filelist
 
 def loadFile(filename):
+    '''
+    Load a MaterialX document from file, including standard library definitions.
+    @param filename: The file to load
+    '''
     stdlib = mx.createDocument()
     searchPath = mx.getDefaultDataSearchPath()
     libraryFolders = mx.getDefaultDataLibraryFolders()
@@ -40,7 +51,11 @@ def loadFile(filename):
 
 
 def loadLibraries(searchPath, libraryFolders):
-    '''Load MaierialX libraries.'''
+    '''
+    Load MaierialX libraries.
+    @param searchPath: A FileSearchPath to search for libraries in.
+    @param libraryFolders: A list of relative library folder paths to load
+    '''
     status = ''
     lib = mx.createDocument()
     try:
@@ -52,7 +67,10 @@ def loadLibraries(searchPath, libraryFolders):
     return lib, status
 
 def createWorkingDocument(libraries):
-    '''Create a working document and import any libraries'''
+    '''
+    Create a working document and import any libraries.
+    @param libraries Definition libraries to import
+    '''
     doc = mx.createDocument()
     for lib in libraries:
         doc.importLibrary(lib)
@@ -62,14 +80,14 @@ def createWorkingDocument(libraries):
 def main():
     parser = argparse.ArgumentParser(description="Create graph diagrams from a MaterialX document.")
     parser.add_argument(dest="inputPath", help="Path of the input MaterialX document or folder.")
-    parser.add_argument('--outputPath', dest='outputPath', default='', help='File path to output graphs to.')
-    parser.add_argument('--library', dest='libraries', action='append', nargs='+', help='An additional relative path to a custom data library folder (e.g. "libraries/custom")')
-    parser.add_argument('--path', dest='paths', action='append', nargs='+', help='An additional absolute search path location (e.g. "/projects/MaterialX")')
-    parser.add_argument("-o", "--output", dest="outputFilename", help="Filename of the output document.")
-    parser.add_argument('--orientation', dest='orientation', default='LR', help='Orientation of graphs. LR = left to right, TB = top to bottom. RL and BT are the opposite directions. Default is LR.')
-    parser.add_argument('--graphs', dest='graphs', default='', help='Comma separated list of graphs to include in the graph. If empty, all node definitions are included. Example: "image,material"')
-    parser.add_argument('--emitCategory', dest='emitCategory', default=False, help='Emit category information in the graph. Default is false.')
-    parser.add_argument('--emitType', dest='emitType', default=False, help='Emit node type information in the graph. Default is false.')
+    parser.add_argument('-op', '--outputPath', dest='outputPath', default='', help='File path to output graphs to.')
+    parser.add_argument('-l', '--library', dest='libraries', action='append', nargs='+', help='An additional relative path to a custom data library folder (e.g. "libraries/custom")')
+    parser.add_argument('-p', '--path', dest='paths', action='append', nargs='+', help='An additional absolute search path location (e.g. "/projects/MaterialX")')
+    parser.add_argument('-o', '--output', dest="outputFilename", help="Filename of the output document.")
+    parser.add_argument('-or', '--orientation', dest='orientation', default='LR', help='Orientation of graphs. LR = left to right, TB = top to bottom. RL and BT are the opposite directions. Default is LR.')
+    parser.add_argument('-g', '--graphs', dest='graphs', default='', help='Comma separated list of graphs to include in the graph. If empty, all node definitions are included. Example: "image,material"')
+    parser.add_argument('-ec', '--emitCategory', dest='emitCategory', default=False, help='Emit category information in the graph. Default is false.')
+    parser.add_argument('-et', '--emitType', dest='emitType', default=False, help='Emit node type information in the graph. Default is false.')
     parser.add_argument('-f', '--format', dest='format', default='mermaid', help='Format of the output graph. Supported formats are: mermaid, drawio. Default is mermaid.')
 
     opts = parser.parse_args()
@@ -160,14 +178,13 @@ def main():
                 outputFileName = mx.FilePath(opts.outputPath) / outputFileName.getBaseName()
             print('- Write connectivity file:', outputFileName.asString())
             graphBuilder.export_to_json(outputFileName.asString(), baseInputFileName)
-            # Export to Mermaid in Markdown file
-            #graphBuilder2 = MtlxGraphBuilder(None)
-            #graphBuilder2.import_from_json(outputFileName)
+
+            # Export graph to specified format
             if output_format == 'mermaid':
                 exporter = MxMermaidGraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
             elif output_format == 'd3':
                 exporter = MxD3GraphExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
-            else:
+            elif output_format == 'drawio':
                 exporter = MxDrawIOExporter(graphBuilder.get_dictionary(), graphBuilder.get_connections())
 
             exporter.set_orientation(opts.orientation)

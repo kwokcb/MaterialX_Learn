@@ -490,6 +490,15 @@ class MxBaseGraphExporter:
         self.default_node_colors = ['#e1d5e7', '#000']
         self.default_port_colors = ['#FFF', '#000']
 
+    def set_connections(self, graphDictionary, connections):
+        '''
+        Set the graph dictionary and connections to be exported
+        @param graphDictionary: The graph dictionary to export
+        @param connections: The list of connections to export
+        '''
+        self.graphDictionary = graphDictionary
+        self.connections = connections
+
     def set_orientation(self, orientation):
         self.orientation = orientation
 
@@ -520,9 +529,7 @@ class MxMermaidGraphExporter (MxBaseGraphExporter):
     def __init__(self, graphDictionary, connections):
         super().__init__(graphDictionary, connections)
 
-        self.graphDictionary = graphDictionary
-        self.connections = connections
-        self.mermaid = []
+        self.set_connections(graphDictionary, connections)
 
         # Node shape options
         self.FONT_COLOR = '#FFF'
@@ -545,6 +552,15 @@ class MxMermaidGraphExporter (MxBaseGraphExporter):
         self.node_shapes['ifequal'] = [self.DIAMOND_START, self.DIAMOND_END]
         self.node_shapes['ifgreatereq'] = [self.DIAMOND_START, self.DIAMOND_END]
         self.node_shapes['switch'] = [self.DIAMOND_START, self.DIAMOND_END]
+
+    def set_connections(self, graphDictionary, connections):
+        '''
+        Set the graph dictionary and connections to be exported
+        @param graphDictionary: The graph dictionary to export
+        @param connections: The list of connections to export
+        '''
+        super().set_connections(graphDictionary, connections)
+        self.mermaid = []
 
     def get_node_shapes(self):
         return self.node_shapes
@@ -670,11 +686,7 @@ class MxDrawIOExporter(MxBaseGraphExporter):
     def __init__(self, graphDictionary, connections):
         super().__init__(graphDictionary, connections)
 
-        self.graphDictionary = graphDictionary
-        self.connections = connections
-        self.xml_root = None
-        self.mxfile = None
-        self.diagram = None
+        self.set_connections(graphDictionary, connections)
         
         # Draw.io specific settings for class instances
         self.class_width = 140
@@ -687,7 +699,22 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         
         # Orientation settings
         self.orientation = 'TB'  # Default: Left to Right
+
+        # Debug flag        
+        self.debug = True
         
+    def set_connections(self, graphDictionary, connections):
+        '''
+        Set the graph dictionary and connections for the exporter
+        @param graphDictionary: The graph dictionary from MtlxGraphBuilder
+        @param connections: The connections list from MtlxGraphBuilder
+        '''
+        super().set_connections(graphDictionary, connections)
+
+        self.xml_root = None
+        self.mxfile = None
+        self.diagram = None        
+
         # Tracking for layout and port reuse
         self.node_positions = {}
         self.slot_positions = {}  # Maps slot_id -> (x, y)
@@ -700,8 +727,6 @@ class MxDrawIOExporter(MxBaseGraphExporter):
         self.current_row_nodes = 0
         self.max_nodes_per_row = 4
 
-        self.debug = True
-        
     def set_debug(self, debug):
         self.debug = debug
 

@@ -3,6 +3,12 @@ import MaterialX.PyMaterialXGenShader as mx_gen_shader
 import MaterialX.PyMaterialXGenGlsl as mx_gen_glsl
 import MaterialX.PyMaterialXRender as mx_render
 import MaterialX.PyMaterialXRenderGlsl as mx_render_glsl
+# Check if PyMaterialXRenderMsl is in Materialx
+try:
+    import MaterialX.PyMaterialXRenderMsl as mx_render_msl
+    haveMslRenderer = True
+except ImportError:
+    haveMslRenderer = False
 from mtlxutils import mxshadergen
 import inspect, os, sys, math
 
@@ -53,21 +59,8 @@ def buildColorTransformDict(doc):
     
     return colordict, targetdict
 
-class GlslRenderer():
-    '''
-    Wrapper for GLSL sample renderer.
-
-    Handles setup of image, geometry and light handlers as well as GLSL code and 
-    program generation. 
-
-    Calls into sample renderer to render and capture images as desired.
-    '''
-    
+class BaseRenderer():
     def __init__(self, desiredRenderSize):
-        # Renderer
-        if desiredRenderSize[0] * desiredRenderSize[1] < 4:
-            desiredRenderSize = self.getDefaultRenderSize()        
-        self.renderSize = desiredRenderSize
         self.renderer = None
 
         # Code Generator
@@ -75,6 +68,11 @@ class GlslRenderer():
         self.activeShader = None
         self.activeShaderErrors = ''
         self.sourceCode = {}
+
+        # Renderer
+        if desiredRenderSize[0] * desiredRenderSize[1] < 4:
+            desiredRenderSize = self.getDefaultRenderSize()        
+        self.renderSize = desiredRenderSize
 
         # Image Handling
         self.capturedImage = None
@@ -108,6 +106,9 @@ class GlslRenderer():
 
         # Rendering log
         self.renderLog = []
+
+    def getTarget(self):
+        return 'genglsl'
 
     def getRenderer(self):
         return self.renderer
@@ -146,14 +147,30 @@ class GlslRenderer():
         self.renderLog.append(msg)        
     
     def clearRenderLog(self):
-        self.renderLog = []        
+        self.renderLog = []
+
+class GlslRenderer(BaseRenderer):
+    '''
+    Wrapper for GLSL sample renderer.
+
+    Handles setup of image, geometry and light handlers as well as GLSL code and 
+    program generation. 
+
+    Calls into sample renderer to render and capture images as desired.
+    '''
+    
+    def __init__(self, desiredRenderSize):
+        super().__init__(desiredRenderSize)
+
+    def createRenderer(self, bufferFormat):
+       return mx_render_glsl.GlslRenderer.create(self.renderSize[0], self.renderSize[1], bufferFormat) 
 
     def initialize(self, bufferFormat=mx_render.BaseType.UINT8):
         '''
         Setup sample renderer with a given frame buffer size.
         Initialize image and geometry handlers.
         '''
-        self.renderer = mx_render_glsl.GlslRenderer.create(self.renderSize[0], self.renderSize[1], bufferFormat)
+        self.renderer = self.createRenderer(bufferFormat)
         if self.renderer:
             self.renderer.initialize()
             self.initializeGeometryHandler()
@@ -232,6 +249,9 @@ class GlslRenderer():
         return True            
         
 
+    def createImageHandler(self, imageLoader):
+        return mx_render_glsl.GLTextureHandler.create(imageLoader)
+
     def initializeImageHandler(self, searchPath):   
         '''
         Initialize image handler. 
@@ -242,7 +262,7 @@ class GlslRenderer():
         # TODO: Missing fom the Python API for createImageHandler() 
         #imageHandler = renderer.createImageHandler()
         imageLoader = mx_render.StbImageLoader.create()
-        imageHandler = mx_render_glsl.GLTextureHandler.create(imageLoader)
+        imageHandler = self.createImageHandler(imageLoader)
         # Add OIIO handler if it exists
         if self.haveOIIOImageHandler:
             imageHandler.addLoader(mx_render.OIIOHandler.create())
@@ -343,7 +363,7 @@ class GlslRenderer():
 
         # Check generator and generator options
         mxgenerator = None
-        mxcontext = self.mxgen.setGeneratorForTarget('genglsl')
+        mxcontext = self.mxgen.setGeneratorForTarget(self.getTarget())
         if mxcontext:
             mxgenerator = mxcontext.getShaderGenerator()
 
@@ -359,7 +379,7 @@ class GlslRenderer():
 
     def generateShader(self, node, targetColorSpaceOverride='lin_rec709', targetDistanceUnit='meter'):
         '''
-        Generate new GLSL shader.
+        Generate new shader.
         - Inspects node to check if it requires lighting and / or is transparent.
         - Sets target colorspace and real-world units
         - Generates code and caches it
@@ -409,7 +429,7 @@ class GlslRenderer():
 
     def createProgram(self):
         '''
-        Create a GLSL program from the active shader node and validates it's inputs.
+        Create a HW program from the active shader node and validates it's inputs.
         Note: A light handler **must** be set to for validation to work properly.
         '''
         if not self.activeShader:
@@ -448,6 +468,23 @@ class GlslRenderer():
             return False, err
         
         return True, ''
+
+class MslRenderer(GlslRenderer):
+    '''
+    Wrapper for MSL sample renderer.
+    '''
+    def __init__(self, desiredRenderSize):
+        super().__init__(desiredRenderSize)
+
+    def getTarget(self):
+        return 'genmsl'
+
+    def createRenderer(self, bufferFormat):
+        return mx_render_msl.MslRenderer.create(self.renderSize[0], self.renderSize[1], bufferFormat) 
+
+    def createImageHandler(self, imageLoader):
+        return self.renderer.createImageHandler(imageLoader)
+        #return mx_render_msl.MetalTextureHandler.create(imageLoader)
 
 def getPortPath(inputPath, doc):
     '''
@@ -510,58 +547,71 @@ def debugStages(shader, doc, filter='Public'):
                             print('   - Unit:%s, ColorSpace:%s' % (unit,colorspace))
 
 def initializeRenderer(stdlib, searchPath, 
-                       radianceMapFileName, irrandianceMapFileName, w, h, desiredGeometry):
-    glslRenderer = GlslRenderer([w,h])
-    glslRenderer.initialize(mx_render.BaseType.UINT8)
-    glslRenderer.addToRenderLog('- Initialized renderer')
-    glslRenderer.addToRenderLog('------------------------')
-    glslRenderer.addToRenderLog(' - Have OIIO loader support: %s' % glslRenderer.haveOIIOLoader()) 
-    glslRenderer.addToRenderLog(' - Have GLTF loader support: %s' % glslRenderer.haveGLTFLoader()) 
+                       radianceMapFileName, irrandianceMapFileName, w, h, desiredGeometry,
+                       target = 'genglsl'):
+    
+    renderer = None
+    if target == 'genglsl':
+        renderer = GlslRenderer([w,h])
+        renderer.initialize(mx_render.BaseType.UINT8)
+        renderer.addToRenderLog('- Initialized GLSL renderer')
+    elif target == 'genmsl' and haveMslRenderer:
+        renderer = MslRenderer([w,h])
+        renderer.initialize(mx_render.BaseType.UINT8)
+        renderer.addToRenderLog('- Initialized MSL renderer')
+    else:
+        renderer = BaseRenderer([w,h])
+        renderer.addToRenderLog('Unsupported target: %s' % target)
+        return renderer
+
+    renderer.addToRenderLog('------------------------')
+    renderer.addToRenderLog(' - Have OIIO loader support: %s' % renderer.haveOIIOLoader()) 
+    renderer.addToRenderLog(' - Have GLTF loader support: %s' % renderer.haveGLTFLoader()) 
 
     # TODO: This is not exposed in the Pyhon API
     #clearColor = mx.Color3(1.0, 1.0, 1.0)
-    #glslRenderer.setScreenColor(clearColor)
+    #renderer.setScreenColor(clearColor)
 
-    geometryHandler = glslRenderer.getGeometyHandler()
+    geometryHandler = renderer.getGeometyHandler()
     if geometryHandler:
-        glslRenderer.addToRenderLog('- Initialized geometry loader: ' + desiredGeometry)
-        glslRenderer.loadGeometry(desiredGeometry)
+        renderer.addToRenderLog('- Initialized geometry loader: ' + desiredGeometry)
+        renderer.loadGeometry(desiredGeometry)
         for mesh in geometryHandler.getMeshes():
-            glslRenderer.addToRenderLog(' - Loaded Mesh: "%s"' % mesh.getName())
+            renderer.addToRenderLog(' - Loaded Mesh: "%s"' % mesh.getName())
 
     # Update the camera parameters
-    glslRenderer.updateCamera()
+    renderer.updateCamera()
 
     # Set up image handler. Make sure to pass in a suitable search path for images
-    glslRenderer.initializeImageHandler(searchPath)
-    glslRenderer.addToRenderLog(' - Initialize image handler. Search path %s' % glslRenderer.getImageHandler().getSearchPath().asString())
+    renderer.initializeImageHandler(searchPath)
+    renderer.addToRenderLog(' - Initialize image handler. Search path %s' % renderer.getImageHandler().getSearchPath().asString())
 
     # Set up lighting
     enableReferenceQuality = False
     enableDirectLighting = False
     lightDocument = None
-    glslRenderer.initializeLights(lightDocument, enableDirectLighting, 
+    renderer.initializeLights(lightDocument, enableDirectLighting, 
                                   radianceMapFileName, irrandianceMapFileName, enableReferenceQuality)    
-    lightHandler = glslRenderer.getLightHandler()
+    lightHandler = renderer.getLightHandler()
     if lightHandler:
-        glslRenderer.addToRenderLog('- Setup lighting:')
+        renderer.addToRenderLog('- Setup lighting:')
         radMap = lightHandler.getEnvRadianceMap()
         irradMap = lightHandler.getEnvIrradianceMap()
-        glslRenderer.addToRenderLog(' - Loaded radiance map: %d x %d' % (radMap.getWidth(), radMap.getHeight()))
-        glslRenderer.addToRenderLog(' - Loaded irradiance map: %d x %d' % (irradMap.getWidth(), irradMap.getHeight()))
+        renderer.addToRenderLog(' - Loaded radiance map: %d x %d' % (radMap.getWidth(), radMap.getHeight()))
+        renderer.addToRenderLog(' - Loaded irradiance map: %d x %d' % (irradMap.getWidth(), irradMap.getHeight()))
 
     # Set up source code generator. Make sure to set the source code path
     sourceCodeSearchPath = searchPath
-    glslRenderer.setupGenerator(stdlib, sourceCodeSearchPath)
-    context = glslRenderer.getCodeGenerator().getContext()
+    renderer.setupGenerator(stdlib, sourceCodeSearchPath)
+    context = renderer.getCodeGenerator().getContext()
     if context:
         generator = context.getShaderGenerator()
         if generator:
-            glslRenderer.addToRenderLog('- Iniitialize generator for target: %s.\n - Source path: %s' % 
+            renderer.addToRenderLog('- Iniitialize generator for target: %s.\n - Source path: %s' % 
                 (generator.getTarget(), sourceCodeSearchPath.asString()))
 
     # Set up additional options for generation
-    context = glslRenderer.getCodeGenerator().getContext()
+    context = renderer.getCodeGenerator().getContext()
     genOptions = context.getOptions()
     genOptions.emitColorTransforms = True # This is True by default
     genOptions.fileTextureVerticalFlip = True
@@ -569,26 +619,23 @@ def initializeRenderer(stdlib, searchPath,
     #genOptions.addUpstreamDependencies = True
     # 
 
-    return glslRenderer        
+    return renderer        
 
-def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> ( bool, str ):
+def performRender(renderer, doc, inputFilename, outputPath, searchPath) -> tuple[ bool, str ]:
 
     rendered = False
     renderErrors = ''
 
-    generator = glslRenderer.getCodeGenerator()
+    generator = renderer.getCodeGenerator()
     context = generator.getContext()
     genOptions = context.getOptions()
     target = context.getShaderGenerator().getTarget()
 
     # Append to search path for image handler
-    imageHandler = glslRenderer.getImageHandler()
+    imageHandler = renderer.getImageHandler()
     imageSearchPathPrev = imageHandler.getSearchPath()
-    imageSearchPath = imageSearchPathPrev
-    #imageSearchPath.append(searchPath)
-    #imageHandler.setSearchPath(imageSearchPath)
     imageHandler.setSearchPath(searchPath)
-    glslRenderer.addToRenderLog(' - Using image search path: %s' % imageHandler.getSearchPath().asString())
+    renderer.addToRenderLog(' - Using image search path: %s' % imageHandler.getSearchPath().asString())
 
     # Append to source code search path
     # TODO: There is no way to get and search the path in the API (C++ or Python)
@@ -596,9 +643,9 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
     generator.registerSourceCodeSearchPath(searchPath)
 
     # Find a renderable and generate the shader for it
-    nodes = glslRenderer.findRenderableElements(doc)
+    nodes = renderer.findRenderableElements(doc)
     if not nodes:
-        return
+        return False, 'No renderable nodes found in document.'
     printSource = False
 
     # Set up overrides for color space and units. Color space may come from the document,
@@ -610,13 +657,13 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
         if renderNode.getType() == 'material':
             renderNodes = mx.getShaderNodes(renderNode)
             if not renderNodes:
-                glslRenderer.setActiveShaderErrors('- Warning: No surface shader found in material: "%s"' % renderNode.getNamePath())                    
+                renderer.setActiveShaderErrors('- Warning: No surface shader found in material: "%s"' % renderNode.getNamePath())                    
                 renderNode = None
         if renderNode:
-            glslRenderer.addToRenderLog('------- Render Node: %s --------' % renderNode.getNamePath())
-            shader = glslRenderer.generateShader(renderNode, targetColorSpaceOverride, targetDistanceUnit)
+            renderer.addToRenderLog('------- Render Node: %s --------' % renderNode.getNamePath())
+            shader = renderer.generateShader(renderNode, targetColorSpaceOverride, targetDistanceUnit)
         if shader:
-            glslRenderer.addToRenderLog('- Generate shader for node: "%s"\n\t- Is Transparent: %s. V-Flip textures: %d.\n\t- Emit Color Xforms: %d. Default input colorspace: "%s".\n\t- Scene Units: "%s"' %
+            renderer.addToRenderLog('- Generate shader for node: "%s"\n\t- Is Transparent: %s. V-Flip textures: %d.\n\t- Emit Color Xforms: %d. Default input colorspace: "%s".\n\t- Scene Units: "%s"' %
                     (nodes[0].getNamePath(),
                     genOptions.hwTransparency, 
                     genOptions.fileTextureVerticalFlip, 
@@ -624,16 +671,16 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
                     genOptions.targetColorSpaceOverride, 
                     genOptions.targetDistanceUnit))
         else:
-            glslRenderer.addToRenderLog(
+            renderer.addToRenderLog(
                 '- Failed to generate shader for node: "%s". Errors: %s' % (nodes[0].getNamePath(), 
-                                                                            glslRenderer.getActiveShaderErrors()))
+                                                                            renderer.getActiveShaderErrors()))
             continue
 
         if printSource:
-            sourceCode = glslRenderer.getSourceCode()
+            sourceCode = renderer.getSourceCode()
             for stage in sourceCode:
-                glslRenderer.addToRenderLog('-' * 80)
-                glslRenderer.addToRenderLog('- "%s" Stage Code:' % stage)
+                renderer.addToRenderLog('-' * 80)
+                renderer.addToRenderLog('- "%s" Stage Code:' % stage)
                 lines = sourceCode[stage].split('\n')
                 for l in lines:
                     if l.startswith('uniform'):
@@ -641,39 +688,39 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
 
         createdProgram = False
         if shader:
-            createdProgram = glslRenderer.createProgram()
+            createdProgram = renderer.createProgram()
 
         printAttribs = False
         if createdProgram:
-            glslRenderer.addToRenderLog('- Create renderer program from shader')
+            renderer.addToRenderLog('- Create renderer program from shader')
 
-            program = glslRenderer.getProgram()
+            program = renderer.getProgram()
             if program:
                 if printAttribs:
                     attribs = program.getAttributesList()
-                    glslRenderer.addToRenderLog('%d geometry attribs in program' % len(attribs))   
+                    renderer.addToRenderLog('%d geometry attribs in program' % len(attribs))   
                     for attrib in attribs:
-                        glslRenderer.addToRenderLog('- attribute: %s' % attrib)
+                        renderer.addToRenderLog('- attribute: %s' % attrib)
                         input = attribs[attrib] 
                     
                     uniforms = program.getUniformsList()
-                    glslRenderer.addToRenderLog('%d uniforms' % len(uniforms))
+                    renderer.addToRenderLog('%d uniforms' % len(uniforms))
                     for uniform in uniforms:
-                        glslRenderer.addToRenderLog('- Uniform:', uniform)
+                        renderer.addToRenderLog('- Uniform:', uniform)
                         port = uniforms[uniform]
-                        glslRenderer.addToRenderLog('  - Port type:', port.gltype)   
+                        renderer.addToRenderLog('  - Port type:', port.gltype)   
 
         runRender = True
         if createdProgram and runRender:
-            rendered, renderErrors = glslRenderer.render()
+            rendered, renderErrors = renderer.render()
             if not rendered:
-                glslRenderer.addToRenderLog('- Failed to render, Errors: %s' % renderErrors)
+                renderer.addToRenderLog('- Failed to render, Errors: %s' % renderErrors)
             #else:
-            #    glslRenderer.addToRenderLog('- Successfully rendered frame.')
+            #    renderer.addToRenderLog('- Successfully rendered frame.')
 
         if rendered:
-            glslRenderer.captureImage()
-            capturedImage = glslRenderer.getCapturedImage()
+            renderer.captureImage()
+            capturedImage = renderer.getCapturedImage()
             if capturedImage:
                 flipImage = True        
                 outputString = mx.FilePath(mx.createValidName(renderNode.getNamePath()) + '_' + target)
@@ -682,8 +729,8 @@ def performRender(glslRenderer, doc, inputFilename, outputPath, searchPath) -> (
                     fileName = outputPath / outputString
                 else:
                     fileName = mx.FilePath(inputFilename).getParentPath() / outputString
-                glslRenderer.addToRenderLog('- Saved rendered image to: %s' % fileName.asString())                             
-                glslRenderer.saveCapture(fileName, flipImage)
+                renderer.addToRenderLog('- Saved rendered image to: %s' % fileName.asString())                             
+                renderer.saveCapture(fileName, flipImage)
     
     # Restore image search path
     imageHandler.setSearchPath(imageSearchPathPrev)

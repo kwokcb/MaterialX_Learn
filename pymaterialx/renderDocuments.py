@@ -49,11 +49,12 @@ def getFiles(rootPath):
 
 def main():
     parser = argparse.ArgumentParser(description="Extract out source implementation information.")
-    parser.add_argument('--outputPath', dest='outputPath', default="", help="Output path. Default is empty.")
-    parser.add_argument('--path', dest='paths', action='append', nargs='+', help='An additional absolute search path location (e.g. "/projects/MaterialX")')
-    parser.add_argument('--library', dest='libraries', action='append', nargs='+', help='An additional relative path to a custom data library folder (e.g. "libraries/custom")')
-    parser.add_argument('--geometryPath', dest='geometryPath', default="", help="Path to geometry shape. Default is empty")
-    parser.add_argument('--size', dest='size', default=-1, type=int, help="Size of the render. Default is 512.")
+    parser.add_argument('-op', '--outputPath', dest='outputPath', default="", help="Output path. Default is empty.")
+    parser.add_argument('-p', '--path', dest='paths', action='append', nargs='+', help='An additional absolute search path location (e.g. "/projects/MaterialX")')
+    parser.add_argument('-l', '--library', dest='libraries', action='append', nargs='+', help='An additional relative path to a custom data library folder (e.g. "libraries/custom")')
+    parser.add_argument('-g', '--geometryPath', dest='geometryPath', default="", help="Path to geometry shape. Default is empty")
+    parser.add_argument('-s', '--size', dest='size', default=-1, type=int, help="Size of the render. Default is 512.")
+    parser.add_argument('-t', '--target', dest='target', default='genglsl', help='Target shader generator to use (e.g. "genglsl, genosl, genmdl, genmsl"). Default is glsl.')
     parser.add_argument(dest="inputFileName", help="Filename of the input document.")
     opts = parser.parse_args()
 
@@ -128,11 +129,12 @@ def main():
             logger.error('-- Geometry shape "%s" does not exist. Exiting', geometryShape)
             exit(-1)
         renderer = mxrenderer.initializeRenderer(stdlib, searchPath, radianceFilePath, irradianceFilePath, w, h, 
-                                                 geometryShape)
-        renderer.addToRenderLog('--------------------------')
+                                                 geometryShape, opts.target)
 
-    if not renderer:
-        logger.error('Error initializing renderer')
+    if not renderer or not renderer.getRenderer():
+        logger.info('Failed to initialize renderer. See render_log.txt for details.')
+        with open('render_log.txt', 'w') as f:
+            f.write('\n'.join(renderer.getRenderLog()))        
         exit(-1)
 
     for fileName in fileList:

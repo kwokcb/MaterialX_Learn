@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaterialX Graph</title>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-drag@3"></script>
+    <script src="https://unpkg.com/d3-zoom@3"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #111111;
+            color: #EEEEEE;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            padding: 4px;
+        }
+        
+        .header {
+            padding: 20px;
+            border-radius: 0px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .container {
+            display: flex;
+            gap: 20px;
+            height: calc(100vh - 180px);
+        }
+        
+        .graph-container {
+            flex: 1;
+            background: rgb(20, 40, 60);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        #graph-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .sidebar {
+            width: 300px;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        
+        .controls {
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        select, input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 0px;
+            background: white;
+        }
+        
+        .node-list {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .node-item {
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 0px;
+            border-left: 4px solid #3498db;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .node-item:hover {
+            /* background: #e3f2fd; */
+            background: rgba(152, 152, 219, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .node-type {
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        
+        .node-slots {
+            font-size: 11px;
+            margin-top: 5px;
+        }
+        
+        /* Node styling */
+        .node {
+            cursor: move;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        .node-header {
+            stroke-width: 2;
+            rx: 5;
+            ry: 5;
+        }
+        
+        .node-body {
+            fill: rgb(250, 250, 250);
+            stroke: #bdc3c7;
+            stroke-width: 1;
+            rx: 5;
+            ry: 5;
+        }
+        
+        .node-title {
+            fill: white;
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        .slot-row {
+            cursor: pointer;
+        }
+        
+        .input-slot {
+            fill: #3498db;
+        }
+        
+        .output-slot {
+            fill: #2ecc71;
+        }
+        
+        .slot-rect {
+            rx: 3;
+            ry: 3;
+        }
+        
+        .slot-text {
+            fill: white;
+            font-size: 11px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        .port {
+            fill: white;
+            stroke: #7f8c8d;
+            stroke-width: 2;
+            r: 8;
+            cursor: crosshair;
+        }
+        
+        .link {
+            fill: none;
+            stroke: #95a5a6;
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+        
+        .link:hover {
+            stroke: #e74c3c;
+            stroke-width: 3;
+        }
+        
+        .dashed-link {
+            stroke-dasharray: 5,5;
+        }
+        
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 5px;
+            pointer-events: none;
+            font-size: 12px;
+            max-width: 300px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        
+        .legend {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 10px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
+        /* Zoom controls */
+        .zoom-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 0px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 5px;
+        }
+        
+        .zoom-btn {
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 0px;
+            margin: 2px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .zoom-btn:hover {
+            background: #2980b9;
+        }
+        
+        /* Highlight styles */
+        .highlighted {
+            stroke: #f39f12 !important;
+            stroke-width: 3 !important;
+        }
+        
+        .selected {
+            filter: drop-shadow(0 0 10px rgba(243, 243, 60, 1.0));
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>MaterialX Graph</h1>
+        <div class="stats">
+            <div>Nodes: <span id="node-count">0</span></div>
+            <div>Connections: <span id="link-count">0</span></div>
+            <div>Last Updated: <span id="update-time">2026-04-29 12:10:56</span></div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="graph-container">
+            <div class="zoom-controls">
+                <button class="zoom-btn" onclick="zoomIn()">+</button>
+                <button class="zoom-btn" onclick="zoomOut()">-</button>
+                <button class="zoom-btn" onclick="resetZoom()">↺</button>
+            </div>
+            <svg id="graph-svg"></svg>
+            <div class="tooltip" id="tooltip"></div>
+        </div>
+        
+        <div class="sidebar">
+            <div class="controls">
+                <div class="control-group">
+                    <label for="layout">Layout:</label>
+                    <select id="layout" onchange="changeLayout(this.value)">
+                        <option value="force">Force-Directed</option>
+                        <option value="grid">Grid</option>
+                        <option value="hierarchical">Hierarchical</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label for="node-size">Node Size:</label>
+                    <input type="range" id="node-size" min="100" max="300" value="200" oninput="updateNodeSize(this.value)">
+                </div>
+                
+                <div class="control-group">
+                    <label for="show-values">Show Values:</label>
+                    <input type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
+                </div>
+                
+                <div class="control-group">
+                    <label for="highlight-path">Highlight Path:</label>
+                    <input type="text" id="highlight-path" placeholder="Enter node path..." oninput="highlightPath(this.value)">
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h3>Node Types</h3>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #09D;"></div>
+                    <span>Input</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #0C0;"></div>
+                    <span>Output</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #090;"></div>
+                    <span>Surface Material</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #00C;"></div>
+                    <span>Node Definition</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #500;"></div>
+                    <span>Constant</span>
+                </div>
+            </div>
+            
+            <div class="node-list">
+                <h3>Nodes (18)</h3>
+                <div id="node-list-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Graph data loaded from Python
+        const graphData = {
+  "nodes": [
+    {
+      "id": "NG_out_Mix",
+      "path": "NG/out_Mix",
+      "label": "out_Mix",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 200,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_out_Multiply_002",
+      "path": "NG/out_Multiply_002",
+      "label": "out_Multiply_002",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_out_Normalmap",
+      "path": "NG/out_Normalmap",
+      "label": "out_Normalmap",
+      "type": "output",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 325,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_RoughnessMin",
+      "path": "NG/RoughnessMin",
+      "label": "RoughnessMin",
+      "type": "constant",
+      "value": "0",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_RoughnessMax",
+      "path": "NG/RoughnessMax",
+      "label": "RoughnessMax",
+      "type": "constant",
+      "value": "1",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Texcoord",
+      "path": "NG/Texcoord",
+      "label": "Texcoord",
+      "type": "texcoord",
+      "value": "0",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_UVScale",
+      "path": "NG/UVScale",
+      "label": "UVScale",
+      "type": "constant",
+      "value": "2",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Multiply_001",
+      "path": "NG/Multiply_001",
+      "label": "Multiply_001",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_002",
+      "path": "NG/Image_002",
+      "label": "Image_002",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Mix",
+      "path": "NG/Mix",
+      "label": "Mix",
+      "type": "mix",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "fg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "bg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "mix",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_001",
+      "path": "NG/Image_001",
+      "label": "Image_001",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_SheenAmount",
+      "path": "NG/SheenAmount",
+      "label": "SheenAmount",
+      "type": "constant",
+      "value": "0.3",
+      "graph": "NG",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#500",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_Multiply",
+      "path": "NG/Multiply",
+      "label": "Multiply",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Multiply_002",
+      "path": "NG/Multiply_002",
+      "label": "Multiply_002",
+      "type": "multiply",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Image_003",
+      "path": "NG/Image_003",
+      "label": "Image_003",
+      "type": "image",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "texcoord",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "NG_Normalmap",
+      "path": "NG/Normalmap",
+      "label": "Normalmap",
+      "type": "normalmap",
+      "value": "",
+      "graph": "NG",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 225,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "standard_surface_1",
+      "path": "standard_surface_1",
+      "label": "standard_surface_1",
+      "type": "standard_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "specular_roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "sheen",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2010,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "Black_Upholstery",
+      "path": "Black_Upholstery",
+      "label": "Black_Upholstery",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 2290,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "NG_Texcoord",
+      "target": "NG_Multiply_001",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "NG_UVScale",
+      "target": "NG_Multiply_001",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_002",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "NG_RoughnessMin",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "fg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "NG_RoughnessMax",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "bg",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "NG_Image_002",
+      "target": "NG_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "mix",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_001",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "NG_Mix",
+      "target": "NG_Multiply",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "NG_SheenAmount",
+      "target": "NG_Multiply",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "NG_Image_001",
+      "target": "NG_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "NG_Multiply",
+      "target": "NG_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "NG_Multiply_001",
+      "target": "NG_Image_003",
+      "sourceSlot": "out",
+      "targetSlot": "texcoord",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "NG_Image_003",
+      "target": "NG_Normalmap",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "NG_Mix",
+      "target": "NG_out_Mix",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "NG_Multiply_002",
+      "target": "NG_out_Multiply_002",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "NG_Normalmap",
+      "target": "NG_out_Normalmap",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "NG_out_Mix",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "specular_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "NG_out_Multiply_002",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "sheen",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "NG_out_Normalmap",
+      "target": "standard_surface_1",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "standard_surface_1",
+      "target": "Black_Upholstery",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 18,
+    "totalLinks": 20,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+};
+        
+        // Initialize variables
+        let nodes = graphData.nodes;
+        let links = graphData.links;
+        let metadata = graphData.metadata;
+        
+        let selectedNode = null;
+        let simulation = null;
+        let zoom = null;
+        
+        // Update stats
+        document.getElementById('node-count').textContent = metadata.totalNodes;
+        document.getElementById('link-count').textContent = metadata.totalLinks;
+        
+        // Initialize visualization
+        initGraph();
+        
+        function initGraph() {
+            const svg = d3.select('#graph-svg');
+            const width = svg.node().getBoundingClientRect().width;
+            const height = svg.node().getBoundingClientRect().height;
+            
+            // Clear previous content
+            svg.selectAll('*').remove();
+            
+            // Create main group
+            const g = svg.append('g');
+            
+            // Add arrowhead marker
+            svg.append('defs').append('marker')
+                .attr('id', 'arrowhead')
+                .attr('viewBox', '-0 -5 10 10')
+                .attr('refX', 15)
+                .attr('refY', 0)
+                .attr('orient', 'auto')
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .append('path')
+                .attr('d', 'M 0,-5 L 10,0 L 0,5')
+                .attr('fill', '#95a5a6');
+            
+            // Create zoom behavior
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 4])
+                .on('zoom', (event) => {
+                    g.attr('transform', event.transform);
+                });
+            
+            svg.call(zoom);
+            
+            // Draw links first (so they appear behind nodes)
+            const link = g.selectAll('.link')
+                .data(links)
+                .enter().append('path')
+                .attr('class', d => `link ${d.type === 'value' ? 'dashed-link' : ''}`)
+                .attr('stroke', d => d.color)
+                .attr('stroke-width', d => d.width)
+                .attr('id', d => d.id)
+                .on('mouseover', function(event, d) {
+                    d3.select(this).classed('highlighted', true);
+                    showTooltip(event, `
+                        <strong>Connection</strong><br>
+                        Source: ${d.source}<br>
+                        Target: ${d.target}<br>
+                        Type: ${d.type}<br>
+                        From: ${d.sourceSlot} → To: ${d.targetSlot}
+                    `);
+                })
+                .on('mouseout', function() {
+                    d3.select(this).classed('highlighted', false);
+                    hideTooltip();
+                });
+            
+            // Draw nodes
+            const node = g.selectAll('.node')
+                .data(nodes)
+                .enter().append('g')
+                .attr('class', 'node')
+                .attr('id', d => d.id)
+                .attr('transform', d => `translate(${d.position.x}, ${d.position.y})`)
+                .call(d3.drag()
+                    .on('start', dragStarted)
+                    .on('drag', dragged)
+                    .on('end', dragEnded))
+                .on('click', function(event, d) {
+                    selectNode(d);
+                    event.stopPropagation();
+                });
+            
+            // Draw node background
+            node.append('rect')
+                .attr('class', 'node-header')
+                .attr('width', d => d.position.width)
+                .attr('height', metadata.nodeHeaderHeight)
+                .attr('fill', d => d.color)
+                .attr('stroke', d => d.textColor);
+            
+            // Draw node title
+            node.append('text')
+                .attr('class', 'node-title')
+                .attr('x', d => d.position.width / 2)
+                .attr('y', metadata.nodeHeaderHeight / 2)
+                .attr('fill', d => d.textColor)
+                .text(d => {
+                    let label = d.label;
+                    if (d.value) label += ` = ${d.value}`;
+                    return label;
+                });
+            
+            // Draw node body
+            node.append('rect')
+                .attr('class', 'node-body')
+                .attr('x', 0)
+                .attr('y', metadata.nodeHeaderHeight)
+                .attr('width', d => d.position.width)
+                .attr('height', d => d.position.height - metadata.nodeHeaderHeight);
+            
+            // Draw slots
+            nodes.forEach((nodeData, nodeIndex) => {
+                const nodeGroup = d3.select(`#${nodeData.id}`);
+                const inputSlots = nodeData.slots.inputs;
+                const outputSlots = nodeData.slots.outputs;
+                const maxSlots = Math.max(inputSlots.length, outputSlots.length);
+                
+                // Calculate starting position for slots
+                const startY = metadata.nodeHeaderHeight + 10;
+                
+                // Draw input slots (left side)
+                inputSlots.forEach((slot, i) => {
+                    const y = startY + (i * metadata.slotHeight);
+                    
+                    const slotGroup = nodeGroup.append('g')
+                        .attr('class', 'slot-row')
+                        .attr('transform', `translate(0, ${y})`);
+                    
+                    // Input port
+                    slotGroup.append('circle')
+                        .attr('class', 'port input-port')
+                        .attr('cx', 0)
+                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('data-slot', slot.name)
+                        .attr('data-node', nodeData.id)
+                        .attr('data-type', 'input');
+                    
+                    // Slot rectangle
+                    slotGroup.append('rect')
+                        .attr('class', 'slot-rect input-slot')
+                        .attr('x', 10)
+                        .attr('width', 80)
+                        .attr('height', metadata.slotHeight - 2);
+                    
+                    // Slot text
+                    slotGroup.append('text')
+                        .attr('class', 'slot-text')
+                        .attr('x', 50)
+                        .attr('y', metadata.slotHeight / 2)
+                        .text(slot.name);
+                });
+                
+                // Draw output slots (right side)
+                outputSlots.forEach((slot, i) => {
+                    const y = startY + (i * metadata.slotHeight);
+                    
+                    const slotGroup = nodeGroup.append('g')
+                        .attr('class', 'slot-row')
+                        .attr('transform', `translate(${nodeData.position.width}, ${y})`);
+                    
+                    // Output port
+                    slotGroup.append('circle')
+                        .attr('class', 'port output-port')
+                        .attr('cx', 0)
+                        .attr('cy', metadata.slotHeight / 2)
+                        .attr('data-slot', slot.name)
+                        .attr('data-node', nodeData.id)
+                        .attr('data-type', 'output');
+                    
+                    // Slot rectangle
+                    slotGroup.append('rect')
+                        .attr('class', 'slot-rect output-slot')
+                        .attr('x', -90)
+                        .attr('width', 80)
+                        .attr('height', metadata.slotHeight - 2);
+                    
+                    // Slot text
+                    slotGroup.append('text')
+                        .attr('class', 'slot-text')
+                        .attr('x', -50)
+                        .attr('y', metadata.slotHeight / 2)
+                        .text(slot.name);
+                });
+            });
+            
+            // Update link paths after nodes are drawn
+            updateLinkPaths();
+            
+            // Populate node list
+            populateNodeList();
+        }
+        
+    function updateLinkPaths() {
+            d3.selectAll('.link').attr('d', function(d) {
+                // Helper to get port absolute position from node/slot data
+                function getPortPos(nodeId, slotName, type) {
+                    const node = nodes.find(n => n.id === nodeId);
+                    if (!node) return null;
+                    const startY = metadata.nodeHeaderHeight + 10;
+                    let slotIdx = -1;
+                    let x = node.position.x;
+                    let y = node.position.y;
+                    if (type === 'input') {
+                        slotIdx = node.slots.inputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += 0; // input port at left edge
+                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
+                    } else if (type === 'output') {
+                        slotIdx = node.slots.outputs.findIndex(s => s.name === slotName);
+                        if (slotIdx === -1) return null;
+                        x += node.position.width; // output port at right edge
+                        y += startY + slotIdx * metadata.slotHeight + metadata.slotHeight / 2;
+                    } else {
+                        return null;
+                    }
+                    return { x, y };
+                }
+
+                const src = getPortPos(d.source, d.sourceSlot, 'output');
+                const tgt = getPortPos(d.target, d.targetSlot, 'input');
+                if (!src || !tgt) {
+                    console.log('Missing port for link', d.source, d.target, d.sourceSlot, d.targetSlot);
+                    return '';
+                }
+                // Draw a simple straight line (or a curve if you prefer)
+                const midX = (src.x + tgt.x) / 2;
+                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
+            });
+        }
+
+        function updateLinkPaths2() {
+            d3.selectAll('.link').attr('d', function(d) {
+                // Find the SVG port elements for the source output and target input slots
+                const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"][data-type="output"]`);
+                const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"][data-type="input"]`);
+
+                if (sourcePort.empty() || targetPort.empty()) return '';
+
+                // Get the absolute position of each port
+                function getPortCenter(portSel) {
+                    const nodeGroup = portSel.node().closest('g.node');
+                    const nodeTransform = d3.select(nodeGroup).attr('transform');
+                    const match = nodeTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                    const nodeX = parseFloat(match[1]);
+                    const nodeY = parseFloat(match[2]);
+                    const cx = parseFloat(portSel.attr('cx'));
+                    const cy = parseFloat(portSel.attr('cy'));
+                    return { x: nodeX + cx, y: nodeY + cy };
+                }
+
+                const src = getPortCenter(sourcePort);
+                const tgt = getPortCenter(targetPort);
+
+                // Draw a simple straight line (or a curve if you prefer)
+                const midX = (src.x + tgt.x) / 2;
+                return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
+            });
+        }
+        
+        function dragStarted(event, d) {
+            if (!event.active) simulation?.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        
+        function dragged(event, d) {
+            //d.fx = event.x;
+            //d.fy = event.y;
+            d.position.x = event.x;
+            d.position.y = event.y;            
+            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            updateLinkPaths();
+        }
+        
+        function dragEnded(event, d) {
+            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            if (!event.active) simulation?.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+        
+        function selectNode(node) {
+            // Remove previous selection
+            d3.selectAll('.node').classed('selected', false);
+            
+            // Highlight selected node
+            d3.select(`#${node.id}`).classed('selected', true);
+            selectedNode = node;
+            
+            // Update sidebar with node details
+            document.getElementById('node-list-container').innerHTML = `
+                <div class="node-item">
+                    <strong>${node.label}</strong>
+                    <div class="node-type">Type: ${node.type}</div>
+                    <div class="node-type">Path: ${node.path}</div>
+                    <div class="node-slots">
+                        Inputs: ${node.slots.inputs.map(s => s.name).join(', ')}<br>
+                        Outputs: ${node.slots.outputs.map(s => s.name).join(', ')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function showTooltip(event, content) {
+            const tooltip = d3.select('#tooltip');
+            tooltip.html(content)
+                .style('left', (event.pageX + 10) + 'px')
+                .style('top', (event.pageY - 10) + 'px')
+                .style('opacity', 1);
+        }
+        
+        function hideTooltip() {
+            d3.select('#tooltip').style('opacity', 0);
+        }
+        
+        function populateNodeList() {
+            const container = document.getElementById('node-list-container');
+            container.innerHTML = '';
+            
+            nodes.forEach(node => {
+                const div = document.createElement('div');
+                div.className = 'node-item';
+                div.innerHTML = `
+                    <strong>${node.label}</strong>
+                    <div class="node-type">${node.type}</div>
+                    <div class="node-slots">
+                        ${node.slots.inputs.length} inputs, 
+                        ${node.slots.outputs.length} outputs
+                    </div>
+                `;
+                div.onclick = () => {
+                    // Center view on node
+                    const svg = document.getElementById('graph-svg');
+                    const nodeEl = document.getElementById(node.id);
+                    if (nodeEl) {
+                        const bbox = nodeEl.getBBox();
+                        const transform = d3.zoomTransform(svg);
+                        const centerX = bbox.x + bbox.width / 2;
+                        const centerY = bbox.y + bbox.height / 2;
+                        
+                        svg.transition()
+                            .duration(750)
+                            .call(zoom.transform, 
+                                transform.translate(
+                                    svg.clientWidth / 2 - centerX,
+                                    svg.clientHeight / 2 - centerY
+                                )
+                            );
+                    }
+                    selectNode(node);
+                };
+                container.appendChild(div);
+            });
+        }
+        
+        // Control functions
+        function changeLayout(layoutType) {
+            // Implement different layouts
+            if (layoutType === 'force') {
+                // Force-directed layout
+                simulation = d3.forceSimulation(nodes)
+                    .force('link', d3.forceLink(links).id(d => d.id).distance(150))
+                    .force('charge', d3.forceManyBody().strength(-300))
+                    .force('center', d3.forceCenter(
+                        document.getElementById('graph-svg').clientWidth / 2,
+                        document.getElementById('graph-svg').clientHeight / 2
+                    ))
+                    .on('tick', () => {
+                        d3.selectAll('.node')
+                            .attr('transform', d => `translate(${d.x}, ${d.y})`);
+                        updateLinkPaths();
+                    });
+            } else if (layoutType === 'grid') {
+                // Grid layout
+                const cols = Math.ceil(Math.sqrt(nodes.length));
+                nodes.forEach((node, i) => {
+                    const row = Math.floor(i / cols);
+                    const col = i % cols;
+                    node.x = 100 + col * 250;
+                    node.y = 100 + row * 150;
+                    node.fx = node.x;
+                    node.fy = node.y;
+                });
+                updateLinkPaths();
+            } else if (layoutType === 'hierarchical') {
+                // Hierarchical (topological) layout
+                // Build adjacency and reverse adjacency
+                const graph = {};
+                const reverseGraph = {};
+                const allNodes = new Set(nodes.map(n => n.id));
+                links.forEach(link => {
+                    if (!graph[link.source]) graph[link.source] = [];
+                    if (!reverseGraph[link.target]) reverseGraph[link.target] = [];
+                    graph[link.source].push(link.target);
+                    reverseGraph[link.target].push(link.source);
+                    allNodes.add(link.source);
+                    allNodes.add(link.target);
+                });
+
+                // Kahn's algorithm for topological sort
+                const inDegree = {};
+                allNodes.forEach(n => { inDegree[n] = 0; });
+                Object.values(graph).forEach(dsts => {
+                    dsts.forEach(dst => { inDegree[dst] += 1; });
+                });
+                const queue = [];
+                allNodes.forEach(n => { if (inDegree[n] === 0) queue.push(n); });
+                const topoOrder = [];
+                while (queue.length > 0) {
+                    const n = queue.shift();
+                    topoOrder.push(n);
+                    (graph[n] || []).forEach(m => {
+                        inDegree[m] -= 1;
+                        if (inDegree[m] === 0) queue.push(m);
+                    });
+                }
+
+                // Assign columns by longest path from any input node
+                const nodeColumn = {};
+                function getColumn(n) {
+                    if (!reverseGraph[n] || reverseGraph[n].length === 0) return 0;
+                    if (nodeColumn[n] !== undefined) return nodeColumn[n];
+                    let col = 1 + Math.max(...reverseGraph[n].map(getColumn));
+                    nodeColumn[n] = col;
+                    return col;
+                }
+                topoOrder.forEach(n => { getColumn(n); });
+
+                // Group nodes by column
+                const columns = {};
+                topoOrder.forEach(n => {
+                    const col = nodeColumn[n] || 0;
+                    if (!columns[col]) columns[col] = [];
+                    columns[col].push(n);
+                });
+
+                // Assign x/y positions using node sizes
+                const x_spacing = 80, y_spacing = 40, start_x = 50, start_y = 50;
+                Object.keys(columns).sort((a,b)=>a-b).forEach(col => {
+                    let y = start_y;
+                    columns[col].forEach(nid => {
+                        const node = nodes.find(nn => nn.id === nid);
+                        if (!node) return;
+                        const width = node.position.width;
+                        const height = node.position.height;
+                        node.x = start_x + col * (width + x_spacing);
+                        node.y = y;
+                        node.fx = node.x;
+                        node.fy = node.y;
+                        y += height + y_spacing;
+                    });
+                });
+                updateLinkPaths();
+            }
+        }
+        
+        function updateNodeSize(size) {
+            metadata.nodeWidth = parseInt(size);
+            nodes.forEach(node => {
+                node.position.width = metadata.nodeWidth;
+            });
+            initGraph();
+        }
+        
+        function toggleValues(show) {
+            d3.selectAll('.node-title').text(d => {
+                if (show && d.value) {
+                    return `${d.label} = ${d.value}`;
+                }
+                return d.label;
+            });
+        }
+        
+        function highlightPath(path) {
+            // Reset all highlights
+            d3.selectAll('.node').classed('highlighted', false);
+            
+            if (!path) return;
+            
+            // Highlight nodes matching the path
+            nodes.forEach(node => {
+                if (node.path.toLowerCase().includes(path.toLowerCase())) {
+                    d3.select(`#${node.id}`).classed('highlighted', true);
+                }
+            });
+        }
+        
+        function zoomIn() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().call(zoom.scaleBy, 1.2);
+        }
+        
+        function zoomOut() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().call(zoom.scaleBy, 0.8);
+        }
+        
+        function resetZoom() {
+            const svg = d3.select('#graph-svg');
+            svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
+        }
+        
+        // Initialize with force layout
+        //setTimeout(() => changeLayout('force'), 100);
+    </script>
+</body>
+</html>

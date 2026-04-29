@@ -1,0 +1,563 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net" modified="January 20, 2026" agent="MaterialX DrawIO Exporter" version="0.1.39.5" copyright="Copyright 2026, NanMu Consulting. kwokcb@gmail.com">
+  <diagram id="diagram_1" name="MaterialX Graph">
+    <mxGraphModel dx="1422" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="surface_unlit" value="surface_unlit" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1458" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="surface_unlit/emission_color" value="emission_color" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="surface_unlit">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="surface_unlit/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="surface_unlit">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="surfacematerial" value="surfacematerial" style="swimlane;fontColor=#FFF;fillColor=#090;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1596" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="surfacematerial/surfaceshader" value="surfaceshader" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="surfacematerial">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="ND_toon_sample" value="ND_toon_sample" style="swimlane;fontColor=#FFF;fillColor=#00C;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1704" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="ND_toon_sample/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="ND_toon_sample">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="toon_shade1" value="toon_shade1" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1812" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="toon_shade1/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="toon_shade1">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/base_color" value="NG_toon_sample/base_color = &quot;0.0156384, 0.632771, 0.799511&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/base_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/base_color">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/ambient_color" value="NG_toon_sample/ambient_color = &quot;0.574572, 0.207914, 0.207914&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="690" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/ambient_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/ambient_color">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_color" value="NG_toon_sample/specular_color = &quot;0.726161, 0.726161, 0.726161&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="178" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_color">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/glossiness" value="NG_toon_sample/glossiness = &quot;16&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="818" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/glossiness/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/glossiness">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_color" value="NG_toon_sample/rim_color = &quot;0.775061, 0.775061, 0.775061&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="562" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_color">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/light_direction" value="NG_toon_sample/light_direction = &quot;1.0, -0.5, -0.5&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1202" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/light_direction/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/light_direction">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/light_color" value="NG_toon_sample/light_color = &quot;0.885086, 0.885086, 0.885086&quot;" style="swimlane;fontColor=#FFF;fillColor=#09D;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="434" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/light_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/light_color">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/output_color3" value="NG_toon_sample/output_color3" style="swimlane;fontColor=#FFF;fillColor=#0C0;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2910" y="178" width="140" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/output_color3/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/output_color3">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/normal" value="NG_toon_sample/normal = &quot;world&quot;" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1074" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/normal/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/normal">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotL" value="NG_toon_sample/NdotL" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="710" y="346" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotL/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotL">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotL/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotL">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotL/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotL">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_light_direction" value="NG_toon_sample/unit_light_direction" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="730" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_light_direction/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_light_direction">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_light_direction/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_light_direction">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_color3" value="NG_toon_sample/multiply_color3" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_color3/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_color3">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_color3/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_color3">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_color3/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_color3">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color3" value="NG_toon_sample/add_color3" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color3/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color3">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color3/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color3">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color3/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color3">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/smooth_gradient" value="NG_toon_sample/smooth_gradient" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="930" y="316" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/smooth_gradient/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/smooth_gradient">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/smooth_gradient/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/smooth_gradient">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/viewdirection_vector3" value="NG_toon_sample/viewdirection_vector3 = &quot;world&quot;" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="946" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/viewdirection_vector3/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/viewdirection_vector3">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_viewdirection" value="NG_toon_sample/unit_viewdirection" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="454" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_viewdirection/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_viewdirection">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_viewdirection/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_viewdirection">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_float" value="NG_toon_sample/multiply_float" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="514" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_float/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_float">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_float/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_float">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_float/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_float">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_power" value="NG_toon_sample/specular_intensity_power" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="544" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_power/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_intensity_power">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_power/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_intensity_power">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_power/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_intensity_power">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_color" value="NG_toon_sample/specular_intensity_color" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1810" y="178" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_color/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_intensity_color">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_intensity_color/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_intensity_color">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color4" value="NG_toon_sample/add_color4" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2250" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color4/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color4">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color4/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color4">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color4/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color4">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector3" value="NG_toon_sample/multiply_vector3" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="490" y="178" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector3/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_vector3">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector3/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_vector3">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_remap" value="NG_toon_sample/specular_remap" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="346" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_remap/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_remap">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular_remap/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular_remap">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular" value="NG_toon_sample/specular" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2030" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/specular/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/specular">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV" value="NG_toon_sample/NdotV" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="710" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotV">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotV">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotV">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV_invert" value="NG_toon_sample/NdotV_invert" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="930" y="178" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV_invert/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotV_invert">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/NdotV_invert/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/NdotV_invert">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color5" value="NG_toon_sample/add_color5" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="2470" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color5/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color5">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color5/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color5">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_color5/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_color5">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_gradient" value="NG_toon_sample/rim_gradient" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1370" y="346" width="140" height="158" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_gradient/low" value="low" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_gradient">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_gradient/high" value="high" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_gradient">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_gradient/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_gradient">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_gradient/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_gradient">
+          <mxGeometry y="120" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_amount" value="NG_toon_sample/rim_amount = &quot;0.7&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="306" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_amount/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_amount">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_float" value="NG_toon_sample/add_float" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="178" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_float/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_float">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/add_float/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/add_float">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/subtract_float" value="NG_toon_sample/subtract_float" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="316" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/subtract_float/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/subtract_float">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/subtract_float/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/subtract_float">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rmi_intensity" value="NG_toon_sample/rmi_intensity" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="346" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rmi_intensity/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rmi_intensity">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rmi_intensity/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rmi_intensity">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rmi_intensity/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rmi_intensity">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_threshold" value="NG_toon_sample/rim_threshold = &quot;0.1&quot;" style="swimlane;fontColor=#FFF;fillColor=#500;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1330" width="140" height="88" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_threshold/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_threshold">
+          <mxGeometry y="50" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_power" value="NG_toon_sample/rim_power" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="930" y="454" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_power/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_power">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_power/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_power">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim_power/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim_power">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector4" value="NG_toon_sample/multiply_vector4" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="490" y="484" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector4/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_vector4">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/multiply_vector4/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/multiply_vector4">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_normal" value="NG_toon_sample/unit_normal" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="270" y="592" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_normal/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_normal">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/unit_normal/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/unit_normal">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim" value="NG_toon_sample/rim" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1590" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/rim/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/rim">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/gradient_light" value="NG_toon_sample/gradient_light" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="178" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/gradient_light/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/gradient_light">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/gradient_light/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/gradient_light">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/gradient_light/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/gradient_light">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/reflect" value="NG_toon_sample/reflect" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="490" y="316" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/reflect/normal" value="normal" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/reflect">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/reflect/in" value="in" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/reflect">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/reflect/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/reflect">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/LdotV" value="NG_toon_sample/LdotV" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="710" y="514" width="140" height="128" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/LdotV/in2" value="in2" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/LdotV">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/LdotV/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/LdotV">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/LdotV/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/LdotV">
+          <mxGeometry y="90" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/max_float" value="NG_toon_sample/max_float" style="swimlane;fontColor=#000;fillColor=#e1d5e7;fontStyle=4;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="930" y="622" width="140" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/max_float/in1" value="in1" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/max_float">
+          <mxGeometry y="30" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="NG_toon_sample/max_float/out" value="out" style="html=1;strokeColor=none;fontColor=#000;fillColor=#FFF;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;rotatable=0;points=[[0,0.5],[1,0.5]];resizeWidth=1;whiteSpace=wrap;" vertex="1" parent="NG_toon_sample/max_float">
+          <mxGeometry y="60" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="value_NG_toon_sample" value="NG_toon_sample" style="fontColor=#FFF;fillColor=#00C;strokeColor=#fbc02d;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1920" width="140" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_0" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="toon_shade1/out" target="surface_unlit/emission_color">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_1" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="surface_unlit/out" target="surfacematerial/surfaceshader">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_2" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="value_NG_toon_sample" target="ND_toon_sample/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_3" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/multiply_color3/out" target="NG_toon_sample/output_color3/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_4" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_normal/out" target="NG_toon_sample/NdotL/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_5" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/multiply_vector4/out" target="NG_toon_sample/NdotL/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_6" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/light_direction/out" target="NG_toon_sample/unit_light_direction/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_7" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/base_color/out" target="NG_toon_sample/multiply_color3/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/add_color5/out" target="NG_toon_sample/multiply_color3/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_9" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/gradient_light/out" target="NG_toon_sample/add_color3/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_10" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/ambient_color/out" target="NG_toon_sample/add_color3/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_11" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/NdotL/out" target="NG_toon_sample/smooth_gradient/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_12" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/viewdirection_vector3/out" target="NG_toon_sample/unit_viewdirection/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_13" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/smooth_gradient/out" target="NG_toon_sample/multiply_float/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_14" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/max_float/out" target="NG_toon_sample/multiply_float/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_15" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/multiply_float/out" target="NG_toon_sample/specular_intensity_power/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_16" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/glossiness/out" target="NG_toon_sample/specular_intensity_power/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_17" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/specular_remap/out" target="NG_toon_sample/specular_intensity_color/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_18" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/add_color3/out" target="NG_toon_sample/add_color4/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_19" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/specular/out" target="NG_toon_sample/add_color4/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_20" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_viewdirection/out" target="NG_toon_sample/multiply_vector3/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_21" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/specular_intensity_power/out" target="NG_toon_sample/specular_remap/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_22" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/specular_intensity_color/out" target="NG_toon_sample/specular/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_23" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/specular_color/out" target="NG_toon_sample/specular/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_24" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_normal/out" target="NG_toon_sample/NdotV/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_25" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/multiply_vector3/out" target="NG_toon_sample/NdotV/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_26" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/NdotV/out" target="NG_toon_sample/NdotV_invert/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_27" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/add_color4/out" target="NG_toon_sample/add_color5/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_28" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim/out" target="NG_toon_sample/add_color5/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_29" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rmi_intensity/out" target="NG_toon_sample/rim_gradient/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_30" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/add_float/out" target="NG_toon_sample/rim_gradient/low">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_31" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/subtract_float/out" target="NG_toon_sample/rim_gradient/high">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_32" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_amount/out" target="NG_toon_sample/add_float/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_33" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_amount/out" target="NG_toon_sample/subtract_float/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_34" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/NdotV_invert/out" target="NG_toon_sample/rmi_intensity/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_35" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_power/out" target="NG_toon_sample/rmi_intensity/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_36" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/NdotL/out" target="NG_toon_sample/rim_power/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_37" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_threshold/out" target="NG_toon_sample/rim_power/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_38" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_light_direction/out" target="NG_toon_sample/multiply_vector4/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_39" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/normal/out" target="NG_toon_sample/unit_normal/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_40" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_color/out" target="NG_toon_sample/rim/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_41" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/rim_gradient/out" target="NG_toon_sample/rim/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_42" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/smooth_gradient/out" target="NG_toon_sample/gradient_light/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_43" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/light_color/out" target="NG_toon_sample/gradient_light/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_44" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_viewdirection/out" target="NG_toon_sample/reflect/in">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_45" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/unit_normal/out" target="NG_toon_sample/reflect/normal">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_46" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/reflect/out" target="NG_toon_sample/LdotV/in2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_47" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/multiply_vector4/out" target="NG_toon_sample/LdotV/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge_48" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="NG_toon_sample/LdotV/out" target="NG_toon_sample/max_float/in1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

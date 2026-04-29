@@ -520,6 +520,7 @@
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="circle.html">circle</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cloverleaf.html">cloverleaf</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="crosshatch.html">crosshatch</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="flake2d.html">flake2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal2d.html">fractal2d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="grid.html">grid</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="hexagon.html">hexagon</a>
@@ -545,6 +546,7 @@
 <div class="collapse ps-5" id="collapse_procedural3d">
 <div class="d-grid gap-0 col-6">
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="cellnoise3d.html">cellnoise3d</a>
+<a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="flake3d.html">flake3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="fractal3d.html">fractal3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="noise3d.html">noise3d</a>
 <a class="idx text-left btn btn-sm btn-outline-secondary border-0 py-0" type="button" href="randomcolor.html">randomcolor</a>
@@ -1385,6 +1387,403 @@ Category: extract
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_vector4({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_extract_matrix33 <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector3</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_extract_matrix33_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_extract_matrix33_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_in" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_index" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_index" aria-selected="true">index</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix33_out" type="button" role="tab" aria-controls="pills-ND_extract_matrix33_out" aria-selected="true"><b>out</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_extract_matrix33_in"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_in-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-3">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix33">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix33_index"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_index-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_extract_matrix33_index" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="2" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix33_out"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix33_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-3">
+          <input id="ND_extract_matrix33_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector3">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix33({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+    </div>
+  </div>
+<hr>
+</details>
+</p>
+</div>
+</div>
+</div>
+</div>
+</details>
+<details open class="p-0"><summary class="p-0 card-header-sm rounded bg-opacity-50 m-4 py-0 p-0 mb-0 mt-1">ND_extract_matrix44 <button type="button" class="btn bit-sm disabled btn-outline-info pt-0 pb-0">1.39.5</button></summary>
+<div class="m-0 mt-0">
+<div class="row">
+<div class="col-12">
+<div class="card shadow border mb-4">
+<div class="card-body">
+<div class="row">
+<div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">stdlib</button></div>
+<div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">channel</button></div>
+<div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> vector4</button></div>
+<div class="col-sm card-text"> <b>Version : </b>1.0  </div>
+</div>
+<div class="row">
+<div class="col-md-5 p-2">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_extract_matrix44_out_genglsl.png" class="img-thumbnail rounded float-left" alt=../resources/mtlx/nodedef_materials/material_extract_matrix44_out_genglsl.png style="min-width:64px">
+</div>
+<div style="font-size:small;" class="col-md-7 border-left pt-2" >
+<div class="card-text"><b>Parameters:</b>
+<ul class="nav nav-pills" role="tablist">
+<li class="nav-item" role="presentation"> <button class="nav-link active"  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_in" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_in" aria-selected="true">in</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_index" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_index" aria-selected="true">index</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_extract_matrix44_out" type="button" role="tab" aria-controls="pills-ND_extract_matrix44_out" aria-selected="true"><b>out</b></button>
+</ul>
+</div>
+<br>
+<div class="tab-content">
+ <div class="tab-pane show active" id="pills-ND_extract_matrix44_in"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_in-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm"></label>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+      <div class="col-2">
+          <input type="number" class="form-control form-control-sm" value="0.0" disabled>
+      </div>
+</div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="matrix44">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix44_index"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_index-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_extract_matrix44_index" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="integer">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
+   </div>
+  </div>
+<div class="form-group row g-1">
+<label class="col-2 col-form-label col-form-label-sm">UI Min | Max | Step: </label>
+ <div class="col-4">
+  <input type="text" class="form-control form-control-sm" value="0" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="3" disabled>
+ </div>
+ <div class="col-3">
+  <input type="text" class="form-control form-control-sm" value="" disabled>
+ </div>
+</div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_extract_matrix44_out"
+  role="tabpanel" aria-labelledby="pills-ND_extract_matrix44_out-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label class="col-2 col-form-label col-form-label-sm">Disabled Value</label>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_0" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_1" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_2" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+      <div class="col-2">
+          <input id="ND_extract_matrix44_out_3" type="number" class="form-control form-control-sm" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector4">
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<p class="card-text"><b></b>
+<details><summary><b>Code Implementation</b>
+<img src="../images/code-square.svg">
+</summary>
+<br>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genglsl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>{{in}}[{{index}}] </textarea>
+    </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genmdl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Code:</label>
+    <div class="col-8">
+      <textarea class="form-control form-control-sm" rows="3"
+        style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_extract_matrix44({{in}}, {{index}}) </textarea>
     </div>
   </div>
 <hr>
