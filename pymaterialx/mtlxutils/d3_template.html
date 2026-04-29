@@ -266,12 +266,12 @@
 
         /* Highlight styles */
         .highlighted {
-            stroke: #f39f12 !important;
+            stroke: rgb(243, 185, 60) !important;
             stroke-width: 3 !important;
         }
 
         .selected {
-            filter: drop-shadow(0 0 10px rgba(243, 243, 60, 1.0));
+            filter: drop-shadow(0 0 10px rgb(60, 243, 60));
         }
     </style>
 </head>
@@ -298,8 +298,8 @@
         </div>
 
         <div class="sidebar">
-            <div class="controls" style="display: none;">
-                <div class="control-group">
+            <div class="controls" >
+                <div class="control-group" style="display: none;">
                     <label for="layout">Layout:</label>
                     <select id="layout" onchange="changeLayout(this.value)">
                         <option value="force">Force-Directed</option>
@@ -319,7 +319,7 @@
                     <input type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
                 </div>
 
-                <div class="control-group">
+                <div class="control-group" style="display: none;">
                     <label for="highlight-path">Highlight Path:</label>
                     <input type="text" id="highlight-path" placeholder="Enter node path..."
                         oninput="highlightPath(this.value)">
@@ -420,7 +420,7 @@
             // Check for a http argument "graph" to load graph data from URL
              const urlParams = new URLSearchParams(window.location.search);
              const graphUrl = urlParams.get('graph');
-             console.log('Graph URL parameter:', graphUrl);
+             //console.log('Graph URL parameter:', graphUrl);
              if (graphUrl) {
                  fetch(graphUrl)
                      .then(response => response.json())
@@ -481,6 +481,7 @@
 
             svg.call(zoom);
 
+
             // Draw links first (so they appear behind nodes)
             const link = g.selectAll('.link')
                 .data(links)
@@ -503,6 +504,16 @@
                     d3.select(this).classed('highlighted', false);
                     hideTooltip();
                 });
+
+            // Add background click handler to clear selection
+            svg.on('click', function(event) {
+                // Only clear if not clicking on a node (node click calls stopPropagation)
+                d3.selectAll('.node').classed('selected', false);
+                selectedNode = null;
+
+                // Restore list of all nodes
+                populateNodeList();
+            });
 
             // Draw nodes
             const node = g.selectAll('.node')
@@ -720,6 +731,8 @@
         }
 
         function selectNode(node) {
+            console.log('Selected node:', node.id);
+
             // Remove previous selection
             d3.selectAll('.node').classed('selected', false);
 
@@ -769,12 +782,13 @@
                     </div>
                 `;
                 div.onclick = () => {
+                    console.log('Node list clicked:', node.id);
                     // Center view on node
-                    const svg = document.getElementById('graph-svg');
+                    /* const svg = d3.select('#graph-svg');
                     const nodeEl = document.getElementById(node.id);
                     if (nodeEl) {
                         const bbox = nodeEl.getBBox();
-                        const transform = d3.zoomTransform(svg);
+                        const transform = d3.zoomTransform(svg.node());
                         const centerX = bbox.x + bbox.width / 2;
                         const centerY = bbox.y + bbox.height / 2;
 
@@ -782,11 +796,11 @@
                             .duration(750)
                             .call(zoom.transform,
                                 transform.translate(
-                                    svg.clientWidth / 2 - centerX,
-                                    svg.clientHeight / 2 - centerY
+                                    svg.node().clientWidth / 2 - centerX,
+                                    svg.node().clientHeight / 2 - centerY
                                 )
                             );
-                    }
+                    } */
                     selectNode(node);
                 };
                 container.appendChild(div);
