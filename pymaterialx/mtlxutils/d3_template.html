@@ -50,7 +50,7 @@
 
         .graph-container {
             flex: 1;
-            background: rgb(20, 40, 60);
+            background: rgb(16, 16, 17);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -127,25 +127,25 @@
         /* Node styling */
         .node {
             cursor: move;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
         .node-header {
-            stroke-width: 2;
+            stroke-width: 0;
             rx: 5;
             ry: 5;
+            /* fill is set dynamically by D3 based on node type */
         }
 
         .node-body {
-            fill: rgb(250, 250, 250);
-            stroke: #bdc3c7;
-            stroke-width: 1;
+            fill: #223355;
+            stroke: none;
+            stroke-width: 0;
             rx: 5;
             ry: 5;
         }
 
         .node-title {
-            fill: white;
+            fill: #e0e6ef;
             font-size: 14px;
             font-weight: bold;
             text-anchor: middle;
@@ -158,11 +158,11 @@
         }
 
         .input-slot {
-            fill: #3498db;
+            fill: #274b6d;
         }
 
         .output-slot {
-            fill: #2ecc71;
+            fill: #1e5c5c;
         }
 
         .slot-rect {
@@ -171,7 +171,7 @@
         }
 
         .slot-text {
-            fill: white;
+            fill: #e0e6ef;
             font-size: 11px;
             text-anchor: middle;
             dominant-baseline: middle;
@@ -179,8 +179,8 @@
         }
 
         .port {
-            fill: white;
-            stroke: #7f8c8d;
+            fill: #3a6ea7;
+            stroke: #7fbfff;
             stroke-width: 2;
             r: 8;
             cursor: crosshair;
@@ -188,13 +188,14 @@
 
         .link {
             fill: none;
-            stroke: #95a5a6;
+            stroke: #3a6ea7;
             stroke-width: 2;
             marker-end: url(#arrowhead);
+            opacity: 1;
         }
 
         .link:hover {
-            stroke: #e74c3c;
+            stroke: #7fbfff;
             stroke-width: 3;
         }
 
@@ -266,12 +267,21 @@
 
         /* Highlight styles */
         .highlighted {
-            stroke: rgb(243, 185, 60) !important;
+            stroke: #7fbfff !important;
             stroke-width: 3 !important;
         }
 
-        .selected {
-            filter: drop-shadow(0 0 10px rgb(60, 243, 60));
+        .selected rect.node-header,
+        .selected rect.node-body {
+            stroke: #7fbfff !important;
+            stroke-width: 4 !important;
+            filter: none !important;
+        }
+
+        .node rect.node-header,
+        .node rect.node-body {
+            stroke: none;
+            stroke-width: 0;
         }
     </style>
 </head>
