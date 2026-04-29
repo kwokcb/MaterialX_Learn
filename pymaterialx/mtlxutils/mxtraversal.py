@@ -1561,7 +1561,7 @@ class MxD3GraphExporter(MxBaseGraphExporter):
                 # Create node data
                 color = self.node_colors.get(item[1], self.default_node_colors)[0]
                 textColor = self.node_colors.get(item[1], self.default_node_colors)[1]
-                print(f'Color for node {node_path} of type {item[1]}: {color}, textColor: {textColor}')
+                #print(f'Color for node {node_path} of type {item[1]}: {color}, textColor: {textColor}')
 
                 node = {
                     'id': node_id,
@@ -1753,12 +1753,16 @@ class MxD3GraphExporter(MxBaseGraphExporter):
         import datetime
         timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
+        template_graph_data_placeholder = 'const graphData = {};'
+        graphData_declaration = f"const graphData = {json.dumps(data, indent=2)};"
+
         # Replace placeholders
         html_content = html_template\
-            .replace('{{TITLE}}', title)\
-            .replace('{{TIMESTAMP}}', timestamp)\
-            .replace('{{NODE_COUNT}}', str(len(data['nodes'])))\
-            .replace('{{GRAPH_DATA}}', json.dumps(data, indent=2))
+            .replace(template_graph_data_placeholder, graphData_declaration)         
+            #.replace('{{TITLE}}', title)\
+            #.replace('{{TIMESTAMP}}', timestamp)\
+            #.replace('{{NODE_COUNT}}', str(len(data['nodes'])))\
+            #.replace('{{GRAPH_DATA}}', json.dumps(data, indent=2))
         
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(html_content)

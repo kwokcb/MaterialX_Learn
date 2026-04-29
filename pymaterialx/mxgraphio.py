@@ -89,6 +89,7 @@ def main():
     parser.add_argument('-ec', '--emitCategory', dest='emitCategory', default=False, help='Emit category information in the graph. Default is false.')
     parser.add_argument('-et', '--emitType', dest='emitType', default=False, help='Emit node type information in the graph. Default is false.')
     parser.add_argument('-f', '--format', dest='format', default='mermaid', help='Format of the output graph. Supported formats are: mermaid, drawio. Default is mermaid.')
+    parser.add_argument('-d3html', '--d3html', dest='d3html', default='', help='D3 tempalte HTML file')
 
     opts = parser.parse_args()
 
@@ -206,8 +207,12 @@ def main():
             print('- Write graph to file:' + outputFileName.asString())
             if output_format == 'd3':
                 exporter.export_json(outputFileName.asString())
-                outputFileName = outputFileName.asString().replace('_d3.json', '_d3.html')
-                exporter.export_html(outputFileName)
+
+                if opts.d3html:
+                    d3html = opts.d3html
+                    outputFileName = outputFileName.asString().replace('_d3.json', '_d3.html')
+                    print('- Write graph to html:' + outputFileName)
+                    exporter.export_html(outputFileName, d3html)
             else:
                 exporter.export(outputFileName.asString())
 

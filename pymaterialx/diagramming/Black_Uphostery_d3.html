@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaterialX Graph</title>
-    
+    <title>D3 Graph Viewer</title>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/d3-drag@3"></script>
     <script src="https://unpkg.com/d3-zoom@3"></script>
-    
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: #111111;
             color: #EEEEEE;
@@ -23,30 +24,30 @@
             min-height: 100vh;
             padding: 4px;
         }
-        
+
         .header {
             padding: 20px;
             border-radius: 0px;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         h1 {
             margin-bottom: 10px;
         }
-        
+
         .stats {
             display: flex;
             gap: 20px;
             font-size: 14px;
         }
-        
+
         .container {
             display: flex;
             gap: 20px;
             height: calc(100vh - 180px);
         }
-        
+
         .graph-container {
             flex: 1;
             background: rgb(20, 40, 60);
@@ -55,13 +56,13 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             position: relative;
         }
-        
+
         #graph-svg {
             width: 100%;
             height: 100%;
             display: block;
         }
-        
+
         .sidebar {
             width: 300px;
             border-radius: 10px;
@@ -69,34 +70,35 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             overflow-y: auto;
         }
-        
+
         .controls {
             margin-bottom: 20px;
         }
-        
+
         .control-group {
             margin-bottom: 15px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: 500;
         }
-        
-        select, input[type="range"] {
+
+        select,
+        input[type="range"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 0px;
             background: white;
         }
-        
+
         .node-list {
             max-height: 400px;
             overflow-y: auto;
         }
-        
+
         .node-item {
             padding: 10px;
             margin-bottom: 5px;
@@ -105,35 +107,35 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
+
         .node-item:hover {
             /* background: #e3f2fd; */
             background: rgba(152, 152, 219, 0.1);
             transform: translateX(5px);
         }
-        
+
         .node-type {
             font-size: 12px;
             margin-top: 2px;
         }
-        
+
         .node-slots {
             font-size: 11px;
             margin-top: 5px;
         }
-        
+
         /* Node styling */
         .node {
             cursor: move;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
-        
+
         .node-header {
             stroke-width: 2;
             rx: 5;
             ry: 5;
         }
-        
+
         .node-body {
             fill: rgb(250, 250, 250);
             stroke: #bdc3c7;
@@ -141,7 +143,7 @@
             rx: 5;
             ry: 5;
         }
-        
+
         .node-title {
             fill: white;
             font-size: 14px;
@@ -150,24 +152,24 @@
             dominant-baseline: middle;
             pointer-events: none;
         }
-        
+
         .slot-row {
             cursor: pointer;
         }
-        
+
         .input-slot {
             fill: #3498db;
         }
-        
+
         .output-slot {
             fill: #2ecc71;
         }
-        
+
         .slot-rect {
             rx: 3;
             ry: 3;
         }
-        
+
         .slot-text {
             fill: white;
             font-size: 11px;
@@ -175,7 +177,7 @@
             dominant-baseline: middle;
             pointer-events: none;
         }
-        
+
         .port {
             fill: white;
             stroke: #7f8c8d;
@@ -183,23 +185,23 @@
             r: 8;
             cursor: crosshair;
         }
-        
+
         .link {
             fill: none;
             stroke: #95a5a6;
             stroke-width: 2;
             marker-end: url(#arrowhead);
         }
-        
+
         .link:hover {
             stroke: #e74c3c;
             stroke-width: 3;
         }
-        
+
         .dashed-link {
-            stroke-dasharray: 5,5;
+            stroke-dasharray: 5, 5;
         }
-        
+
         .tooltip {
             position: absolute;
             padding: 10px;
@@ -212,26 +214,26 @@
             z-index: 1000;
             backdrop-filter: blur(5px);
         }
-        
+
         .legend {
             margin-top: 20px;
             padding: 10px;
             border-radius: 5px;
         }
-        
+
         .legend-item {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
         }
-        
+
         .legend-color {
             width: 20px;
             height: 10px;
             margin-right: 10px;
             border-radius: 2px;
         }
-        
+
         /* Zoom controls */
         .zoom-controls {
             position: absolute;
@@ -239,10 +241,10 @@
             right: 20px;
             background: white;
             border-radius: 0px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 5px;
         }
-        
+
         .zoom-btn {
             width: 30px;
             height: 30px;
@@ -257,45 +259,46 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .zoom-btn:hover {
             background: #2980b9;
         }
-        
+
         /* Highlight styles */
         .highlighted {
             stroke: #f39f12 !important;
             stroke-width: 3 !important;
         }
-        
+
         .selected {
             filter: drop-shadow(0 0 10px rgba(243, 243, 60, 1.0));
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h1>MaterialX Graph</h1>
+        <h1>D3 Graph Viewer</h1>
         <div class="stats">
             <div>Nodes: <span id="node-count">0</span></div>
             <div>Connections: <span id="link-count">0</span></div>
-            <div>Last Updated: <span id="update-time">2026-04-29 12:10:56</span></div>
-        </div>
+            <!-- <div>Last Updated: <span id="update-time">{{TIMESTAMP}}</span></div> -->
+        </div> 
     </div>
-    
+
     <div class="container">
         <div class="graph-container">
             <div class="zoom-controls">
                 <button class="zoom-btn" onclick="zoomIn()">+</button>
                 <button class="zoom-btn" onclick="zoomOut()">-</button>
-                <button class="zoom-btn" onclick="resetZoom()">↺</button>
+                <button class="zoom-btn" onclick="resetZoom()">â†º</button>
             </div>
             <svg id="graph-svg"></svg>
             <div class="tooltip" id="tooltip"></div>
         </div>
-        
+
         <div class="sidebar">
-            <div class="controls">
+            <div class="controls" style="display: none;">
                 <div class="control-group">
                     <label for="layout">Layout:</label>
                     <select id="layout" onchange="changeLayout(this.value)">
@@ -304,23 +307,29 @@
                         <option value="hierarchical">Hierarchical</option>
                     </select>
                 </div>
-                
+
                 <div class="control-group">
                     <label for="node-size">Node Size:</label>
-                    <input type="range" id="node-size" min="100" max="300" value="200" oninput="updateNodeSize(this.value)">
+                    <input type="range" id="node-size" min="100" max="300" value="200"
+                        oninput="updateNodeSize(this.value)">
                 </div>
-                
+
                 <div class="control-group">
                     <label for="show-values">Show Values:</label>
                     <input type="checkbox" id="show-values" checked onchange="toggleValues(this.checked)">
                 </div>
-                
+
                 <div class="control-group">
                     <label for="highlight-path">Highlight Path:</label>
-                    <input type="text" id="highlight-path" placeholder="Enter node path..." oninput="highlightPath(this.value)">
+                    <input type="text" id="highlight-path" placeholder="Enter node path..."
+                        oninput="highlightPath(this.value)">
                 </div>
             </div>
-            
+
+            <div class="menu">
+                <button onclick="loadGraphData()">Load Graph Data</button>
+            </div>
+
             <div class="legend">
                 <h3>Node Types</h3>
                 <div class="legend-item">
@@ -344,14 +353,14 @@
                     <span>Constant</span>
                 </div>
             </div>
-            
+
             <div class="node-list">
-                <h3>Nodes (18)</h3>
+                <h3>Nodes</h3>
                 <div id="node-list-container"></div>
             </div>
         </div>
     </div>
-    
+
     <script>
         // Graph data loaded from Python
         const graphData = {
@@ -471,7 +480,7 @@
       },
       "position": {
         "x": 50,
-        "y": 50,
+        "y": 550,
         "width": 200,
         "height": 85
       },
@@ -549,7 +558,7 @@
       },
       "position": {
         "x": 50,
-        "y": 175,
+        "y": 50,
         "width": 200,
         "height": 85
       },
@@ -718,7 +727,7 @@
       },
       "position": {
         "x": 50,
-        "y": 550,
+        "y": 175,
         "width": 200,
         "height": 85
       },
@@ -1141,35 +1150,100 @@
     "nodeHeaderHeight": 40,
     "slotHeight": 25
   }
-};
-        
+}; 
+
         // Initialize variables
-        let nodes = graphData.nodes;
-        let links = graphData.links;
-        let metadata = graphData.metadata;
-        
+        let nodes = graphData.nodes ? graphData.nodes : [];
+        let links = graphData.links ? graphData.links : [];
+        let metadata = graphData.metadata ? graphData.metadata : {};
+
         let selectedNode = null;
         let simulation = null;
         let zoom = null;
-        
+
+        function loadGraphData() {
+            console.log('Loading graph data...');
+
+            // Open file dialog to load JSON graph data
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = event => {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        nodes = data.nodes || [];
+                        links = data.links || [];
+                        metadata = data.metadata || {};
+                        initGraph();
+                        updateStats(metadata);
+                    } catch (err) {
+                        alert('Error parsing JSON: ' + err.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+
+            input.click();
+        }
+
+
         // Update stats
-        document.getElementById('node-count').textContent = metadata.totalNodes;
-        document.getElementById('link-count').textContent = metadata.totalLinks;
-        
+        function updateStats(metadata)
+        {
+            document.getElementById('node-count').textContent = metadata.totalNodes;
+            document.getElementById('link-count').textContent = metadata.totalLinks;
+        }
+
         // Initialize visualization
         initGraph();
-        
+
         function initGraph() {
+
+            // Check for a http argument "graph" to load graph data from URL
+             const urlParams = new URLSearchParams(window.location.search);
+             const graphUrl = urlParams.get('graph');
+             console.log('Graph URL parameter:', graphUrl);
+             if (graphUrl) {
+                 fetch(graphUrl)
+                     .then(response => response.json())
+                     .then(data => {
+                         nodes = data.nodes || [];
+                         links = data.links || [];
+                         metadata = data.metadata || {};
+                         initGraph();
+                         updateStats(metadata);
+                     })
+                     .catch(err => {
+                         alert('Error loading graph from URL: ' + err.message);
+                     });
+                 return; // Wait for fetch to complete before initializing
+             }
+
+            if (!nodes)
+            {
+                console.log('No nodes data found in graphData');
+                return;                
+            }
+
+            // Ensure d.x and d.y are initialized from position for all nodes
+            nodes.forEach(d => {
+                d.x = d.position.x;
+                d.y = d.position.y;
+            });
+
             const svg = d3.select('#graph-svg');
             const width = svg.node().getBoundingClientRect().width;
             const height = svg.node().getBoundingClientRect().height;
-            
+
             // Clear previous content
             svg.selectAll('*').remove();
-            
+
             // Create main group
             const g = svg.append('g');
-            
+
             // Add arrowhead marker
             svg.append('defs').append('marker')
                 .attr('id', 'arrowhead')
@@ -1182,16 +1256,16 @@
                 .append('path')
                 .attr('d', 'M 0,-5 L 10,0 L 0,5')
                 .attr('fill', '#95a5a6');
-            
+
             // Create zoom behavior
             zoom = d3.zoom()
                 .scaleExtent([0.1, 4])
                 .on('zoom', (event) => {
                     g.attr('transform', event.transform);
                 });
-            
+
             svg.call(zoom);
-            
+
             // Draw links first (so they appear behind nodes)
             const link = g.selectAll('.link')
                 .data(links)
@@ -1200,37 +1274,38 @@
                 .attr('stroke', d => d.color)
                 .attr('stroke-width', d => d.width)
                 .attr('id', d => d.id)
-                .on('mouseover', function(event, d) {
+                .on('mouseover', function (event, d) {
                     d3.select(this).classed('highlighted', true);
                     showTooltip(event, `
                         <strong>Connection</strong><br>
                         Source: ${d.source}<br>
                         Target: ${d.target}<br>
                         Type: ${d.type}<br>
-                        From: ${d.sourceSlot} → To: ${d.targetSlot}
+                        From: ${d.sourceSlot} â†’ To: ${d.targetSlot}
                     `);
                 })
-                .on('mouseout', function() {
+                .on('mouseout', function () {
                     d3.select(this).classed('highlighted', false);
                     hideTooltip();
                 });
-            
+
             // Draw nodes
             const node = g.selectAll('.node')
                 .data(nodes)
                 .enter().append('g')
                 .attr('class', 'node')
                 .attr('id', d => d.id)
-                .attr('transform', d => `translate(${d.position.x}, ${d.position.y})`)
+                .attr('transform', d => `translate(${typeof d.x === 'number' ? d.x : d.position.x}, ${typeof d.y === 'number' ? d.y : d.position.y})`)
                 .call(d3.drag()
                     .on('start', dragStarted)
                     .on('drag', dragged)
                     .on('end', dragEnded))
-                .on('click', function(event, d) {
+                .on('click', function (event, d) {
+                    if (event.defaultPrevented) return; // dragged, not a click
                     selectNode(d);
                     event.stopPropagation();
                 });
-            
+
             // Draw node background
             node.append('rect')
                 .attr('class', 'node-header')
@@ -1238,7 +1313,7 @@
                 .attr('height', metadata.nodeHeaderHeight)
                 .attr('fill', d => d.color)
                 .attr('stroke', d => d.textColor);
-            
+
             // Draw node title
             node.append('text')
                 .attr('class', 'node-title')
@@ -1250,7 +1325,7 @@
                     if (d.value) label += ` = ${d.value}`;
                     return label;
                 });
-            
+
             // Draw node body
             node.append('rect')
                 .attr('class', 'node-body')
@@ -1258,25 +1333,25 @@
                 .attr('y', metadata.nodeHeaderHeight)
                 .attr('width', d => d.position.width)
                 .attr('height', d => d.position.height - metadata.nodeHeaderHeight);
-            
+
             // Draw slots
             nodes.forEach((nodeData, nodeIndex) => {
                 const nodeGroup = d3.select(`#${nodeData.id}`);
                 const inputSlots = nodeData.slots.inputs;
                 const outputSlots = nodeData.slots.outputs;
                 const maxSlots = Math.max(inputSlots.length, outputSlots.length);
-                
+
                 // Calculate starting position for slots
                 const startY = metadata.nodeHeaderHeight + 10;
-                
+
                 // Draw input slots (left side)
                 inputSlots.forEach((slot, i) => {
                     const y = startY + (i * metadata.slotHeight);
-                    
+
                     const slotGroup = nodeGroup.append('g')
                         .attr('class', 'slot-row')
                         .attr('transform', `translate(0, ${y})`);
-                    
+
                     // Input port
                     slotGroup.append('circle')
                         .attr('class', 'port input-port')
@@ -1285,14 +1360,14 @@
                         .attr('data-slot', slot.name)
                         .attr('data-node', nodeData.id)
                         .attr('data-type', 'input');
-                    
+
                     // Slot rectangle
                     slotGroup.append('rect')
                         .attr('class', 'slot-rect input-slot')
                         .attr('x', 10)
                         .attr('width', 80)
                         .attr('height', metadata.slotHeight - 2);
-                    
+
                     // Slot text
                     slotGroup.append('text')
                         .attr('class', 'slot-text')
@@ -1300,15 +1375,15 @@
                         .attr('y', metadata.slotHeight / 2)
                         .text(slot.name);
                 });
-                
+
                 // Draw output slots (right side)
                 outputSlots.forEach((slot, i) => {
                     const y = startY + (i * metadata.slotHeight);
-                    
+
                     const slotGroup = nodeGroup.append('g')
                         .attr('class', 'slot-row')
                         .attr('transform', `translate(${nodeData.position.width}, ${y})`);
-                    
+
                     // Output port
                     slotGroup.append('circle')
                         .attr('class', 'port output-port')
@@ -1317,14 +1392,14 @@
                         .attr('data-slot', slot.name)
                         .attr('data-node', nodeData.id)
                         .attr('data-type', 'output');
-                    
+
                     // Slot rectangle
                     slotGroup.append('rect')
                         .attr('class', 'slot-rect output-slot')
                         .attr('x', -90)
                         .attr('width', 80)
                         .attr('height', metadata.slotHeight - 2);
-                    
+
                     // Slot text
                     slotGroup.append('text')
                         .attr('class', 'slot-text')
@@ -1333,16 +1408,16 @@
                         .text(slot.name);
                 });
             });
-            
+
             // Update link paths after nodes are drawn
             updateLinkPaths();
-            
+
             // Populate node list
             populateNodeList();
         }
-        
-    function updateLinkPaths() {
-            d3.selectAll('.link').attr('d', function(d) {
+
+        function updateLinkPaths() {
+            d3.selectAll('.link').attr('d', function (d) {
                 // Helper to get port absolute position from node/slot data
                 function getPortPos(nodeId, slotName, type) {
                     const node = nodes.find(n => n.id === nodeId);
@@ -1380,7 +1455,7 @@
         }
 
         function updateLinkPaths2() {
-            d3.selectAll('.link').attr('d', function(d) {
+            d3.selectAll('.link').attr('d', function (d) {
                 // Find the SVG port elements for the source output and target input slots
                 const sourcePort = d3.select(`circle[data-node="${d.source}"][data-slot="${d.sourceSlot}"][data-type="output"]`);
                 const targetPort = d3.select(`circle[data-node="${d.target}"][data-slot="${d.targetSlot}"][data-type="input"]`);
@@ -1407,37 +1482,36 @@
                 return `M ${src.x},${src.y} C ${midX},${src.y} ${midX},${tgt.y} ${tgt.x},${tgt.y}`;
             });
         }
-        
+
         function dragStarted(event, d) {
             if (!event.active) simulation?.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
         }
-        
+
         function dragged(event, d) {
-            //d.fx = event.x;
-            //d.fy = event.y;
-            d.position.x = event.x;
-            d.position.y = event.y;            
-            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            d.x = event.x;
+            d.y = event.y;
+            // Also update position.x/y so links follow
+            d.position.x = d.x;
+            d.position.y = d.y;
+            d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             updateLinkPaths();
         }
-        
+
         function dragEnded(event, d) {
-            d3.select(this).attr('transform', `translate(${d.position.x}, ${d.position.y})`);
+            d3.select(this).attr('transform', `translate(${d.x}, ${d.y})`);
             if (!event.active) simulation?.alphaTarget(0);
             d.fx = null;
             d.fy = null;
         }
-        
+
         function selectNode(node) {
             // Remove previous selection
             d3.selectAll('.node').classed('selected', false);
-            
+
             // Highlight selected node
             d3.select(`#${node.id}`).classed('selected', true);
             selectedNode = node;
-            
+
             // Update sidebar with node details
             document.getElementById('node-list-container').innerHTML = `
                 <div class="node-item">
@@ -1451,7 +1525,7 @@
                 </div>
             `;
         }
-        
+
         function showTooltip(event, content) {
             const tooltip = d3.select('#tooltip');
             tooltip.html(content)
@@ -1459,15 +1533,15 @@
                 .style('top', (event.pageY - 10) + 'px')
                 .style('opacity', 1);
         }
-        
+
         function hideTooltip() {
             d3.select('#tooltip').style('opacity', 0);
         }
-        
+
         function populateNodeList() {
             const container = document.getElementById('node-list-container');
             container.innerHTML = '';
-            
+
             nodes.forEach(node => {
                 const div = document.createElement('div');
                 div.className = 'node-item';
@@ -1488,10 +1562,10 @@
                         const transform = d3.zoomTransform(svg);
                         const centerX = bbox.x + bbox.width / 2;
                         const centerY = bbox.y + bbox.height / 2;
-                        
+
                         svg.transition()
                             .duration(750)
-                            .call(zoom.transform, 
+                            .call(zoom.transform,
                                 transform.translate(
                                     svg.clientWidth / 2 - centerX,
                                     svg.clientHeight / 2 - centerY
@@ -1503,7 +1577,7 @@
                 container.appendChild(div);
             });
         }
-        
+
         // Control functions
         function changeLayout(layoutType) {
             // Implement different layouts
@@ -1587,7 +1661,7 @@
 
                 // Assign x/y positions using node sizes
                 const x_spacing = 80, y_spacing = 40, start_x = 50, start_y = 50;
-                Object.keys(columns).sort((a,b)=>a-b).forEach(col => {
+                Object.keys(columns).sort((a, b) => a - b).forEach(col => {
                     let y = start_y;
                     columns[col].forEach(nid => {
                         const node = nodes.find(nn => nn.id === nid);
@@ -1604,7 +1678,7 @@
                 updateLinkPaths();
             }
         }
-        
+
         function updateNodeSize(size) {
             metadata.nodeWidth = parseInt(size);
             nodes.forEach(node => {
@@ -1612,7 +1686,7 @@
             });
             initGraph();
         }
-        
+
         function toggleValues(show) {
             d3.selectAll('.node-title').text(d => {
                 if (show && d.value) {
@@ -1621,13 +1695,13 @@
                 return d.label;
             });
         }
-        
+
         function highlightPath(path) {
             // Reset all highlights
             d3.selectAll('.node').classed('highlighted', false);
-            
+
             if (!path) return;
-            
+
             // Highlight nodes matching the path
             nodes.forEach(node => {
                 if (node.path.toLowerCase().includes(path.toLowerCase())) {
@@ -1635,24 +1709,25 @@
                 }
             });
         }
-        
+
         function zoomIn() {
             const svg = d3.select('#graph-svg');
             svg.transition().call(zoom.scaleBy, 1.2);
         }
-        
+
         function zoomOut() {
             const svg = d3.select('#graph-svg');
             svg.transition().call(zoom.scaleBy, 0.8);
         }
-        
+
         function resetZoom() {
             const svg = d3.select('#graph-svg');
             svg.transition().duration(750).call(zoom.transform, d3.zoomIdentity);
         }
-        
+
         // Initialize with force layout
         //setTimeout(() => changeLayout('force'), 100);
     </script>
 </body>
+
 </html>

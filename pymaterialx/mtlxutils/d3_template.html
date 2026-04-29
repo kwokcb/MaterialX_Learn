@@ -362,8 +362,10 @@
     </div>
 
     <script>
-        // Graph data loaded from Python
-        const graphData = {}; // GRAPH_DATA }};
+        // Graph data loaded from Python.
+        // Note. This line must exist to allow Python graph generator utility to replace
+        // the contents inline with graph data generated.
+        const graphData = {}; 
 
         // Initialize variables
         let nodes = graphData.nodes ? graphData.nodes : [];
