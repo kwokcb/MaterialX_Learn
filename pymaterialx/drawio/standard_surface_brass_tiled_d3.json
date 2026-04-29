@@ -1,0 +1,257 @@
+{
+  "nodes": [
+    {
+      "id": "NG_brass1_out_color",
+      "path": "NG_brass1/out_color",
+      "label": "out_color",
+      "type": "output",
+      "value": "",
+      "graph": "NG_brass1",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_brass1_out_roughness",
+      "path": "NG_brass1/out_roughness",
+      "label": "out_roughness",
+      "type": "output",
+      "value": "",
+      "graph": "NG_brass1",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 300,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "NG_brass1_image_color",
+      "path": "NG_brass1/image_color",
+      "label": "image_color",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_brass1",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 550,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#e1d5e7",
+      "textColor": "#000"
+    },
+    {
+      "id": "NG_brass1_image_roughness",
+      "path": "NG_brass1/image_roughness",
+      "label": "image_roughness",
+      "type": "tiledimage",
+      "value": "",
+      "graph": "NG_brass1",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 800,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#e1d5e7",
+      "textColor": "#000"
+    },
+    {
+      "id": "SR_brass1",
+      "path": "SR_brass1",
+      "label": "SR_brass1",
+      "type": "standard_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "specular_roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "coat_color",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "coat_roughness",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 250,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#e1d5e7",
+      "textColor": "#000"
+    },
+    {
+      "id": "Tiled_Brass",
+      "path": "Tiled_Brass",
+      "label": "Tiled_Brass",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 300,
+        "y": 250,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "NG_brass1_image_color",
+      "target": "NG_brass1_out_color",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "NG_brass1_image_roughness",
+      "target": "NG_brass1_out_roughness",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "NG_brass1_out_roughness",
+      "target": "SR_brass1",
+      "sourceSlot": "out",
+      "targetSlot": "specular_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "NG_brass1_out_color",
+      "target": "SR_brass1",
+      "sourceSlot": "out",
+      "targetSlot": "coat_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "NG_brass1_out_roughness",
+      "target": "SR_brass1",
+      "sourceSlot": "out",
+      "targetSlot": "coat_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "SR_brass1",
+      "target": "Tiled_Brass",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 6,
+    "totalLinks": 6,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}

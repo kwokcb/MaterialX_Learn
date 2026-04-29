@@ -1,0 +1,55 @@
+{
+  "doc": "Graph connections for: d:\\Work\\materialx\\bernard_MaterialX\\resources\\Materials\\TestSuite\\nprlib\\edge_brighten.mtlx",
+  "copyright": "Copyright 2026, NanMu Consulting. kwokcb@gmail.com",
+  "graph": {
+    "edge_brighten": [
+      [
+        "edge_brighten/out",
+        "output",
+        "color3",
+        ""
+      ],
+      [
+        "edge_brighten/facingratio_float",
+        "facingratio",
+        "float",
+        "true"
+      ],
+      [
+        "edge_brighten/power_float",
+        "power",
+        "float",
+        ""
+      ],
+      [
+        "edge_brighten/mix_color3",
+        "mix",
+        "color3",
+        ""
+      ]
+    ]
+  },
+  "connections": [
+    [
+      "edge_brighten/facingratio_float",
+      "",
+      "edge_brighten/power_float",
+      "in1",
+      "nodename"
+    ],
+    [
+      "edge_brighten/power_float",
+      "",
+      "edge_brighten/mix_color3",
+      "mix",
+      "nodename"
+    ],
+    [
+      "edge_brighten/mix_color3",
+      "",
+      "edge_brighten/out",
+      "",
+      "nodename"
+    ]
+  ]
+}
