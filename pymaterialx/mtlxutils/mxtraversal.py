@@ -482,6 +482,7 @@ class MxBaseGraphExporter:
         self.node_colors['output'] = ['#0C0', '#FFF']
         self.node_colors['gltf_pbr'] = ['#040', '#FFF']
         self.node_colors['standard_surface'] = ['#040', '#FFF']
+        self.node_colors['surface_unlit'] = ['#040', '#FFF']
         self.node_colors['gltf_pbr'] = ['#040', '#FFF']
         self.node_colors['surfacematerial'] = ['#090', '#FFF']
         self.node_colors['nodedef'] = ['#00C', '#FFF']

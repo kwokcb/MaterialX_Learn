@@ -1,0 +1,1307 @@
+{
+  "nodes": [
+    {
+      "id": "SHD_glassDish",
+      "path": "SHD_glassDish",
+      "label": "SHD_glassDish",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "occlusion",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "iridescence",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "iridescence_thickness",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 800,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MAT_glassDish",
+      "path": "MAT_glassDish",
+      "label": "MAT_glassDish",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 610,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "image_occlusion",
+      "path": "image_occlusion",
+      "label": "image_occlusion",
+      "type": "gltf_image",
+      "value": "goldleaf_orm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_iridescence",
+      "path": "image_iridescence",
+      "label": "image_iridescence",
+      "type": "gltf_image",
+      "value": "glassdish_irid.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 925,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_iridescence_thickness",
+      "path": "image_iridescence_thickness",
+      "label": "image_iridescence_thickness",
+      "type": "gltf_iridescence_thickness",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle",
+      "path": "swizzle",
+      "label": "swizzle",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle2",
+      "path": "swizzle2",
+      "label": "swizzle2",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle3",
+      "path": "swizzle3",
+      "label": "swizzle3",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SHD_olives",
+      "path": "SHD_olives",
+      "label": "SHD_olives",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "metallic",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "occlusion",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 185
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MAT_olives",
+      "path": "MAT_olives",
+      "label": "MAT_olives",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "image_basecolor",
+      "path": "image_basecolor",
+      "label": "image_basecolor",
+      "type": "gltf_image",
+      "value": "olives_col.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_orm",
+      "path": "image_orm",
+      "label": "image_orm",
+      "type": "gltf_image",
+      "value": "olives_orm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_normal",
+      "path": "image_normal",
+      "label": "image_normal",
+      "type": "gltf_normalmap",
+      "value": "olives_nrm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle4",
+      "path": "swizzle4",
+      "label": "swizzle4",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle5",
+      "path": "swizzle5",
+      "label": "swizzle5",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle6",
+      "path": "swizzle6",
+      "label": "swizzle6",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SHD_glassCover",
+      "path": "SHD_glassCover",
+      "label": "SHD_glassCover",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "metallic",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "occlusion",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "iridescence",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "iridescence_thickness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "thickness",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 275,
+        "width": 200,
+        "height": 235
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MAT_glassCover",
+      "path": "MAT_glassCover",
+      "label": "MAT_glassCover",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 890,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "image_orm2",
+      "path": "image_orm2",
+      "label": "image_orm2",
+      "type": "gltf_image",
+      "value": "glasscover_orm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_normal2",
+      "path": "image_normal2",
+      "label": "image_normal2",
+      "type": "gltf_normalmap",
+      "value": "glasscover_nrm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_iridescence2",
+      "path": "image_iridescence2",
+      "label": "image_iridescence2",
+      "type": "gltf_image",
+      "value": "glasscover_irid.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_iridescence_thickness2",
+      "path": "image_iridescence_thickness2",
+      "label": "image_iridescence_thickness2",
+      "type": "gltf_iridescence_thickness",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "thickness",
+      "path": "thickness",
+      "label": "thickness",
+      "type": "gltf_image",
+      "value": "glasscover_thick.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle7",
+      "path": "swizzle7",
+      "label": "swizzle7",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 975,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle8",
+      "path": "swizzle8",
+      "label": "swizzle8",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 1100,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "swizzle9",
+      "path": "swizzle9",
+      "label": "swizzle9",
+      "type": "extract",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 1225,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SHD_goldLeaf",
+      "path": "SHD_goldLeaf",
+      "label": "SHD_goldLeaf",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "metallic",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "roughness",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "occlusion",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "normal",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 675,
+        "width": 200,
+        "height": 185
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MAT_goldLeaf",
+      "path": "MAT_goldLeaf",
+      "label": "MAT_goldLeaf",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 890,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "image_basecolor2",
+      "path": "image_basecolor2",
+      "label": "image_basecolor2",
+      "type": "gltf_image",
+      "value": "goldleaf_col.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1050,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_orm3",
+      "path": "image_orm3",
+      "label": "image_orm3",
+      "type": "gltf_image",
+      "value": "goldleaf_orm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 1300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "image_normal3",
+      "path": "image_normal3",
+      "label": "image_normal3",
+      "type": "gltf_normalmap",
+      "value": "goldleaf_nrm.png",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 800,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "image_occlusion",
+      "target": "SHD_glassDish",
+      "sourceSlot": "out",
+      "targetSlot": "occlusion",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "image_iridescence",
+      "target": "SHD_glassDish",
+      "sourceSlot": "out",
+      "targetSlot": "iridescence",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "image_iridescence_thickness",
+      "target": "SHD_glassDish",
+      "sourceSlot": "out",
+      "targetSlot": "iridescence_thickness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "SHD_glassDish",
+      "target": "MAT_glassDish",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "image_orm",
+      "target": "swizzle",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "image_orm",
+      "target": "swizzle2",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "image_orm",
+      "target": "swizzle3",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "image_basecolor",
+      "target": "SHD_olives",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "swizzle",
+      "target": "SHD_olives",
+      "sourceSlot": "out",
+      "targetSlot": "metallic",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "swizzle2",
+      "target": "SHD_olives",
+      "sourceSlot": "out",
+      "targetSlot": "roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "swizzle3",
+      "target": "SHD_olives",
+      "sourceSlot": "out",
+      "targetSlot": "occlusion",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "image_normal",
+      "target": "SHD_olives",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "SHD_olives",
+      "target": "MAT_olives",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "image_orm2",
+      "target": "swizzle4",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "image_orm2",
+      "target": "swizzle5",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "image_orm2",
+      "target": "swizzle6",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "swizzle4",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "metallic",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "swizzle5",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "swizzle6",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "occlusion",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "image_normal2",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_20",
+      "source": "image_iridescence2",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "iridescence",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_21",
+      "source": "image_iridescence_thickness2",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "iridescence_thickness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_22",
+      "source": "thickness",
+      "target": "SHD_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "thickness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_23",
+      "source": "SHD_glassCover",
+      "target": "MAT_glassCover",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_24",
+      "source": "image_orm3",
+      "target": "swizzle7",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_25",
+      "source": "image_orm3",
+      "target": "swizzle8",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_26",
+      "source": "image_orm3",
+      "target": "swizzle9",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_27",
+      "source": "image_basecolor2",
+      "target": "SHD_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_28",
+      "source": "swizzle7",
+      "target": "SHD_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "metallic",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_29",
+      "source": "swizzle8",
+      "target": "SHD_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_30",
+      "source": "swizzle9",
+      "target": "SHD_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "occlusion",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_31",
+      "source": "image_normal3",
+      "target": "SHD_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "normal",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_32",
+      "source": "SHD_goldLeaf",
+      "target": "MAT_goldLeaf",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 31,
+    "totalLinks": 33,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}

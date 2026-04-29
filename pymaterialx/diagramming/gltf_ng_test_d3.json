@@ -1,0 +1,1028 @@
+{
+  "nodes": [
+    {
+      "id": "MARBLE",
+      "path": "MARBLE",
+      "label": "MARBLE",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 3410,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_SHADER",
+      "path": "MARBLE_SHADER",
+      "label": "MARBLE_SHADER",
+      "type": "gltf_pbr",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "base_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 3130,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#040",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "surface_unlit_surfaceshader1",
+      "path": "surface_unlit_surfaceshader1",
+      "label": "surface_unlit_surfaceshader1",
+      "type": "surface_unlit",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "emission_color",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 350,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "CHECKER",
+      "path": "CHECKER",
+      "label": "CHECKER",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 890,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_base_color_1",
+      "path": "MARBLE_GRAPH/base_color_1",
+      "label": "base_color_1",
+      "type": "input",
+      "value": "0.8,0.8,0.8",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_base_color_2",
+      "path": "MARBLE_GRAPH/base_color_2",
+      "label": "base_color_2",
+      "type": "input",
+      "value": "0.1,0.1,0.3",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 425,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_noise_scale_1",
+      "path": "MARBLE_GRAPH/noise_scale_1",
+      "label": "noise_scale_1",
+      "type": "input",
+      "value": "6.0",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_noise_scale_2",
+      "path": "MARBLE_GRAPH/noise_scale_2",
+      "label": "noise_scale_2",
+      "type": "input",
+      "value": "4.0",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 300,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_noise_power",
+      "path": "MARBLE_GRAPH/noise_power",
+      "label": "noise_power",
+      "type": "input",
+      "value": "3.0",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 925,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_noise_octaves",
+      "path": "MARBLE_GRAPH/noise_octaves",
+      "label": "noise_octaves",
+      "type": "input",
+      "value": "3",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 550,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#09D",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_out",
+      "path": "MARBLE_GRAPH/out",
+      "label": "out",
+      "type": "output",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2850,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MARBLE_GRAPH_obj_pos",
+      "path": "MARBLE_GRAPH/obj_pos",
+      "label": "obj_pos",
+      "type": "position",
+      "value": "object",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 675,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_add_xyz",
+      "path": "MARBLE_GRAPH/add_xyz",
+      "label": "add_xyz",
+      "type": "dotproduct",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_scale_xyz",
+      "path": "MARBLE_GRAPH/scale_xyz",
+      "label": "scale_xyz",
+      "type": "multiply",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_scale_pos",
+      "path": "MARBLE_GRAPH/scale_pos",
+      "label": "scale_pos",
+      "type": "multiply",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 175,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_noise",
+      "path": "MARBLE_GRAPH/noise",
+      "label": "noise",
+      "type": "fractal3d",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "octaves",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "position",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 200,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_scale_noise",
+      "path": "MARBLE_GRAPH/scale_noise",
+      "label": "scale_noise",
+      "type": "multiply",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_sum",
+      "path": "MARBLE_GRAPH/sum",
+      "label": "sum",
+      "type": "add",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_sin",
+      "path": "MARBLE_GRAPH/sin",
+      "label": "sin",
+      "type": "sin",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_scale",
+      "path": "MARBLE_GRAPH/scale",
+      "label": "scale",
+      "type": "multiply",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1730,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_bias",
+      "path": "MARBLE_GRAPH/bias",
+      "label": "bias",
+      "type": "add",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2010,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_power",
+      "path": "MARBLE_GRAPH/power",
+      "label": "power",
+      "type": "power",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2290,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MARBLE_GRAPH_color_mix",
+      "path": "MARBLE_GRAPH/color_mix",
+      "label": "color_mix",
+      "type": "mix",
+      "value": "",
+      "graph": "MARBLE_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "fg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "bg",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "mix",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 2570,
+        "y": 50,
+        "width": 200,
+        "height": 135
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "CHECKER_GRAPH_out",
+      "path": "CHECKER_GRAPH/out",
+      "label": "out",
+      "type": "output",
+      "value": "",
+      "graph": "CHECKER_GRAPH",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 325,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#0C0",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "CHECKER_GRAPH_checkerboard_color4",
+      "path": "CHECKER_GRAPH/checkerboard_color4",
+      "label": "checkerboard_color4",
+      "type": "checkerboard",
+      "value": "",
+      "graph": "CHECKER_GRAPH",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 800,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "MARBLE_SHADER",
+      "target": "MARBLE",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "MARBLE_GRAPH_color_mix",
+      "target": "MARBLE_GRAPH_out",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "MARBLE_GRAPH_obj_pos",
+      "target": "MARBLE_GRAPH_add_xyz",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "MARBLE_GRAPH_add_xyz",
+      "target": "MARBLE_GRAPH_scale_xyz",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "MARBLE_GRAPH_noise_scale_1",
+      "target": "MARBLE_GRAPH_scale_xyz",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "MARBLE_GRAPH_obj_pos",
+      "target": "MARBLE_GRAPH_scale_pos",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "MARBLE_GRAPH_noise_scale_2",
+      "target": "MARBLE_GRAPH_scale_pos",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "MARBLE_GRAPH_noise_octaves",
+      "target": "MARBLE_GRAPH_noise",
+      "sourceSlot": "out",
+      "targetSlot": "octaves",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "MARBLE_GRAPH_scale_pos",
+      "target": "MARBLE_GRAPH_noise",
+      "sourceSlot": "out",
+      "targetSlot": "position",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_9",
+      "source": "MARBLE_GRAPH_noise",
+      "target": "MARBLE_GRAPH_scale_noise",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_10",
+      "source": "MARBLE_GRAPH_scale_xyz",
+      "target": "MARBLE_GRAPH_sum",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_11",
+      "source": "MARBLE_GRAPH_scale_noise",
+      "target": "MARBLE_GRAPH_sum",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_12",
+      "source": "MARBLE_GRAPH_sum",
+      "target": "MARBLE_GRAPH_sin",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_13",
+      "source": "MARBLE_GRAPH_sin",
+      "target": "MARBLE_GRAPH_scale",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_14",
+      "source": "MARBLE_GRAPH_scale",
+      "target": "MARBLE_GRAPH_bias",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_15",
+      "source": "MARBLE_GRAPH_bias",
+      "target": "MARBLE_GRAPH_power",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_16",
+      "source": "MARBLE_GRAPH_noise_power",
+      "target": "MARBLE_GRAPH_power",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_17",
+      "source": "MARBLE_GRAPH_base_color_2",
+      "target": "MARBLE_GRAPH_color_mix",
+      "sourceSlot": "out",
+      "targetSlot": "fg",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_18",
+      "source": "MARBLE_GRAPH_base_color_1",
+      "target": "MARBLE_GRAPH_color_mix",
+      "sourceSlot": "out",
+      "targetSlot": "bg",
+      "type": "interfacename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_19",
+      "source": "MARBLE_GRAPH_power",
+      "target": "MARBLE_GRAPH_color_mix",
+      "sourceSlot": "out",
+      "targetSlot": "mix",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_20",
+      "source": "MARBLE_GRAPH_out",
+      "target": "MARBLE_SHADER",
+      "sourceSlot": "out",
+      "targetSlot": "base_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_21",
+      "source": "CHECKER_GRAPH_checkerboard_color4",
+      "target": "CHECKER_GRAPH_out",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_22",
+      "source": "CHECKER_GRAPH_out",
+      "target": "surface_unlit_surfaceshader1",
+      "sourceSlot": "out",
+      "targetSlot": "emission_color",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_23",
+      "source": "surface_unlit_surfaceshader1",
+      "target": "CHECKER",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 25,
+    "totalLinks": 24,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}

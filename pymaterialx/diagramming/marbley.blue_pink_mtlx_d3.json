@@ -1,0 +1,404 @@
+{
+  "nodes": [
+    {
+      "id": "multiply_vector4",
+      "path": "multiply_vector4",
+      "label": "multiply_vector4",
+      "type": "multiply",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          },
+          {
+            "name": "in2",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 610,
+        "y": 50,
+        "width": 200,
+        "height": 110
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "convert_vector4",
+      "path": "convert_vector4",
+      "label": "convert_vector4",
+      "type": "convert",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "facingratio_float1",
+      "path": "facingratio_float1",
+      "label": "facingratio_float1",
+      "type": "facingratio",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "position_vector4",
+      "path": "position_vector4",
+      "label": "position_vector4",
+      "type": "position",
+      "value": "object",
+      "graph": "",
+      "slots": {
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 50,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "multiply_vector5",
+      "path": "multiply_vector5",
+      "label": "multiply_vector5",
+      "type": "multiply",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "in1",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 330,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "noise3d_float1",
+      "path": "noise3d_float1",
+      "label": "noise3d_float1",
+      "type": "noise3d",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "position",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 890,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SH_coat_roughness",
+      "path": "SH_coat_roughness",
+      "label": "SH_coat_roughness",
+      "type": "surface_unlit",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "emission",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "SH_marbley",
+      "path": "SH_marbley",
+      "label": "SH_marbley",
+      "type": "open_pbr_surface",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "coat_roughness",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": [
+          {
+            "name": "out",
+            "type": "output",
+            "connections": []
+          }
+        ]
+      },
+      "position": {
+        "x": 1170,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#969aee",
+      "textColor": "#000000"
+    },
+    {
+      "id": "MAT_marbley",
+      "path": "MAT_marbley",
+      "label": "MAT_marbley",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
+        "y": 175,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    },
+    {
+      "id": "MAT_coat_roughness",
+      "path": "MAT_coat_roughness",
+      "label": "MAT_coat_roughness",
+      "type": "surfacematerial",
+      "value": "",
+      "graph": "",
+      "slots": {
+        "inputs": [
+          {
+            "name": "surfaceshader",
+            "type": "input",
+            "connections": []
+          }
+        ],
+        "outputs": []
+      },
+      "position": {
+        "x": 1450,
+        "y": 50,
+        "width": 200,
+        "height": 85
+      },
+      "color": "#090",
+      "textColor": "#FFF"
+    }
+  ],
+  "links": [
+    {
+      "id": "link_0",
+      "source": "multiply_vector5",
+      "target": "multiply_vector4",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_1",
+      "source": "convert_vector4",
+      "target": "multiply_vector4",
+      "sourceSlot": "out",
+      "targetSlot": "in2",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_2",
+      "source": "facingratio_float1",
+      "target": "convert_vector4",
+      "sourceSlot": "out",
+      "targetSlot": "in",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_3",
+      "source": "position_vector4",
+      "target": "multiply_vector5",
+      "sourceSlot": "out",
+      "targetSlot": "in1",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_4",
+      "source": "multiply_vector4",
+      "target": "noise3d_float1",
+      "sourceSlot": "out",
+      "targetSlot": "position",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_5",
+      "source": "noise3d_float1",
+      "target": "SH_coat_roughness",
+      "sourceSlot": "out",
+      "targetSlot": "emission",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_6",
+      "source": "noise3d_float1",
+      "target": "SH_marbley",
+      "sourceSlot": "out",
+      "targetSlot": "coat_roughness",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_7",
+      "source": "SH_marbley",
+      "target": "MAT_marbley",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    },
+    {
+      "id": "link_8",
+      "source": "SH_coat_roughness",
+      "target": "MAT_coat_roughness",
+      "sourceSlot": "out",
+      "targetSlot": "surfaceshader",
+      "type": "nodename",
+      "color": "#95a5a6",
+      "width": 2
+    }
+  ],
+  "metadata": {
+    "totalNodes": 10,
+    "totalLinks": 9,
+    "nodeWidth": 200,
+    "nodeHeaderHeight": 40,
+    "slotHeight": 25
+  }
+}
