@@ -28,6 +28,10 @@ for modname in modules:
         f.write("    :undoc-members:\n")
         f.write("    :show-inheritance:\n")
         f.write("    :inherited-members:\n")
+        f.write("\n")
+        f.write(f"    .. inheritance-diagram:: {modname}.SomeClass\n")
+        f.write("        :parts: 1\n")
+        f.write("        :top-classes: object\n")
     print(f"Wrote {rst_filename}")
 
 # Optionally, generate a modules.rst toctree

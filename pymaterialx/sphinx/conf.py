@@ -21,9 +21,9 @@ autodoc_typehints = 'description'
 autodoc_mock_imports = []
 
 # -- Options for HTML output -------------------------------------------------
+#html_theme = sphinx_rtd_dark_mode' 
 html_theme = 'sphinx_rtd_theme'
 
-# Enable dark mode if available (for sphinx_rtd_theme >= 1.2.0)
 html_theme_options = {
     "style_external_links": True,
     "style_nav_header_background": "#222",
@@ -31,9 +31,17 @@ html_theme_options = {
     "collapse_navigation": False,
     "sticky_navigation": True,
     "includehidden": True,
-    "titles_only": False,
-    "dark_mode": True,
+    "titles_only": False
+#    "dark_mode": True,
 }
+
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.inheritance_diagram',
+    'sphinx_rtd_dark_mode'
+]
 
 # -- MaterialX autodoc settings ----------------------------------------------
 # Use the installed MaterialX package (not local source)

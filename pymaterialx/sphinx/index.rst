@@ -1,7 +1,6 @@
-.. MaterialX Python API documentation master file
-   Welcome to the MaterialX Python API docs!
+.. MaterialX Python API documentation main file
 
-Welcome to the MaterialX Python API documentation!
+MaterialX Python API documentation
 ==================================================
 
 .. toctree::
