@@ -346,7 +346,7 @@ code {
 	font-size: inherit;
 }
 
-/* Page Break : use <div class="page"/> to insert page break
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
 -------------------------------------------------------- */
 .page {
 	page-break-after: always;
@@ -387,18 +387,18 @@ code {
 <td></td>
 </tr>
 <tr>
-<td>Linux_GCC_14_Python312</td>
-<td>ubuntu-24.04</td>
-<td>gcc, 14</td>
-<td>3.12</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
 <td>Linux_GCC_14_Python313</td>
 <td>ubuntu-24.04</td>
 <td>gcc, 14</td>
 <td>3.13</td>
+<td>None</td>
+<td>extended_build_perfetto, extended_cmake_config</td>
+</tr>
+<tr>
+<td>Linux_GCC_14_Python314</td>
+<td>ubuntu-24.04</td>
+<td>gcc, 14</td>
+<td>3.14</td>
 <td>None</td>
 <td>test_render</td>
 </tr>
@@ -419,10 +419,10 @@ code {
 <td></td>
 </tr>
 <tr>
-<td>Linux_Clang_18_Python313</td>
+<td>Linux_Clang_18_Python314</td>
 <td>ubuntu-24.04</td>
 <td>clang, 18</td>
-<td>3.13</td>
+<td>3.14</td>
 <td>None</td>
 <td>clang_format</td>
 </tr>
@@ -431,7 +431,7 @@ code {
 <td>macos-14</td>
 <td>xcode, 15.4</td>
 <td>3.11</td>
-<td>-DMATERIALX_BUILD_SHARED_LIBS=ON</td>
+<td>-DMATERIALX_BUILD_SHARED_LIBS=ON -DMATERIALX_BUILD_DATA_LIBRARY=ON</td>
 <td></td>
 </tr>
 <tr>
@@ -439,15 +439,15 @@ code {
 <td>macos-15</td>
 <td>xcode, 16.4</td>
 <td>3.13</td>
-<td>None</td>
-<td>test_shaders</td>
+<td>-DMATERIALX_TEST_RENDER=ON -DMATERIALX_RENDER_MSL_ONLY=ON</td>
+<td>test_shaders, test_render</td>
 </tr>
 <tr>
-<td>MacOS_Xcode_26_Python313</td>
+<td>MacOS_Xcode_26_Python314</td>
 <td>macos-26</td>
 <td>xcode, 26.0</td>
-<td>3.13</td>
-<td>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DMATERIALX_BUILD_DATA_LIBRARY=ON</td>
+<td>3.14</td>
+<td>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</td>
 <td>static_analysis</td>
 </tr>
 <tr>
@@ -480,7 +480,15 @@ code {
 <td>Default,</td>
 <td>3.13</td>
 <td>-G &quot;Visual Studio 17 2022&quot; -A &quot;x64&quot;</td>
-<td>test_shaders, extended_build_oiio, extended_build_mdl_sdk</td>
+<td>extended_build_mdl_sdk, extended_cmake_config</td>
+</tr>
+<tr>
+<td>Windows_VS2022_x64_Python314</td>
+<td>windows-2025 x64</td>
+<td>Default,</td>
+<td>3.14</td>
+<td>-G &quot;Visual Studio 17 2022&quot; -A &quot;x64&quot;</td>
+<td>test_shaders, extended_build_oiio, extended_cmake_config</td>
 </tr>
 <tr>
 <td>Windows_VS2022_x64_SharedLibs</td>
@@ -500,7 +508,7 @@ code {
 <li>If (runner.os == 'macOS')
     - Install Dependencies (MacOS)
 <li>If (runner.os == 'Windows')
-    - Install Dependencies (Windows)
+    - Setup Build Environment (Windows)
 <li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_oiio* == 'ON' && runner.os == 'Windows')
     - Install OpenImageIO
 <li>If (env.IS_EXTENDED_BUILD == 'true' && *extended_build_mdl_sdk* == 'ON' && runner.os == 'Windows')
@@ -525,11 +533,15 @@ code {
 <li>If (*static_analysis* == 'ON')
     - Static Analysis Tests
 <li>If (*test_render* == 'ON' && runner.os == 'Linux')
-    - Initialize Virtual Framebuffer
+    - Setup Rendering Environment (Linux)
+<li>If (*test_render* == 'ON' && runner.os == 'macOS' && env.IS_EXTENDED_BUILD == 'true')
+    - Setup Rendering Environment (MacOS)
 <li>If (*test_render* == 'ON')
     - Render Script Tests
 <li>If (*test_render* == 'ON')
-    - Render Application Tests
+    - Viewer Tests
+<li>If (*test_render* == 'ON' && runner.os == 'Linux')
+    - Graph Editor Tests
 <li>If (*python* != 'None')
     - Upload Installed Package
 <li>If (*clang_format* == 'ON')
@@ -538,8 +550,14 @@ code {
     - Upload Reference Shaders
 <li>If (*test_render* == 'ON')
     - Upload Renders
+<li>If (*test_render* == 'ON' && runner.os == 'macOS')
+    - Upload Resources (MacOS)
 <li>If (*coverage_analysis* == 'ON')
     - Upload Coverage Report
+<li>If (*extended_build_perfetto* == 'ON' && env.IS_EXTENDED_BUILD == 'true')
+    - Upload Perfetto Traces
+<li>If (always())
+    - Upload Test Logs
 </ol>
 <h2 id="steps-for-job-javascript">Steps For Job: <code>JavaScript</code></h2>
 <ol>
@@ -548,6 +566,7 @@ code {
 <li>Install Node
 <li>JavaScript CMake Generate
 <li>JavaScript CMake Build
+<li>Install JavaScript Dependencies
 <li>JavaScript Unit Tests
 <li>Build Web Viewer
 <li>If (github.event_name != 'pull_request')
@@ -566,6 +585,8 @@ code {
 <li>Sync Repository
 <li>Install Python 3.${{ matrix.python-minor }}
 <li>Download Sdist
+<li>If (runner.os == 'Windows')
+    - Install Doxygen (Windows)
 <li>Build Wheel
 <li>Install Wheel
 <li>Python Tests
