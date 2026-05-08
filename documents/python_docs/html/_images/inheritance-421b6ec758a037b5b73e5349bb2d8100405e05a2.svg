@@ -1,0 +1,275 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1131pt" height="1799pt" viewBox="0.00 0.00 1131.00 1799.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 643.8)">
+<ns0:title>inheritance1fdf35c65d</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>BaseType</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.BaseType" ns1:title="Members:" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="241.62,-639.8 182.12,-639.8 182.12,-611 241.62,-611 241.62,-639.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-621.9" font-family="Arial" font-size="10.00">BaseType</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="98.88,-333.8 13.12,-333.8 13.12,-305 98.88,-305 98.88,-333.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="56" y="-315.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>pybind11_object-&gt;BaseType</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M57.47,-334.19C59.73,-380.14 72.76,-522.1 148,-601.4 155.46,-609.26 165.78,-614.58 175.89,-618.16" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="175.79,-619.97 181.08,-619.85 176.87,-616.64 175.79,-619.97" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>Camera</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Camera" ns1:title="A simple camera class, supporting transform matrices and arcball functionality for object-viewing applications." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-592.8 184.88,-592.8 184.88,-564 238.88,-564 238.88,-592.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-574.9" font-family="Arial" font-size="10.00">Camera</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;Camera</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M58.56,-334.02C63.64,-374.64 83.34,-490.05 148,-554.4 156.32,-562.68 167.78,-568.15 178.64,-571.75" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="178.58,-573.56 183.87,-573.34 179.6,-570.21 178.58,-573.56" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>GeometryLoader</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.GeometryLoader" ns1:title="Base class representing a geometry loader." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.88,-545.8 167.88,-545.8 167.88,-517 255.88,-517 255.88,-545.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-527.9" font-family="Arial" font-size="10.00">GeometryLoader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>pybind11_object-&gt;GeometryLoader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M60.17,-334.1C68.44,-369.02 93.89,-457.76 148,-507.4 152.11,-511.17 156.87,-514.37 161.9,-517.08" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="161.51,-518.84 166.77,-519.49 163.07,-515.7 161.51,-518.84" />
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>GeometryHandler</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.GeometryHandler" ns1:title="Class which holds a set of geometry loaders." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="258.12,-498.8 165.62,-498.8 165.62,-470 258.12,-470 258.12,-498.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-480.9" font-family="Arial" font-size="10.00">GeometryHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>pybind11_object-&gt;GeometryHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M62.7,-333.94C74.47,-362.19 104.09,-424.81 148,-460.4 151.56,-463.28 155.5,-465.85 159.62,-468.12" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="159.42,-469.98 164.67,-470.7 161.01,-466.86 159.42,-469.98" />
+</ns0:g>
+
+<ns0:g id="node8" class="node">
+<ns0:title>Image</ns0:title>
+<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Image" ns1:title="Class representing an image in system memory." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-451.8 184.88,-451.8 184.88,-423 238.88,-423 238.88,-451.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-433.9" font-family="Arial" font-size="10.00">Image</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>pybind11_object-&gt;Image</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M67.8,-334.06C83.44,-354.39 114.25,-391.14 148,-413.4 157.29,-419.53 168.38,-424.42 178.64,-428.15" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="178.55,-429.97 183.85,-429.96 179.7,-426.67 178.55,-429.97" />
+</ns0:g>
+
+<ns0:g id="node9" class="node">
+<ns0:title>ImageBufferDeallocator</ns0:title>
+<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageBufferDeallocator" ns1:title="ImageBufferDeallocator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="270.88,-404.8 152.88,-404.8 152.88,-376 270.88,-376 270.88,-404.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-386.9" font-family="Arial" font-size="10.00">ImageBufferDeallocator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge7" class="edge">
+<ns0:title>pybind11_object-&gt;ImageBufferDeallocator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M83.69,-334.19C101.62,-343.88 125.93,-356.52 148,-366.4 153.17,-368.71 158.64,-371.01 164.1,-373.21" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="164.02,-375.07 169.31,-375.29 165.31,-371.81 164.02,-375.07" />
+</ns0:g>
+
+<ns0:g id="node10" class="node">
+<ns0:title>ImageHandler</ns0:title>
+<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="250.25,-357.8 173.5,-357.8 173.5,-329 250.25,-329 250.25,-357.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-339.9" font-family="Arial" font-size="10.00">ImageHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge8" class="edge">
+<ns0:title>pybind11_object-&gt;ImageHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M99.05,-325.96C120.1,-329.24 145.59,-333.22 166.9,-336.54" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="167.13,-338.35 172.34,-337.39 167.67,-334.89 167.13,-338.35" />
+</ns0:g>
+
+<ns0:g id="node11" class="node">
+<ns0:title>ImageLoader</ns0:title>
+<ns0:g id="a_node11"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageLoader" ns1:title="Abstract base class for file-system image loaders." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="248,-310.8 175.75,-310.8 175.75,-282 248,-282 248,-310.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-292.9" font-family="Arial" font-size="10.00">ImageLoader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge9" class="edge">
+<ns0:title>pybind11_object-&gt;ImageLoader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M99.05,-313.12C120.83,-309.86 147.35,-305.89 169.1,-302.64" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="169.96,-304.29 174.64,-301.82 169.44,-300.82 169.96,-304.29" />
+</ns0:g>
+
+<ns0:g id="node12" class="node">
+<ns0:title>ImageSamplingProperties</ns0:title>
+<ns0:g id="a_node12"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageSamplingProperties" ns1:title="Interface to describe sampling properties for images." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="275.75,-263.8 148,-263.8 148,-235 275.75,-235 275.75,-263.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-245.9" font-family="Arial" font-size="10.00">ImageSamplingProperties</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge10" class="edge">
+<ns0:title>pybind11_object-&gt;ImageSamplingProperties</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M84.52,-304.55C102.39,-295.15 126.31,-282.99 148,-273.4 153.18,-271.11 158.65,-268.83 164.12,-266.63" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="165.33,-268.03 169.33,-264.56 164.04,-264.78 165.33,-268.03" />
+</ns0:g>
+
+<ns0:g id="node13" class="node">
+<ns0:title>LightHandler</ns0:title>
+<ns0:g id="a_node13"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.LightHandler" ns1:title="Utility light handler for creating and providing light data for shader binding." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="247.25,-216.8 176.5,-216.8 176.5,-188 247.25,-188 247.25,-216.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-198.9" font-family="Arial" font-size="10.00">LightHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge11" class="edge">
+<ns0:title>pybind11_object-&gt;LightHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M68.1,-304.56C83.86,-284.39 114.57,-248.33 148,-226.4 154.85,-221.91 162.67,-218.07 170.4,-214.88" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="171.58,-216.3 175.59,-212.83 170.29,-213.04 171.58,-216.3" />
+</ns0:g>
+
+<ns0:g id="node14" class="node">
+<ns0:title>Mesh</ns0:title>
+<ns0:g id="a_node14"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Mesh" ns1:title="Container for mesh data." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-169.8 184.88,-169.8 184.88,-141 238.88,-141 238.88,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-151.9" font-family="Arial" font-size="10.00">Mesh</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge12" class="edge">
+<ns0:title>pybind11_object-&gt;Mesh</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M62.91,-304.53C74.86,-276.28 104.48,-214.56 148,-179.4 156.81,-172.28 167.97,-167.11 178.43,-163.44" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="179.57,-164.9 183.77,-161.68 178.47,-161.58 179.57,-164.9" />
+</ns0:g>
+
+<ns0:g id="node15" class="node">
+<ns0:title>MeshPartition</ns0:title>
+<ns0:g id="a_node15"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.MeshPartition" ns1:title="Class that describes a sub-region of a mesh using vertex indexing." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="249.88,-122.8 173.88,-122.8 173.88,-94 249.88,-94 249.88,-122.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-104.9" font-family="Arial" font-size="10.00">MeshPartition</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge13" class="edge">
+<ns0:title>pybind11_object-&gt;MeshPartition</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M60.26,-304.52C68.65,-269.61 94.2,-181.65 148,-132.4 153.77,-127.12 160.82,-122.96 168.09,-119.69" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="169.03,-121.2 172.97,-117.66 167.68,-117.97 169.03,-121.2" />
+</ns0:g>
+
+<ns0:g id="node16" class="node">
+<ns0:title>MeshStream</ns0:title>
+<ns0:g id="a_node16"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.MeshStream" ns1:title="Class to represent a mesh data stream." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="247.62,-75.8 176.12,-75.8 176.12,-47 247.62,-47 247.62,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-57.9" font-family="Arial" font-size="10.00">MeshStream</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge14" class="edge">
+<ns0:title>pybind11_object-&gt;MeshStream</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M58.62,-304.55C63.81,-263.84 83.69,-149.31 148,-85.4 154.19,-79.24 162.13,-74.64 170.27,-71.2" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="171.18,-72.72 175.21,-69.27 169.91,-69.46 171.18,-72.72" />
+</ns0:g>
+
+<ns0:g id="node17" class="node">
+<ns0:title>ShaderRenderer</ns0:title>
+<ns0:g id="a_node17"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.12,-28.8 168.62,-28.8 168.62,0 255.12,0 255.12,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-10.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge15" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderRenderer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M57.49,-304.66C59.79,-258.87 72.96,-117.41 148,-38.4 152.16,-34.02 157.21,-30.42 162.62,-27.48" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="163.75,-28.88 167.45,-25.09 162.19,-25.74 163.75,-28.88" />
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>CgltfLoader</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.CgltfLoader" ns1:title="Wrapper for loader to read in GLTF files using the Cgltf library." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="388.5,-568.8 322.25,-568.8 322.25,-540 388.5,-540 388.5,-568.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-550.9" font-family="Arial" font-size="10.00">CgltfLoader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>GeometryLoader-&gt;CgltfLoader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M256.1,-538.43C275.23,-541.54 297.54,-545.16 316.07,-548.17" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="316.23,-549.97 321.45,-549.05 316.79,-546.52 316.23,-549.97" />
+</ns0:g>
+
+<ns0:g id="node19" class="node">
+<ns0:title>TinyObjLoader</ns0:title>
+<ns0:g id="a_node19"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.TinyObjLoader" ns1:title="Wrapper for geometry loader to read in OBJ files using the TinyObj library." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="394.88,-521.8 315.88,-521.8 315.88,-493 394.88,-493 394.88,-521.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-503.9" font-family="Arial" font-size="10.00">TinyObjLoader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge17" class="edge">
+<ns0:title>GeometryLoader-&gt;TinyObjLoader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M256.1,-524.07C273.04,-521.2 292.47,-517.9 309.56,-515" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="310.36,-516.64 314.99,-514.08 309.77,-513.19 310.36,-516.64" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>ExceptionRenderError</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ExceptionRenderError" ns1:title="ExceptionRenderError" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="112,-625.8 0,-625.8 0,-597 112,-597 112,-625.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="56" y="-607.9" font-family="Arial" font-size="10.00">ExceptionRenderError</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node18" class="node">
+<ns0:title>StbImageLoader</ns0:title>
+<ns0:g id="a_node18"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.StbImageLoader" ns1:title="Stb image file loader." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="399,-310.8 311.75,-310.8 311.75,-282 399,-282 399,-310.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-292.9" font-family="Arial" font-size="10.00">StbImageLoader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge16" class="edge">
+<ns0:title>ImageLoader-&gt;StbImageLoader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M248.22,-296.4C265.43,-296.4 286.4,-296.4 305.15,-296.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="305.65,-298.15 310.65,-296.4 305.65,-294.65 305.65,-298.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

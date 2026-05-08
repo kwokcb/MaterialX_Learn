@@ -1,0 +1,101 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1588pt" height="233pt" viewBox="0.00 0.00 1588.00 233.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 79.8)">
+<ns0:title>inheritance271e0c3fc8</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>GenUserData</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="Base class for custom user data needed during shader generation." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="204.5,-75.8 128.5,-75.8 128.5,-47 204.5,-47 204.5,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-57.9" font-family="Arial" font-size="10.00">GenUserData</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>HwResourceBindingContext</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="387,-75.8 247.25,-75.8 247.25,-47 387,-47 387,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="317.12" y="-57.9" font-family="Arial" font-size="10.00">HwResourceBindingContext</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>GenUserData-&gt;HwResourceBindingContext</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M204.62,-61.4C215.53,-61.4 227.88,-61.4 240.29,-61.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="241.02,-63.15 246.02,-61.4 241.02,-59.65 241.02,-63.15" />
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="85.75,-51.8 0,-51.8 0,-23 85.75,-23 85.75,-51.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="42.88" y="-33.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>pybind11_object-&gt;GenUserData</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.07,-45.73C97.65,-48.01 110.22,-50.49 121.88,-52.79" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="122.26,-54.65 127.51,-53.9 122.94,-51.22 122.26,-54.65" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>ShaderGenerator</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="211.25,-28.8 121.75,-28.8 121.75,0 211.25,0 211.25,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-10.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.07,-29.42C95.41,-27.65 105.41,-25.76 115.04,-23.94" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="115.98,-25.55 120.57,-22.9 115.33,-22.11 115.98,-25.55" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>MslResourceBindingContext</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenMsl.MslResourceBindingContext" ns1:title="MslResourceBindingContext" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="563.5,-75.8 423,-75.8 423,-47 563.5,-47 563.5,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="493.25" y="-57.9" font-family="Arial" font-size="10.00">MslResourceBindingContext</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>HwResourceBindingContext-&gt;MslResourceBindingContext</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M387.44,-61.4C396.94,-61.4 406.72,-61.4 416.32,-61.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="416.84,-63.15 421.84,-61.4 416.84,-59.65 416.84,-63.15" />
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>HwShaderGenerator</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="369.38,-28.8 264.88,-28.8 264.88,0 369.38,0 369.38,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="317.12" y="-10.9" font-family="Arial" font-size="10.00">HwShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>MslShaderGenerator</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenMsl.MslShaderGenerator" ns1:title="MslShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="545.88,-28.8 440.62,-28.8 440.62,0 545.88,0 545.88,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="493.25" y="-10.9" font-family="Arial" font-size="10.00">MslShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>HwShaderGenerator-&gt;MslShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M369.43,-14.4C389.7,-14.4 413.1,-14.4 434.01,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="434.66,-16.15 439.66,-14.4 434.66,-12.65 434.66,-16.15" />
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>ShaderGenerator-&gt;HwShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M211.69,-14.4C226.34,-14.4 242.88,-14.4 258.4,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="258.76,-16.15 263.76,-14.4 258.76,-12.65 258.76,-16.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>
