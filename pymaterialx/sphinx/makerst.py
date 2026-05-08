@@ -18,38 +18,52 @@ submodules = [name for _, name, _ in pkgutil.iter_modules(MaterialX.__path__)]
 # Always include the top-level MaterialX
 modules = ["MaterialX"] + [f"MaterialX.{name}" for name in submodules]
 
+# Write per-module .rst files
 for modname in modules:
-    rst_filename = os.path.join(OUTPUT_DIR, modname.split('.')[-1] + ".rst")
+    print(f"> Processing module: {modname}")
+    if modname == 'MaterialX._scripts':
+        continue
+
+    rst_filename = os.path.join(OUTPUT_DIR, modname.split('.')[-1] + ".rst")    
     with open(rst_filename, "w") as f:
         title = f"{modname} Module"
         f.write(title + "\n" + "=" * len(title) + "\n\n")
+        f.write(f".. inheritance-diagram:: {modname}\n")
+        f.write("    :parts: 1\n")
+        f.write("    :top-classes: object\n")
+        f.write("\n")
         f.write(f".. automodule:: {modname}\n")
         f.write("    :members:\n")
         f.write("    :undoc-members:\n")
         f.write("    :show-inheritance:\n")
         f.write("    :inherited-members:\n")
         f.write("\n")
-        f.write(f"    .. inheritance-diagram:: {modname}.SomeClass\n")
-        f.write("        :parts: 1\n")
-        f.write("        :top-classes: object\n")
-    print(f"Wrote {rst_filename}")
+    print(f">> Wrote {rst_filename}")
 
-# Optionally, generate a modules.rst toctree
+# Generate a modules.rst table of contents
 modules_rst = os.path.join(OUTPUT_DIR, "modules.rst")
 with open(modules_rst, "w") as f:
     f.write("MaterialX Python Modules\n=======================\n\n.. toctree::\n   :maxdepth: 1\n\n")
     for modname in modules[1:]:
+        if modname in ['MaterialX._scripts']:
+            continue
         f.write(f"   {modname.split('.')[-1]}\n")
-print(f"Wrote {modules_rst}")
+print(f"> Wrote {modules_rst}")
 
-# Also generate api.rst with all modules in a single file
+# Generate api.rst with all modules in a single file
 api_rst = os.path.join(OUTPUT_DIR, "api.rst")
 with open(api_rst, "w") as f:
     f.write("MaterialX Python API Reference\n=============================\n\n")
     for modname in modules:
+        if modname in ['MaterialX._scripts']:
+            continue
+        f.write(f".. inheritance-diagram:: {modname}\n")
+        f.write("    :parts: 1\n")
+        f.write("    :top-classes: object\n")
+        f.write("\n")
         f.write(f".. automodule:: {modname}\n")
         f.write("    :members:\n")
         f.write("    :undoc-members:\n")
         f.write("    :show-inheritance:\n")
         f.write("    :inherited-members:\n\n")
-print(f"Wrote {api_rst}")
+print(f"> Wrote {api_rst}")

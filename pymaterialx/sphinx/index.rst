@@ -7,9 +7,9 @@ MaterialX Python API documentation
    :maxdepth: 2
    :caption: Contents:
 
-   api
-   modules
-
+  api
+  modules
+  
 API Reference (All-in-One)
 =========================
 

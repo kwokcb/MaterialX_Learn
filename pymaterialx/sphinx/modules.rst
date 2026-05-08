@@ -14,8 +14,6 @@ MaterialX Python Modules
    PyMaterialXGenSlang
    PyMaterialXRender
    PyMaterialXRenderGlsl
-   PyMaterialXRenderMsl
    PyMaterialXRenderOsl
-   _scripts
    datatype
    main

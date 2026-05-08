@@ -1,12 +1,13 @@
 MaterialX.PyMaterialXGenShader Module
 =====================================
 
+.. inheritance-diagram:: MaterialX.PyMaterialXGenShader
+    :parts: 1
+    :top-classes: object
+
 .. automodule:: MaterialX.PyMaterialXGenShader
     :members:
     :undoc-members:
     :show-inheritance:
     :inherited-members:
 
-    .. inheritance-diagram:: MaterialX.PyMaterialXGenShader.SomeClass
-        :parts: 1
-        :top-classes: object

@@ -1,12 +1,13 @@
 MaterialX.PyMaterialXGenGlsl Module
 ===================================
 
+.. inheritance-diagram:: MaterialX.PyMaterialXGenGlsl
+    :parts: 1
+    :top-classes: object
+
 .. automodule:: MaterialX.PyMaterialXGenGlsl
     :members:
     :undoc-members:
     :show-inheritance:
     :inherited-members:
 
-    .. inheritance-diagram:: MaterialX.PyMaterialXGenGlsl.SomeClass
-        :parts: 1
-        :top-classes: object
