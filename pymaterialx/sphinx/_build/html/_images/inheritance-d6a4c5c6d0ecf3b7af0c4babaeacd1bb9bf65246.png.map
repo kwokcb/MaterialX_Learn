@@ -1,4 +1,0 @@
-<map id="inheritance9d4fec5e92" name="inheritance9d4fec5e92">
-<area shape="rect" id="node1" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer" target="_top" title="Helper class for rendering generated OSL code to produce images." alt="" coords="16,178,110,217"/>
-<area shape="rect" id="node2" href="#MaterialX.PyMaterialXRender.ShaderRenderer" target="_top" title="Base class for renderers that generate shader code to produce images." alt="" coords="5,92,121,130"/>
-</map>
