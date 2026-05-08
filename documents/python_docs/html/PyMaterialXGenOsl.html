@@ -210,6 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMsl.html">MaterialX.PyMaterialXGenMsl Module</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MaterialX.PyMaterialXGenOsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenShader.html">MaterialX.PyMaterialXGenShader Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenSlang.html">MaterialX.PyMaterialXGenSlang Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRender.html">MaterialX.PyMaterialXRender Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderGlsl.html">MaterialX.PyMaterialXRenderGlsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderOsl.html">MaterialX.PyMaterialXRenderOsl Module</a></li>
@@ -253,13 +254,15 @@
         <article role="main" id="furo-main-content">
           <section id="materialx-pymaterialxgenosl-module">
 <h1>MaterialX.PyMaterialXGenOsl Module<a class="headerlink" href="#materialx-pymaterialxgenosl-module" title="Link to this heading">¶</a></h1>
-<div class="graphviz"><object data="_images/inheritance-9de2b5d96ab5e258d534b0c36972304ec2ee3f02.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="_images/inheritance-eb2a29ef88698142854aed7460d3ca56731594a2.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">Inheritance diagram of MaterialX.PyMaterialXGenOsl</p></object></div>
 <p id="module-MaterialX.PyMaterialXGenOsl">Shader generation using Open Shading Language.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXGenOsl.</span></span><span class="sig-name descname"><span class="pre">OslShaderGenerator</span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderGenerator</span></code></a></p>
+<p>Base class for OSL (Open Shading Language) shader generators.</p>
+<p>A generator for a specific OSL target should be derived from this class.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.create">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.create" title="Link to this definition">¶</a></dt>
@@ -268,12 +271,57 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.generate">
 <span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenOsl.OslShaderGenerator" title="MaterialX.PyMaterialXGenOsl.OslShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenOsl.OslShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Element" title="MaterialX.PyMaterialXCore.Element"><span class="pre">MaterialX.PyMaterialXCore.Element</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.GenContext" title="MaterialX.PyMaterialXGenShader.GenContext"><span class="pre">MaterialX.PyMaterialXGenShader.GenContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.Shader" title="MaterialX.PyMaterialXGenShader.Shader"><span class="pre">MaterialX.PyMaterialXGenShader.Shader</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.generate" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getColorManagementSystem">
+<span class="sig-name descname"><span class="pre">getColorManagementSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" title="MaterialX.PyMaterialXGenShader.ColorManagementSystem"><span class="pre">MaterialX.PyMaterialXGenShader.ColorManagementSystem</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getColorManagementSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the color management system.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTarget">
 <span class="sig-name descname"><span class="pre">getTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenOsl.OslShaderGenerator" title="MaterialX.PyMaterialXGenOsl.OslShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenOsl.OslShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTarget" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return a unique identifier for the target this generator is for.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTokenSubstitutions">
+<span class="sig-name descname"><span class="pre">getTokenSubstitutions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTokenSubstitutions" title="Link to this definition">¶</a></dt>
+<dd><p>Return the map of token substitutions used by the generator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getUnitSystem">
+<span class="sig-name descname"><span class="pre">getUnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MaterialX_v1_39_5::UnitSystem</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getUnitSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the unit system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerShaderMetadata">
+<span class="sig-name descname"><span class="pre">registerShaderMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MaterialX_v1_39_5::GenContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerShaderMetadata" title="Link to this definition">¶</a></dt>
+<dd><p>Register metadata that should be exported to the generated shaders.</p>
+<p>Supported metadata includes standard UI attributes like “uiname”, “uifolder”, “uimin”, “uimax”, etc. But it is also extendable by defining custom attributes using AttributeDefs. Any AttributeDef in the given document with exportable=”true” will be exported as shader metadata when found on nodes during shader generation. Derived shader generators may override this method to change the registration. Applications must explicitly call this method before shader generation to enable export of metadata.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerTypeDefs">
+<span class="sig-name descname"><span class="pre">registerTypeDefs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerTypeDefs" title="Link to this definition">¶</a></dt>
+<dd><p>Register type definitions from the document.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setColorManagementSystem">
+<span class="sig-name descname"><span class="pre">setColorManagementSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" title="MaterialX.PyMaterialXGenShader.ColorManagementSystem"><span class="pre">MaterialX.PyMaterialXGenShader.ColorManagementSystem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setColorManagementSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the color management system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setUnitSystem">
+<span class="sig-name descname"><span class="pre">setUnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MaterialX_v1_39_5::UnitSystem</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setUnitSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the unit system.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -337,7 +385,14 @@
 <li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator</span></code></a><ul>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.create"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.create()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.generate"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.generate()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getColorManagementSystem"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.getColorManagementSystem()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTarget"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.getTarget()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getTokenSubstitutions"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.getTokenSubstitutions()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.getUnitSystem"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.getUnitSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerShaderMetadata"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.registerShaderMetadata()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.registerTypeDefs"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.registerTypeDefs()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setColorManagementSystem"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.setColorManagementSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenOsl.OslShaderGenerator.setUnitSystem"><code class="docutils literal notranslate"><span class="pre">OslShaderGenerator.setUnitSystem()</span></code></a></li>
 </ul>
 </li>
 </ul>

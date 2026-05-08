@@ -11,6 +11,7 @@ MaterialX Python Modules
    PyMaterialXGenMsl
    PyMaterialXGenOsl
    PyMaterialXGenShader
+   PyMaterialXGenSlang
    PyMaterialXRender
    PyMaterialXRenderGlsl
    PyMaterialXRenderOsl

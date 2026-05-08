@@ -50,7 +50,7 @@ autodoc_default_options = {
     'members': True,
     'undoc-members': True,
     'show-inheritance': True,
-    'inherited-members': False,
+    'inherited-members': True,
 }
 
 # Mock imports if needed

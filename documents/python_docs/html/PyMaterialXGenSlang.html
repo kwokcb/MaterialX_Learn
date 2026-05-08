@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="MaterialX.PyMaterialXRender Module" href="PyMaterialXRender.html"><link rel="prev" title="MaterialX.PyMaterialXGenShader Module" href="PyMaterialXGenShader.html">
 
     <!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
         <title>MaterialX.PyMaterialXGenSlang Module - MaterialX 1.39.5 Python API</title>
@@ -182,7 +182,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -200,9 +200,9 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <ul>
+  <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api.html">MaterialX Python API Reference</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">MaterialX Python Modules</a><input aria-label="Toggle navigation of MaterialX Python Modules" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">MaterialX Python Modules</a><input aria-label="Toggle navigation of MaterialX Python Modules" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXCore.html">MaterialX.PyMaterialXCore Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXFormat.html">MaterialX.PyMaterialXFormat Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenGlsl.html">MaterialX.PyMaterialXGenGlsl Module</a></li>
@@ -210,6 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMsl.html">MaterialX.PyMaterialXGenMsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenOsl.html">MaterialX.PyMaterialXGenOsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenShader.html">MaterialX.PyMaterialXGenShader Module</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MaterialX.PyMaterialXGenSlang Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRender.html">MaterialX.PyMaterialXRender Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderGlsl.html">MaterialX.PyMaterialXRenderGlsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderOsl.html">MaterialX.PyMaterialXRenderOsl Module</a></li>
@@ -246,13 +247,105 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
           <section id="materialx-pymaterialxgenslang-module">
 <h1>MaterialX.PyMaterialXGenSlang Module<a class="headerlink" href="#materialx-pymaterialxgenslang-module" title="Link to this heading">¶</a></h1>
+<div class="graphviz"><object data="_images/inheritance-37525cc3327baba2a0cba6f81a12de9d61453345.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of MaterialX.PyMaterialXGenSlang</p></object></div>
+<p id="module-MaterialX.PyMaterialXGenSlang">Shader generation using the Slang shading language.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXGenSlang.</span></span><span class="sig-name descname"><span class="pre">SlangShaderGenerator</span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" title="MaterialX.PyMaterialXGenShader.HwShaderGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">HwShaderGenerator</span></code></a></p>
+<p>Base class for Slang code generation.</p>
+<p>A generator for a specific Slang target should be derived from this class.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.create">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.create" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.bindLightShader">
+<span class="sig-name descname"><span class="pre">bindLightShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.NodeDef" title="MaterialX.PyMaterialXCore.NodeDef"><span class="pre">MaterialX.PyMaterialXCore.NodeDef</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.GenContext" title="MaterialX.PyMaterialXGenShader.GenContext"><span class="pre">MaterialX.PyMaterialXGenShader.GenContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.bindLightShader" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" title="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenSlang.SlangShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Element" title="MaterialX.PyMaterialXCore.Element"><span class="pre">MaterialX.PyMaterialXCore.Element</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.GenContext" title="MaterialX.PyMaterialXGenShader.GenContext"><span class="pre">MaterialX.PyMaterialXGenShader.GenContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.Shader" title="MaterialX.PyMaterialXGenShader.Shader"><span class="pre">MaterialX.PyMaterialXGenShader.Shader</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.generate" title="Link to this definition">¶</a></dt>
+<dd><p>Generate a shader starting from the given element, translating the element and all dependencies upstream into shader code.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getColorManagementSystem">
+<span class="sig-name descname"><span class="pre">getColorManagementSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" title="MaterialX.PyMaterialXGenShader.ColorManagementSystem"><span class="pre">MaterialX.PyMaterialXGenShader.ColorManagementSystem</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getColorManagementSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the color management system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTarget">
+<span class="sig-name descname"><span class="pre">getTarget</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" title="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenSlang.SlangShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTarget" title="Link to this definition">¶</a></dt>
+<dd><p>Return a unique identifier for the target this generator is for.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTokenSubstitutions">
+<span class="sig-name descname"><span class="pre">getTokenSubstitutions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTokenSubstitutions" title="Link to this definition">¶</a></dt>
+<dd><p>Return the map of token substitutions used by the generator.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getUnitSystem">
+<span class="sig-name descname"><span class="pre">getUnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">MaterialX_v1_39_5::UnitSystem</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getUnitSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the unit system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getVersion">
+<span class="sig-name descname"><span class="pre">getVersion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" title="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenSlang.SlangShaderGenerator</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getVersion" title="Link to this definition">¶</a></dt>
+<dd><p>Return the version string for the Slang version this generator is for.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerShaderMetadata">
+<span class="sig-name descname"><span class="pre">registerShaderMetadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MaterialX_v1_39_5::GenContext</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerShaderMetadata" title="Link to this definition">¶</a></dt>
+<dd><p>Register metadata that should be exported to the generated shaders.</p>
+<p>Supported metadata includes standard UI attributes like “uiname”, “uifolder”, “uimin”, “uimax”, etc. But it is also extendable by defining custom attributes using AttributeDefs. Any AttributeDef in the given document with exportable=”true” will be exported as shader metadata when found on nodes during shader generation. Derived shader generators may override this method to change the registration. Applications must explicitly call this method before shader generation to enable export of metadata.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerTypeDefs">
+<span class="sig-name descname"><span class="pre">registerTypeDefs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerTypeDefs" title="Link to this definition">¶</a></dt>
+<dd><p>Register type definitions from the document.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setColorManagementSystem">
+<span class="sig-name descname"><span class="pre">setColorManagementSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" title="MaterialX.PyMaterialXGenShader.ColorManagementSystem"><span class="pre">MaterialX.PyMaterialXGenShader.ColorManagementSystem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setColorManagementSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the color management system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setUnitSystem">
+<span class="sig-name descname"><span class="pre">setUnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" title="MaterialX.PyMaterialXGenShader.ShaderGenerator"><span class="pre">MaterialX.PyMaterialXGenShader.ShaderGenerator</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MaterialX_v1_39_5::UnitSystem</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setUnitSystem" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the unit system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShader">
+<span class="sig-name descname"><span class="pre">unbindLightShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.GenContext" title="MaterialX.PyMaterialXGenShader.GenContext"><span class="pre">MaterialX.PyMaterialXGenShader.GenContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShader" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShaders">
+<span class="sig-name descname"><span class="pre">unbindLightShaders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.GenContext" title="MaterialX.PyMaterialXGenShader.GenContext"><span class="pre">MaterialX.PyMaterialXGenShader.GenContext</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShaders" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -260,8 +353,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="PyMaterialXRender.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">MaterialX.PyMaterialXRender Module</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="PyMaterialXGenShader.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">MaterialX.PyMaterialXGenShader Module</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -279,8 +390,43 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">MaterialX.PyMaterialXGenSlang Module</a><ul>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator</span></code></a><ul>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.create"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.create()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.bindLightShader"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.bindLightShader()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.generate"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.generate()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getColorManagementSystem"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.getColorManagementSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTarget"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.getTarget()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getTokenSubstitutions"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.getTokenSubstitutions()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getUnitSystem"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.getUnitSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.getVersion"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.getVersion()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerShaderMetadata"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.registerShaderMetadata()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.registerTypeDefs"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.registerTypeDefs()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setColorManagementSystem"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.setColorManagementSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.setUnitSystem"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.setUnitSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShader"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.unbindLightShader()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator.unbindLightShaders"><code class="docutils literal notranslate"><span class="pre">SlangShaderGenerator.unbindLightShaders()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

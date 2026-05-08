@@ -210,6 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMsl.html">MaterialX.PyMaterialXGenMsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenOsl.html">MaterialX.PyMaterialXGenOsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenShader.html">MaterialX.PyMaterialXGenShader Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenSlang.html">MaterialX.PyMaterialXGenSlang Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRender.html">MaterialX.PyMaterialXRender Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderGlsl.html">MaterialX.PyMaterialXRenderGlsl Module</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MaterialX.PyMaterialXRenderOsl Module</a></li>
@@ -253,27 +254,37 @@
         <article role="main" id="furo-main-content">
           <section id="materialx-pymaterialxrenderosl-module">
 <h1>MaterialX.PyMaterialXRenderOsl Module<a class="headerlink" href="#materialx-pymaterialxrenderosl-module" title="Link to this heading">¶</a></h1>
-<div class="graphviz"><object data="_images/inheritance-c8705481865d0c941c2611c1c517f46f6a9a59f7.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="_images/inheritance-633f468ef527f5c764cb041194dea1906b3b9793.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">Inheritance diagram of MaterialX.PyMaterialXRenderOsl</p></object></div>
 <p id="module-MaterialX.PyMaterialXRenderOsl">Rendering support for Open Shading Language.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderOsl.</span></span><span class="sig-name descname"><span class="pre">OslRenderer</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderRenderer</span></code></a></p>
+<p>Helper class for rendering generated OSL code to produce images.</p>
+<p>The main services provided are: Source code validation: Use of “oslc” to compile and test output results Introspection check: None at this time. Binding: None at this time. Render validation: Use of “testrender” to output rendered images. Assumes source compilation was success as it depends on the existence of corresponding .oso files.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.create">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.create" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.create" title="Link to this definition">¶</a></dt>
+<dd><p>Create an OSL renderer instance.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.captureImage">
 <span class="sig-name descname"><span class="pre">captureImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.captureImage" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Capture the current rendered output as an image.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.compileOSL">
 <span class="sig-name descname"><span class="pre">compileOSL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.compileOSL" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Compile OSL code stored in a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>oslFilePath</strong> – OSL file path.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.createProgram">
@@ -281,79 +292,212 @@
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -&gt; None</p></li>
-<li><p>createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: dict[str, str]) -&gt; None</p></li>
+<li><p>createProgram(self: MaterialX.PyMaterialXRenderOsl.OslRenderer, arg0: collections.abc.Mapping[str, str]) -&gt; None</p></li>
 </ol>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.getCamera">
+<span class="sig-name descname"><span class="pre">getCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Return the camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.getGeometryHandler">
+<span class="sig-name descname"><span class="pre">getGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.getImageHandler">
+<span class="sig-name descname"><span class="pre">getImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the image handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.getLightHandler">
+<span class="sig-name descname"><span class="pre">getLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the light handler.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.initialize">
-<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderContextHandle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">capsule</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.initialize" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderContextHandle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">typing_extensions.CapsuleType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.initialize" title="Link to this definition">¶</a></dt>
+<dd><p>Internal initialization required for program validation and rendering.</p>
+<p>An exception is thrown on failure. The exception will contain a list of initialization errors.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.render">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.render" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Render OSL program to disk.</p>
+<p>This is done by using either “testshade” or “testrender”. Currently only “testshade” is supported.</p>
+<p>Usage of both executables requires compiled source (.oso) files as input. A shader output must be set before running this test via the setOslOutputName() method to ensure that the appropriate .oso files can be located.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setCamera">
+<span class="sig-name descname"><span class="pre">setCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Set the camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setGeometryHandler">
+<span class="sig-name descname"><span class="pre">setGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setImageHandler">
+<span class="sig-name descname"><span class="pre">setImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the image handler used by this renderer for image I/O.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setLightHandler">
+<span class="sig-name descname"><span class="pre">setLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the light handler used by this renderer for light bindings.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslCompilerExecutable">
 <span class="sig-name descname"><span class="pre">setOslCompilerExecutable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslCompilerExecutable" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the path to the OSL executable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>executableFilePath</strong> – Path to OSL compiler executable</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslIncludePath">
 <span class="sig-name descname"><span class="pre">setOslIncludePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FileSearchPath" title="MaterialX.PyMaterialXFormat.FileSearchPath"><span class="pre">MaterialX.PyMaterialXFormat.FileSearchPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslIncludePath" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the search locations for OSL include files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dirPath</strong> – Include path(s) for the OSL compiler. This should include the path to stdosl.h.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslOutputFilePath">
 <span class="sig-name descname"><span class="pre">setOslOutputFilePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslOutputFilePath" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the location where compiled OSL files will reside.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dirPath</strong> – Path to output location</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslShaderName">
 <span class="sig-name descname"><span class="pre">setOslShaderName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslShaderName" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the name of the shader to be used for the input XML scene file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shaderName</strong> – Name of shader</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslShaderOutput">
 <span class="sig-name descname"><span class="pre">setOslShaderOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslShaderOutput" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the OSL shader output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>outputName</strong> – Name of shader output</p></li>
+<li><p><strong>outputType</strong> – The MaterialX type of the output</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestRenderExecutable">
 <span class="sig-name descname"><span class="pre">setOslTestRenderExecutable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestRenderExecutable" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the path to the OSL rendering tester.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>executableFilePath</strong> – Path to OSL “testrender” executable</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestRenderSceneTemplateFile">
 <span class="sig-name descname"><span class="pre">setOslTestRenderSceneTemplateFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestRenderSceneTemplateFile" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the XML scene file to use for testrender.</p>
+<p>This is a template file with the following tokens for replacement: shader% : which will be replaced with the name of the shader to use shader_output% : which will be replace with the name of the shader output to use templateFilePath Scene file name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>templateFilePath</strong> – Scene file name</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestShadeExecutable">
 <span class="sig-name descname"><span class="pre">setOslTestShadeExecutable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestShadeExecutable" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the path to the OSL shading tester.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>executableFilePath</strong> – Path to OSL “testshade” executable</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslUtilityOSOPath">
 <span class="sig-name descname"><span class="pre">setOslUtilityOSOPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslUtilityOSOPath" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the search path for dependent shaders (.oso files) which are used when rendering with testrender.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dirPath</strong> – Path to location containing .oso files.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setShaderParameterOverrides">
-<span class="sig-name descname"><span class="pre">setShaderParameterOverrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setShaderParameterOverrides" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setShaderParameterOverrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setShaderParameterOverrides" title="Link to this definition">¶</a></dt>
+<dd><p>Set shader parameter strings to be added to the scene XML file.</p>
+<p>These strings will set parameter overrides for the shader.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.setSize">
+<span class="sig-name descname"><span class="pre">setSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setSize" title="Link to this definition">¶</a></dt>
+<dd><p>Set the size of the rendered image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.updateUniform">
+<span class="sig-name descname"><span class="pre">updateUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Value" title="MaterialX.PyMaterialXCore.Value"><span class="pre">MaterialX.PyMaterialXCore.Value</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.updateUniform" title="Link to this definition">¶</a></dt>
+<dd><p>Update the program with value of the uniform.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.useTestRender">
 <span class="sig-name descname"><span class="pre">useTestRender</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.useTestRender" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Used to toggle to either use testrender or testshade during render validation By default testshade is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>useTestRender</strong> – Indicate whether to use testrender.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.validateInputs">
 <span class="sig-name descname"><span class="pre">validateInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" title="MaterialX.PyMaterialXRenderOsl.OslRenderer"><span class="pre">MaterialX.PyMaterialXRenderOsl.OslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.validateInputs" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Validate inputs for the compiled OSL program.</p>
+<p>Note: Currently no validation has been implemented.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderOsl.OslRenderer.OSL_CLOSURE_COLOR_STRING">
@@ -424,8 +568,16 @@
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.captureImage"><code class="docutils literal notranslate"><span class="pre">OslRenderer.captureImage()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.compileOSL"><code class="docutils literal notranslate"><span class="pre">OslRenderer.compileOSL()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.createProgram"><code class="docutils literal notranslate"><span class="pre">OslRenderer.createProgram()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getCamera"><code class="docutils literal notranslate"><span class="pre">OslRenderer.getCamera()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getGeometryHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.getGeometryHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getImageHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.getImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.getLightHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.getLightHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.initialize"><code class="docutils literal notranslate"><span class="pre">OslRenderer.initialize()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.render"><code class="docutils literal notranslate"><span class="pre">OslRenderer.render()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setCamera"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setCamera()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setGeometryHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setGeometryHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setImageHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setLightHandler"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setLightHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslCompilerExecutable"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setOslCompilerExecutable()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslIncludePath"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setOslIncludePath()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslOutputFilePath"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setOslOutputFilePath()</span></code></a></li>
@@ -436,6 +588,8 @@
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslTestShadeExecutable"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setOslTestShadeExecutable()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setOslUtilityOSOPath"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setOslUtilityOSOPath()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setShaderParameterOverrides"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setShaderParameterOverrides()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.setSize"><code class="docutils literal notranslate"><span class="pre">OslRenderer.setSize()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.updateUniform"><code class="docutils literal notranslate"><span class="pre">OslRenderer.updateUniform()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.useTestRender"><code class="docutils literal notranslate"><span class="pre">OslRenderer.useTestRender()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.validateInputs"><code class="docutils literal notranslate"><span class="pre">OslRenderer.validateInputs()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderOsl.OslRenderer.OSL_CLOSURE_COLOR_STRING"><code class="docutils literal notranslate"><span class="pre">OslRenderer.OSL_CLOSURE_COLOR_STRING</span></code></a></li>

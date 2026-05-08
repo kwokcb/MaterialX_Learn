@@ -9,4 +9,5 @@ MaterialX.PyMaterialXRender Module
     :members:
     :undoc-members:
     :show-inheritance:
+    :inherited-members:
 

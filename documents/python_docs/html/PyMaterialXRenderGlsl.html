@@ -210,6 +210,7 @@
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMsl.html">MaterialX.PyMaterialXGenMsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenOsl.html">MaterialX.PyMaterialXGenOsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenShader.html">MaterialX.PyMaterialXGenShader Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenSlang.html">MaterialX.PyMaterialXGenSlang Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRender.html">MaterialX.PyMaterialXRender Module</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">MaterialX.PyMaterialXRenderGlsl Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderOsl.html">MaterialX.PyMaterialXRenderOsl Module</a></li>
@@ -253,37 +254,132 @@
         <article role="main" id="furo-main-content">
           <section id="materialx-pymaterialxrenderglsl-module">
 <h1>MaterialX.PyMaterialXRenderGlsl Module<a class="headerlink" href="#materialx-pymaterialxrenderglsl-module" title="Link to this heading">¶</a></h1>
-<div class="graphviz"><object data="_images/inheritance-749a76badb5eba8c17f09ca57da3df1bbce73a27.svg" type="image/svg+xml" class="inheritance graphviz">
+<div class="graphviz"><object data="_images/inheritance-cd77ae32285d2315ece49605d0a012d499b19596.svg" type="image/svg+xml" class="inheritance graphviz">
 <p class="warning">Inheritance diagram of MaterialX.PyMaterialXRenderGlsl</p></object></div>
 <p id="module-MaterialX.PyMaterialXRenderGlsl">Rendering support for the OpenGL Shading Language.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">GLTextureHandler</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageHandler</span></code></a></p>
+<p>An OpenGL texture handler class.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.create">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageLoader" title="MaterialX.PyMaterialXRender.ImageLoader"><span class="pre">MaterialX.PyMaterialXRender.ImageLoader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.create" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.acquireImage">
+<span class="sig-name descname"><span class="pre">acquireImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaultColor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Color4" title="MaterialX.PyMaterialXCore.Color4"><span class="pre">MaterialX.PyMaterialXCore.Color4</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;MaterialX.PyMaterialXCore.Color4</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x00000251BA562170&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.acquireImage" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire an image from the cache or file system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filePath</strong> – File path of the image.</p></li>
+<li><p><strong>defaultColor</strong> – Default color to use as a fallback for missing images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>On success, a shared pointer to the acquired image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.addLoader">
+<span class="sig-name descname"><span class="pre">addLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageLoader" title="MaterialX.PyMaterialXRender.ImageLoader"><span class="pre">MaterialX.PyMaterialXRender.ImageLoader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.addLoader" title="Link to this definition">¶</a></dt>
+<dd><p>Add another image loader to the handler, which will be invoked if existing loaders cannot load a given image.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.bindImage">
 <span class="sig-name descname"><span class="pre">bindImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" title="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GLTextureHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageSamplingProperties" title="MaterialX.PyMaterialXRender.ImageSamplingProperties"><span class="pre">MaterialX.PyMaterialXRender.ImageSamplingProperties</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.bindImage" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind an image.</p>
+<p>This method will bind the texture to an active texture unit as defined by the corresponding image description. The method will fail if there are not enough available image units to bind to.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.clearImageCache">
+<span class="sig-name descname"><span class="pre">clearImageCache</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.clearImageCache" title="Link to this definition">¶</a></dt>
+<dd><p>Clear the contents of the image cache, first releasing any render resources associated with cached images.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.createRenderResources">
 <span class="sig-name descname"><span class="pre">createRenderResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" title="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GLTextureHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.createRenderResources" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create rendering resources for the given image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getFilenameResolver">
+<span class="sig-name descname"><span class="pre">getFilenameResolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.StringResolver" title="MaterialX.PyMaterialXCore.StringResolver"><span class="pre">MaterialX.PyMaterialXCore.StringResolver</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getFilenameResolver" title="Link to this definition">¶</a></dt>
+<dd><p>Return the filename resolver for images.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getReferencedImages">
+<span class="sig-name descname"><span class="pre">getReferencedImages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getReferencedImages" title="Link to this definition">¶</a></dt>
+<dd><p>Acquire all images referenced by the given document, and return the images in a vector.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getSearchPath">
+<span class="sig-name descname"><span class="pre">getSearchPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FileSearchPath" title="MaterialX.PyMaterialXFormat.FileSearchPath"><span class="pre">MaterialX.PyMaterialXFormat.FileSearchPath</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getSearchPath" title="Link to this definition">¶</a></dt>
+<dd><p>Return the image search path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getZeroImage">
+<span class="sig-name descname"><span class="pre">getZeroImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getZeroImage" title="Link to this definition">¶</a></dt>
+<dd><p>Return a fallback image with zeroes in all channels.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.releaseRenderResources">
 <span class="sig-name descname"><span class="pre">releaseRenderResources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" title="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GLTextureHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.releaseRenderResources" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Release rendering resources for the given image, or for all cached images if no image pointer is specified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.saveImage">
+<span class="sig-name descname"><span class="pre">saveImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">filePath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verticalFlip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.saveImage" title="Link to this definition">¶</a></dt>
+<dd><p>Save image to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filePath</strong> – File path to be written</p></li>
+<li><p><strong>image</strong> – The image to be saved</p></li>
+<li><p><strong>verticalFlip</strong> – Whether the image should be flipped in Y during save</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>if save succeeded</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setFilenameResolver">
+<span class="sig-name descname"><span class="pre">setFilenameResolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.StringResolver" title="MaterialX.PyMaterialXCore.StringResolver"><span class="pre">MaterialX.PyMaterialXCore.StringResolver</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setFilenameResolver" title="Link to this definition">¶</a></dt>
+<dd><p>Set the filename resolver for images.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setSearchPath">
+<span class="sig-name descname"><span class="pre">setSearchPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FileSearchPath" title="MaterialX.PyMaterialXFormat.FileSearchPath"><span class="pre">MaterialX.PyMaterialXFormat.FileSearchPath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setSearchPath" title="Link to this definition">¶</a></dt>
+<dd><p>Set the search path to be used for finding images on the file system.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImage">
 <span class="sig-name descname"><span class="pre">unbindImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" title="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GLTextureHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImage" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Unbind an image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImages">
+<span class="sig-name descname"><span class="pre">unbindImages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImages" title="Link to this definition">¶</a></dt>
+<dd><p>Unbind all images that are currently stored in the cache.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -291,65 +387,101 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">GlslProgram</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_object</span></code></p>
+<p>A class representing an executable GLSL program.</p>
+<p>There are two main interfaces which can be used. One which takes in a HwShader and one which allows for explicit setting of shader stage code.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.create">
 <span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.create" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a GLSL program instance.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.addStage">
 <span class="sig-name descname"><span class="pre">addStage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.addStage" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the code stages based on a list of stage strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stage</strong> – Name of the shader stage.</p></li>
+<li><p><strong>sourceCode</strong> – Source code of the shader stage.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bind">
 <span class="sig-name descname"><span class="pre">bind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bind" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind the program.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>False if failed</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindAttribute">
-<span class="sig-name descname"><span class="pre">bindAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram,</span> <span class="pre">arg0:</span> <span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_4::GlslProgram::Input],</span> <span class="pre">arg1:</span> <span class="pre">MaterialX.PyMaterialXRender.Mesh</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindAttribute" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">bindAttribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram,</span> <span class="pre">arg0:</span> <span class="pre">collections.abc.Mapping[str,</span> <span class="pre">MaterialX_v1_39_5::GlslProgram::Input],</span> <span class="pre">arg1:</span> <span class="pre">MaterialX.PyMaterialXRender.Mesh</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindAttribute" title="Link to this definition">¶</a></dt>
+<dd><p>Bind attribute buffers to attribute inputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inputs</strong> – Attribute inputs to bind to</p></li>
+<li><p><strong>mesh</strong> – Mesh containing streams to bind</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindLighting">
 <span class="sig-name descname"><span class="pre">bindLighting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindLighting" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind lighting.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindMesh">
 <span class="sig-name descname"><span class="pre">bindMesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Mesh" title="MaterialX.PyMaterialXRender.Mesh"><span class="pre">MaterialX.PyMaterialXRender.Mesh</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindMesh" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind input geometry streams.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindPartition">
 <span class="sig-name descname"><span class="pre">bindPartition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.MeshPartition" title="MaterialX.PyMaterialXRender.MeshPartition"><span class="pre">MaterialX.PyMaterialXRender.MeshPartition</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindPartition" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind input geometry partition (indexing).</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindTextures">
 <span class="sig-name descname"><span class="pre">bindTextures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindTextures" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind any input textures.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindTimeAndFrame">
-<span class="sig-name descname"><span class="pre">bindTimeAndFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindTimeAndFrame" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">bindTimeAndFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsFloat</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindTimeAndFrame" title="Link to this definition">¶</a></dt>
+<dd><p>Bind time and frame.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindUniform">
 <span class="sig-name descname"><span class="pre">bindUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Value" title="MaterialX.PyMaterialXCore.Value"><span class="pre">MaterialX.PyMaterialXCore.Value</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindUniform" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind a value to the uniform with the given name.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindViewInformation">
 <span class="sig-name descname"><span class="pre">bindViewInformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.bindViewInformation" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Bind view information.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.build">
 <span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.build" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Build shader program data from the source code set for each shader stage.</p>
+<p>An exception is thrown if the program cannot be built. The exception will contain a list of compilation errors.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.clearBuiltData">
@@ -358,53 +490,93 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.findInputs">
-<span class="sig-name descname"><span class="pre">findInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram,</span> <span class="pre">arg0:</span> <span class="pre">str,</span> <span class="pre">arg1:</span> <span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_4::GlslProgram::Input],</span> <span class="pre">arg2:</span> <span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_4::GlslProgram::Input],</span> <span class="pre">arg3:</span> <span class="pre">bool</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.findInputs" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">findInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">self:</span> <span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram,</span> <span class="pre">arg0:</span> <span class="pre">str,</span> <span class="pre">arg1:</span> <span class="pre">collections.abc.Mapping[str,</span> <span class="pre">MaterialX_v1_39_5::GlslProgram::Input],</span> <span class="pre">arg2:</span> <span class="pre">collections.abc.Mapping[str,</span> <span class="pre">MaterialX_v1_39_5::GlslProgram::Input],</span> <span class="pre">arg3:</span> <span class="pre">bool</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.findInputs" title="Link to this definition">¶</a></dt>
+<dd><p>Find the locations in the program which starts with a given variable name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> – Variable to search for</p></li>
+<li><p><strong>variableList</strong> – List of program inputs to search</p></li>
+<li><p><strong>foundList</strong> – Returned list of found program inputs. Empty if none found.</p></li>
+<li><p><strong>exactMatch</strong> – Search for exact variable name match.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.getAttributesList">
-<span class="sig-name descname"><span class="pre">getAttributesList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_4::GlslProgram::Input]</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getAttributesList" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getAttributesList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_5::GlslProgram::Input]</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getAttributesList" title="Link to this definition">¶</a></dt>
+<dd><p>Get list of program input attributes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Program attributes list.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.getShader">
 <span class="sig-name descname"><span class="pre">getShader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.Shader" title="MaterialX.PyMaterialXGenShader.Shader"><span class="pre">MaterialX.PyMaterialXGenShader.Shader</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getShader" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the shader, if any, used to generate this program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.getStageSourceCode">
 <span class="sig-name descname"><span class="pre">getStageSourceCode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getStageSourceCode" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Get source code string for a given stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shader stage string. String is empty if not found.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.getUniformsList">
-<span class="sig-name descname"><span class="pre">getUniformsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_4::GlslProgram::Input]</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getUniformsList" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">getUniformsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict[str,</span> <span class="pre">MaterialX_v1_39_5::GlslProgram::Input]</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.getUniformsList" title="Link to this definition">¶</a></dt>
+<dd><p>Get list of program input uniforms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Program uniforms list.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.hasActiveAttributes">
 <span class="sig-name descname"><span class="pre">hasActiveAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.hasActiveAttributes" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return true if the program has active attributes.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.hasBuiltData">
 <span class="sig-name descname"><span class="pre">hasBuiltData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.hasBuiltData" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return true if built shader program data is present.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.setStages">
 <span class="sig-name descname"><span class="pre">setStages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXGenShader.Shader" title="MaterialX.PyMaterialXGenShader.Shader"><span class="pre">MaterialX.PyMaterialXGenShader.Shader</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.setStages" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set up code stages to validate based on an input hardware shader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shader</strong> – Hardware shader to use</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.unbind">
 <span class="sig-name descname"><span class="pre">unbind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.unbind" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Unbind the program. Equivalent to binding no program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.unbindGeometry">
 <span class="sig-name descname"><span class="pre">unbindGeometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram.unbindGeometry" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Unbind any bound geometry.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslProgram.UNDEFINED_OPENGL_PROGRAM_LOCATION">
@@ -422,15 +594,20 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">GlslRenderer</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderRenderer</span></code></a></p>
+<p>Helper class for rendering generated GLSL code to produce images.</p>
+<p>There are two main interfaces which can be used. One which takes in a HwShader and one which allows for explicit setting of shader stage code.</p>
+<p>The main services provided are: Validation: All shader stages are compiled and atteched to a GLSL shader program. Introspection: The compiled shader program is examined for uniforms and attributes. Binding: Uniforms and attributes which match the predefined variables generated the GLSL code generator will have values assigned to this. This includes matrices, attribute streams, and textures. Rendering: The program with bound inputs will be used to drawing geometry to an offscreen buffer. An interface is provided to save this offscreen buffer to disk using an externally defined image handler.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.create">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.create" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.create" title="Link to this definition">¶</a></dt>
+<dd><p>Create a GLSL renderer instance.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.captureImage">
 <span class="sig-name descname"><span class="pre">captureImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.captureImage" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Capture the current contents of the off-screen hardware buffer as an image.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.createProgram">
@@ -438,41 +615,113 @@
 <dd><p>Overloaded function.</p>
 <ol class="arabic simple">
 <li><p>createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -&gt; None</p></li>
-<li><p>createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: dict[str, str]) -&gt; None</p></li>
+<li><p>createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: collections.abc.Mapping[str, str]) -&gt; None</p></li>
 </ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getCamera">
+<span class="sig-name descname"><span class="pre">getCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Return the camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getGeometryHandler">
+<span class="sig-name descname"><span class="pre">getGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getImageHandler">
+<span class="sig-name descname"><span class="pre">getImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the image handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getLightHandler">
+<span class="sig-name descname"><span class="pre">getLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the light handler.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getProgram">
 <span class="sig-name descname"><span class="pre">getProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getProgram" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the GLSL program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.initialize">
-<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderContextHandle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">capsule</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.initialize" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderContextHandle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">typing_extensions.CapsuleType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.initialize" title="Link to this definition">¶</a></dt>
+<dd><p>Internal initialization of stages and OpenGL constructs required for program validation and rendering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>renderContextHandle</strong> – allows initializing the GlslRenderer with a Shared OpenGL Context</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.render">
 <span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.render" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Render the current program to an offscreen buffer.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.renderTextureSpace">
 <span class="sig-name descname"><span class="pre">renderTextureSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Vector2" title="MaterialX.PyMaterialXCore.Vector2"><span class="pre">MaterialX.PyMaterialXCore.Vector2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Vector2" title="MaterialX.PyMaterialXCore.Vector2"><span class="pre">MaterialX.PyMaterialXCore.Vector2</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.renderTextureSpace" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Render the current program in texture space to an off-screen buffer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setCamera">
+<span class="sig-name descname"><span class="pre">setCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Set the camera.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setGeometryHandler">
+<span class="sig-name descname"><span class="pre">setGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setImageHandler">
+<span class="sig-name descname"><span class="pre">setImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the image handler used by this renderer for image I/O.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setLightHandler">
+<span class="sig-name descname"><span class="pre">setLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the light handler used by this renderer for light bindings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setSize">
+<span class="sig-name descname"><span class="pre">setSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setSize" title="Link to this definition">¶</a></dt>
+<dd><p>Set the size of the rendered image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.updateUniform">
+<span class="sig-name descname"><span class="pre">updateUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Value" title="MaterialX.PyMaterialXCore.Value"><span class="pre">MaterialX.PyMaterialXCore.Value</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.updateUniform" title="Link to this definition">¶</a></dt>
+<dd><p>Update the program with value of the uniform.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.GlslRenderer.validateInputs">
 <span class="sig-name descname"><span class="pre">validateInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.validateInputs" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Validate inputs for the program.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.Input">
-<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.Input" title="MaterialX.PyMaterialXRenderGlsl.Input"><span class="pre">MaterialX.PyMaterialXRenderGlsl.Input</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.Input" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">Input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.Input" title="MaterialX.PyMaterialXRenderGlsl.Input"><span class="pre">MaterialX.PyMaterialXRenderGlsl.Input</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.Input" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybind11_object</span></code></p>
+<p>An input element within a Node or NodeDef.</p>
+<p>An Input holds either a uniform value or a connection to a spatially-varying Output, either of which may be modified within the scope of a Material.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.Input.INVALID_OPENGL_TYPE">
 <span class="sig-name descname"><span class="pre">INVALID_OPENGL_TYPE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.Input.INVALID_OPENGL_TYPE" title="Link to this definition">¶</a></dt>
@@ -519,9 +768,11 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker">
 <span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">MaterialX.PyMaterialXRenderGlsl.</span></span><span class="sig-name descname"><span class="pre">TextureBaker</span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">GlslRenderer</span></code></a></p>
+<p>A helper class for baking procedural material content to textures.</p>
+<p>TODO: Add support for graphs containing geometric nodes such as position and normal.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.create">
-<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.create" title="Link to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.BaseType" title="MaterialX.PyMaterialXRender.BaseType"><span class="pre">MaterialX.PyMaterialXRender.BaseType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.create" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -531,8 +782,24 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.bakeMaterialToDoc">
-<span class="sig-name descname"><span class="pre">bakeMaterialToDoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FileSearchPath" title="MaterialX.PyMaterialXFormat.FileSearchPath"><span class="pre">MaterialX.PyMaterialXFormat.FileSearchPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.bakeMaterialToDoc" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">bakeMaterialToDoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FileSearchPath" title="MaterialX.PyMaterialXFormat.FileSearchPath"><span class="pre">MaterialX.PyMaterialXFormat.FileSearchPath</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.abc.Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg4</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.bakeMaterialToDoc" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.captureImage">
+<span class="sig-name descname"><span class="pre">captureImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Image" title="MaterialX.PyMaterialXRender.Image"><span class="pre">MaterialX.PyMaterialXRender.Image</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.captureImage" title="Link to this definition">¶</a></dt>
+<dd><p>Capture the current contents of the off-screen hardware buffer as an image.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.createProgram">
+<span class="sig-name descname"><span class="pre">createProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.createProgram" title="Link to this definition">¶</a></dt>
+<dd><p>Overloaded function.</p>
+<ol class="arabic simple">
+<li><p>createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: MaterialX.PyMaterialXGenShader.Shader) -&gt; None</p></li>
+<li><p>createProgram(self: MaterialX.PyMaterialXRenderGlsl.GlslRenderer, arg0: collections.abc.Mapping[str, str]) -&gt; None</p></li>
+</ol>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getAverageImages">
@@ -550,6 +817,12 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getCamera">
+<span class="sig-name descname"><span class="pre">getCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Return the camera.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getColorSpace">
 <span class="sig-name descname"><span class="pre">getColorSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getColorSpace" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -565,9 +838,27 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getGeometryHandler">
+<span class="sig-name descname"><span class="pre">getGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getHashImageNames">
 <span class="sig-name descname"><span class="pre">getHashImageNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getHashImageNames" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getImageHandler">
+<span class="sig-name descname"><span class="pre">getImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the image handler.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getLightHandler">
+<span class="sig-name descname"><span class="pre">getLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Return the light handler.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getOptimizeConstants">
@@ -578,6 +869,12 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getOutputImagePath">
 <span class="sig-name descname"><span class="pre">getOutputImagePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getOutputImagePath" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getProgram">
+<span class="sig-name descname"><span class="pre">getProgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" title="MaterialX.PyMaterialXRenderGlsl.GlslProgram"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslProgram</span></a></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getProgram" title="Link to this definition">¶</a></dt>
+<dd><p>Return the GLSL program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.getTextureFilenameTemplate">
@@ -595,6 +892,29 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderContextHandle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">typing_extensions.CapsuleType</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.initialize" title="Link to this definition">¶</a></dt>
+<dd><p>Internal initialization of stages and OpenGL constructs required for program validation and rendering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>renderContextHandle</strong> – allows initializing the GlslRenderer with a Shared OpenGL Context</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.render" title="Link to this definition">¶</a></dt>
+<dd><p>Render the current program to an offscreen buffer.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.renderTextureSpace">
+<span class="sig-name descname"><span class="pre">renderTextureSpace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Vector2" title="MaterialX.PyMaterialXCore.Vector2"><span class="pre">MaterialX.PyMaterialXCore.Vector2</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Vector2" title="MaterialX.PyMaterialXCore.Vector2"><span class="pre">MaterialX.PyMaterialXCore.Vector2</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.renderTextureSpace" title="Link to this definition">¶</a></dt>
+<dd><p>Render the current program in texture space to an off-screen buffer.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setAverageImages">
 <span class="sig-name descname"><span class="pre">setAverageImages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setAverageImages" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -608,6 +928,12 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setBakedGraphName">
 <span class="sig-name descname"><span class="pre">setBakedGraphName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setBakedGraphName" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setCamera">
+<span class="sig-name descname"><span class="pre">setCamera</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.Camera" title="MaterialX.PyMaterialXRender.Camera"><span class="pre">MaterialX.PyMaterialXRender.Camera</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setCamera" title="Link to this definition">¶</a></dt>
+<dd><p>Set the camera.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setColorSpace">
@@ -630,9 +956,27 @@
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setGeometryHandler">
+<span class="sig-name descname"><span class="pre">setGeometryHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" title="MaterialX.PyMaterialXRender.GeometryHandler"><span class="pre">MaterialX.PyMaterialXRender.GeometryHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setGeometryHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the geometry handler.</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setHashImageNames">
 <span class="sig-name descname"><span class="pre">setHashImageNames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setHashImageNames" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setImageHandler">
+<span class="sig-name descname"><span class="pre">setImageHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" title="MaterialX.PyMaterialXRender.ImageHandler"><span class="pre">MaterialX.PyMaterialXRender.ImageHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setImageHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the image handler used by this renderer for image I/O.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setLightHandler">
+<span class="sig-name descname"><span class="pre">setLightHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.LightHandler" title="MaterialX.PyMaterialXRender.LightHandler"><span class="pre">MaterialX.PyMaterialXRender.LightHandler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setLightHandler" title="Link to this definition">¶</a></dt>
+<dd><p>Set the light handler used by this renderer for light bindings.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setOptimizeConstants">
@@ -643,6 +987,12 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setOutputImagePath">
 <span class="sig-name descname"><span class="pre">setOutputImagePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXFormat.FilePath" title="MaterialX.PyMaterialXFormat.FilePath"><span class="pre">MaterialX.PyMaterialXFormat.FilePath</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setOutputImagePath" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setSize">
+<span class="sig-name descname"><span class="pre">setSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">SupportsInt</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setSize" title="Link to this definition">¶</a></dt>
+<dd><p>Set the size of the rendered image.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setTextureFilenameTemplate">
@@ -663,6 +1013,18 @@
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.setupUnitSystem">
 <span class="sig-name descname"><span class="pre">setupUnitSystem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" title="MaterialX.PyMaterialXRenderGlsl.TextureBaker"><span class="pre">MaterialX.PyMaterialXRenderGlsl.TextureBaker</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Document" title="MaterialX.PyMaterialXCore.Document"><span class="pre">MaterialX.PyMaterialXCore.Document</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setupUnitSystem" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.updateUniform">
+<span class="sig-name descname"><span class="pre">updateUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" title="MaterialX.PyMaterialXRender.ShaderRenderer"><span class="pre">MaterialX.PyMaterialXRender.ShaderRenderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXCore.Value" title="MaterialX.PyMaterialXCore.Value"><span class="pre">MaterialX.PyMaterialXCore.Value</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.updateUniform" title="Link to this definition">¶</a></dt>
+<dd><p>Update the program with value of the uniform.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.validateInputs">
+<span class="sig-name descname"><span class="pre">validateInputs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" title="MaterialX.PyMaterialXRenderGlsl.GlslRenderer"><span class="pre">MaterialX.PyMaterialXRenderGlsl.GlslRenderer</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.validateInputs" title="Link to this definition">¶</a></dt>
+<dd><p>Validate inputs for the program.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="MaterialX.PyMaterialXRenderGlsl.TextureBaker.writeDocumentPerMaterial">
@@ -730,10 +1092,21 @@
 <li><a class="reference internal" href="#">MaterialX.PyMaterialXRenderGlsl Module</a><ul>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler</span></code></a><ul>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.create"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.create()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.acquireImage"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.acquireImage()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.addLoader"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.addLoader()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.bindImage"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.bindImage()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.clearImageCache"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.clearImageCache()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.createRenderResources"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.createRenderResources()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getFilenameResolver"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.getFilenameResolver()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getReferencedImages"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.getReferencedImages()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getSearchPath"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.getSearchPath()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.getZeroImage"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.getZeroImage()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.releaseRenderResources"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.releaseRenderResources()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.saveImage"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.saveImage()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setFilenameResolver"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.setFilenameResolver()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.setSearchPath"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.setSearchPath()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImage"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.unbindImage()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler.unbindImages"><code class="docutils literal notranslate"><span class="pre">GLTextureHandler.unbindImages()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslProgram"><code class="docutils literal notranslate"><span class="pre">GlslProgram</span></code></a><ul>
@@ -768,10 +1141,20 @@
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.create"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.create()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.captureImage"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.captureImage()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.createProgram"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.createProgram()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getCamera"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.getCamera()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getGeometryHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.getGeometryHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getImageHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.getImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getLightHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.getLightHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.getProgram"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.getProgram()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.initialize"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.initialize()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.render"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.render()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.renderTextureSpace"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.renderTextureSpace()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setCamera"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.setCamera()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setGeometryHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.setGeometryHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setImageHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.setImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setLightHandler"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.setLightHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.setSize"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.setSize()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.updateUniform"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.updateUniform()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.GlslRenderer.validateInputs"><code class="docutils literal notranslate"><span class="pre">GlslRenderer.validateInputs()</span></code></a></li>
 </ul>
 </li>
@@ -790,32 +1173,49 @@
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.create"><code class="docutils literal notranslate"><span class="pre">TextureBaker.create()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.bakeAllMaterials"><code class="docutils literal notranslate"><span class="pre">TextureBaker.bakeAllMaterials()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.bakeMaterialToDoc"><code class="docutils literal notranslate"><span class="pre">TextureBaker.bakeMaterialToDoc()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.captureImage"><code class="docutils literal notranslate"><span class="pre">TextureBaker.captureImage()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.createProgram"><code class="docutils literal notranslate"><span class="pre">TextureBaker.createProgram()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getAverageImages"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getAverageImages()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getBakedGeomInfoName"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getBakedGeomInfoName()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getBakedGraphName"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getBakedGraphName()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getCamera"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getCamera()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getColorSpace"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getColorSpace()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getDistanceUnit"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getDistanceUnit()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getExtension"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getExtension()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getGeometryHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getGeometryHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getHashImageNames"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getHashImageNames()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getImageHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getLightHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getLightHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getOptimizeConstants"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getOptimizeConstants()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getOutputImagePath"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getOutputImagePath()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getProgram"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getProgram()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getTextureFilenameTemplate"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getTextureFilenameTemplate()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getTextureSpaceMax"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getTextureSpaceMax()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.getTextureSpaceMin"><code class="docutils literal notranslate"><span class="pre">TextureBaker.getTextureSpaceMin()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.initialize"><code class="docutils literal notranslate"><span class="pre">TextureBaker.initialize()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.render"><code class="docutils literal notranslate"><span class="pre">TextureBaker.render()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.renderTextureSpace"><code class="docutils literal notranslate"><span class="pre">TextureBaker.renderTextureSpace()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setAverageImages"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setAverageImages()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setBakedGeomInfoName"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setBakedGeomInfoName()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setBakedGraphName"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setBakedGraphName()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setCamera"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setCamera()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setColorSpace"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setColorSpace()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setDistanceUnit"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setDistanceUnit()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setExtension"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setExtension()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setFilenameTemplateVarOverride"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setFilenameTemplateVarOverride()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setGeometryHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setGeometryHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setHashImageNames"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setHashImageNames()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setImageHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setImageHandler()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setLightHandler"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setLightHandler()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setOptimizeConstants"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setOptimizeConstants()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setOutputImagePath"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setOutputImagePath()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setSize"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setSize()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setTextureFilenameTemplate"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setTextureFilenameTemplate()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setTextureSpaceMax"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setTextureSpaceMax()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setTextureSpaceMin"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setTextureSpaceMin()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.setupUnitSystem"><code class="docutils literal notranslate"><span class="pre">TextureBaker.setupUnitSystem()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.updateUniform"><code class="docutils literal notranslate"><span class="pre">TextureBaker.updateUniform()</span></code></a></li>
+<li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.validateInputs"><code class="docutils literal notranslate"><span class="pre">TextureBaker.validateInputs()</span></code></a></li>
 <li><a class="reference internal" href="#MaterialX.PyMaterialXRenderGlsl.TextureBaker.writeDocumentPerMaterial"><code class="docutils literal notranslate"><span class="pre">TextureBaker.writeDocumentPerMaterial()</span></code></a></li>
 </ul>
 </li>
