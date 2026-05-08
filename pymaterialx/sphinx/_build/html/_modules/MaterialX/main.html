@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaterialX.main &#8212; MaterialX Python API  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for MaterialX.main</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Native Python wrappers for PyMaterialX, providing a more Pythonic interface</span>
+<span class="sd">for Elements and Values.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.PyMaterialXCore</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.PyMaterialXFormat</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.datatype</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1">#</span>
+<span class="c1"># Element</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_isA</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">,</span> <span class="n">category</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return True if this element is an instance of the given subclass.</span>
+<span class="sd">       If a category string is specified, then both subclass and category</span>
+<span class="sd">       matches are required.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">category</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">getCategory</span><span class="p">()</span> <span class="o">!=</span> <span class="n">category</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="s2">&quot;Add a child element of the given subclass, name, and optional type string.&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_addChild&quot;</span> <span class="o">+</span> <span class="n">elementClass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getChild</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="s2">&quot;Return the child element, if any, with the given name.&quot;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getChild</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getChildOfType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="s2">&quot;Return the child element, if any, with the given name and subclass.&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_getChildOfType&quot;</span> <span class="o">+</span> <span class="n">elementClass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getChildrenOfType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of all child elements that are instances of the given type.</span>
+<span class="sd">       The returned list maintains the order in which children were added.&quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_getChildrenOfType&quot;</span> <span class="o">+</span> <span class="n">elementClass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_removeChildOfType</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elementClass</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="s2">&quot;Remove the typed child element, if any, with the given name.&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_removeChildOfType&quot;</span> <span class="o">+</span> <span class="n">elementClass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">Element</span><span class="o">.</span><span class="n">isA</span> <span class="o">=</span> <span class="n">_isA</span>
+<span class="n">Element</span><span class="o">.</span><span class="n">addChild</span> <span class="o">=</span> <span class="n">_addChild</span>
+<span class="n">Element</span><span class="o">.</span><span class="n">getChild</span> <span class="o">=</span> <span class="n">_getChild</span>
+<span class="n">Element</span><span class="o">.</span><span class="n">getChildOfType</span> <span class="o">=</span> <span class="n">_getChildOfType</span>
+<span class="n">Element</span><span class="o">.</span><span class="n">getChildrenOfType</span> <span class="o">=</span> <span class="n">_getChildrenOfType</span>
+<span class="n">Element</span><span class="o">.</span><span class="n">removeChildOfType</span> <span class="o">=</span> <span class="n">_removeChildOfType</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># ValueElement</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="s2">&quot;Set the typed value of an element.&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_setValue&quot;</span> <span class="o">+</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getValue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s2">&quot;Return the typed value of an element.&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getValue</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getDefaultValue</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the default value for this element.&quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getDefaultValue</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="n">ValueElement</span><span class="o">.</span><span class="n">setValue</span> <span class="o">=</span> <span class="n">_setValue</span>
+<span class="n">ValueElement</span><span class="o">.</span><span class="n">getValue</span> <span class="o">=</span> <span class="n">_getValue</span>
+<span class="n">ValueElement</span><span class="o">.</span><span class="n">getDefaultValue</span> <span class="o">=</span> <span class="n">_getDefaultValue</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># InterfaceElement</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setInputValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the typed value of an input by its name, creating a child element</span>
+<span class="sd">       to hold the input if needed.&quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_setInputValue&quot;</span> <span class="o">+</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getInputValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the typed value of an input by its name, taking both the</span>
+<span class="sd">       calling element and its declaration into account.  If the given</span>
+<span class="sd">       input is not found, then None is returned.&quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getInputValue</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addParameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Add a Parameter to this interface.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getParameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all Parameter elements.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getActiveParameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all parameters belonging to this interface, taking inheritance into account.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setParameterValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Set the typed value of a parameter by its name.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getParameterValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return the typed value of a parameter by its name.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getParameterValueString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return the value string of a parameter by its name.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; parameters have been replaced with uniform inputs in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addBindInput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">DEFAULT_TYPE_STRING</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Add a BindInput to this shader reference.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getBindInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all BindInput elements in this shader reference.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getInputs</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addBindParam</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span> <span class="o">=</span> <span class="n">DEFAULT_TYPE_STRING</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Add a BindParam to this shader reference.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getBindParams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all BindParam elements in this shader reference.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getBindTokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all BindToken elements in this shader reference.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">setInputValue</span> <span class="o">=</span> <span class="n">_setInputValue</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getInputValue</span> <span class="o">=</span> <span class="n">_getInputValue</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">addParameter</span> <span class="o">=</span> <span class="n">_addParameter</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getParameters</span> <span class="o">=</span> <span class="n">_getParameters</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getActiveParameters</span> <span class="o">=</span> <span class="n">_getActiveParameters</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">setParameterValue</span> <span class="o">=</span> <span class="n">_setParameterValue</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getParameterValue</span> <span class="o">=</span> <span class="n">_getParameterValue</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getParameterValueString</span> <span class="o">=</span> <span class="n">_getParameterValueString</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">addBindInput</span> <span class="o">=</span> <span class="n">_addBindInput</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getBindInputs</span> <span class="o">=</span> <span class="n">_getBindInputs</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">addBindParam</span> <span class="o">=</span> <span class="n">_addBindParam</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getBindParams</span> <span class="o">=</span> <span class="n">_getBindParams</span>
+<span class="n">InterfaceElement</span><span class="o">.</span><span class="n">getBindTokens</span> <span class="o">=</span> <span class="n">_getBindTokens</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># Node</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getReferencedNodeDef</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Return the first NodeDef that declares this node.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call Node.getNodeDef instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getNodeDef</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addShaderRef</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">nodeName</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Add a shader reference to this material element.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; material elements have been replaced with material nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getParent</span><span class="p">()</span><span class="o">.</span><span class="n">addNode</span><span class="p">(</span><span class="n">nodeName</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getShaderRefs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all shader references in this material element.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">getShaderNodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getActiveShaderRefs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all shader references in this material element, taking material inheritance into account.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; shader references have been replaced with shader nodes in 1.38.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">getShaderNodes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="n">Node</span><span class="o">.</span><span class="n">getReferencedNodeDef</span> <span class="o">=</span> <span class="n">_getReferencedNodeDef</span>
+<span class="n">Node</span><span class="o">.</span><span class="n">addShaderRef</span> <span class="o">=</span> <span class="n">_addShaderRef</span>
+<span class="n">Node</span><span class="o">.</span><span class="n">getShaderRefs</span> <span class="o">=</span> <span class="n">_getShaderRefs</span>
+<span class="n">Node</span><span class="o">.</span><span class="n">getActiveShaderRefs</span> <span class="o">=</span> <span class="n">_getActiveShaderRefs</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># PropertySet</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setPropertyValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the typed value of a property by its name, creating a child element</span>
+<span class="sd">       to hold the property if needed.&quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_setPropertyValue&quot;</span> <span class="o">+</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getPropertyValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the typed value of a property by its name.  If the given property</span>
+<span class="sd">       is not found, then None is returned.&quot;&quot;&quot;</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getPropertyValue</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">getData</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="n">PropertySet</span><span class="o">.</span><span class="n">setPropertyValue</span> <span class="o">=</span> <span class="n">_setPropertyValue</span>
+<span class="n">PropertySet</span><span class="o">.</span><span class="n">getPropertyValue</span> <span class="o">=</span> <span class="n">_getPropertyValue</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># GeomInfo</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setGeomPropValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set the value of a geomprop by its name, creating a child element</span>
+<span class="sd">       to hold the geomprop if needed.&quot;&quot;&quot;</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="s2">&quot;_setGeomPropValue&quot;</span> <span class="o">+</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addGeomAttr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Add a geomprop to this element.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call GeomInfo.addGeomProp() instead&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addGeomProp</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setGeomAttrValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Set the value of a geomattr by its name.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call GeomInfo.setGeomPropValue() instead&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">setGeomPropValue</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">typeString</span><span class="p">)</span>
+
+<span class="n">GeomInfo</span><span class="o">.</span><span class="n">setGeomPropValue</span> <span class="o">=</span> <span class="n">_setGeomPropValue</span>
+<span class="n">GeomInfo</span><span class="o">.</span><span class="n">addGeomAttr</span> <span class="o">=</span> <span class="n">_addGeomAttr</span>
+<span class="n">GeomInfo</span><span class="o">.</span><span class="n">setGeomAttrValue</span> <span class="o">=</span> <span class="n">_setGeomAttrValue</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># Document</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_addMaterial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Add a material element to the document.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call Document.addMaterialNode() instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">addMaterialNode</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_getMaterials</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(Deprecated) Return a vector of all materials in the document.&quot;&quot;&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call Document.getMaterialNodes() instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getMaterialNodes</span><span class="p">()</span>
+
+<span class="n">Document</span><span class="o">.</span><span class="n">addMaterial</span> <span class="o">=</span> <span class="n">_addMaterial</span>
+<span class="n">Document</span><span class="o">.</span><span class="n">getMaterials</span> <span class="o">=</span> <span class="n">_getMaterials</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># Value</span>
+<span class="c1">#</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_typeToName</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Return the MaterialX type string associated with the given Python type.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call MaterialX.getTypeString instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">t</span><span class="p">())</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_valueToString</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Convert a Python value to its corresponding MaterialX value string.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call MaterialX.getValueString instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">getValueString</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_stringToValue</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="s2">&quot;(Deprecated) Convert a MaterialX value string and Python type to the corresponding Python value.&quot;</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;This function is deprecated; call MaterialX.createValueFromStrings instead.&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">createValueFromStrings</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">getTypeString</span><span class="p">(</span><span class="n">t</span><span class="p">()))</span>
+
+<span class="n">typeToName</span> <span class="o">=</span> <span class="n">_typeToName</span>
+<span class="n">valueToString</span> <span class="o">=</span> <span class="n">_valueToString</span>
+<span class="n">stringToValue</span> <span class="o">=</span> <span class="n">_stringToValue</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># XmlIo</span>
+<span class="c1">#</span>
+
+<span class="n">readFromXmlFile</span> <span class="o">=</span> <span class="n">readFromXmlFileBase</span>
+
+
+<span class="c1">#</span>
+<span class="c1"># Default Data Paths</span>
+<span class="c1">#</span>
+
+<div class="viewcode-block" id="getDefaultDataSearchPath">
+<a class="viewcode-back" href="../../api.html#MaterialX.PyMaterialXCore.getDefaultDataSearchPath">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">getDefaultDataSearchPath</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the default data search path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">FileSearchPath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="getDefaultDataLibraryFolders">
+<a class="viewcode-back" href="../../api.html#MaterialX.PyMaterialXCore.getDefaultDataLibraryFolders">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">getDefaultDataLibraryFolders</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return list of default data library folders</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span> <span class="s1">&#39;libraries&#39;</span> <span class="p">]</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">MaterialX Python API</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">MaterialX Python API Reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, MaterialX Authors.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.4</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
