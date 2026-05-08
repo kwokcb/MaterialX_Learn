@@ -1,0 +1,23 @@
+<map id="inheritance5e5f0e58a6" name="inheritance5e5f0e58a6">
+<area shape="rect" id="node1" href="#MaterialX.PyMaterialXGenShader.ApplicationVariableHandler" target="_top" title="ApplicationVariableHandler" alt="" coords="184,5,360,44"/>
+<area shape="rect" id="node3" href="#MaterialX.PyMaterialXGenShader.ColorManagementSystem" target="_top" title="Abstract base class for color management systems." alt="" coords="186,68,358,106"/>
+<area shape="rect" id="node4" href="#MaterialX.PyMaterialXGenShader.ColorSpaceTransform" target="_top" title="Structure that represents color space transform information." alt="" coords="198,131,346,169"/>
+<area shape="rect" id="node6" href="#MaterialX.PyMaterialXGenShader.GenContext" target="_top" title="A context class for shader generation." alt="" coords="226,193,318,232"/>
+<area shape="rect" id="node7" href="#MaterialX.PyMaterialXGenShader.GenOptions" target="_top" title="Class holding options to configure shader generation." alt="" coords="227,256,317,294"/>
+<area shape="rect" id="node8" href="#MaterialX.PyMaterialXGenShader.GenUserData" target="_top" title="Base class for custom user data needed during shader generation." alt="" coords="221,319,322,357"/>
+<area shape="rect" id="node11" href="#MaterialX.PyMaterialXGenShader.ShaderGenerator" target="_top" title="Base class for shader generators All third&#45;party shader generators should derive from this class." alt="" coords="212,381,332,420"/>
+<area shape="rect" id="node12" href="#MaterialX.PyMaterialXGenShader.HwSpecularEnvironmentMethod" target="_top" title="Members:" alt="" coords="168,444,376,482"/>
+<area shape="rect" id="node13" href="#MaterialX.PyMaterialXGenShader.Shader" target="_top" title="Class containing all data needed during shader generation." alt="" coords="236,507,308,545"/>
+<area shape="rect" id="node14" href="#MaterialX.PyMaterialXGenShader.ShaderInterfaceType" target="_top" title="Members:" alt="" coords="201,569,342,608"/>
+<area shape="rect" id="node15" href="#MaterialX.PyMaterialXGenShader.ShaderPort" target="_top" title="An input or output port on a ShaderNode." alt="" coords="229,632,315,670"/>
+<area shape="rect" id="node16" href="#MaterialX.PyMaterialXGenShader.ShaderPortPredicate" target="_top" title="ShaderPortPredicate" alt="" coords="201,695,342,733"/>
+<area shape="rect" id="node17" href="#MaterialX.PyMaterialXGenShader.ShaderStage" target="_top" title="A shader stage, containing the state and resulting source code for the stage." alt="" coords="224,757,320,796"/>
+<area shape="rect" id="node18" href="#MaterialX.PyMaterialXGenShader.ShaderTranslator" target="_top" title="A helper class for translating content between shading models." alt="" coords="212,820,332,858"/>
+<area shape="rect" id="node19" href="#MaterialX.PyMaterialXGenShader.TypeDesc" target="_top" title="A type descriptor for MaterialX data types." alt="" coords="232,883,312,921"/>
+<area shape="rect" id="node20" href="#MaterialX.PyMaterialXGenShader.UnitSystem" target="_top" title="Base unit system support." alt="" coords="227,945,317,984"/>
+<area shape="rect" id="node21" href="#MaterialX.PyMaterialXGenShader.UnitTransform" target="_top" title="Structure that represents unit transform information." alt="" coords="220,1008,324,1046"/>
+<area shape="rect" id="node22" href="#MaterialX.PyMaterialXGenShader.VariableBlock" target="_top" title="A block of variables in a shader stage." alt="" coords="222,1071,322,1109"/>
+<area shape="rect" id="node5" href="#MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem" target="_top" title="Class for a default color management system." alt="" coords="424,68,638,106"/>
+<area shape="rect" id="node9" href="#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" target="_top" title="HwResourceBindingContext" alt="" coords="438,319,624,357"/>
+<area shape="rect" id="node10" href="#MaterialX.PyMaterialXGenShader.HwShaderGenerator" target="_top" title="HwShaderGenerator" alt="" coords="462,381,601,420"/>
+</map>

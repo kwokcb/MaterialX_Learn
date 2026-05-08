@@ -1,0 +1,20 @@
+<map id="inheritance1fdf35c65d" name="inheritance1fdf35c65d">
+<area shape="rect" id="node1" href="api.html#MaterialX.PyMaterialXRender.BaseType" target="_top" title="Members:" alt="" coords="2,39,36,56"/>
+<area shape="rect" id="node3" href="api.html#MaterialX.PyMaterialXRender.Camera" target="_top" title="A simple camera class, supporting transform matrices and arcball functionality for object&#45;viewing applications." alt="" coords="47,39,78,56"/>
+<area shape="rect" id="node5" href="api.html#MaterialX.PyMaterialXRender.GeometryLoader" target="_top" title="Base class representing a geometry loader." alt="" coords="88,39,138,56"/>
+<area shape="rect" id="node7" href="api.html#MaterialX.PyMaterialXRender.GeometryHandler" target="_top" title="Class which holds a set of geometry loaders." alt="" coords="148,39,201,56"/>
+<area shape="rect" id="node8" href="api.html#MaterialX.PyMaterialXRender.Image" target="_top" title="Class representing an image in system memory." alt="" coords="211,39,242,56"/>
+<area shape="rect" id="node9" href="api.html#MaterialX.PyMaterialXRender.ImageBufferDeallocator" target="_top" title="ImageBufferDeallocator" alt="" coords="253,39,320,56"/>
+<area shape="rect" id="node10" href="api.html#MaterialX.PyMaterialXRender.ImageHandler" target="_top" title="Base image handler class." alt="" coords="330,39,374,56"/>
+<area shape="rect" id="node11" href="api.html#MaterialX.PyMaterialXRender.ImageLoader" target="_top" title="Abstract base class for file&#45;system image loaders." alt="" coords="385,39,426,56"/>
+<area shape="rect" id="node12" href="api.html#MaterialX.PyMaterialXRender.ImageSamplingProperties" target="_top" title="Interface to describe sampling properties for images." alt="" coords="436,39,509,56"/>
+<area shape="rect" id="node13" href="api.html#MaterialX.PyMaterialXRender.LightHandler" target="_top" title="Utility light handler for creating and providing light data for shader binding." alt="" coords="519,39,560,56"/>
+<area shape="rect" id="node14" href="api.html#MaterialX.PyMaterialXRender.Mesh" target="_top" title="Container for mesh data." alt="" coords="570,39,601,56"/>
+<area shape="rect" id="node15" href="api.html#MaterialX.PyMaterialXRender.MeshPartition" target="_top" title="Class that describes a sub&#45;region of a mesh using vertex indexing." alt="" coords="611,39,655,56"/>
+<area shape="rect" id="node16" href="api.html#MaterialX.PyMaterialXRender.MeshStream" target="_top" title="Class to represent a mesh data stream." alt="" coords="665,39,706,56"/>
+<area shape="rect" id="node17" href="api.html#MaterialX.PyMaterialXRender.ShaderRenderer" target="_top" title="Base class for renderers that generate shader code to produce images." alt="" coords="716,39,766,56"/>
+<area shape="rect" id="node4" href="api.html#MaterialX.PyMaterialXRender.CgltfLoader" target="_top" title="Wrapper for loader to read in GLTF files using the Cgltf library." alt="" coords="68,76,106,93"/>
+<area shape="rect" id="node19" href="api.html#MaterialX.PyMaterialXRender.TinyObjLoader" target="_top" title="Wrapper for geometry loader to read in OBJ files using the TinyObj library." alt="" coords="116,76,161,93"/>
+<area shape="rect" id="node6" href="api.html#MaterialX.PyMaterialXRender.ExceptionRenderError" target="_top" title="ExceptionRenderError" alt="" coords="571,2,635,19"/>
+<area shape="rect" id="node18" href="api.html#MaterialX.PyMaterialXRender.StbImageLoader" target="_top" title="Stb image file loader." alt="" coords="380,76,430,93"/>
+</map>

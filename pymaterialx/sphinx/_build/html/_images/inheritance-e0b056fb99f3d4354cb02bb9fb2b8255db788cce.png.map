@@ -1,0 +1,11 @@
+<map id="inheritancedfd77d115b" name="inheritancedfd77d115b">
+<area shape="rect" id="node1" href="#MaterialX.PyMaterialXGenGlsl.EsslShaderGenerator" target="_top" title="An ESSL (OpenGL ES Shading Language) shader generator." alt="" coords="53,351,198,389"/>
+<area shape="rect" id="node2" href="#MaterialX.PyMaterialXGenGlsl.GlslShaderGenerator" target="_top" title="Base class for GLSL (OpenGL Shading Language) code generation." alt="" coords="218,265,360,303"/>
+<area shape="rect" id="node9" href="#MaterialX.PyMaterialXGenGlsl.VkShaderGenerator" target="_top" title="A Vulkan GLSL shader generator." alt="" coords="222,351,357,389"/>
+<area shape="rect" id="node10" href="#MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator" target="_top" title="WGSL Flavor of Vulkan GLSL shader generator." alt="" coords="381,351,531,389"/>
+<area shape="rect" id="node3" href="#MaterialX.PyMaterialXGenShader.GenUserData" target="_top" title="Base class for custom user data needed during shader generation." alt="" coords="63,92,164,130"/>
+<area shape="rect" id="node6" href="#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" target="_top" title="HwResourceBindingContext" alt="" coords="7,178,193,217"/>
+<area shape="rect" id="node8" href="#MaterialX.PyMaterialXGenShader.ShaderGenerator" target="_top" title="Base class for shader generators All third&#45;party shader generators should derive from this class." alt="" coords="214,92,333,130"/>
+<area shape="rect" id="node5" href="#MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext" target="_top" title="Class representing a resource binding for Glsl shader resources." alt="" coords="5,265,195,303"/>
+<area shape="rect" id="node7" href="#MaterialX.PyMaterialXGenShader.HwShaderGenerator" target="_top" title="HwShaderGenerator" alt="" coords="218,178,358,217"/>
+</map>

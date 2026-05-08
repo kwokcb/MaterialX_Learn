@@ -1,0 +1,116 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1267pt" height="494pt" viewBox="0.00 0.00 1267.00 494.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 173.8)">
+<ns0:title>inheritance7b2338c665</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>GLTextureHandler</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" ns1:title="An OpenGL texture handler class." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="338.25,-169.8 244.25,-169.8 244.25,-141 338.25,-141 338.25,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="291.25" y="-151.9" font-family="Arial" font-size="10.00">GLTextureHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>ImageHandler</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="203.38,-169.8 126.62,-169.8 126.62,-141 203.38,-141 203.38,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-151.9" font-family="Arial" font-size="10.00">ImageHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>ImageHandler-&gt;GLTextureHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M203.62,-155.4C214.34,-155.4 226.23,-155.4 237.68,-155.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="238.22,-157.15 243.22,-155.4 238.22,-153.65 238.22,-157.15" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>GlslProgram</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" ns1:title="A class representing an executable GLSL program." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="200,-122.8 130,-122.8 130,-94 200,-94 200,-122.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-104.9" font-family="Arial" font-size="10.00">GlslProgram</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="85.75,-98.8 0,-98.8 0,-70 85.75,-70 85.75,-98.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="42.88" y="-80.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>pybind11_object-&gt;ImageHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M67.98,-99.17C83.32,-108.51 103.63,-120.79 121.75,-131.4 125.09,-133.36 128.6,-135.39 132.1,-137.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="131.7,-139.19 136.91,-140.15 133.44,-136.15 131.7,-139.19" />
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;GlslProgram</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.23,-92.86C98.31,-95.27 111.44,-97.9 123.41,-100.29" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="123.56,-102.11 128.81,-101.37 124.25,-98.67 123.56,-102.11" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>ShaderRenderer</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="208.25,-75.8 121.75,-75.8 121.75,-47 208.25,-47 208.25,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-57.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderRenderer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.23,-76.29C95.65,-74.49 105.7,-72.56 115.35,-70.71" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="116.3,-72.31 120.88,-69.66 115.64,-68.88 116.3,-72.31" />
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>Input</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.Input" ns1:title="An input element within a Node or NodeDef." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="192,-28.8 138,-28.8 138,0 192,0 192,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-10.9" font-family="Arial" font-size="10.00">Input</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>pybind11_object-&gt;Input</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M68.71,-69.58C83.98,-60.52 103.95,-48.71 121.75,-38.4 125.2,-36.4 128.81,-34.32 132.42,-32.26" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="133.91,-33.43 137.38,-29.43 132.17,-30.39 133.91,-33.43" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>GlslRenderer</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" ns1:title="Helper class for rendering generated GLSL code to produce images." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="327.75,-75.8 254.75,-75.8 254.75,-47 327.75,-47 327.75,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="291.25" y="-57.9" font-family="Arial" font-size="10.00">GlslRenderer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node8" class="node">
+<ns0:title>TextureBaker</ns0:title>
+<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" ns1:title="A helper class for baking procedural material content to textures." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="448,-75.8 374.25,-75.8 374.25,-47 448,-47 448,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="411.12" y="-57.9" font-family="Arial" font-size="10.00">TextureBaker</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge7" class="edge">
+<ns0:title>GlslRenderer-&gt;TextureBaker</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M327.94,-61.4C340.51,-61.4 354.78,-61.4 367.85,-61.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="368.4,-63.15 373.4,-61.4 368.4,-59.65 368.4,-63.15" />
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>ShaderRenderer-&gt;GlslRenderer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M208.41,-61.4C221.34,-61.4 235.54,-61.4 248.43,-61.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="248.88,-63.15 253.88,-61.4 248.88,-59.65 248.88,-63.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

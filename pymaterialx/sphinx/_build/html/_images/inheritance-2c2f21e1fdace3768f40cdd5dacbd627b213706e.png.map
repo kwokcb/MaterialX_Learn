@@ -1,0 +1,8 @@
+<map id="inheritance271e0c3fc8" name="inheritance271e0c3fc8">
+<area shape="rect" id="node1" href="api.html#MaterialX.PyMaterialXGenShader.GenUserData" target="_top" title="Base class for custom user data needed during shader generation." alt="" coords="62,92,163,130"/>
+<area shape="rect" id="node3" href="api.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" target="_top" title="HwResourceBindingContext" alt="" coords="6,178,192,217"/>
+<area shape="rect" id="node5" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" target="_top" title="Base class for shader generators All third&#45;party shader generators should derive from this class." alt="" coords="213,92,332,130"/>
+<area shape="rect" id="node6" href="api.html#MaterialX.PyMaterialXGenMsl.MslResourceBindingContext" target="_top" title="MslResourceBindingContext" alt="" coords="5,265,193,303"/>
+<area shape="rect" id="node4" href="api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" target="_top" title="HwShaderGenerator" alt="" coords="216,178,355,217"/>
+<area shape="rect" id="node7" href="api.html#MaterialX.PyMaterialXGenMsl.MslShaderGenerator" target="_top" title="MslShaderGenerator" alt="" coords="217,265,357,303"/>
+</map>

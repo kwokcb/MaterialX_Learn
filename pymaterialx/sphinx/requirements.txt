@@ -1,5 +1,10 @@
 sphinx
 autodoc
-sphinx_rtd_theme
-sphinx_rtd_dark_mode
+furo
+myst-parser 
+sphinx-copybutton 
+sphinx-design 
+sphinx-togglebutton 
+sphinx-autodoc-typehints 
+sphinxcontrib-mermaid
 MaterialX

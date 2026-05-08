@@ -1,0 +1,4 @@
+<map id="inheritance95bcc3551c" name="inheritance95bcc3551c">
+<area shape="rect" id="node1" href="api.html#MaterialX.PyMaterialXGenOsl.OslShaderGenerator" target="_top" title="Base class for OSL (Open Shading Language) shader generators." alt="" coords="5,178,145,217"/>
+<area shape="rect" id="node2" href="api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" target="_top" title="Base class for shader generators All third&#45;party shader generators should derive from this class." alt="" coords="15,92,135,130"/>
+</map>

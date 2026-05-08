@@ -1,0 +1,10 @@
+<map id="inheritanced955b6595c" name="inheritanced955b6595c">
+<area shape="rect" id="node1" href="#MaterialX.PyMaterialXFormat.ExceptionFileMissing" target="_top" title="ExceptionFileMissing" alt="" coords="5,5,151,44"/>
+<area shape="rect" id="node2" href="#MaterialX.PyMaterialXFormat.ExceptionParseError" target="_top" title="ExceptionParseError" alt="" coords="182,5,323,44"/>
+<area shape="rect" id="node3" href="#MaterialX.PyMaterialXFormat.FilePath" target="_top" title="A generic file path, supporting both syntactic and file system operations." alt="" coords="49,92,121,130"/>
+<area shape="rect" id="node5" href="#MaterialX.PyMaterialXFormat.FileSearchPath" target="_top" title="A sequence of file paths, which may be queried to find the first instance of a given filename on the file system." alt="" coords="144,92,254,130"/>
+<area shape="rect" id="node6" href="#MaterialX.PyMaterialXFormat.Format" target="_top" title="Members:" alt="" coords="278,92,350,130"/>
+<area shape="rect" id="node7" href="#MaterialX.PyMaterialXFormat.Type" target="_top" title="Members:" alt="" coords="374,92,446,130"/>
+<area shape="rect" id="node8" href="#MaterialX.PyMaterialXFormat.XmlReadOptions" target="_top" title="A set of options for controlling the behavior of XML read functions." alt="" coords="470,92,590,130"/>
+<area shape="rect" id="node9" href="#MaterialX.PyMaterialXFormat.XmlWriteOptions" target="_top" title="A set of options for controlling the behavior of XML write functions." alt="" coords="614,92,734,130"/>
+</map>

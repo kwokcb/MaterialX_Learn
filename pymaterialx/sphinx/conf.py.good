@@ -1,0 +1,82 @@
+# -- Path setup --------------------------------------------------------------
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
+
+# -- Project information -----------------------------------------------------
+project = 'MaterialX 1.39.5 Python API'
+copyright = '2026, MaterialX Authors'
+author = 'MaterialX Authors'
+
+# -- General configuration ---------------------------------------------------
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+]
+
+autodoc_typehints = 'description'
+
+# -- Options for autodoc -----------------------------------------------------
+autodoc_mock_imports = []
+
+# -- Main theme  -------------------------------------------------
+html_theme = 'furo'
+html_theme_options = {
+    "sidebar_hide_name": False,
+    "navigation_with_keys": True,
+}
+
+# Use Mermaid for inline diagrams
+mermaid_version = "11.12.3"
+mermaid_init_js = """
+mermaid.initialize({
+    startOnLoad: true,
+    theme: "default"
+});
+"""
+#  Napoleon settings 
+napoleon_google_docstring = True
+napoleon_numpy_docstring = True
+
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = True
+
+napoleon_use_admonition_for_examples = True
+napoleon_use_admonition_for_notes = True
+napoleon_use_admonition_for_references = True
+
+# Inheritance diagram settings 
+inheritance_graph_attrs = dict(
+    rankdir="TB",
+    fontsize=12,
+    ratio='compress'
+)
+inheritance_node_attrs = dict(
+    shape='box',
+    fontsize=10,
+    height=0.4,
+    fontname='Arial'
+)
+
+extensions = [
+    'sphinxcontrib.mermaid',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.inheritance_diagram',
+]
+
+# -- Graphviz and inheritance-diagram settings ------------------------------
+# Use SVG for high-quality, scalable diagrams
+graphviz_output_format = 'svg'
+graphviz_dot_args = ['-Gdpi=200']
+inheritance_graph_attrs = dict(dpi='200')
+
+# -- MaterialX autodoc settings ----------------------------------------------
+# Use the installed MaterialX package (not local source)
+import importlib.util
+spec = importlib.util.find_spec('MaterialX')
+if spec is not None and spec.submodule_search_locations:
+    sys.path.insert(0, spec.submodule_search_locations[0])

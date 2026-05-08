@@ -1,0 +1,119 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="676pt" height="755pt" viewBox="0.00 0.00 676.00 755.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 267.8)">
+<ns0:title>inheritanced955b6595c</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>ExceptionFileMissing</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.ExceptionFileMissing" ns1:title="ExceptionFileMissing" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="109,-51.8 0,-51.8 0,-23 109,-23 109,-51.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="54.5" y="-33.9" font-family="Arial" font-size="10.00">ExceptionFileMissing</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>ExceptionParseError</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.ExceptionParseError" ns1:title="ExceptionParseError" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="107.5,-98.8 1.5,-98.8 1.5,-70 107.5,-70 107.5,-98.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="54.5" y="-80.9" font-family="Arial" font-size="10.00">ExceptionParseError</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>FilePath</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.FilePath" ns1:title="A generic file path, supporting both syntactic and file system operations." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-263.8 163.12,-263.8 163.12,-235 217.12,-235 217.12,-263.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-245.9" font-family="Arial" font-size="10.00">FilePath</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="97.38,-145.8 11.62,-145.8 11.62,-117 97.38,-117 97.38,-145.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="54.5" y="-127.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>pybind11_object-&gt;FilePath</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M67.04,-146.13C83.03,-165.89 113.53,-201.27 145,-225.4 148.89,-228.38 153.21,-231.22 157.57,-233.82" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="157.22,-235.64 162.43,-236.61 158.96,-232.6 157.22,-235.64" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>FileSearchPath</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.FileSearchPath" ns1:title="A sequence of file paths, which may be queried to find the first instance of a given filename on the file system." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="231.5,-216.8 148.75,-216.8 148.75,-188 231.5,-188 231.5,-216.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-198.9" font-family="Arial" font-size="10.00">FileSearchPath</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;FileSearchPath</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M83.51,-146.28C104.54,-157.45 133.4,-172.79 155.65,-184.61" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155.24,-186.38 160.48,-187.18 156.89,-183.29 155.24,-186.38" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>Format</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.Format" ns1:title="Members:" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-169.8 163.12,-169.8 163.12,-141 217.12,-141 217.12,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-151.9" font-family="Arial" font-size="10.00">Format</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>pybind11_object-&gt;Format</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M97.78,-138.99C116.71,-142.39 138.69,-146.34 156.35,-149.51" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="156.67,-151.35 161.9,-150.51 157.29,-147.9 156.67,-151.35" />
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>Type</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.Type" ns1:title="Members:" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-122.8 163.12,-122.8 163.12,-94 217.12,-94 217.12,-122.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-104.9" font-family="Arial" font-size="10.00">Type</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>pybind11_object-&gt;Type</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M97.78,-124.12C116.71,-120.86 138.69,-117.08 156.35,-114.04" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="157.27,-115.66 161.9,-113.09 156.67,-112.21 157.27,-115.66" />
+</ns0:g>
+
+<ns0:g id="node8" class="node">
+<ns0:title>XmlReadOptions</ns0:title>
+<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.XmlReadOptions" ns1:title="A set of options for controlling the behavior of XML read functions." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="235.25,-75.8 145,-75.8 145,-47 235.25,-47 235.25,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-57.9" font-family="Arial" font-size="10.00">XmlReadOptions</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>pybind11_object-&gt;XmlReadOptions</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M90.34,-116.54C96.62,-113.65 103.06,-110.53 109,-107.4 125.59,-98.66 128.76,-94.77 145,-85.4 148.55,-83.35 152.29,-81.24 156.02,-79.17" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="157.27,-80.48 160.8,-76.53 155.58,-77.41 157.27,-80.48" />
+</ns0:g>
+
+<ns0:g id="node9" class="node">
+<ns0:title>XmlWriteOptions</ns0:title>
+<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.XmlWriteOptions" ns1:title="A set of options for controlling the behavior of XML write functions." target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="234.88,-28.8 145.38,-28.8 145.38,0 234.88,0 234.88,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-10.9" font-family="Arial" font-size="10.00">XmlWriteOptions</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>pybind11_object-&gt;XmlWriteOptions</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M96.48,-116.57C101,-113.93 105.3,-110.89 109,-107.4 134.17,-83.68 120.75,-63.07 145,-38.4 147.03,-36.33 149.28,-34.4 151.66,-32.59" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="152.96,-33.81 156.06,-29.51 150.96,-30.95 152.96,-33.81" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

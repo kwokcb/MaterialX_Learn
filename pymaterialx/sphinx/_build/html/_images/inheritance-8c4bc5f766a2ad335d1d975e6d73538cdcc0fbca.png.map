@@ -1,0 +1,4 @@
+<map id="inheritanceb8635cd11d" name="inheritanceb8635cd11d">
+<area shape="rect" id="node1" href="#MaterialX.PyMaterialXGenMdl.MdlShaderGenerator" target="_top" title="Shader generator for MDL (Material Definition Language)." alt="" coords="335,5,475,44"/>
+<area shape="rect" id="node2" href="#MaterialX.PyMaterialXGenShader.ShaderGenerator" target="_top" title="Base class for shader generators All third&#45;party shader generators should derive from this class." alt="" coords="168,5,287,44"/>
+</map>
