@@ -43,6 +43,12 @@ extensions = [
     'sphinx_rtd_dark_mode'
 ]
 
+# -- Graphviz and inheritance-diagram settings ------------------------------
+# Use SVG for high-quality, scalable diagrams
+graphviz_output_format = 'svg'
+graphviz_dot_args = ['-Gdpi=200']
+inheritance_graph_attrs = dict(dpi='200')
+
 # -- MaterialX autodoc settings ----------------------------------------------
 # Use the installed MaterialX package (not local source)
 import importlib.util
