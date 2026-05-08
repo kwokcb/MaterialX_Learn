@@ -1,0 +1,41 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="897pt" height="102pt" viewBox="0.00 0.00 897.00 102.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 32.8)">
+<ns0:title>inheritance9d4fec5e92</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>OslRenderer</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" ns1:title="OslRenderer" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="315,-28.8 244.25,-28.8 244.25,0 315,0 315,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="279.62" y="-10.9" font-family="Arial" font-size="10.00">OslRenderer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>ShaderRenderer</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="ShaderRenderer" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="208.25,-28.8 121.75,-28.8 121.75,0 208.25,0 208.25,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-10.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>ShaderRenderer-&gt;OslRenderer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M208.58,-14.4C218.09,-14.4 228.17,-14.4 237.62,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="238.29,-16.15 243.29,-14.4 238.29,-12.65 238.29,-16.15" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="85.75,-28.8 0,-28.8 0,0 85.75,0 85.75,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="42.88" y="-10.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderRenderer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.23,-14.4C95.65,-14.4 105.7,-14.4 115.35,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="115.87,-16.15 120.87,-14.4 115.87,-12.65 115.87,-16.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

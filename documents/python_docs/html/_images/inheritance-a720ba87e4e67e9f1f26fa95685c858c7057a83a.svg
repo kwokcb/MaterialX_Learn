@@ -1,0 +1,1193 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1103pt" height="2400pt" viewBox="0.00 0.00 1103.00 2400.00">
+<ns0:g id="graph0" class="graph" transform="scale(1.31666 1.31666) rotate(0) translate(4 1818.8)">
+<ns0:title>inheritance5e5c4c6993</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>AttributeDef</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.AttributeDef" ns1:title="AttributeDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="594.62,-1814.8 526.12,-1814.8 526.12,-1786 594.62,-1786 594.62,-1814.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1796.9" font-family="Arial" font-size="10.00">AttributeDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>TypedElement</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedElement" ns1:title="TypedElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="451.12,-1814.8 372.88,-1814.8 372.88,-1786 451.12,-1786 451.12,-1814.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1796.9" font-family="Arial" font-size="10.00">TypedElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>TypedElement-&gt;AttributeDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.46,-1800.4C472.34,-1800.4 498.13,-1800.4 519.26,-1800.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="519.9,-1802.15 524.9,-1800.4 519.9,-1798.65 519.9,-1802.15" />
+</ns0:g>
+
+<ns0:g id="node23" class="node">
+<ns0:title>ValueElement</ns0:title>
+<ns0:g id="a_node23"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.ValueElement" ns1:title="ValueElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="598.38,-1767.8 522.38,-1767.8 522.38,-1739 598.38,-1739 598.38,-1767.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1749.9" font-family="Arial" font-size="10.00">ValueElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge69" class="edge">
+<ns0:title>TypedElement-&gt;ValueElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.46,-1788.05C471.27,-1781.69 495.51,-1773.91 515.98,-1767.33" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="516.99,-1768.85 521.21,-1765.65 515.92,-1765.52 516.99,-1768.85" />
+</ns0:g>
+
+<ns0:g id="node24" class="node">
+<ns0:title>GeomPropDef</ns0:title>
+<ns0:g id="a_node24"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GeomPropDef" ns1:title="GeomPropDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="599.5,-1720.8 521.25,-1720.8 521.25,-1692 599.5,-1692 599.5,-1720.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1702.9" font-family="Arial" font-size="10.00">GeomPropDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge16" class="edge">
+<ns0:title>TypedElement-&gt;GeomPropDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.38,-1789.41C459.78,-1786.01 468.3,-1781.72 475.5,-1776.4 496.37,-1760.97 491.41,-1746.84 511.5,-1730.4 514.06,-1728.3 516.84,-1726.32 519.72,-1724.47" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="520.98,-1725.76 524.35,-1721.67 519.17,-1722.76 520.98,-1725.76" />
+</ns0:g>
+
+<ns0:g id="node25" class="node">
+<ns0:title>InterfaceElement</ns0:title>
+<ns0:g id="a_node25"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.InterfaceElement" ns1:title="InterfaceElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="605.5,-1673.8 515.25,-1673.8 515.25,-1645 605.5,-1645 605.5,-1673.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1655.9" font-family="Arial" font-size="10.00">InterfaceElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge22" class="edge">
+<ns0:title>TypedElement-&gt;InterfaceElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.34,-1791.41C460.13,-1787.89 468.83,-1783.05 475.5,-1776.4 506.88,-1745.1 481.69,-1716.2 511.5,-1683.4 513.33,-1681.39 515.37,-1679.52 517.54,-1677.8" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="519.16,-1678.79 522.2,-1674.46 517.12,-1675.94 519.16,-1678.79" />
+</ns0:g>
+
+<ns0:g id="node39" class="node">
+<ns0:title>Member</ns0:title>
+<ns0:g id="a_node39"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Member" ns1:title="Member" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="587.38,-1626.8 533.38,-1626.8 533.38,-1598 587.38,-1598 587.38,-1626.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1608.9" font-family="Arial" font-size="10.00">Member</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge30" class="edge">
+<ns0:title>TypedElement-&gt;Member</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.58,-1792.07C460.47,-1788.53 469.16,-1783.52 475.5,-1776.4 518.24,-1728.44 471.16,-1686.4 511.5,-1636.4 515.79,-1631.08 521.56,-1626.84 527.62,-1623.49" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="528.87,-1624.82 532.54,-1621.01 527.29,-1621.7 528.87,-1624.82" />
+</ns0:g>
+
+<ns0:g id="node51" class="node">
+<ns0:title>TargetDef</ns0:title>
+<ns0:g id="a_node51"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TargetDef" ns1:title="TargetDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="589.75,-1579.8 531,-1579.8 531,-1551 589.75,-1551 589.75,-1579.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1561.9" font-family="Arial" font-size="10.00">TargetDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge43" class="edge">
+<ns0:title>TypedElement-&gt;TargetDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.56,-1792.47C460.56,-1788.92 469.31,-1783.8 475.5,-1776.4 529.84,-1711.51 460.4,-1656.87 511.5,-1589.4 515.2,-1584.51 520.18,-1580.54 525.53,-1577.35" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="526.73,-1578.69 530.3,-1574.77 525.07,-1575.61 526.73,-1578.69" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>Backdrop</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Backdrop" ns1:title="Backdrop" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="440.62,-1767.8 383.38,-1767.8 383.38,-1739 440.62,-1739 440.62,-1767.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1749.9" font-family="Arial" font-size="10.00">Backdrop</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>Element</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Element" ns1:title="Element" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="270,-1438.8 216,-1438.8 216,-1410 270,-1410 270,-1438.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-1420.9" font-family="Arial" font-size="10.00">Element</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge47" class="edge">
+<ns0:title>Element-&gt;TypedElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M243.99,-1438.98C244.75,-1491.7 254.36,-1674.61 348.5,-1776.4 353.56,-1781.87 360,-1786.1 366.81,-1789.38" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="366.62,-1791.2 371.9,-1791.6 368.03,-1788 366.62,-1791.2" />
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>Element-&gt;Backdrop</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M244.78,-1439.03C248.12,-1487.25 265.17,-1642.97 348.5,-1729.4 356.19,-1737.37 366.81,-1742.74 377.12,-1746.33" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="377.12,-1748.16 382.41,-1748.01 378.18,-1744.83 377.12,-1748.16" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>Collection</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Collection" ns1:title="Collection" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="441.75,-1720.8 382.25,-1720.8 382.25,-1692 441.75,-1692 441.75,-1720.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1702.9" font-family="Arial" font-size="10.00">Collection</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>Element-&gt;Collection</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M245.85,-1439.2C252.04,-1482.63 275.92,-1611.13 348.5,-1682.4 355.99,-1689.75 365.96,-1694.9 375.74,-1698.49" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="375.77,-1700.35 381.07,-1700.29 376.89,-1697.03 375.77,-1700.35" />
+</ns0:g>
+
+<ns0:g id="node9" class="node">
+<ns0:title>CommentElement</ns0:title>
+<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.CommentElement" ns1:title="CommentElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="459.38,-1673.8 364.62,-1673.8 364.62,-1645 459.38,-1645 459.38,-1673.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1655.9" font-family="Arial" font-size="10.00">CommentElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>Element-&gt;CommentElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M247.35,-1439.19C256.66,-1477.12 286.4,-1578.83 348.5,-1635.4 351.62,-1638.24 355.11,-1640.76 358.8,-1642.99" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="358.45,-1644.79 363.67,-1645.68 360.15,-1641.73 358.45,-1644.79" />
+</ns0:g>
+
+<ns0:g id="node19" class="node">
+<ns0:title>GenericElement</ns0:title>
+<ns0:g id="a_node19"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GenericElement" ns1:title="GenericElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="454.88,-1626.8 369.12,-1626.8 369.12,-1598 454.88,-1598 454.88,-1626.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1608.9" font-family="Arial" font-size="10.00">GenericElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge12" class="edge">
+<ns0:title>Element-&gt;GenericElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M249.5,-1438.85C262.19,-1470.37 296.47,-1545.89 348.5,-1588.4 352.86,-1591.96 357.81,-1595.04 362.97,-1597.68" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="362.69,-1599.49 367.95,-1600.06 364.19,-1596.33 362.69,-1599.49" />
+</ns0:g>
+
+<ns0:g id="node20" class="node">
+<ns0:title>GeomElement</ns0:title>
+<ns0:g id="a_node20"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GeomElement" ns1:title="GeomElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="451.12,-1579.8 372.88,-1579.8 372.88,-1551 451.12,-1551 451.12,-1579.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1561.9" font-family="Arial" font-size="10.00">GeomElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge13" class="edge">
+<ns0:title>Element-&gt;GeomElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M253.55,-1439.01C270.15,-1463.37 306.59,-1512.47 348.5,-1541.4 354.07,-1545.24 360.33,-1548.58 366.69,-1551.44" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="366.55,-1553.28 371.84,-1553.64 367.93,-1550.06 366.55,-1553.28" />
+</ns0:g>
+
+<ns0:g id="node33" class="node">
+<ns0:title>Look</ns0:title>
+<ns0:g id="a_node33"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Look" ns1:title="Look" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1532.8 385,-1532.8 385,-1504 439,-1504 439,-1532.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1514.9" font-family="Arial" font-size="10.00">Look</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge24" class="edge">
+<ns0:title>Element-&gt;Look</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M263.22,-1439.2C283.59,-1454.41 317.1,-1478.11 348.5,-1494.4 357.98,-1499.32 368.72,-1503.8 378.58,-1507.52" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="378.58,-1509.39 383.87,-1509.48 379.79,-1506.1 378.58,-1509.39" />
+</ns0:g>
+
+<ns0:g id="node34" class="node">
+<ns0:title>LookGroup</ns0:title>
+<ns0:g id="a_node34"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.LookGroup" ns1:title="LookGroup" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="443.62,-1485.8 380.38,-1485.8 380.38,-1457 443.62,-1457 443.62,-1485.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1467.9" font-family="Arial" font-size="10.00">LookGroup</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge25" class="edge">
+<ns0:title>Element-&gt;LookGroup</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-1431.85C298.4,-1439.71 342.65,-1452.16 374.03,-1460.99" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="374.11,-1462.84 379.39,-1462.51 375.06,-1459.47 374.11,-1462.84" />
+</ns0:g>
+
+<ns0:g id="node40" class="node">
+<ns0:title>NewlineElement</ns0:title>
+<ns0:g id="a_node40"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.NewlineElement" ns1:title="NewlineElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="455.62,-1438.8 368.38,-1438.8 368.38,-1410 455.62,-1410 455.62,-1438.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1420.9" font-family="Arial" font-size="10.00">NewlineElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge31" class="edge">
+<ns0:title>Element-&gt;NewlineElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-1424.4C294.93,-1424.4 331.92,-1424.4 361.81,-1424.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="362.32,-1426.15 367.32,-1424.4 362.32,-1422.65 362.32,-1426.15" />
+</ns0:g>
+
+<ns0:g id="node48" class="node">
+<ns0:title>PropertySet</ns0:title>
+<ns0:g id="a_node48"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.PropertySet" ns1:title="PropertySet" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="445.88,-1391.8 378.12,-1391.8 378.12,-1363 445.88,-1363 445.88,-1391.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1373.9" font-family="Arial" font-size="10.00">PropertySet</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge40" class="edge">
+<ns0:title>Element-&gt;PropertySet</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-1416.95C297.71,-1409.28 340.48,-1397.25 371.68,-1388.47" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="372.69,-1390 377.03,-1386.96 371.74,-1386.63 372.69,-1390" />
+</ns0:g>
+
+<ns0:g id="node54" class="node">
+<ns0:title>TypeDef</ns0:title>
+<ns0:g id="a_node54"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypeDef" ns1:title="TypeDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1344.8 385,-1344.8 385,-1316 439,-1316 439,-1344.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1326.9" font-family="Arial" font-size="10.00">TypeDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge46" class="edge">
+<ns0:title>Element-&gt;TypeDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M263.22,-1409.6C283.59,-1394.39 317.1,-1370.69 348.5,-1354.4 357.98,-1349.48 368.72,-1345 378.58,-1341.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.79,-1342.7 383.87,-1339.32 378.58,-1339.41 379.79,-1342.7" />
+</ns0:g>
+
+<ns0:g id="node71" class="node">
+<ns0:title>Unit</ns0:title>
+<ns0:g id="a_node71"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Unit" ns1:title="Unit" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1297.8 385,-1297.8 385,-1269 439,-1269 439,-1297.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1279.9" font-family="Arial" font-size="10.00">Unit</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge63" class="edge">
+<ns0:title>Element-&gt;Unit</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M253.55,-1409.79C270.15,-1385.43 306.59,-1336.33 348.5,-1307.4 357.62,-1301.11 368.61,-1296.17 378.81,-1292.46" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.84,-1293.95 383.99,-1290.66 378.7,-1290.65 379.84,-1293.95" />
+</ns0:g>
+
+<ns0:g id="node73" class="node">
+<ns0:title>UnitDef</ns0:title>
+<ns0:g id="a_node73"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.UnitDef" ns1:title="UnitDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1250.8 385,-1250.8 385,-1222 439,-1222 439,-1250.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1232.9" font-family="Arial" font-size="10.00">UnitDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge66" class="edge">
+<ns0:title>Element-&gt;UnitDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M249.5,-1409.95C262.19,-1378.43 296.47,-1302.91 348.5,-1260.4 357.23,-1253.27 368.31,-1248.1 378.71,-1244.42" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.82,-1245.9 384.02,-1242.67 378.72,-1242.58 379.82,-1245.9" />
+</ns0:g>
+
+<ns0:g id="node74" class="node">
+<ns0:title>UnitTypeDef</ns0:title>
+<ns0:g id="a_node74"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.UnitTypeDef" ns1:title="UnitTypeDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="447.38,-1203.8 376.62,-1203.8 376.62,-1175 447.38,-1175 447.38,-1203.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1185.9" font-family="Arial" font-size="10.00">UnitTypeDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge67" class="edge">
+<ns0:title>Element-&gt;UnitTypeDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M247.35,-1409.61C256.66,-1371.68 286.4,-1269.97 348.5,-1213.4 354.73,-1207.72 362.45,-1203.34 370.31,-1199.97" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="371.62,-1201.33 375.62,-1197.86 370.33,-1198.08 371.62,-1201.33" />
+</ns0:g>
+
+<ns0:g id="node76" class="node">
+<ns0:title>VariantAssign</ns0:title>
+<ns0:g id="a_node76"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.VariantAssign" ns1:title="VariantAssign" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="450,-1156.8 374,-1156.8 374,-1128 450,-1128 450,-1156.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1138.9" font-family="Arial" font-size="10.00">VariantAssign</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge71" class="edge">
+<ns0:title>Element-&gt;VariantAssign</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M245.85,-1409.6C252.04,-1366.17 275.92,-1237.67 348.5,-1166.4 353.94,-1161.06 360.7,-1156.87 367.75,-1153.61" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="369.09,-1154.94 373.01,-1151.38 367.72,-1151.72 369.09,-1154.94" />
+</ns0:g>
+
+<ns0:g id="node77" class="node">
+<ns0:title>VariantSet</ns0:title>
+<ns0:g id="a_node77"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.VariantSet" ns1:title="VariantSet" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="442.5,-1109.8 381.5,-1109.8 381.5,-1081 442.5,-1081 442.5,-1109.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1091.9" font-family="Arial" font-size="10.00">VariantSet</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge72" class="edge">
+<ns0:title>Element-&gt;VariantSet</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M244.78,-1409.77C248.12,-1361.55 265.17,-1205.83 348.5,-1119.4 355.72,-1111.92 365.52,-1106.73 375.22,-1103.15" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="376.33,-1104.63 380.5,-1101.37 375.21,-1101.31 376.33,-1104.63" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>Color3</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Color3" ns1:title="Color3" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1062.8 385,-1062.8 385,-1034 439,-1034 439,-1062.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-1044.9" font-family="Arial" font-size="10.00">Color3</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>VectorBase</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.VectorBase" ns1:title="VectorBase" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="276.12,-1015.8 209.88,-1015.8 209.88,-987 276.12,-987 276.12,-1015.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-997.9" font-family="Arial" font-size="10.00">VectorBase</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>VectorBase-&gt;Color3</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.6,-1010.57C306.02,-1018.85 349.07,-1030.97 378.47,-1039.25" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="378.51,-1041.08 383.8,-1040.75 379.46,-1037.71 378.51,-1041.08" />
+</ns0:g>
+
+<ns0:g id="node8" class="node">
+<ns0:title>Color4</ns0:title>
+<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Color4" ns1:title="Color4" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-1015.8 385,-1015.8 385,-987 439,-987 439,-1015.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-997.9" font-family="Arial" font-size="10.00">Color4</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>VectorBase-&gt;Color4</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.6,-1001.4C305.89,-1001.4 348.71,-1001.4 378.1,-1001.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="378.77,-1003.15 383.77,-1001.4 378.77,-999.65 378.77,-1003.15" />
+</ns0:g>
+
+<ns0:g id="node78" class="node">
+<ns0:title>Vector2</ns0:title>
+<ns0:g id="a_node78"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Vector2" ns1:title="Vector2" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-968.8 385,-968.8 385,-940 439,-940 439,-968.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-950.9" font-family="Arial" font-size="10.00">Vector2</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge73" class="edge">
+<ns0:title>VectorBase-&gt;Vector2</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.6,-992.23C306.02,-983.95 349.07,-971.83 378.47,-963.55" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.46,-965.09 383.8,-962.05 378.51,-961.72 379.46,-965.09" />
+</ns0:g>
+
+<ns0:g id="node79" class="node">
+<ns0:title>Vector3</ns0:title>
+<ns0:g id="a_node79"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Vector3" ns1:title="Vector3" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-921.8 385,-921.8 385,-893 439,-893 439,-921.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-903.9" font-family="Arial" font-size="10.00">Vector3</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge74" class="edge">
+<ns0:title>VectorBase-&gt;Vector3</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.5,-994.14C288.55,-990.43 301.85,-985.03 312.5,-977.4 333.6,-962.28 327.63,-946.83 348.5,-931.4 357.48,-924.76 368.53,-919.72 378.83,-916.02" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.9,-917.5 384.07,-914.23 378.77,-914.19 379.9,-917.5" />
+</ns0:g>
+
+<ns0:g id="node80" class="node">
+<ns0:title>Vector4</ns0:title>
+<ns0:g id="a_node80"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Vector4" ns1:title="Vector4" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-874.8 385,-874.8 385,-846 439,-846 439,-874.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-856.9" font-family="Arial" font-size="10.00">Vector4</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge75" class="edge">
+<ns0:title>VectorBase-&gt;Vector4</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.41,-996.1C289,-992.62 302.72,-986.87 312.5,-977.4 344.34,-946.57 317.12,-915.7 348.5,-884.4 356.62,-876.3 367.76,-870.88 378.39,-867.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="379.58,-868.74 383.84,-865.58 378.54,-865.4 379.58,-868.74" />
+</ns0:g>
+
+<ns0:g id="node10" class="node">
+<ns0:title>Document</ns0:title>
+<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Document" ns1:title="Document" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="827.25,-1602.8 766.25,-1602.8 766.25,-1574 827.25,-1574 827.25,-1602.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="796.75" y="-1584.9" font-family="Arial" font-size="10.00">Document</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node11" class="node">
+<ns0:title>GraphElement</ns0:title>
+<ns0:g id="a_node11"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GraphElement" ns1:title="GraphElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="725.75,-1579.8 647.5,-1579.8 647.5,-1551 725.75,-1551 725.75,-1579.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1561.9" font-family="Arial" font-size="10.00">GraphElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge7" class="edge">
+<ns0:title>GraphElement-&gt;Document</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M726.05,-1573.57C737.01,-1575.91 748.91,-1578.44 759.72,-1580.74" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="759.95,-1582.57 765.2,-1581.9 760.68,-1579.15 759.95,-1582.57" />
+</ns0:g>
+
+<ns0:g id="node43" class="node">
+<ns0:title>NodeGraph</ns0:title>
+<ns0:g id="a_node43"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.NodeGraph" ns1:title="NodeGraph" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="829.5,-1555.8 764,-1555.8 764,-1527 829.5,-1527 829.5,-1555.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="796.75" y="-1537.9" font-family="Arial" font-size="10.00">NodeGraph</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge34" class="edge">
+<ns0:title>GraphElement-&gt;NodeGraph</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M726.05,-1556.87C736.2,-1554.62 747.16,-1552.18 757.32,-1549.93" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="758.28,-1551.51 762.78,-1548.72 757.52,-1548.09 758.28,-1551.51" />
+</ns0:g>
+
+<ns0:g id="node12" class="node">
+<ns0:title>Edge</ns0:title>
+<ns0:g id="a_node12"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Edge" ns1:title="Edge" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="270,-968.8 216,-968.8 216,-940 270,-940 270,-968.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-950.9" font-family="Arial" font-size="10.00">Edge</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node13" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="111.62,-756.8 25.88,-756.8 25.88,-728 111.62,-728 111.62,-756.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="68.75" y="-738.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge9" class="edge">
+<ns0:title>pybind11_object-&gt;Element</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M73.51,-757.28C95.8,-845.53 210.57,-1299.95 236.7,-1403.42" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="235.19,-1404.56 238.11,-1408.98 238.58,-1403.71 235.19,-1404.56" />
+</ns0:g>
+
+<ns0:g id="edge76" class="edge">
+<ns0:title>pybind11_object-&gt;VectorBase</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M72.09,-757.15C79.34,-798.1 105.21,-914.29 173.5,-977.4 181.78,-985.05 192.63,-990.28 203.25,-993.86" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="203.44,-995.75 208.74,-995.55 204.48,-992.4 203.44,-995.75" />
+</ns0:g>
+
+<ns0:g id="edge8" class="edge">
+<ns0:title>pybind11_object-&gt;Edge</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M73.9,-757.22C84.49,-792.4 115.85,-881.67 173.5,-930.4 183.76,-939.07 197.34,-944.68 209.71,-948.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="209.65,-950.07 214.93,-949.69 210.56,-946.69 209.65,-950.07" />
+</ns0:g>
+
+<ns0:g id="node14" class="node">
+<ns0:title>ElementEquivalenceOptions</ns0:title>
+<ns0:g id="a_node14"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.ElementEquivalenceOptions" ns1:title="ElementEquivalenceOptions" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="312.5,-921.8 173.5,-921.8 173.5,-893 312.5,-893 312.5,-921.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-903.9" font-family="Arial" font-size="10.00">ElementEquivalenceOptions</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge10" class="edge">
+<ns0:title>pybind11_object-&gt;ElementEquivalenceOptions</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M76.72,-757.04C90.96,-785.45 126.09,-848.34 173.5,-883.4 176.63,-885.71 179.99,-887.81 183.5,-889.72" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="183.18,-891.52 188.43,-892.23 184.76,-888.4 183.18,-891.52" />
+</ns0:g>
+
+<ns0:g id="node15" class="node">
+<ns0:title>ElementPredicate</ns0:title>
+<ns0:g id="a_node15"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.ElementPredicate" ns1:title="ElementPredicate" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="289.62,-874.8 196.38,-874.8 196.38,-846 289.62,-846 289.62,-874.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-856.9" font-family="Arial" font-size="10.00">ElementPredicate</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge11" class="edge">
+<ns0:title>pybind11_object-&gt;ElementPredicate</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M82.42,-757.1C100.68,-777.48 136.32,-814.28 173.5,-836.4 178.7,-839.49 184.36,-842.27 190.12,-844.74" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="189.91,-846.54 195.2,-846.82 191.24,-843.31 189.91,-846.54" />
+</ns0:g>
+
+<ns0:g id="node26" class="node">
+<ns0:title>GraphIterator</ns0:title>
+<ns0:g id="a_node26"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GraphIterator" ns1:title="GraphIterator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="279.5,-827.8 206.5,-827.8 206.5,-799 279.5,-799 279.5,-827.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-809.9" font-family="Arial" font-size="10.00">GraphIterator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge18" class="edge">
+<ns0:title>pybind11_object-&gt;GraphIterator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M100.31,-757.1C120.82,-766.76 148.54,-779.4 173.5,-789.4 182.05,-792.83 191.31,-796.26 200.17,-799.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="200.21,-801.27 205.51,-801.28 201.38,-797.97 200.21,-801.27" />
+</ns0:g>
+
+<ns0:g id="node28" class="node">
+<ns0:title>InheritanceIterator</ns0:title>
+<ns0:g id="a_node28"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.InheritanceIterator" ns1:title="InheritanceIterator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="290.38,-780.8 195.62,-780.8 195.62,-752 290.38,-752 290.38,-780.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-762.9" font-family="Arial" font-size="10.00">InheritanceIterator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge20" class="edge">
+<ns0:title>pybind11_object-&gt;InheritanceIterator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M111.89,-748.27C135.12,-751.51 164.18,-755.56 188.95,-759.01" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="189.2,-760.81 194.39,-759.77 189.68,-757.34 189.2,-760.81" />
+</ns0:g>
+
+<ns0:g id="node32" class="node">
+<ns0:title>UnitConverter</ns0:title>
+<ns0:g id="a_node32"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.UnitConverter" ns1:title="UnitConverter" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="281.38,-733.8 204.62,-733.8 204.62,-705 281.38,-705 281.38,-733.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-715.9" font-family="Arial" font-size="10.00">UnitConverter</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge64" class="edge">
+<ns0:title>pybind11_object-&gt;UnitConverter</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M111.89,-736.77C138.07,-733.28 171.68,-728.79 198.17,-725.25" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="198.93,-726.92 203.65,-724.52 198.46,-723.45 198.93,-726.92" />
+</ns0:g>
+
+<ns0:g id="node37" class="node">
+<ns0:title>MatrixBase</ns0:title>
+<ns0:g id="a_node37"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.MatrixBase" ns1:title="MatrixBase" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="275.75,-686.8 210.25,-686.8 210.25,-658 275.75,-658 275.75,-686.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-668.9" font-family="Arial" font-size="10.00">MatrixBase</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge29" class="edge">
+<ns0:title>pybind11_object-&gt;MatrixBase</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M101.26,-727.64C121.68,-718.27 148.95,-706.12 173.5,-696.4 183.3,-692.52 194.01,-688.61 203.98,-685.11" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="205.23,-686.53 209.37,-683.23 204.07,-683.23 205.23,-686.53" />
+</ns0:g>
+
+<ns0:g id="node44" class="node">
+<ns0:title>NodePredicate</ns0:title>
+<ns0:g id="a_node44"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.NodePredicate" ns1:title="NodePredicate" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="283.25,-639.8 202.75,-639.8 202.75,-611 283.25,-611 283.25,-639.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-621.9" font-family="Arial" font-size="10.00">NodePredicate</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge35" class="edge">
+<ns0:title>pybind11_object-&gt;NodePredicate</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M82.76,-727.52C101.16,-707.31 136.64,-671.19 173.5,-649.4 180.59,-645.21 188.52,-641.59 196.4,-638.53" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="197.62,-639.95 201.7,-636.57 196.4,-636.67 197.62,-639.95" />
+</ns0:g>
+
+<ns0:g id="node50" class="node">
+<ns0:title>StringResolver</ns0:title>
+<ns0:g id="a_node50"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.StringResolver" ns1:title="StringResolver" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="283.25,-592.8 202.75,-592.8 202.75,-564 283.25,-564 283.25,-592.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-574.9" font-family="Arial" font-size="10.00">StringResolver</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge42" class="edge">
+<ns0:title>pybind11_object-&gt;StringResolver</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M76.74,-727.87C91.03,-699.66 126.25,-637.21 173.5,-602.4 180.42,-597.3 188.52,-593.21 196.68,-589.96" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="197.55,-591.5 201.62,-588.11 196.32,-588.23 197.55,-591.5" />
+</ns0:g>
+
+<ns0:g id="node53" class="node">
+<ns0:title>TreeIterator</ns0:title>
+<ns0:g id="a_node53"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TreeIterator" ns1:title="TreeIterator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="276.12,-545.8 209.88,-545.8 209.88,-517 276.12,-517 276.12,-545.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-527.9" font-family="Arial" font-size="10.00">TreeIterator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge45" class="edge">
+<ns0:title>pybind11_object-&gt;TreeIterator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M73.92,-727.66C84.56,-692.67 116.03,-603.87 173.5,-555.4 182.04,-548.2 192.87,-543.11 203.39,-539.53" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="204.56,-541 208.8,-537.82 203.51,-537.66 204.56,-541" />
+</ns0:g>
+
+<ns0:g id="node56" class="node">
+<ns0:title>Value</ns0:title>
+<ns0:g id="a_node56"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Value" ns1:title="Value" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="270,-404.8 216,-404.8 216,-376 270,-376 270,-404.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-386.9" font-family="Arial" font-size="10.00">Value</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge68" class="edge">
+<ns0:title>pybind11_object-&gt;Value</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M75.64,-727.63C90.68,-690.29 132.21,-589.36 173.5,-508.4 191.46,-473.19 215.11,-433.75 229.4,-410.55" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="231.28,-410.83 232.42,-405.66 228.31,-408.99 231.28,-410.83" />
+</ns0:g>
+
+<ns0:g id="node72" class="node">
+<ns0:title>UnitConverterRegistry</ns0:title>
+<ns0:g id="a_node72"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.UnitConverterRegistry" ns1:title="UnitConverterRegistry" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="299.75,-357.8 186.25,-357.8 186.25,-329 299.75,-329 299.75,-357.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243" y="-339.9" font-family="Arial" font-size="10.00">UnitConverterRegistry</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge65" class="edge">
+<ns0:title>pybind11_object-&gt;UnitConverterRegistry</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M69.29,-727.56C68.39,-672.17 72.69,-475.21 173.5,-367.4 175.65,-365.1 178.02,-363.03 180.57,-361.15" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="182.16,-362.2 185.37,-357.99 180.23,-359.28 182.16,-362.2" />
+</ns0:g>
+
+<ns0:g id="node16" class="node">
+<ns0:title>Exception</ns0:title>
+<ns0:g id="a_node16"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Exception" ns1:title="Exception" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="98.5,-1273.8 39,-1273.8 39,-1245 98.5,-1245 98.5,-1273.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="68.75" y="-1255.9" font-family="Arial" font-size="10.00">Exception</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node17" class="node">
+<ns0:title>ExceptionFoundCycle</ns0:title>
+<ns0:g id="a_node17"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.ExceptionFoundCycle" ns1:title="ExceptionFoundCycle" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="124.75,-1555.8 12.75,-1555.8 12.75,-1527 124.75,-1527 124.75,-1555.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="68.75" y="-1537.9" font-family="Arial" font-size="10.00">ExceptionFoundCycle</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node18" class="node">
+<ns0:title>ExceptionOrphanedElement</ns0:title>
+<ns0:g id="a_node18"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.ExceptionOrphanedElement" ns1:title="ExceptionOrphanedElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="137.5,-1719.8 0,-1719.8 0,-1691 137.5,-1691 137.5,-1719.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="68.75" y="-1701.9" font-family="Arial" font-size="10.00">ExceptionOrphanedElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node21" class="node">
+<ns0:title>GeomInfo</ns0:title>
+<ns0:g id="a_node21"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GeomInfo" ns1:title="GeomInfo" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="589.75,-1532.8 531,-1532.8 531,-1504 589.75,-1504 589.75,-1532.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1514.9" font-family="Arial" font-size="10.00">GeomInfo</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge14" class="edge">
+<ns0:title>GeomElement-&gt;GeomInfo</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.46,-1553.05C474.22,-1545.74 502.82,-1536.56 524.86,-1529.48" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="525.94,-1530.97 530.17,-1527.78 524.87,-1527.64 525.94,-1530.97" />
+</ns0:g>
+
+<ns0:g id="node35" class="node">
+<ns0:title>MaterialAssign</ns0:title>
+<ns0:g id="a_node35"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.MaterialAssign" ns1:title="MaterialAssign" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="600.62,-1485.8 520.12,-1485.8 520.12,-1457 600.62,-1457 600.62,-1485.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1467.9" font-family="Arial" font-size="10.00">MaterialAssign</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge26" class="edge">
+<ns0:title>GeomElement-&gt;MaterialAssign</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.38,-1554.41C459.78,-1551.01 468.3,-1546.72 475.5,-1541.4 496.37,-1525.97 491.41,-1511.84 511.5,-1495.4 514.06,-1493.3 516.84,-1491.32 519.72,-1489.47" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="520.98,-1490.76 524.35,-1486.67 519.17,-1487.76 520.98,-1490.76" />
+</ns0:g>
+
+<ns0:g id="node49" class="node">
+<ns0:title>PropertySetAssign</ns0:title>
+<ns0:g id="a_node49"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.PropertySetAssign" ns1:title="PropertySetAssign" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="609.25,-1438.8 511.5,-1438.8 511.5,-1410 609.25,-1410 609.25,-1438.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1420.9" font-family="Arial" font-size="10.00">PropertySetAssign</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge41" class="edge">
+<ns0:title>GeomElement-&gt;PropertySetAssign</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.34,-1556.41C460.13,-1552.89 468.83,-1548.05 475.5,-1541.4 506.88,-1510.1 481.69,-1481.2 511.5,-1448.4 513.33,-1446.39 515.37,-1444.52 517.54,-1442.8" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="519.16,-1443.79 522.2,-1439.46 517.12,-1440.94 519.16,-1443.79" />
+</ns0:g>
+
+<ns0:g id="node81" class="node">
+<ns0:title>Visibility</ns0:title>
+<ns0:g id="a_node81"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Visibility" ns1:title="Visibility" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="587.38,-1391.8 533.38,-1391.8 533.38,-1363 587.38,-1363 587.38,-1391.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="560.38" y="-1373.9" font-family="Arial" font-size="10.00">Visibility</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge77" class="edge">
+<ns0:title>GeomElement-&gt;Visibility</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M451.58,-1557.07C460.47,-1553.53 469.16,-1548.52 475.5,-1541.4 518.24,-1493.44 471.16,-1451.4 511.5,-1401.4 515.79,-1396.08 521.56,-1391.84 527.62,-1388.49" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="528.87,-1389.82 532.54,-1386.01 527.29,-1386.7 528.87,-1389.82" />
+</ns0:g>
+
+<ns0:g id="node22" class="node">
+<ns0:title>GeomProp</ns0:title>
+<ns0:g id="a_node22"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.GeomProp" ns1:title="GeomProp" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="717.88,-1814.8 655.38,-1814.8 655.38,-1786 717.88,-1786 717.88,-1814.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1796.9" font-family="Arial" font-size="10.00">GeomProp</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge15" class="edge">
+<ns0:title>ValueElement-&gt;GeomProp</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M598.65,-1767.5C614.7,-1773.57 633.39,-1780.64 649.32,-1786.67" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="649.05,-1788.44 654.35,-1788.57 650.29,-1785.16 649.05,-1788.44" />
+</ns0:g>
+
+<ns0:g id="node30" class="node">
+<ns0:title>PortElement</ns0:title>
+<ns0:g id="a_node30"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.PortElement" ns1:title="PortElement" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="721.62,-1767.8 651.62,-1767.8 651.62,-1739 721.62,-1739 721.62,-1767.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1749.9" font-family="Arial" font-size="10.00">PortElement</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge37" class="edge">
+<ns0:title>ValueElement-&gt;PortElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M598.65,-1753.4C613.29,-1753.4 630.13,-1753.4 645.07,-1753.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="645.58,-1755.15 650.58,-1753.4 645.58,-1751.65 645.58,-1755.15" />
+</ns0:g>
+
+<ns0:g id="node46" class="node">
+<ns0:title>Property</ns0:title>
+<ns0:g id="a_node46"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Property" ns1:title="Property" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="713.62,-1720.8 659.62,-1720.8 659.62,-1692 713.62,-1692 713.62,-1720.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1702.9" font-family="Arial" font-size="10.00">Property</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge38" class="edge">
+<ns0:title>ValueElement-&gt;Property</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M598.65,-1739.3C616.1,-1732.7 636.67,-1724.92 653.43,-1718.58" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="654.65,-1719.99 658.71,-1716.58 653.41,-1716.71 654.65,-1719.99" />
+</ns0:g>
+
+<ns0:g id="node47" class="node">
+<ns0:title>PropertyAssign</ns0:title>
+<ns0:g id="a_node47"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.PropertyAssign" ns1:title="PropertyAssign" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="728,-1673.8 645.25,-1673.8 645.25,-1645 728,-1645 728,-1673.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1655.9" font-family="Arial" font-size="10.00">PropertyAssign</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge39" class="edge">
+<ns0:title>ValueElement-&gt;PropertyAssign</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M595.75,-1738.52C600.5,-1735.81 605.15,-1732.76 609.25,-1729.4 629.34,-1712.96 625.76,-1700.55 645.25,-1683.4 647.5,-1681.42 649.94,-1679.51 652.47,-1677.69" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="653.97,-1678.79 657.12,-1674.53 652,-1675.9 653.97,-1678.79" />
+</ns0:g>
+
+<ns0:g id="node52" class="node">
+<ns0:title>Token</ns0:title>
+<ns0:g id="a_node52"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Token" ns1:title="Token" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="713.62,-1626.8 659.62,-1626.8 659.62,-1598 713.62,-1598 713.62,-1626.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1608.9" font-family="Arial" font-size="10.00">Token</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge44" class="edge">
+<ns0:title>ValueElement-&gt;Token</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M597.93,-1738.78C602.09,-1736.09 606,-1732.98 609.25,-1729.4 639.06,-1696.6 616.63,-1670.24 645.25,-1636.4 647.81,-1633.38 650.85,-1630.64 654.09,-1628.18" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="655.59,-1629.27 658.71,-1624.99 653.6,-1626.39 655.59,-1629.27" />
+</ns0:g>
+
+<ns0:g id="edge17" class="edge">
+<ns0:title>InterfaceElement-&gt;GraphElement</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M595.75,-1644.52C600.5,-1641.81 605.15,-1638.76 609.25,-1635.4 629.34,-1618.96 625.76,-1606.55 645.25,-1589.4 647.5,-1587.42 649.94,-1585.51 652.47,-1583.69" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="653.97,-1584.79 657.12,-1580.53 652,-1581.9 653.97,-1584.79" />
+</ns0:g>
+
+<ns0:g id="node27" class="node">
+<ns0:title>Implementation</ns0:title>
+<ns0:g id="a_node27"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Implementation" ns1:title="Implementation" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="728,-1532.8 645.25,-1532.8 645.25,-1504 728,-1504 728,-1532.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1514.9" font-family="Arial" font-size="10.00">Implementation</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge19" class="edge">
+<ns0:title>InterfaceElement-&gt;Implementation</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M597.93,-1644.78C602.09,-1642.09 606,-1638.98 609.25,-1635.4 639.06,-1602.6 616.63,-1576.24 645.25,-1542.4 646.91,-1540.44 648.77,-1538.6 650.76,-1536.87" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="652.15,-1538 655,-1533.54 649.99,-1535.25 652.15,-1538" />
+</ns0:g>
+
+<ns0:g id="node41" class="node">
+<ns0:title>Node</ns0:title>
+<ns0:g id="a_node41"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Node" ns1:title="Node" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="713.62,-1485.8 659.62,-1485.8 659.62,-1457 713.62,-1457 713.62,-1485.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1467.9" font-family="Arial" font-size="10.00">Node</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge32" class="edge">
+<ns0:title>InterfaceElement-&gt;Node</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M598.81,-1644.82C602.73,-1642.14 606.33,-1639.02 609.25,-1635.4 649.59,-1585.4 606.72,-1546.81 645.25,-1495.4 647.69,-1492.15 650.71,-1489.25 653.99,-1486.69" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="655.62,-1487.69 658.7,-1483.39 653.61,-1484.83 655.62,-1487.69" />
+</ns0:g>
+
+<ns0:g id="node42" class="node">
+<ns0:title>NodeDef</ns0:title>
+<ns0:g id="a_node42"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.NodeDef" ns1:title="NodeDef" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="714.12,-1438.8 659.12,-1438.8 659.12,-1410 714.12,-1410 714.12,-1438.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1420.9" font-family="Arial" font-size="10.00">NodeDef</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge33" class="edge">
+<ns0:title>InterfaceElement-&gt;NodeDef</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M599.5,-1644.66C603.19,-1642.03 606.56,-1638.96 609.25,-1635.4 660.35,-1567.93 596.6,-1517.66 645.25,-1448.4 647.53,-1445.16 650.39,-1442.28 653.54,-1439.75" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="655.03,-1440.84 658.07,-1436.5 652.98,-1438 655.03,-1440.84" />
+</ns0:g>
+
+<ns0:g id="node75" class="node">
+<ns0:title>Variant</ns0:title>
+<ns0:g id="a_node75"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Variant" ns1:title="Variant" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="713.62,-1391.8 659.62,-1391.8 659.62,-1363 713.62,-1363 713.62,-1391.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="686.62" y="-1373.9" font-family="Arial" font-size="10.00">Variant</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge70" class="edge">
+<ns0:title>InterfaceElement-&gt;Variant</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M599.63,-1644.76C603.3,-1642.11 606.62,-1639.01 609.25,-1635.4 671.19,-1550.34 586.4,-1488.63 645.25,-1401.4 647.7,-1397.78 650.89,-1394.62 654.41,-1391.89" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="655.65,-1393.15 658.75,-1388.86 653.65,-1390.28 655.65,-1393.15" />
+</ns0:g>
+
+<ns0:g id="node29" class="node">
+<ns0:title>Input</ns0:title>
+<ns0:g id="a_node29"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Input" ns1:title="Input" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="823.75,-1790.8 769.75,-1790.8 769.75,-1762 823.75,-1762 823.75,-1790.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="796.75" y="-1772.9" font-family="Arial" font-size="10.00">Input</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge21" class="edge">
+<ns0:title>PortElement-&gt;Input</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M721.84,-1760.68C735.02,-1763.48 750.04,-1766.68 763.08,-1769.45" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="763.3,-1771.29 768.56,-1770.62 764.03,-1767.86 763.3,-1771.29" />
+</ns0:g>
+
+<ns0:g id="node45" class="node">
+<ns0:title>Output</ns0:title>
+<ns0:g id="a_node45"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Output" ns1:title="Output" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="823.75,-1743.8 769.75,-1743.8 769.75,-1715 823.75,-1715 823.75,-1743.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="796.75" y="-1725.9" font-family="Arial" font-size="10.00">Output</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge36" class="edge">
+<ns0:title>PortElement-&gt;Output</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M721.84,-1745.81C735.02,-1742.88 750.04,-1739.55 763.08,-1736.65" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="764.06,-1738.23 768.56,-1735.44 763.3,-1734.81 764.06,-1738.23" />
+</ns0:g>
+
+<ns0:g id="node31" class="node">
+<ns0:title>LinearUnitConverter</ns0:title>
+<ns0:g id="a_node31"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.LinearUnitConverter" ns1:title="LinearUnitConverter" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="463.5,-827.8 360.5,-827.8 360.5,-799 463.5,-799 463.5,-827.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-809.9" font-family="Arial" font-size="10.00">LinearUnitConverter</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge23" class="edge">
+<ns0:title>UnitConverter-&gt;LinearUnitConverter</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M281.78,-728.37C292.33,-731.98 303.38,-736.87 312.5,-743.4 333.6,-758.52 327.63,-773.97 348.5,-789.4 351.57,-791.67 354.87,-793.75 358.31,-795.65" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="357.88,-797.4 363.13,-798.15 359.5,-794.3 357.88,-797.4" />
+</ns0:g>
+
+<ns0:g id="node36" class="node">
+<ns0:title>Matrix33</ns0:title>
+<ns0:g id="a_node36"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Matrix33" ns1:title="Matrix33" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-780.8 385,-780.8 385,-752 439,-752 439,-780.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-762.9" font-family="Arial" font-size="10.00">Matrix33</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge27" class="edge">
+<ns0:title>MatrixBase-&gt;Matrix33</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.16,-679.55C288.29,-683.27 301.75,-688.69 312.5,-696.4 333.6,-711.52 327.63,-726.97 348.5,-742.4 357.48,-749.04 368.53,-754.08 378.83,-757.78" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="378.77,-759.61 384.07,-759.57 379.9,-756.3 378.77,-759.61" />
+</ns0:g>
+
+<ns0:g id="node38" class="node">
+<ns0:title>Matrix44</ns0:title>
+<ns0:g id="a_node38"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.Matrix44" ns1:title="Matrix44" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="439,-733.8 385,-733.8 385,-705 439,-705 439,-733.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-715.9" font-family="Arial" font-size="10.00">Matrix44</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge28" class="edge">
+<ns0:title>MatrixBase-&gt;Matrix44</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M276.2,-681.46C305.67,-689.76 349.05,-701.96 378.58,-710.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="378.65,-712.11 383.94,-711.78 379.6,-708.74 378.65,-712.11" />
+</ns0:g>
+
+<ns0:g id="node55" class="node">
+<ns0:title>TypedValue_boolean</ns0:title>
+<ns0:g id="a_node55"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_boolean" ns1:title="TypedValue_boolean" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="464.62,-686.8 359.38,-686.8 359.38,-658 464.62,-658 464.62,-686.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-668.9" font-family="Arial" font-size="10.00">TypedValue_boolean</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge48" class="edge">
+<ns0:title>Value-&gt;TypedValue_boolean</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M254.25,-404.99C269.04,-426.64 296.34,-468.94 312.5,-508.4 336.86,-567.85 305.76,-600.44 348.5,-648.4 350.28,-650.4 352.25,-652.24 354.36,-653.92" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="353.8,-655.67 358.89,-657.14 355.83,-652.82 353.8,-655.67" />
+</ns0:g>
+
+<ns0:g id="node57" class="node">
+<ns0:title>TypedValue_booleanarray</ns0:title>
+<ns0:g id="a_node57"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_booleanarray" ns1:title="TypedValue_booleanarray" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="475.5,-639.8 348.5,-639.8 348.5,-611 475.5,-611 475.5,-639.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-621.9" font-family="Arial" font-size="10.00">TypedValue_booleanarray</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge49" class="edge">
+<ns0:title>Value-&gt;TypedValue_booleanarray</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M253.65,-405.26C267.68,-427.24 294.04,-469.96 312.5,-508.4 331.68,-548.35 317.12,-570.1 348.5,-601.4 350.6,-603.5 352.9,-605.41 355.35,-607.16" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="354.76,-608.87 359.91,-610.12 356.67,-605.93 354.76,-608.87" />
+</ns0:g>
+
+<ns0:g id="node58" class="node">
+<ns0:title>TypedValue_color3</ns0:title>
+<ns0:g id="a_node58"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_color3" ns1:title="TypedValue_color3" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="460.88,-592.8 363.12,-592.8 363.12,-564 460.88,-564 460.88,-592.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-574.9" font-family="Arial" font-size="10.00">TypedValue_color3</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge50" class="edge">
+<ns0:title>Value-&gt;TypedValue_color3</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M252.7,-405.19C275.29,-443.43 335,-543.37 348.5,-554.4 351.2,-556.61 354.13,-558.63 357.19,-560.47" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="356.94,-562.34 362.16,-563.24 358.64,-559.28 356.94,-562.34" />
+</ns0:g>
+
+<ns0:g id="node59" class="node">
+<ns0:title>TypedValue_color4</ns0:title>
+<ns0:g id="a_node59"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_color4" ns1:title="TypedValue_color4" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="460.88,-545.8 363.12,-545.8 363.12,-517 460.88,-517 460.88,-545.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-527.9" font-family="Arial" font-size="10.00">TypedValue_color4</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge51" class="edge">
+<ns0:title>Value-&gt;TypedValue_color4</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M253.55,-405.01C270.15,-429.37 306.59,-478.47 348.5,-507.4 351.76,-509.65 355.27,-511.73 358.89,-513.64" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="358.73,-515.52 363.99,-516.17 360.29,-512.38 358.73,-515.52" />
+</ns0:g>
+
+<ns0:g id="node60" class="node">
+<ns0:title>TypedValue_float</ns0:title>
+<ns0:g id="a_node60"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_float" ns1:title="TypedValue_float" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="457.12,-498.8 366.88,-498.8 366.88,-470 457.12,-470 457.12,-498.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-480.9" font-family="Arial" font-size="10.00">TypedValue_float</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge52" class="edge">
+<ns0:title>Value-&gt;TypedValue_float</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M263.22,-405.2C283.59,-420.41 317.1,-444.11 348.5,-460.4 353.02,-462.75 357.83,-464.99 362.69,-467.1" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="362.43,-468.89 367.71,-469.23 363.79,-465.67 362.43,-468.89" />
+</ns0:g>
+
+<ns0:g id="node61" class="node">
+<ns0:title>TypedValue_floatarray</ns0:title>
+<ns0:g id="a_node61"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_floatarray" ns1:title="TypedValue_floatarray" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="468,-451.8 356,-451.8 356,-423 468,-423 468,-451.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-433.9" font-family="Arial" font-size="10.00">TypedValue_floatarray</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge53" class="edge">
+<ns0:title>Value-&gt;TypedValue_floatarray</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-397.85C292.35,-404.01 324.26,-412.99 352.14,-420.83" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="352.37,-422.72 357.66,-422.39 353.32,-419.35 352.37,-422.72" />
+</ns0:g>
+
+<ns0:g id="node62" class="node">
+<ns0:title>TypedValue_integer</ns0:title>
+<ns0:g id="a_node62"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_integer" ns1:title="TypedValue_integer" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="462.38,-404.8 361.62,-404.8 361.62,-376 462.38,-376 462.38,-404.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-386.9" font-family="Arial" font-size="10.00">TypedValue_integer</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge54" class="edge">
+<ns0:title>Value-&gt;TypedValue_integer</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-390.4C293.12,-390.4 326.51,-390.4 355.06,-390.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="355.69,-392.15 360.69,-390.4 355.69,-388.65 355.69,-392.15" />
+</ns0:g>
+
+<ns0:g id="node63" class="node">
+<ns0:title>TypedValue_integerarray</ns0:title>
+<ns0:g id="a_node63"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_integerarray" ns1:title="TypedValue_integerarray" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="473.25,-357.8 350.75,-357.8 350.75,-329 473.25,-329 473.25,-357.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-339.9" font-family="Arial" font-size="10.00">TypedValue_integerarray</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge55" class="edge">
+<ns0:title>Value-&gt;TypedValue_integerarray</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.46,-382.95C292.35,-376.79 324.26,-367.81 352.14,-359.97" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="353.32,-361.45 357.66,-358.41 352.37,-358.08 353.32,-361.45" />
+</ns0:g>
+
+<ns0:g id="node64" class="node">
+<ns0:title>TypedValue_matrix33</ns0:title>
+<ns0:g id="a_node64"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_matrix33" ns1:title="TypedValue_matrix33" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="466.5,-310.8 357.5,-310.8 357.5,-282 466.5,-282 466.5,-310.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-292.9" font-family="Arial" font-size="10.00">TypedValue_matrix33</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge56" class="edge">
+<ns0:title>Value-&gt;TypedValue_matrix33</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.39,-384.92C283.86,-381.23 300,-375.36 312.5,-366.4 333.6,-351.28 327.63,-335.83 348.5,-320.4 351.57,-318.13 354.87,-316.05 358.31,-314.15" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="359.5,-315.5 363.13,-311.65 357.88,-312.4 359.5,-315.5" />
+</ns0:g>
+
+<ns0:g id="node65" class="node">
+<ns0:title>TypedValue_matrix44</ns0:title>
+<ns0:g id="a_node65"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_matrix44" ns1:title="TypedValue_matrix44" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="466.5,-263.8 357.5,-263.8 357.5,-235 466.5,-235 466.5,-263.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-245.9" font-family="Arial" font-size="10.00">TypedValue_matrix44</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge57" class="edge">
+<ns0:title>Value-&gt;TypedValue_matrix44</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.23,-386.66C284.32,-383.43 301.09,-377.44 312.5,-366.4 344.34,-335.57 317.12,-304.7 348.5,-273.4 350.6,-271.3 352.9,-269.39 355.35,-267.64" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="356.67,-268.87 359.91,-264.68 354.76,-265.93 356.67,-268.87" />
+</ns0:g>
+
+<ns0:g id="node66" class="node">
+<ns0:title>TypedValue_string</ns0:title>
+<ns0:g id="a_node66"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_string" ns1:title="TypedValue_string" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="459.75,-216.8 364.25,-216.8 364.25,-188 459.75,-188 459.75,-216.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-198.9" font-family="Arial" font-size="10.00">TypedValue_string</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge58" class="edge">
+<ns0:title>Value-&gt;TypedValue_string</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.41,-387.24C284.73,-384.19 301.68,-378.19 312.5,-366.4 355.95,-319.08 305.76,-274.36 348.5,-226.4 351.36,-223.19 354.69,-220.41 358.31,-218" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="359.74,-219.18 363.13,-215.11 357.94,-216.18 359.74,-219.18" />
+</ns0:g>
+
+<ns0:g id="node67" class="node">
+<ns0:title>TypedValue_stringarray</ns0:title>
+<ns0:g id="a_node67"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_stringarray" ns1:title="TypedValue_stringarray" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="470.62,-169.8 353.38,-169.8 353.38,-141 470.62,-141 470.62,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-151.9" font-family="Arial" font-size="10.00">TypedValue_stringarray</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge59" class="edge">
+<ns0:title>Value-&gt;TypedValue_stringarray</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.35,-387.56C284.84,-384.61 301.96,-378.61 312.5,-366.4 367.8,-302.32 294.16,-244.29 348.5,-179.4 350.18,-177.4 352.05,-175.56 354.05,-173.87" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="355.4,-175.05 358.37,-170.66 353.31,-172.24 355.4,-175.05" />
+</ns0:g>
+
+<ns0:g id="node68" class="node">
+<ns0:title>TypedValue_vector2</ns0:title>
+<ns0:g id="a_node68"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_vector2" ns1:title="TypedValue_vector2" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="463.88,-122.8 360.12,-122.8 360.12,-94 463.88,-94 463.88,-122.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-104.9" font-family="Arial" font-size="10.00">TypedValue_vector2</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge60" class="edge">
+<ns0:title>Value-&gt;TypedValue_vector2</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.18,-387.77C284.8,-384.9 302.11,-378.9 312.5,-366.4 379.74,-285.46 282.47,-214.32 348.5,-132.4 350.36,-130.09 352.47,-128 354.77,-126.11" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="356.09,-127.32 359.1,-122.96 354.03,-124.49 356.09,-127.32" />
+</ns0:g>
+
+<ns0:g id="node69" class="node">
+<ns0:title>TypedValue_vector3</ns0:title>
+<ns0:g id="a_node69"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_vector3" ns1:title="TypedValue_vector3" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="463.88,-75.8 360.12,-75.8 360.12,-47 463.88,-47 463.88,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-57.9" font-family="Arial" font-size="10.00">TypedValue_vector3</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge61" class="edge">
+<ns0:title>Value-&gt;TypedValue_vector3</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.3,-387.87C284.96,-385.03 302.27,-379.03 312.5,-366.4 391.73,-268.54 270.73,-184.42 348.5,-85.4 350.38,-83.01 352.52,-80.86 354.86,-78.92" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="356.28,-80.05 359.29,-75.69 354.22,-77.22 356.28,-80.05" />
+</ns0:g>
+
+<ns0:g id="node70" class="node">
+<ns0:title>TypedValue_vector4</ns0:title>
+<ns0:g id="a_node70"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXCore.TypedValue_vector4" ns1:title="TypedValue_vector4" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="463.88,-28.8 360.12,-28.8 360.12,0 463.88,0 463.88,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="412" y="-10.9" font-family="Arial" font-size="10.00">TypedValue_vector4</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge62" class="edge">
+<ns0:title>Value-&gt;TypedValue_vector4</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M270.38,-387.94C285.07,-385.12 302.39,-379.13 312.5,-366.4 403.75,-251.59 258.96,-154.55 348.5,-38.4 350.35,-36 352.48,-33.83 354.8,-31.88" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="356.23,-33.01 359.22,-28.63 354.16,-30.19 356.23,-33.01" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

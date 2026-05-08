@@ -1,0 +1,326 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1341pt" height="2322pt" viewBox="0.00 0.00 1341.00 2322.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 831.8)">
+<ns0:title>inheritance5e5f0e58a6</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>ApplicationVariableHandler</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ApplicationVariableHandler" ns1:title="ApplicationVariableHandler" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="266,-827.8 133.75,-827.8 133.75,-799 266,-799 266,-827.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-809.9" font-family="Arial" font-size="10.00">ApplicationVariableHandler</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="85.75,-427.8 0,-427.8 0,-399 85.75,-399 85.75,-427.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="42.88" y="-409.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>pybind11_object-&gt;ApplicationVariableHandler</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M44.97,-428.21C49.88,-490.99 71.93,-734.47 121.75,-789.4 123.76,-791.62 125.98,-793.64 128.35,-795.47" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="127.68,-797.14 132.79,-798.54 129.67,-794.26 127.68,-797.14" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>ColorManagementSystem</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" ns1:title="ColorManagementSystem" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="264.5,-780.8 135.25,-780.8 135.25,-752 264.5,-752 264.5,-780.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-762.9" font-family="Arial" font-size="10.00">ColorManagementSystem</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;ColorManagementSystem</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M45.45,-428.29C51.85,-486.15 77.7,-695.19 121.75,-742.4 124.14,-744.96 126.8,-747.25 129.65,-749.3" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="129.2,-751.09 134.35,-752.32 131.09,-748.15 129.2,-751.09" />
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>ColorSpaceTransform</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ColorSpaceTransform" ns1:title="ColorSpaceTransform" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.5,-733.8 144.25,-733.8 144.25,-705 255.5,-705 255.5,-733.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-715.9" font-family="Arial" font-size="10.00">ColorSpaceTransform</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>pybind11_object-&gt;ColorSpaceTransform</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M43.36,-428.02C42.56,-474.07 46.5,-617.68 121.75,-695.4 126.46,-700.26 132.13,-704.14 138.23,-707.24" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="137.98,-709.05 143.25,-709.55 139.45,-705.87 137.98,-709.05" />
+</ns0:g>
+
+<ns0:g id="node6" class="node">
+<ns0:title>GenContext</ns0:title>
+<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenContext" ns1:title="GenContext" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="234.12,-686.8 165.62,-686.8 165.62,-658 234.12,-658 234.12,-686.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-668.9" font-family="Arial" font-size="10.00">GenContext</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge5" class="edge">
+<ns0:title>pybind11_object-&gt;GenContext</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M44.32,-428.18C46.36,-469.22 57.81,-585.62 121.75,-648.4 131.82,-658.28 145.88,-664.1 159.24,-667.53" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="159.32,-669.34 164.58,-668.77 160.11,-665.93 159.32,-669.34" />
+</ns0:g>
+
+<ns0:g id="node7" class="node">
+<ns0:title>GenOptions</ns0:title>
+<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenOptions" ns1:title="GenOptions" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="233.75,-639.8 166,-639.8 166,-611 233.75,-611 233.75,-639.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-621.9" font-family="Arial" font-size="10.00">GenOptions</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge6" class="edge">
+<ns0:title>pybind11_object-&gt;GenOptions</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M45.73,-428.28C50.94,-463.61 68.91,-553.17 121.75,-601.4 132.17,-610.91 146.31,-616.65 159.63,-620.12" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="159.68,-621.93 164.95,-621.38 160.49,-618.52 159.68,-621.93" />
+</ns0:g>
+
+<ns0:g id="node8" class="node">
+<ns0:title>GenUserData</ns0:title>
+<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="GenUserData" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="237.88,-592.8 161.88,-592.8 161.88,-564 237.88,-564 237.88,-592.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-574.9" font-family="Arial" font-size="10.00">GenUserData</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge7" class="edge">
+<ns0:title>pybind11_object-&gt;GenUserData</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M47.97,-428.17C56.66,-456.82 79.7,-520.12 121.75,-554.4 131.38,-562.25 143.57,-567.54 155.41,-571.1" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155.53,-572.95 160.82,-572.61 156.47,-569.58 155.53,-572.95" />
+</ns0:g>
+
+<ns0:g id="node11" class="node">
+<ns0:title>ShaderGenerator</ns0:title>
+<ns0:g id="a_node11"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="ShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="244.62,-545.8 155.12,-545.8 155.12,-517 244.62,-517 244.62,-545.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-527.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge12" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M52.22,-428.07C64.72,-448.74 90.24,-486.28 121.75,-507.4 129.87,-512.84 139.29,-517.1 148.7,-520.42" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="148.85,-522.31 154.15,-522.22 149.95,-518.99 148.85,-522.31" />
+</ns0:g>
+
+<ns0:g id="node12" class="node">
+<ns0:title>HwSpecularEnvironmentMethod</ns0:title>
+<ns0:g id="a_node12"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwSpecularEnvironmentMethod" ns1:title="Members:" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="278,-498.8 121.75,-498.8 121.75,-470 278,-470 278,-498.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-480.9" font-family="Arial" font-size="10.00">HwSpecularEnvironmentMethod</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge10" class="edge">
+<ns0:title>pybind11_object-&gt;HwSpecularEnvironmentMethod</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M65.26,-428.24C80.49,-438.32 101.73,-451.4 121.75,-460.4 127.31,-462.9 133.21,-465.24 139.18,-467.41" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="139.14,-469.25 144.43,-469.27 140.3,-465.95 139.14,-469.25" />
+</ns0:g>
+
+<ns0:g id="node13" class="node">
+<ns0:title>Shader</ns0:title>
+<ns0:g id="a_node13"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.Shader" ns1:title="Shader" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="226.88,-451.8 172.88,-451.8 172.88,-423 226.88,-423 226.88,-451.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-433.9" font-family="Arial" font-size="10.00">Shader</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge11" class="edge">
+<ns0:title>pybind11_object-&gt;Shader</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.23,-419.96C111.46,-423.87 143.01,-428.75 166.29,-432.35" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="166.67,-434.18 171.88,-433.22 167.2,-430.73 166.67,-434.18" />
+</ns0:g>
+
+<ns0:g id="node14" class="node">
+<ns0:title>ShaderInterfaceType</ns0:title>
+<ns0:g id="a_node14"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderInterfaceType" ns1:title="Members:" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="252.88,-404.8 146.88,-404.8 146.88,-376 252.88,-376 252.88,-404.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-386.9" font-family="Arial" font-size="10.00">ShaderInterfaceType</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge13" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderInterfaceType</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.23,-407.12C102.98,-404.63 122.51,-401.73 140.56,-399.05" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="141.18,-400.73 145.87,-398.27 140.66,-397.27 141.18,-400.73" />
+</ns0:g>
+
+<ns0:g id="node15" class="node">
+<ns0:title>ShaderPort</ns0:title>
+<ns0:g id="a_node15"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderPort" ns1:title="ShaderPort" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="232.25,-357.8 167.5,-357.8 167.5,-329 232.25,-329 232.25,-357.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-339.9" font-family="Arial" font-size="10.00">ShaderPort</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge14" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderPort</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M65.63,-398.69C80.86,-388.87 101.94,-376.19 121.75,-367.4 134.2,-361.88 148.3,-357.09 161.01,-353.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="162.09,-354.78 166.4,-351.7 161.11,-351.42 162.09,-354.78" />
+</ns0:g>
+
+<ns0:g id="node16" class="node">
+<ns0:title>ShaderPortPredicate</ns0:title>
+<ns0:g id="a_node16"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderPortPredicate" ns1:title="ShaderPortPredicate" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="252.88,-310.8 146.88,-310.8 146.88,-282 252.88,-282 252.88,-310.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-292.9" font-family="Arial" font-size="10.00">ShaderPortPredicate</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge15" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderPortPredicate</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M52.47,-398.55C65.09,-378.03 90.55,-341.18 121.75,-320.4 127.47,-316.59 133.82,-313.36 140.36,-310.63" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="141.69,-311.99 145.7,-308.53 140.41,-308.73 141.69,-311.99" />
+</ns0:g>
+
+<ns0:g id="node17" class="node">
+<ns0:title>ShaderStage</ns0:title>
+<ns0:g id="a_node17"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderStage" ns1:title="ShaderStage" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="236,-263.8 163.75,-263.8 163.75,-235 236,-235 236,-263.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-245.9" font-family="Arial" font-size="10.00">ShaderStage</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge16" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderStage</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M48,-398.73C56.75,-370.28 79.88,-307.43 121.75,-273.4 131.94,-265.12 145,-259.68 157.47,-256.12" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="158.41,-257.68 162.79,-254.71 157.51,-254.3 158.41,-257.68" />
+</ns0:g>
+
+<ns0:g id="node18" class="node">
+<ns0:title>ShaderTranslator</ns0:title>
+<ns0:g id="a_node18"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderTranslator" ns1:title="ShaderTranslator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="245,-216.8 154.75,-216.8 154.75,-188 245,-188 245,-216.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-198.9" font-family="Arial" font-size="10.00">ShaderTranslator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge17" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderTranslator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M45.76,-398.6C51.02,-363.45 69.11,-274.36 121.75,-226.4 129.3,-219.52 138.81,-214.61 148.54,-211.11" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="149.69,-212.57 153.89,-209.34 148.59,-209.25 149.69,-212.57" />
+</ns0:g>
+
+<ns0:g id="node19" class="node">
+<ns0:title>TypeDesc</ns0:title>
+<ns0:g id="a_node19"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.TypeDesc" ns1:title="TypeDesc" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="230,-169.8 169.75,-169.8 169.75,-141 230,-141 230,-169.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-151.9" font-family="Arial" font-size="10.00">TypeDesc</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge18" class="edge">
+<ns0:title>pybind11_object-&gt;TypeDesc</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M44.34,-398.68C46.44,-357.81 58.01,-241.9 121.75,-179.4 132.88,-168.49 148.88,-162.53 163.42,-159.28" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="164.25,-160.89 168.81,-158.19 163.56,-157.46 164.25,-160.89" />
+</ns0:g>
+
+<ns0:g id="node20" class="node">
+<ns0:title>UnitSystem</ns0:title>
+<ns0:g id="a_node20"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.UnitSystem" ns1:title="UnitSystem" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="233.75,-122.8 166,-122.8 166,-94 233.75,-94 233.75,-122.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-104.9" font-family="Arial" font-size="10.00">UnitSystem</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge19" class="edge">
+<ns0:title>pybind11_object-&gt;UnitSystem</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M43.37,-398.51C42.65,-352.27 46.88,-209.65 121.75,-132.4 131.74,-122.1 146.06,-116.19 159.66,-112.82" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="160.6,-114.41 165.1,-111.61 159.84,-110.99 160.6,-114.41" />
+</ns0:g>
+
+<ns0:g id="node21" class="node">
+<ns0:title>UnitTransform</ns0:title>
+<ns0:g id="a_node21"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.UnitTransform" ns1:title="UnitTransform" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="239,-75.8 160.75,-75.8 160.75,-47 239,-47 239,-75.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-57.9" font-family="Arial" font-size="10.00">UnitTransform</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge20" class="edge">
+<ns0:title>pybind11_object-&gt;UnitTransform</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M45.46,-398.56C51.88,-340.87 77.81,-132.46 121.75,-85.4 130.31,-76.24 142.3,-70.54 154.27,-67.02" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155.4,-68.53 159.79,-65.56 154.51,-65.15 155.4,-68.53" />
+</ns0:g>
+
+<ns0:g id="node22" class="node">
+<ns0:title>VariableBlock</ns0:title>
+<ns0:g id="a_node22"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.VariableBlock" ns1:title="VariableBlock" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="237.5,-28.8 162.25,-28.8 162.25,0 237.5,0 237.5,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-10.9" font-family="Arial" font-size="10.00">VariableBlock</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge21" class="edge">
+<ns0:title>pybind11_object-&gt;VariableBlock</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M44.97,-398.63C49.91,-336.01 72.04,-93.18 121.75,-38.4 130.58,-28.67 143.27,-22.85 155.82,-19.38" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="156.78,-20.94 161.22,-18.04 155.94,-17.54 156.78,-20.94" />
+</ns0:g>
+
+<ns0:g id="node5" class="node">
+<ns0:title>DefaultColorManagementSystem</ns0:title>
+<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem" ns1:title="DefaultColorManagementSystem" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="474.75,-780.8 314,-780.8 314,-752 474.75,-752 474.75,-780.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-762.9" font-family="Arial" font-size="10.00">DefaultColorManagementSystem</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge4" class="edge">
+<ns0:title>ColorManagementSystem-&gt;DefaultColorManagementSystem</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M264.97,-766.4C278.54,-766.4 293.06,-766.4 307.29,-766.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="308.04,-768.15 313.04,-766.4 308.04,-764.65 308.04,-768.15" />
+</ns0:g>
+
+<ns0:g id="node9" class="node">
+<ns0:title>HwResourceBindingContext</ns0:title>
+<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="464.25,-592.8 324.5,-592.8 324.5,-564 464.25,-564 464.25,-592.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-574.9" font-family="Arial" font-size="10.00">HwResourceBindingContext</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge8" class="edge">
+<ns0:title>GenUserData-&gt;HwResourceBindingContext</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M237.99,-578.4C260.64,-578.4 290.43,-578.4 317.85,-578.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="318.27,-580.15 323.27,-578.4 318.27,-576.65 318.27,-580.15" />
+</ns0:g>
+
+<ns0:g id="node10" class="node">
+<ns0:title>HwShaderGenerator</ns0:title>
+<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="446.62,-545.8 342.12,-545.8 342.12,-517 446.62,-517 446.62,-545.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-527.9" font-family="Arial" font-size="10.00">HwShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge9" class="edge">
+<ns0:title>ShaderGenerator-&gt;HwShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M245.04,-531.4C271.87,-531.4 306.43,-531.4 335.44,-531.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="336.16,-533.15 341.16,-531.4 336.16,-529.65 336.16,-533.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

@@ -1,0 +1,41 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="1001pt" height="102pt" viewBox="0.00 0.00 1001.00 102.00">
+<ns0:g id="graph0" class="graph" transform="scale(2.77778 2.77778) rotate(0) translate(4 32.8)">
+<ns0:title>inheritanceb8635cd11d</ns0:title>
+
+<ns0:g id="node1" class="node">
+<ns0:title>MdlShaderGenerator</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenMdl.MdlShaderGenerator" ns1:title="MdlShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="352.5,-28.8 247.25,-28.8 247.25,0 352.5,0 352.5,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="299.88" y="-10.9" font-family="Arial" font-size="10.00">MdlShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>ShaderGenerator</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="ShaderGenerator" target="_top">
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="211.25,-28.8 121.75,-28.8 121.75,0 211.25,0 211.25,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-10.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>ShaderGenerator-&gt;MdlShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M211.61,-14.4C220.91,-14.4 230.85,-14.4 240.57,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="241.17,-16.15 246.17,-14.4 241.17,-12.65 241.17,-16.15" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>pybind11_object</ns0:title>
+<ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="85.75,-28.8 0,-28.8 0,0 85.75,0 85.75,-28.8" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="42.88" y="-10.9" font-family="Arial" font-size="10.00">pybind11_object</ns0:text>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>pybind11_object-&gt;ShaderGenerator</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M86.07,-14.4C95.41,-14.4 105.41,-14.4 115.04,-14.4" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="115.55,-16.15 120.55,-14.4 115.55,-12.65 115.55,-16.15" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

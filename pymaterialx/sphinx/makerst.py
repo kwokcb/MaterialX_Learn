@@ -36,7 +36,7 @@ for modname in modules:
         f.write("    :members:\n")
         f.write("    :undoc-members:\n")
         f.write("    :show-inheritance:\n")
-        f.write("    :inherited-members:\n")
+        #f.write("    :inherited-members:\n")
         f.write("\n")
     print(f">> Wrote {rst_filename}")
 
@@ -64,6 +64,6 @@ with open(api_rst, "w") as f:
         f.write(f".. automodule:: {modname}\n")
         f.write("    :members:\n")
         f.write("    :undoc-members:\n")
-        f.write("    :show-inheritance:\n")
-        f.write("    :inherited-members:\n\n")
+        f.write("    :show-inheritance:\n\n")
+        #f.write("    :inherited-members:\n\n")
 print(f"> Wrote {api_rst}")

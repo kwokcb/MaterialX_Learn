@@ -9,5 +9,4 @@ MaterialX.datatype Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
 
