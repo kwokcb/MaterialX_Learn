@@ -25,10 +25,9 @@ The environment can be cleanuped up using:
 source setup.sh cleanup
 ```
 
-Acknowledgments
-===============
+#### Acknowledgments
 
-MaterialX is developed and maintained by the `Academy Software Foundation <https://www.aswf.io/>`_ and its contributors. All content was created by the contributors to the MaterialX project.
+MaterialX is developed and maintained by the `Academy Software Foundation` and its contributors. All content was created by the contributors to the MaterialX project.
 
 
 
