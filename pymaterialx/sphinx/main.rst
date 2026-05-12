@@ -1,5 +1,5 @@
 MaterialX.main Module
-=====================
+---------------------
 
 .. inheritance-diagram:: MaterialX.main
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX.main Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

@@ -1,5 +1,5 @@
 MaterialX Module
-================
+----------------
 
 .. inheritance-diagram:: MaterialX
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

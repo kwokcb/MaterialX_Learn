@@ -27,7 +27,7 @@ for modname in modules:
     rst_filename = os.path.join(OUTPUT_DIR, modname.split('.')[-1] + ".rst")    
     with open(rst_filename, "w") as f:
         title = f"{modname} Module"
-        f.write(title + "\n" + "=" * len(title) + "\n\n")
+        f.write(title + "\n" + "-" * len(title) + "\n\n")
         f.write(f".. inheritance-diagram:: {modname}\n")
         f.write("    :parts: 1\n")
         f.write("    :top-classes: object\n")
@@ -36,14 +36,15 @@ for modname in modules:
         f.write("    :members:\n")
         f.write("    :undoc-members:\n")
         f.write("    :show-inheritance:\n")
-        f.write("    :inherited-members:\n")
+        f.write("\n")
         f.write("\n")
     print(f">> Wrote {rst_filename}")
 
 # Generate a modules.rst table of contents
 modules_rst = os.path.join(OUTPUT_DIR, "modules.rst")
 with open(modules_rst, "w") as f:
-    f.write("MaterialX Python Modules\n=======================\n\n.. toctree::\n   :maxdepth: 1\n\n")
+    title = "MaterialX Python Modules"
+    f.write(title + "\n" + "-" * len(title) + "\n\n.. toctree::\n   :maxdepth: 1\n\n")
     for modname in modules[1:]:
         if modname in ['MaterialX._scripts']:
             continue
@@ -51,19 +52,23 @@ with open(modules_rst, "w") as f:
 print(f"> Wrote {modules_rst}")
 
 # Generate api.rst with all modules in a single file
-api_rst = os.path.join(OUTPUT_DIR, "api.rst")
-with open(api_rst, "w") as f:
-    f.write("MaterialX Python API Reference\n=============================\n\n")
-    for modname in modules:
-        if modname in ['MaterialX._scripts']:
-            continue
-        f.write(f".. inheritance-diagram:: {modname}\n")
-        f.write("    :parts: 1\n")
-        f.write("    :top-classes: object\n")
-        f.write("\n")
-        f.write(f".. automodule:: {modname}\n")
-        f.write("    :members:\n")
-        f.write("    :undoc-members:\n")
-        f.write("    :show-inheritance:\n")
-        f.write("    :inherited-members:\n\n")
-print(f"> Wrote {api_rst}")
+# Not done as this blows up the size of the file and indexing.
+build_api_rst = False
+if build_api_rst:
+    api_rst = os.path.join(OUTPUT_DIR, "api.rst")
+    with open(api_rst, "w") as f:
+        ref_title = "MaterialX Python API Reference"
+        f.write(ref_title + "\n" + "-" * len(ref_title) + "\n\n")
+        for modname in modules:
+            if modname in ['MaterialX._scripts']:
+                continue
+            f.write(f".. inheritance-diagram:: {modname}\n")
+            f.write("    :parts: 1\n")
+            f.write("    :top-classes: object\n")
+            f.write("\n")
+            f.write(f".. automodule:: {modname}\n")
+            f.write("    :members:\n")
+            f.write("    :undoc-members:\n")
+            f.write("    :show-inheritance:\n")
+            f.write("\n\n")
+    print(f"> Wrote {api_rst}")

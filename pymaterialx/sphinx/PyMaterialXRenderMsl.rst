@@ -5,7 +5,7 @@ MaterialX.PyMaterialXRenderMsl Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
     .. inheritance-diagram:: MaterialX.PyMaterialXRenderMsl.SomeClass
         :parts: 1

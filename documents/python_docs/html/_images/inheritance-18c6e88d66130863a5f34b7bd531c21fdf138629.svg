@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>BaseType</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.BaseType" ns1:title="Members:" target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.BaseType" ns1:title="Members:" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="241.62,-639.8 182.12,-639.8 182.12,-611 241.62,-611 241.62,-639.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-621.9" font-family="Arial" font-size="10.00">BaseType</ns0:text>
 </ns0:a>
@@ -25,7 +25,7 @@
 
 <ns0:g id="node3" class="node">
 <ns0:title>Camera</ns0:title>
-<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Camera" ns1:title="A simple camera class, supporting transform matrices and arcball functionality for object-viewing applications." target="_top">
+<ns0:g id="a_node3"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.Camera" ns1:title="A simple camera class, supporting transform matrices and arcball functionality for object-viewing applications." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-592.8 184.88,-592.8 184.88,-564 238.88,-564 238.88,-592.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-574.9" font-family="Arial" font-size="10.00">Camera</ns0:text>
 </ns0:a>
@@ -40,7 +40,7 @@
 
 <ns0:g id="node5" class="node">
 <ns0:title>GeometryLoader</ns0:title>
-<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.GeometryLoader" ns1:title="Base class representing a geometry loader." target="_top">
+<ns0:g id="a_node5"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.GeometryLoader" ns1:title="Base class representing a geometry loader." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.88,-545.8 167.88,-545.8 167.88,-517 255.88,-517 255.88,-545.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-527.9" font-family="Arial" font-size="10.00">GeometryLoader</ns0:text>
 </ns0:a>
@@ -55,7 +55,7 @@
 
 <ns0:g id="node7" class="node">
 <ns0:title>GeometryHandler</ns0:title>
-<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.GeometryHandler" ns1:title="Class which holds a set of geometry loaders." target="_top">
+<ns0:g id="a_node7"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.GeometryHandler" ns1:title="Class which holds a set of geometry loaders." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="258.12,-498.8 165.62,-498.8 165.62,-470 258.12,-470 258.12,-498.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-480.9" font-family="Arial" font-size="10.00">GeometryHandler</ns0:text>
 </ns0:a>
@@ -70,7 +70,7 @@
 
 <ns0:g id="node8" class="node">
 <ns0:title>Image</ns0:title>
-<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Image" ns1:title="Class representing an image in system memory." target="_top">
+<ns0:g id="a_node8"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.Image" ns1:title="Class representing an image in system memory." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-451.8 184.88,-451.8 184.88,-423 238.88,-423 238.88,-451.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-433.9" font-family="Arial" font-size="10.00">Image</ns0:text>
 </ns0:a>
@@ -85,7 +85,7 @@
 
 <ns0:g id="node9" class="node">
 <ns0:title>ImageBufferDeallocator</ns0:title>
-<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageBufferDeallocator" ns1:title="ImageBufferDeallocator" target="_top">
+<ns0:g id="a_node9"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ImageBufferDeallocator" ns1:title="ImageBufferDeallocator" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="270.88,-404.8 152.88,-404.8 152.88,-376 270.88,-376 270.88,-404.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-386.9" font-family="Arial" font-size="10.00">ImageBufferDeallocator</ns0:text>
 </ns0:a>
@@ -100,7 +100,7 @@
 
 <ns0:g id="node10" class="node">
 <ns0:title>ImageHandler</ns0:title>
-<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
+<ns0:g id="a_node10"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="250.25,-357.8 173.5,-357.8 173.5,-329 250.25,-329 250.25,-357.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-339.9" font-family="Arial" font-size="10.00">ImageHandler</ns0:text>
 </ns0:a>
@@ -115,7 +115,7 @@
 
 <ns0:g id="node11" class="node">
 <ns0:title>ImageLoader</ns0:title>
-<ns0:g id="a_node11"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageLoader" ns1:title="Abstract base class for file-system image loaders." target="_top">
+<ns0:g id="a_node11"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ImageLoader" ns1:title="Abstract base class for file-system image loaders." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="248,-310.8 175.75,-310.8 175.75,-282 248,-282 248,-310.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-292.9" font-family="Arial" font-size="10.00">ImageLoader</ns0:text>
 </ns0:a>
@@ -130,7 +130,7 @@
 
 <ns0:g id="node12" class="node">
 <ns0:title>ImageSamplingProperties</ns0:title>
-<ns0:g id="a_node12"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageSamplingProperties" ns1:title="Interface to describe sampling properties for images." target="_top">
+<ns0:g id="a_node12"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ImageSamplingProperties" ns1:title="Interface to describe sampling properties for images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="275.75,-263.8 148,-263.8 148,-235 275.75,-235 275.75,-263.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-245.9" font-family="Arial" font-size="10.00">ImageSamplingProperties</ns0:text>
 </ns0:a>
@@ -145,7 +145,7 @@
 
 <ns0:g id="node13" class="node">
 <ns0:title>LightHandler</ns0:title>
-<ns0:g id="a_node13"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.LightHandler" ns1:title="Utility light handler for creating and providing light data for shader binding." target="_top">
+<ns0:g id="a_node13"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.LightHandler" ns1:title="Utility light handler for creating and providing light data for shader binding." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="247.25,-216.8 176.5,-216.8 176.5,-188 247.25,-188 247.25,-216.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-198.9" font-family="Arial" font-size="10.00">LightHandler</ns0:text>
 </ns0:a>
@@ -160,7 +160,7 @@
 
 <ns0:g id="node14" class="node">
 <ns0:title>Mesh</ns0:title>
-<ns0:g id="a_node14"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.Mesh" ns1:title="Container for mesh data." target="_top">
+<ns0:g id="a_node14"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.Mesh" ns1:title="Container for mesh data." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="238.88,-169.8 184.88,-169.8 184.88,-141 238.88,-141 238.88,-169.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-151.9" font-family="Arial" font-size="10.00">Mesh</ns0:text>
 </ns0:a>
@@ -175,7 +175,7 @@
 
 <ns0:g id="node15" class="node">
 <ns0:title>MeshPartition</ns0:title>
-<ns0:g id="a_node15"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.MeshPartition" ns1:title="Class that describes a sub-region of a mesh using vertex indexing." target="_top">
+<ns0:g id="a_node15"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.MeshPartition" ns1:title="Class that describes a sub-region of a mesh using vertex indexing." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="249.88,-122.8 173.88,-122.8 173.88,-94 249.88,-94 249.88,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-104.9" font-family="Arial" font-size="10.00">MeshPartition</ns0:text>
 </ns0:a>
@@ -190,7 +190,7 @@
 
 <ns0:g id="node16" class="node">
 <ns0:title>MeshStream</ns0:title>
-<ns0:g id="a_node16"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.MeshStream" ns1:title="Class to represent a mesh data stream." target="_top">
+<ns0:g id="a_node16"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.MeshStream" ns1:title="Class to represent a mesh data stream." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="247.62,-75.8 176.12,-75.8 176.12,-47 247.62,-47 247.62,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-57.9" font-family="Arial" font-size="10.00">MeshStream</ns0:text>
 </ns0:a>
@@ -205,7 +205,7 @@
 
 <ns0:g id="node17" class="node">
 <ns0:title>ShaderRenderer</ns0:title>
-<ns0:g id="a_node17"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
+<ns0:g id="a_node17"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.12,-28.8 168.62,-28.8 168.62,0 255.12,0 255.12,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="211.88" y="-10.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
 </ns0:a>
@@ -220,7 +220,7 @@
 
 <ns0:g id="node4" class="node">
 <ns0:title>CgltfLoader</ns0:title>
-<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.CgltfLoader" ns1:title="Wrapper for loader to read in GLTF files using the Cgltf library." target="_top">
+<ns0:g id="a_node4"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.CgltfLoader" ns1:title="Wrapper for loader to read in GLTF files using the Cgltf library." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="388.5,-568.8 322.25,-568.8 322.25,-540 388.5,-540 388.5,-568.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-550.9" font-family="Arial" font-size="10.00">CgltfLoader</ns0:text>
 </ns0:a>
@@ -235,7 +235,7 @@
 
 <ns0:g id="node19" class="node">
 <ns0:title>TinyObjLoader</ns0:title>
-<ns0:g id="a_node19"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.TinyObjLoader" ns1:title="Wrapper for geometry loader to read in OBJ files using the TinyObj library." target="_top">
+<ns0:g id="a_node19"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.TinyObjLoader" ns1:title="Wrapper for geometry loader to read in OBJ files using the TinyObj library." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="394.88,-521.8 315.88,-521.8 315.88,-493 394.88,-493 394.88,-521.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-503.9" font-family="Arial" font-size="10.00">TinyObjLoader</ns0:text>
 </ns0:a>
@@ -250,7 +250,7 @@
 
 <ns0:g id="node6" class="node">
 <ns0:title>ExceptionRenderError</ns0:title>
-<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ExceptionRenderError" ns1:title="ExceptionRenderError" target="_top">
+<ns0:g id="a_node6"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ExceptionRenderError" ns1:title="ExceptionRenderError" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="112,-625.8 0,-625.8 0,-597 112,-597 112,-625.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="56" y="-607.9" font-family="Arial" font-size="10.00">ExceptionRenderError</ns0:text>
 </ns0:a>
@@ -259,7 +259,7 @@
 
 <ns0:g id="node18" class="node">
 <ns0:title>StbImageLoader</ns0:title>
-<ns0:g id="a_node18"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.StbImageLoader" ns1:title="Stb image file loader." target="_top">
+<ns0:g id="a_node18"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.StbImageLoader" ns1:title="Stb image file loader." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="399,-310.8 311.75,-310.8 311.75,-282 399,-282 399,-310.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="355.38" y="-292.9" font-family="Arial" font-size="10.00">StbImageLoader</ns0:text>
 </ns0:a>

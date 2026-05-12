@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXGenGlsl Module
-===================================
+-----------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXGenGlsl
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX.PyMaterialXGenGlsl Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

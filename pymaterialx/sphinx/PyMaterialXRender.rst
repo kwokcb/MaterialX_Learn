@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXRender Module
-==================================
+----------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXRender
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX.PyMaterialXRender Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

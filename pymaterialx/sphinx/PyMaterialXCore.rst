@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXCore Module
-================================
+--------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXCore
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX.PyMaterialXCore Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

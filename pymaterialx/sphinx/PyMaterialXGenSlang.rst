@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXGenSlang Module
-====================================
+------------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXGenSlang
     :parts: 1
@@ -9,5 +9,5 @@ MaterialX.PyMaterialXGenSlang Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 
