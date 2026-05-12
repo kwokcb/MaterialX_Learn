@@ -7,7 +7,7 @@ title: MaterialX Python API
 </div>
 
 The following is Python documentation generated from the 1.39.5 release of MaterialX.
-See the [MaterialX Learn](https://github.com/kwokcb/MaterialX_Learn) repository for tutorials, examples, and utility libraries on using the MaterialX Python API.
+See the [MaterialX Learn site](https://kwokcb.github.io/MaterialX_Learn/) repository for tutorials, examples, and utility libraries on using the MaterialX Python API.
 
 ```{toctree}
 :maxdepth: 2
