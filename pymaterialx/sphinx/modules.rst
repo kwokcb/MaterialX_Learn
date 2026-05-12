@@ -1,5 +1,5 @@
 MaterialX Python Modules
-=======================
+------------------------
 
 .. toctree::
    :maxdepth: 1

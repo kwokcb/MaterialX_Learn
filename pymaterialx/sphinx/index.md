@@ -1,0 +1,21 @@
+---
+title: MaterialX Python API
+---
+
+<div style="text-align:center; color: #888; margin-top: 2em;">
+<h3><img src="_static/logo3d_2_small.png" width=32px style="margin-right: 1em">MaterialX Python API</h3> 
+</div>
+
+The following is Python documentation generated from the 1.39.5 release of MaterialX.
+See the [MaterialX Learn](https://github.com/kwokcb/MaterialX_Learn) repository for tutorials, examples, and utility libraries on using the MaterialX Python API.
+
+```{toctree}
+:maxdepth: 2
+
+modules
+```
+
+<div style="text-align:center; color: #888; margin-top: 2em;">
+  The content was generated using Sphinx. The setup for this can be found in in the
+  Python utilities folder found <a href="https://github.com/kwokcb/MaterialX_Learn/pymaterialx/sphinx" target="_blank">here</a>.
+</div>

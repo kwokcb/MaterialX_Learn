@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXRenderOsl Module
-=====================================
+-------------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXRenderOsl
     :parts: 1

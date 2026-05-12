@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXGenShader Module
-=====================================
+-------------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXGenShader
     :parts: 1

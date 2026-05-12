@@ -1,5 +1,5 @@
 MaterialX.PyMaterialXRender Module
-==================================
+----------------------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXRender
     :parts: 1
