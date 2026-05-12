@@ -1,5 +1,5 @@
-MaterialX.PyMaterialXGenSlang Module
-------------------------------------
+PyMaterialXGenSlang
+-------------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXGenSlang
     :parts: 1

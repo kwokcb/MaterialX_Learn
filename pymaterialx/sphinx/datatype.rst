@@ -1,5 +1,5 @@
-MaterialX.datatype Module
--------------------------
+datatype
+--------
 
 .. inheritance-diagram:: MaterialX.datatype
     :parts: 1

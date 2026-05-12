@@ -26,7 +26,9 @@ for modname in modules:
 
     rst_filename = os.path.join(OUTPUT_DIR, modname.split('.')[-1] + ".rst")    
     with open(rst_filename, "w") as f:
-        title = f"{modname} Module"
+        # Remove the "MaterialX." prefix for the title
+        modname_for_title = modname.split('.')[-1]
+        title = f"{modname_for_title}"
         f.write(title + "\n" + "-" * len(title) + "\n\n")
         f.write(f".. inheritance-diagram:: {modname}\n")
         f.write("    :parts: 1\n")

@@ -1,5 +1,5 @@
-MaterialX.PyMaterialXGenMdl Module
-----------------------------------
+PyMaterialXGenMdl
+-----------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXGenMdl
     :parts: 1

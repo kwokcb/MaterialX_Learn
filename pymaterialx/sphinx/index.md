@@ -17,5 +17,7 @@ modules
 
 <div style="text-align:center; color: #888; margin-top: 2em;">
   The content was generated using Sphinx. The setup for this can be found in in the
-  Python utilities folder found <a href="https://github.com/kwokcb/MaterialX_Learn/pymaterialx/sphinx" target="_blank">here</a>.
+  Python utilities folder found <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/sphinx" target="_blank">here</a>.
+
+  For build instructions, see the <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/sphinx/README.md" target="_blank">README file</a>.
 </div>

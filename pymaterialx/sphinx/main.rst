@@ -1,5 +1,5 @@
-MaterialX.main Module
----------------------
+main
+----
 
 .. inheritance-diagram:: MaterialX.main
     :parts: 1

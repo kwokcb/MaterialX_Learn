@@ -1,5 +1,5 @@
-MaterialX.PyMaterialXFormat Module
-----------------------------------
+PyMaterialXFormat
+-----------------
 
 .. inheritance-diagram:: MaterialX.PyMaterialXFormat
     :parts: 1

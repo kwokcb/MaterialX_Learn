@@ -147,6 +147,8 @@ html_css_files = [
     #'custom.css', -disable until really needed. Can break responsiveness.
 ]
 
+html_favicon = "_static/logo3d_2_small.png"
+
 html_theme_options = {
     # Keyboard navigation
     "navigation_with_keys": True,
