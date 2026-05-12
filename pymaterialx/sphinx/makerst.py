@@ -1,8 +1,7 @@
 import pkgutil
-import importlib
 import os
 
-# Output directory for .rst files (assume script is run from sphinx/)
+# Output directory for .md files
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Try to import the top-level MaterialX package
@@ -10,65 +9,118 @@ try:
     import MaterialX
 except ImportError:
     print("MaterialX package not found. Please ensure it is installed and available in PYTHONPATH.")
-    exit(1)
+    raise SystemExit(1)
 
 # Find all submodules in MaterialX
 submodules = [name for _, name, _ in pkgutil.iter_modules(MaterialX.__path__)]
 
-# Always include the top-level MaterialX
+# Always include top-level module
 modules = ["MaterialX"] + [f"MaterialX.{name}" for name in submodules]
 
-# Write per-module .rst files
+# Modules to skip
+SKIP_MODULES = {
+    "MaterialX._scripts",
+}
+
+# --------------------------------------------------------------------------
+# Generate per-module markdown files
+# --------------------------------------------------------------------------
+
 for modname in modules:
-    print(f"> Processing module: {modname}")
-    if modname == 'MaterialX._scripts':
+
+    if modname in SKIP_MODULES:
         continue
 
-    rst_filename = os.path.join(OUTPUT_DIR, modname.split('.')[-1] + ".rst")    
-    with open(rst_filename, "w") as f:
-        title = f"{modname} Module"
-        f.write(title + "\n" + "-" * len(title) + "\n\n")
+    print(f"> Processing module: {modname}")
+
+    short_name = modname.split(".")[-1]
+    md_filename = os.path.join(OUTPUT_DIR, f"{short_name}.md")
+
+    with open(md_filename, "w", encoding="utf-8") as f:
+
+        # Title
+        f.write(f"# {short_name}\n\n")
+
+        # Optional inheritance diagram
+        f.write("```{eval-rst}\n")
         f.write(f".. inheritance-diagram:: {modname}\n")
-        f.write("    :parts: 1\n")
-        f.write("    :top-classes: object\n")
-        f.write("\n")
+        f.write("   :parts: 1\n")
+        f.write("   :top-classes: object\n")
+        f.write("```\n\n")
+
+        # Automodule directive
+        f.write("```{eval-rst}\n")
         f.write(f".. automodule:: {modname}\n")
-        f.write("    :members:\n")
-        f.write("    :undoc-members:\n")
-        f.write("    :show-inheritance:\n")
-        f.write("\n")
-        f.write("\n")
-    print(f">> Wrote {rst_filename}")
+        f.write("   :members:\n")
+        f.write("   :undoc-members:\n")
+        f.write("   :show-inheritance:\n")
+        f.write("```\n")
 
-# Generate a modules.rst table of contents
-modules_rst = os.path.join(OUTPUT_DIR, "modules.rst")
-with open(modules_rst, "w") as f:
-    title = "MaterialX Python Modules"
-    f.write(title + "\n" + "-" * len(title) + "\n\n.. toctree::\n   :maxdepth: 1\n\n")
+    print(f">> Wrote {md_filename}")
+
+# --------------------------------------------------------------------------
+# Generate modules.md table of contents
+# --------------------------------------------------------------------------
+
+modules_md = os.path.join(OUTPUT_DIR, "modules.md")
+
+with open(modules_md, "w", encoding="utf-8") as f:
+
+    f.write("# MaterialX Python Modules\n\n")
+
+    f.write("```{toctree}\n")
+    f.write(":maxdepth: 1\n\n")
+
     for modname in modules[1:]:
-        if modname in ['MaterialX._scripts']:
-            continue
-        f.write(f"   {modname.split('.')[-1]}\n")
-print(f"> Wrote {modules_rst}")
 
-# Generate api.rst with all modules in a single file
-# Not done as this blows up the size of the file and indexing.
-build_api_rst = False
-if build_api_rst:
-    api_rst = os.path.join(OUTPUT_DIR, "api.rst")
-    with open(api_rst, "w") as f:
-        ref_title = "MaterialX Python API Reference"
-        f.write(ref_title + "\n" + "-" * len(ref_title) + "\n\n")
+        if modname in SKIP_MODULES:
+            continue
+
+        short_name = modname.split(".")[-1]
+        f.write(f"{short_name}\n")
+
+    f.write("```\n")
+
+print(f"> Wrote {modules_md}")
+
+
+# --------------------------------------------------------------------------
+# Generate api.md with all modules in one file
+# --------------------------------------------------------------------------
+
+build_api_md = False
+
+if build_api_md:
+
+    api_md = os.path.join(OUTPUT_DIR, "api.md")
+
+    with open(api_md, "w", encoding="utf-8") as f:
+
+        f.write("# MaterialX Python API Reference\n\n")
+
         for modname in modules:
-            if modname in ['MaterialX._scripts']:
+
+            if modname in SKIP_MODULES:
                 continue
+
+            short_name = modname.split(".")[-1]
+
+            # Section title
+            f.write(f"## {short_name}\n\n")
+
+            # Inheritance diagram
+            f.write("```{eval-rst}\n")
             f.write(f".. inheritance-diagram:: {modname}\n")
-            f.write("    :parts: 1\n")
-            f.write("    :top-classes: object\n")
-            f.write("\n")
+            f.write("   :parts: 1\n")
+            f.write("   :top-classes: object\n")
+            f.write("```\n\n")
+
+            # Automodule
+            f.write("```{eval-rst}\n")
             f.write(f".. automodule:: {modname}\n")
-            f.write("    :members:\n")
-            f.write("    :undoc-members:\n")
-            f.write("    :show-inheritance:\n")
-            f.write("\n\n")
-    print(f"> Wrote {api_rst}")
+            f.write("   :members:\n")
+            f.write("   :undoc-members:\n")
+            f.write("   :show-inheritance:\n")
+            f.write("```\n\n")
+
+    print(f"> Wrote {api_md}")
