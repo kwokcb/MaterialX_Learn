@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>ExceptionFileMissing</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.ExceptionFileMissing" ns1:title="ExceptionFileMissing" target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.ExceptionFileMissing" ns1:title="ExceptionFileMissing" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="109,-51.8 0,-51.8 0,-23 109,-23 109,-51.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="54.5" y="-33.9" font-family="Arial" font-size="10.00">ExceptionFileMissing</ns0:text>
 </ns0:a>
@@ -13,7 +13,7 @@
 
 <ns0:g id="node2" class="node">
 <ns0:title>ExceptionParseError</ns0:title>
-<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.ExceptionParseError" ns1:title="ExceptionParseError" target="_top">
+<ns0:g id="a_node2"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.ExceptionParseError" ns1:title="ExceptionParseError" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="107.5,-98.8 1.5,-98.8 1.5,-70 107.5,-70 107.5,-98.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="54.5" y="-80.9" font-family="Arial" font-size="10.00">ExceptionParseError</ns0:text>
 </ns0:a>
@@ -22,7 +22,7 @@
 
 <ns0:g id="node3" class="node">
 <ns0:title>FilePath</ns0:title>
-<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.FilePath" ns1:title="A generic file path, supporting both syntactic and file system operations." target="_top">
+<ns0:g id="a_node3"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.FilePath" ns1:title="A generic file path, supporting both syntactic and file system operations." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-263.8 163.12,-263.8 163.12,-235 217.12,-235 217.12,-263.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-245.9" font-family="Arial" font-size="10.00">FilePath</ns0:text>
 </ns0:a>
@@ -43,7 +43,7 @@
 
 <ns0:g id="node5" class="node">
 <ns0:title>FileSearchPath</ns0:title>
-<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.FileSearchPath" ns1:title="A sequence of file paths, which may be queried to find the first instance of a given filename on the file system." target="_top">
+<ns0:g id="a_node5"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.FileSearchPath" ns1:title="A sequence of file paths, which may be queried to find the first instance of a given filename on the file system." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="231.5,-216.8 148.75,-216.8 148.75,-188 231.5,-188 231.5,-216.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-198.9" font-family="Arial" font-size="10.00">FileSearchPath</ns0:text>
 </ns0:a>
@@ -58,7 +58,7 @@
 
 <ns0:g id="node6" class="node">
 <ns0:title>Format</ns0:title>
-<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.Format" ns1:title="Members:" target="_top">
+<ns0:g id="a_node6"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.Format" ns1:title="Members:" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-169.8 163.12,-169.8 163.12,-141 217.12,-141 217.12,-169.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-151.9" font-family="Arial" font-size="10.00">Format</ns0:text>
 </ns0:a>
@@ -73,7 +73,7 @@
 
 <ns0:g id="node7" class="node">
 <ns0:title>Type</ns0:title>
-<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.Type" ns1:title="Members:" target="_top">
+<ns0:g id="a_node7"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.Type" ns1:title="Members:" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="217.12,-122.8 163.12,-122.8 163.12,-94 217.12,-94 217.12,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-104.9" font-family="Arial" font-size="10.00">Type</ns0:text>
 </ns0:a>
@@ -88,7 +88,7 @@
 
 <ns0:g id="node8" class="node">
 <ns0:title>XmlReadOptions</ns0:title>
-<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.XmlReadOptions" ns1:title="A set of options for controlling the behavior of XML read functions." target="_top">
+<ns0:g id="a_node8"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.XmlReadOptions" ns1:title="A set of options for controlling the behavior of XML read functions." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="235.25,-75.8 145,-75.8 145,-47 235.25,-47 235.25,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-57.9" font-family="Arial" font-size="10.00">XmlReadOptions</ns0:text>
 </ns0:a>
@@ -103,7 +103,7 @@
 
 <ns0:g id="node9" class="node">
 <ns0:title>XmlWriteOptions</ns0:title>
-<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXFormat.XmlWriteOptions" ns1:title="A set of options for controlling the behavior of XML write functions." target="_top">
+<ns0:g id="a_node9"><ns0:a ns1:href="..\PyMaterialXFormat.html#MaterialX.PyMaterialXFormat.XmlWriteOptions" ns1:title="A set of options for controlling the behavior of XML write functions." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="234.88,-28.8 145.38,-28.8 145.38,0 234.88,0 234.88,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="190.12" y="-10.9" font-family="Arial" font-size="10.00">XmlWriteOptions</ns0:text>
 </ns0:a>

@@ -9,5 +9,5 @@ MaterialX.PyMaterialXFormat Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

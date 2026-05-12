@@ -7,18 +7,10 @@ MaterialX Python API documentation
    :maxdepth: 2
    :caption: Contents:
 
-  api
   modules
   
-API Reference (All-in-One)
-=========================
-
 .. automodule:: MaterialX
     :members:
     :undoc-members:
     :show-inheritance:
 
-Per-Module Documentation
-========================
-
-See the "MaterialX Python Modules" section above for documentation split by submodule.

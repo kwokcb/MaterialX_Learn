@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>GLTextureHandler</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" ns1:title="An OpenGL texture handler class." target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXRenderGlsl.html#MaterialX.PyMaterialXRenderGlsl.GLTextureHandler" ns1:title="An OpenGL texture handler class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="338.25,-169.8 244.25,-169.8 244.25,-141 338.25,-141 338.25,-169.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="291.25" y="-151.9" font-family="Arial" font-size="10.00">GLTextureHandler</ns0:text>
 </ns0:a>
@@ -13,7 +13,7 @@
 
 <ns0:g id="node2" class="node">
 <ns0:title>ImageHandler</ns0:title>
-<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
+<ns0:g id="a_node2"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ImageHandler" ns1:title="Base image handler class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="203.38,-169.8 126.62,-169.8 126.62,-141 203.38,-141 203.38,-169.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-151.9" font-family="Arial" font-size="10.00">ImageHandler</ns0:text>
 </ns0:a>
@@ -28,7 +28,7 @@
 
 <ns0:g id="node3" class="node">
 <ns0:title>GlslProgram</ns0:title>
-<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" ns1:title="A class representing an executable GLSL program." target="_top">
+<ns0:g id="a_node3"><ns0:a ns1:href="..\PyMaterialXRenderGlsl.html#MaterialX.PyMaterialXRenderGlsl.GlslProgram" ns1:title="A class representing an executable GLSL program." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="200,-122.8 130,-122.8 130,-94 200,-94 200,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-104.9" font-family="Arial" font-size="10.00">GlslProgram</ns0:text>
 </ns0:a>
@@ -55,7 +55,7 @@
 
 <ns0:g id="node6" class="node">
 <ns0:title>ShaderRenderer</ns0:title>
-<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
+<ns0:g id="a_node6"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="208.25,-75.8 121.75,-75.8 121.75,-47 208.25,-47 208.25,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-57.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
 </ns0:a>
@@ -70,7 +70,7 @@
 
 <ns0:g id="node7" class="node">
 <ns0:title>Input</ns0:title>
-<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.Input" ns1:title="An input element within a Node or NodeDef." target="_top">
+<ns0:g id="a_node7"><ns0:a ns1:href="..\PyMaterialXRenderGlsl.html#MaterialX.PyMaterialXRenderGlsl.Input" ns1:title="An input element within a Node or NodeDef." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="192,-28.8 138,-28.8 138,0 192,0 192,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-10.9" font-family="Arial" font-size="10.00">Input</ns0:text>
 </ns0:a>
@@ -85,7 +85,7 @@
 
 <ns0:g id="node5" class="node">
 <ns0:title>GlslRenderer</ns0:title>
-<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" ns1:title="Helper class for rendering generated GLSL code to produce images." target="_top">
+<ns0:g id="a_node5"><ns0:a ns1:href="..\PyMaterialXRenderGlsl.html#MaterialX.PyMaterialXRenderGlsl.GlslRenderer" ns1:title="Helper class for rendering generated GLSL code to produce images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="327.75,-75.8 254.75,-75.8 254.75,-47 327.75,-47 327.75,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="291.25" y="-57.9" font-family="Arial" font-size="10.00">GlslRenderer</ns0:text>
 </ns0:a>
@@ -94,7 +94,7 @@
 
 <ns0:g id="node8" class="node">
 <ns0:title>TextureBaker</ns0:title>
-<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" ns1:title="A helper class for baking procedural material content to textures." target="_top">
+<ns0:g id="a_node8"><ns0:a ns1:href="..\PyMaterialXRenderGlsl.html#MaterialX.PyMaterialXRenderGlsl.TextureBaker" ns1:title="A helper class for baking procedural material content to textures." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="448,-75.8 374.25,-75.8 374.25,-47 448,-47 448,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="411.12" y="-57.9" font-family="Arial" font-size="10.00">TextureBaker</ns0:text>
 </ns0:a>

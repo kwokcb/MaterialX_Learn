@@ -9,5 +9,5 @@ MaterialX Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

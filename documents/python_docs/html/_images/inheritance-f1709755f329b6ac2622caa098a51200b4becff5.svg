@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>HwShaderGenerator</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="351.75,-28.8 247.25,-28.8 247.25,0 351.75,0 351.75,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="299.5" y="-10.9" font-family="Arial" font-size="10.00">HwShaderGenerator</ns0:text>
 </ns0:a>
@@ -13,7 +13,7 @@
 
 <ns0:g id="node4" class="node">
 <ns0:title>SlangShaderGenerator</ns0:title>
-<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" ns1:title="Base class for Slang code generation." target="_top">
+<ns0:g id="a_node4"><ns0:a ns1:href="..\PyMaterialXGenSlang.html#MaterialX.PyMaterialXGenSlang.SlangShaderGenerator" ns1:title="Base class for Slang code generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="502,-28.8 387.75,-28.8 387.75,0 502,0 502,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="444.88" y="-10.9" font-family="Arial" font-size="10.00">SlangShaderGenerator</ns0:text>
 </ns0:a>
@@ -28,7 +28,7 @@
 
 <ns0:g id="node2" class="node">
 <ns0:title>ShaderGenerator</ns0:title>
-<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
+<ns0:g id="a_node2"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="211.25,-28.8 121.75,-28.8 121.75,0 211.25,0 211.25,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-10.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
 </ns0:a>

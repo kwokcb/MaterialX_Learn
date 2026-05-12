@@ -9,5 +9,5 @@ MaterialX.PyMaterialXGenSlang Module
     :members:
     :undoc-members:
     :show-inheritance:
-    :inherited-members:
+
 

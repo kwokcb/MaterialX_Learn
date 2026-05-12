@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>ApplicationVariableHandler</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ApplicationVariableHandler" ns1:title="ApplicationVariableHandler" target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ApplicationVariableHandler" ns1:title="ApplicationVariableHandler" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="266,-827.8 133.75,-827.8 133.75,-799 266,-799 266,-827.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-809.9" font-family="Arial" font-size="10.00">ApplicationVariableHandler</ns0:text>
 </ns0:a>
@@ -25,7 +25,7 @@
 
 <ns0:g id="node3" class="node">
 <ns0:title>ColorManagementSystem</ns0:title>
-<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" ns1:title="Abstract base class for color management systems." target="_top">
+<ns0:g id="a_node3"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ColorManagementSystem" ns1:title="Abstract base class for color management systems." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="264.5,-780.8 135.25,-780.8 135.25,-752 264.5,-752 264.5,-780.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-762.9" font-family="Arial" font-size="10.00">ColorManagementSystem</ns0:text>
 </ns0:a>
@@ -40,7 +40,7 @@
 
 <ns0:g id="node4" class="node">
 <ns0:title>ColorSpaceTransform</ns0:title>
-<ns0:g id="a_node4"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ColorSpaceTransform" ns1:title="Structure that represents color space transform information." target="_top">
+<ns0:g id="a_node4"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ColorSpaceTransform" ns1:title="Structure that represents color space transform information." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="255.5,-733.8 144.25,-733.8 144.25,-705 255.5,-705 255.5,-733.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-715.9" font-family="Arial" font-size="10.00">ColorSpaceTransform</ns0:text>
 </ns0:a>
@@ -55,7 +55,7 @@
 
 <ns0:g id="node6" class="node">
 <ns0:title>GenContext</ns0:title>
-<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenContext" ns1:title="A context class for shader generation." target="_top">
+<ns0:g id="a_node6"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.GenContext" ns1:title="A context class for shader generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="234.12,-686.8 165.62,-686.8 165.62,-658 234.12,-658 234.12,-686.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-668.9" font-family="Arial" font-size="10.00">GenContext</ns0:text>
 </ns0:a>
@@ -70,7 +70,7 @@
 
 <ns0:g id="node7" class="node">
 <ns0:title>GenOptions</ns0:title>
-<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenOptions" ns1:title="Class holding options to configure shader generation." target="_top">
+<ns0:g id="a_node7"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.GenOptions" ns1:title="Class holding options to configure shader generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="233.75,-639.8 166,-639.8 166,-611 233.75,-611 233.75,-639.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-621.9" font-family="Arial" font-size="10.00">GenOptions</ns0:text>
 </ns0:a>
@@ -85,7 +85,7 @@
 
 <ns0:g id="node8" class="node">
 <ns0:title>GenUserData</ns0:title>
-<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="Base class for custom user data needed during shader generation." target="_top">
+<ns0:g id="a_node8"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="Base class for custom user data needed during shader generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="237.88,-592.8 161.88,-592.8 161.88,-564 237.88,-564 237.88,-592.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-574.9" font-family="Arial" font-size="10.00">GenUserData</ns0:text>
 </ns0:a>
@@ -100,7 +100,7 @@
 
 <ns0:g id="node11" class="node">
 <ns0:title>ShaderGenerator</ns0:title>
-<ns0:g id="a_node11"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
+<ns0:g id="a_node11"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="244.62,-545.8 155.12,-545.8 155.12,-517 244.62,-517 244.62,-545.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-527.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
 </ns0:a>
@@ -115,7 +115,7 @@
 
 <ns0:g id="node12" class="node">
 <ns0:title>HwSpecularEnvironmentMethod</ns0:title>
-<ns0:g id="a_node12"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwSpecularEnvironmentMethod" ns1:title="Members:" target="_top">
+<ns0:g id="a_node12"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwSpecularEnvironmentMethod" ns1:title="Members:" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="278,-498.8 121.75,-498.8 121.75,-470 278,-470 278,-498.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-480.9" font-family="Arial" font-size="10.00">HwSpecularEnvironmentMethod</ns0:text>
 </ns0:a>
@@ -130,7 +130,7 @@
 
 <ns0:g id="node13" class="node">
 <ns0:title>Shader</ns0:title>
-<ns0:g id="a_node13"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.Shader" ns1:title="Class containing all data needed during shader generation." target="_top">
+<ns0:g id="a_node13"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.Shader" ns1:title="Class containing all data needed during shader generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="226.88,-451.8 172.88,-451.8 172.88,-423 226.88,-423 226.88,-451.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-433.9" font-family="Arial" font-size="10.00">Shader</ns0:text>
 </ns0:a>
@@ -145,7 +145,7 @@
 
 <ns0:g id="node14" class="node">
 <ns0:title>ShaderInterfaceType</ns0:title>
-<ns0:g id="a_node14"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderInterfaceType" ns1:title="Members:" target="_top">
+<ns0:g id="a_node14"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderInterfaceType" ns1:title="Members:" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="252.88,-404.8 146.88,-404.8 146.88,-376 252.88,-376 252.88,-404.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-386.9" font-family="Arial" font-size="10.00">ShaderInterfaceType</ns0:text>
 </ns0:a>
@@ -160,7 +160,7 @@
 
 <ns0:g id="node15" class="node">
 <ns0:title>ShaderPort</ns0:title>
-<ns0:g id="a_node15"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderPort" ns1:title="An input or output port on a ShaderNode." target="_top">
+<ns0:g id="a_node15"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderPort" ns1:title="An input or output port on a ShaderNode." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="232.25,-357.8 167.5,-357.8 167.5,-329 232.25,-329 232.25,-357.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-339.9" font-family="Arial" font-size="10.00">ShaderPort</ns0:text>
 </ns0:a>
@@ -175,7 +175,7 @@
 
 <ns0:g id="node16" class="node">
 <ns0:title>ShaderPortPredicate</ns0:title>
-<ns0:g id="a_node16"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderPortPredicate" ns1:title="ShaderPortPredicate" target="_top">
+<ns0:g id="a_node16"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderPortPredicate" ns1:title="ShaderPortPredicate" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="252.88,-310.8 146.88,-310.8 146.88,-282 252.88,-282 252.88,-310.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-292.9" font-family="Arial" font-size="10.00">ShaderPortPredicate</ns0:text>
 </ns0:a>
@@ -190,7 +190,7 @@
 
 <ns0:g id="node17" class="node">
 <ns0:title>ShaderStage</ns0:title>
-<ns0:g id="a_node17"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderStage" ns1:title="A shader stage, containing the state and resulting source code for the stage." target="_top">
+<ns0:g id="a_node17"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderStage" ns1:title="A shader stage, containing the state and resulting source code for the stage." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="236,-263.8 163.75,-263.8 163.75,-235 236,-235 236,-263.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-245.9" font-family="Arial" font-size="10.00">ShaderStage</ns0:text>
 </ns0:a>
@@ -205,7 +205,7 @@
 
 <ns0:g id="node18" class="node">
 <ns0:title>ShaderTranslator</ns0:title>
-<ns0:g id="a_node18"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderTranslator" ns1:title="A helper class for translating content between shading models." target="_top">
+<ns0:g id="a_node18"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderTranslator" ns1:title="A helper class for translating content between shading models." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="245,-216.8 154.75,-216.8 154.75,-188 245,-188 245,-216.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-198.9" font-family="Arial" font-size="10.00">ShaderTranslator</ns0:text>
 </ns0:a>
@@ -220,7 +220,7 @@
 
 <ns0:g id="node19" class="node">
 <ns0:title>TypeDesc</ns0:title>
-<ns0:g id="a_node19"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.TypeDesc" ns1:title="A type descriptor for MaterialX data types." target="_top">
+<ns0:g id="a_node19"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.TypeDesc" ns1:title="A type descriptor for MaterialX data types." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="230,-169.8 169.75,-169.8 169.75,-141 230,-141 230,-169.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-151.9" font-family="Arial" font-size="10.00">TypeDesc</ns0:text>
 </ns0:a>
@@ -235,7 +235,7 @@
 
 <ns0:g id="node20" class="node">
 <ns0:title>UnitSystem</ns0:title>
-<ns0:g id="a_node20"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.UnitSystem" ns1:title="Base unit system support." target="_top">
+<ns0:g id="a_node20"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.UnitSystem" ns1:title="Base unit system support." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="233.75,-122.8 166,-122.8 166,-94 233.75,-94 233.75,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-104.9" font-family="Arial" font-size="10.00">UnitSystem</ns0:text>
 </ns0:a>
@@ -250,7 +250,7 @@
 
 <ns0:g id="node21" class="node">
 <ns0:title>UnitTransform</ns0:title>
-<ns0:g id="a_node21"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.UnitTransform" ns1:title="Structure that represents unit transform information." target="_top">
+<ns0:g id="a_node21"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.UnitTransform" ns1:title="Structure that represents unit transform information." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="239,-75.8 160.75,-75.8 160.75,-47 239,-47 239,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-57.9" font-family="Arial" font-size="10.00">UnitTransform</ns0:text>
 </ns0:a>
@@ -265,7 +265,7 @@
 
 <ns0:g id="node22" class="node">
 <ns0:title>VariableBlock</ns0:title>
-<ns0:g id="a_node22"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.VariableBlock" ns1:title="A block of variables in a shader stage." target="_top">
+<ns0:g id="a_node22"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.VariableBlock" ns1:title="A block of variables in a shader stage." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="237.5,-28.8 162.25,-28.8 162.25,0 237.5,0 237.5,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="199.88" y="-10.9" font-family="Arial" font-size="10.00">VariableBlock</ns0:text>
 </ns0:a>
@@ -280,7 +280,7 @@
 
 <ns0:g id="node5" class="node">
 <ns0:title>DefaultColorManagementSystem</ns0:title>
-<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem" ns1:title="Class for a default color management system." target="_top">
+<ns0:g id="a_node5"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.DefaultColorManagementSystem" ns1:title="Class for a default color management system." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="474.75,-780.8 314,-780.8 314,-752 474.75,-752 474.75,-780.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-762.9" font-family="Arial" font-size="10.00">DefaultColorManagementSystem</ns0:text>
 </ns0:a>
@@ -295,7 +295,7 @@
 
 <ns0:g id="node9" class="node">
 <ns0:title>HwResourceBindingContext</ns0:title>
-<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
+<ns0:g id="a_node9"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="464.25,-592.8 324.5,-592.8 324.5,-564 464.25,-564 464.25,-592.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-574.9" font-family="Arial" font-size="10.00">HwResourceBindingContext</ns0:text>
 </ns0:a>
@@ -310,7 +310,7 @@
 
 <ns0:g id="node10" class="node">
 <ns0:title>HwShaderGenerator</ns0:title>
-<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
+<ns0:g id="a_node10"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="446.62,-545.8 342.12,-545.8 342.12,-517 446.62,-517 446.62,-545.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="394.38" y="-527.9" font-family="Arial" font-size="10.00">HwShaderGenerator</ns0:text>
 </ns0:a>

@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>EsslShaderGenerator</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenGlsl.EsslShaderGenerator" ns1:title="An ESSL (OpenGL ES Shading Language) shader generator." target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXGenGlsl.html#MaterialX.PyMaterialXGenGlsl.EsslShaderGenerator" ns1:title="An ESSL (OpenGL ES Shading Language) shader generator." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="711.5,-122.8 602.5,-122.8 602.5,-94 711.5,-94 711.5,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="657" y="-104.9" font-family="Arial" font-size="10.00">EsslShaderGenerator</ns0:text>
 </ns0:a>
@@ -13,7 +13,7 @@
 
 <ns0:g id="node2" class="node">
 <ns0:title>GlslShaderGenerator</ns0:title>
-<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenGlsl.GlslShaderGenerator" ns1:title="Base class for GLSL (OpenGL Shading Language) code generation." target="_top">
+<ns0:g id="a_node2"><ns0:a ns1:href="..\PyMaterialXGenGlsl.html#MaterialX.PyMaterialXGenGlsl.GlslShaderGenerator" ns1:title="Base class for GLSL (OpenGL Shading Language) code generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="547.38,-75.8 440.62,-75.8 440.62,-47 547.38,-47 547.38,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="494" y="-57.9" font-family="Arial" font-size="10.00">GlslShaderGenerator</ns0:text>
 </ns0:a>
@@ -28,7 +28,7 @@
 
 <ns0:g id="node9" class="node">
 <ns0:title>VkShaderGenerator</ns0:title>
-<ns0:g id="a_node9"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenGlsl.VkShaderGenerator" ns1:title="A Vulkan GLSL shader generator." target="_top">
+<ns0:g id="a_node9"><ns0:a ns1:href="..\PyMaterialXGenGlsl.html#MaterialX.PyMaterialXGenGlsl.VkShaderGenerator" ns1:title="A Vulkan GLSL shader generator." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="707.75,-75.8 606.25,-75.8 606.25,-47 707.75,-47 707.75,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="657" y="-57.9" font-family="Arial" font-size="10.00">VkShaderGenerator</ns0:text>
 </ns0:a>
@@ -43,7 +43,7 @@
 
 <ns0:g id="node10" class="node">
 <ns0:title>WgslShaderGenerator</ns0:title>
-<ns0:g id="a_node10"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator" ns1:title="WGSL Flavor of Vulkan GLSL shader generator." target="_top">
+<ns0:g id="a_node10"><ns0:a ns1:href="..\PyMaterialXGenGlsl.html#MaterialX.PyMaterialXGenGlsl.WgslShaderGenerator" ns1:title="WGSL Flavor of Vulkan GLSL shader generator." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="713,-28.8 601,-28.8 601,0 713,0 713,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="657" y="-10.9" font-family="Arial" font-size="10.00">WgslShaderGenerator</ns0:text>
 </ns0:a>
@@ -58,7 +58,7 @@
 
 <ns0:g id="node3" class="node">
 <ns0:title>GenUserData</ns0:title>
-<ns0:g id="a_node3"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="Base class for custom user data needed during shader generation." target="_top">
+<ns0:g id="a_node3"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.GenUserData" ns1:title="Base class for custom user data needed during shader generation." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="204.5,-122.8 128.5,-122.8 128.5,-94 204.5,-94 204.5,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-104.9" font-family="Arial" font-size="10.00">GenUserData</ns0:text>
 </ns0:a>
@@ -67,7 +67,7 @@
 
 <ns0:g id="node6" class="node">
 <ns0:title>HwResourceBindingContext</ns0:title>
-<ns0:g id="a_node6"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
+<ns0:g id="a_node6"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwResourceBindingContext" ns1:title="HwResourceBindingContext" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="387,-122.8 247.25,-122.8 247.25,-94 387,-94 387,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="317.12" y="-104.9" font-family="Arial" font-size="10.00">HwResourceBindingContext</ns0:text>
 </ns0:a>
@@ -94,7 +94,7 @@
 
 <ns0:g id="node8" class="node">
 <ns0:title>ShaderGenerator</ns0:title>
-<ns0:g id="a_node8"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
+<ns0:g id="a_node8"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.ShaderGenerator" ns1:title="Base class for shader generators All third-party shader generators should derive from this class." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="211.25,-75.8 121.75,-75.8 121.75,-47 211.25,-47 211.25,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="166.5" y="-57.9" font-family="Arial" font-size="10.00">ShaderGenerator</ns0:text>
 </ns0:a>
@@ -109,7 +109,7 @@
 
 <ns0:g id="node5" class="node">
 <ns0:title>GlslResourceBindingContext</ns0:title>
-<ns0:g id="a_node5"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext" ns1:title="Class representing a resource binding for Glsl shader resources." target="_top">
+<ns0:g id="a_node5"><ns0:a ns1:href="..\PyMaterialXGenGlsl.html#MaterialX.PyMaterialXGenGlsl.GlslResourceBindingContext" ns1:title="Class representing a resource binding for Glsl shader resources." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="565,-122.8 423,-122.8 423,-94 565,-94 565,-122.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="494" y="-104.9" font-family="Arial" font-size="10.00">GlslResourceBindingContext</ns0:text>
 </ns0:a>
@@ -124,7 +124,7 @@
 
 <ns0:g id="node7" class="node">
 <ns0:title>HwShaderGenerator</ns0:title>
-<ns0:g id="a_node7"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
+<ns0:g id="a_node7"><ns0:a ns1:href="..\PyMaterialXGenShader.html#MaterialX.PyMaterialXGenShader.HwShaderGenerator" ns1:title="HwShaderGenerator" target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="369.38,-75.8 264.88,-75.8 264.88,-47 369.38,-47 369.38,-75.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="317.12" y="-57.9" font-family="Arial" font-size="10.00">HwShaderGenerator</ns0:text>
 </ns0:a>

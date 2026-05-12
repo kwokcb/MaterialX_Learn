@@ -4,7 +4,7 @@
 
 <ns0:g id="node1" class="node">
 <ns0:title>OslRenderer</ns0:title>
-<ns0:g id="a_node1"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" ns1:title="Helper class for rendering generated OSL code to produce images." target="_top">
+<ns0:g id="a_node1"><ns0:a ns1:href="..\PyMaterialXRenderOsl.html#MaterialX.PyMaterialXRenderOsl.OslRenderer" ns1:title="Helper class for rendering generated OSL code to produce images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="315,-28.8 244.25,-28.8 244.25,0 315,0 315,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="279.62" y="-10.9" font-family="Arial" font-size="10.00">OslRenderer</ns0:text>
 </ns0:a>
@@ -13,7 +13,7 @@
 
 <ns0:g id="node2" class="node">
 <ns0:title>ShaderRenderer</ns0:title>
-<ns0:g id="a_node2"><ns0:a ns1:href="..\api.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
+<ns0:g id="a_node2"><ns0:a ns1:href="..\PyMaterialXRender.html#MaterialX.PyMaterialXRender.ShaderRenderer" ns1:title="Base class for renderers that generate shader code to produce images." target="_top">
 <ns0:polygon fill="white" stroke="black" stroke-width="0.5" points="208.25,-28.8 121.75,-28.8 121.75,0 208.25,0 208.25,-28.8" />
 <ns0:text xml:space="preserve" text-anchor="middle" x="165" y="-10.9" font-family="Arial" font-size="10.00">ShaderRenderer</ns0:text>
 </ns0:a>
