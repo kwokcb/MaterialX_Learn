@@ -24,6 +24,8 @@
     <input name="emission_color" type="color3" value="1, 1, 1" />
     <input name="opacity" type="color3" value="1, 1, 1" />
     <input name="thin_walled" type="boolean" value="false" />
+    <input name="thin_film_thickness" type="float" value="0.0" />
+    <input name="thin_film_IOR" type="float" value="1.5" />
   </standard_surface_to_gltf_pbr>
   <convert name="shader_standard_surface_to_gltf_pbr_base_color_out" type="surfaceshader">
     <input name="in" type="color3" nodename="standard_surface_to_gltf_pbr" output="base_color_out" />
@@ -120,6 +122,24 @@
   </convert>
   <surfacematerial name="material_standard_surface_to_gltf_pbr_clearcoat_roughness_out" type="material">
     <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_clearcoat_roughness_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_iridescence_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="iridescence_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_iridescence_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_iridescence_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_iridescence_ior_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="iridescence_ior_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_iridescence_ior_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_iridescence_ior_out" />
+  </surfacematerial>
+  <convert name="shader_standard_surface_to_gltf_pbr_iridescence_thickness_out" type="surfaceshader">
+    <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="iridescence_thickness_out" />
+  </convert>
+  <surfacematerial name="material_standard_surface_to_gltf_pbr_iridescence_thickness_out" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="shader_standard_surface_to_gltf_pbr_iridescence_thickness_out" />
   </surfacematerial>
   <convert name="shader_standard_surface_to_gltf_pbr_dispersion_out" type="surfaceshader">
     <input name="in" type="float" nodename="standard_surface_to_gltf_pbr" output="dispersion_out" />
