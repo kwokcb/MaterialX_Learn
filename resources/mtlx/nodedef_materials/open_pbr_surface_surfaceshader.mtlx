@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <materialx version="1.39">
-  <open_pbr_surface name="open_pbr_surface_surfaceshader" type="surfaceshader" version="1.1">
+  <open_pbr_surface name="open_pbr_surface_surfaceshader" type="surfaceshader" version="1.1.1">
     <input name="base_weight" type="float" value="1.0" uiname="Base Weight" />
     <input name="base_color" type="color3" value="0.8, 0.8, 0.8" uiname="Base Color" />
     <input name="base_diffuse_roughness" type="float" value="0.0" uiname="Base Diffuse Roughness" />
