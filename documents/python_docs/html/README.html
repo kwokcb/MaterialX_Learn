@@ -3,11 +3,11 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="MaterialX Python Modules" href="modules.html">
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html">
         <link rel="prefetch" href="_static/logo3d_2_small.png" as="image">
 
     <link rel="shortcut icon" href="_static/logo3d_2_small.png"><!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
-        <title>MaterialX 1.39.5 Python API</title>
+        <title>Build Instructions - MaterialX 1.39.5 Python API</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=bb2faaec" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -172,7 +172,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">MaterialX 1.39.5 Python API</div></a>
+      <a href="index.html"><div class="brand">MaterialX 1.39.5 Python API</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -183,7 +183,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -191,7 +191,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="_static/logo3d_2_small.png" alt="Logo"/>
   </div>
@@ -250,56 +250,42 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <div style="text-align:center; color: #888; margin-top: 2em;">
-<h3><img src="_static/logo3d_2_small.png" width=32px style="margin-right: 1em">MaterialX Python API</h3> 
+          <section id="build-instructions">
+<h1>Build Instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">¶</a></h1>
+<p>To build the documentation, you will need to have <code class="docutils literal notranslate"><span class="pre">Sphinx</span></code> and <code class="docutils literal notranslate"><span class="pre">MaterialX</span></code> installed.  In addition a number of Sphinx extensions are used. All packages
+are listed in the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file. You can install them using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
 </div>
-<p>The following is Python documentation generated from the <a href="https://pypi.org/project/MaterialX/1.39.5/">1.39.5 PyPi release</a> of MaterialX.
-See the <a class="reference external" href="https://kwokcb.github.io/MaterialX_Learn/">MaterialX Learn site</a> repository for tutorials, examples, and utility libraries on using the MaterialX Python API.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">MaterialX Python Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXCore.html">PyMaterialXCore</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXFormat.html">PyMaterialXFormat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenGlsl.html">PyMaterialXGenGlsl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMdl.html">PyMaterialXGenMdl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenMsl.html">PyMaterialXGenMsl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenOsl.html">PyMaterialXGenOsl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenShader.html">PyMaterialXGenShader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXGenSlang.html">PyMaterialXGenSlang</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXRender.html">PyMaterialXRender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderGlsl.html">PyMaterialXRenderGlsl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PyMaterialXRenderOsl.html">PyMaterialXRenderOsl</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datatype.html">datatype</a></li>
-<li class="toctree-l2"><a class="reference internal" href="main.html">main</a></li>
-</ul>
-</li>
-</ul>
+<p>The shell script <code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> includes setting up a Python virtual environment and installing the required packages. You can run it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>setup.sh<span class="w"> </span>setup
+</pre></div>
 </div>
-<div style="text-align:center; color: #888; margin-top: 2em;">
-  The content was generated using Sphinx. The setup for this can be found in in the
-  Python utilities folder found <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/sphinx" target="_blank">here</a>.
-<p>For build instructions, see the <a href="https://github.com/kwokcb/MaterialX_Learn/tree/main/pymaterialx/sphinx/README.md" target="_blank">README file</a>.</p>
+<p>Once the environment is setup, the <code class="docutils literal notranslate"><span class="pre">build_it.sh</span></code> script can be used to build the documentation. It will generate RST files used by Sphinx and then generate the HTML documentation. You can run it using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>build_it.sh
+</pre></div>
 </div>
+<p>The environment can be cleanuped up using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>setup.sh<span class="w"> </span>cleanup
+</pre></div>
+</div>
+<section id="acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">¶</a></h2>
+<p>MaterialX is developed and maintained by the <code class="docutils literal notranslate"><span class="pre">Academy</span> <span class="pre">Software</span> <span class="pre">Foundation</span></code> and its contributors. All content was created by the contributors to the MaterialX project.</p>
+</section>
+</section>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="modules.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">MaterialX Python Modules</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
+          
           
         </div>
         <div class="bottom-of-page">
@@ -352,8 +338,27 @@ See the <a class="reference external" href="https://kwokcb.github.io/MaterialX_L
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Build Instructions</a><ul>
+<li><a class="reference internal" href="#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
