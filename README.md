@@ -29,7 +29,7 @@ This site
 
 This is a complementary site for those interested in learning about MaterialX. 
 
-Content is synced with the MaterialX `1.39.5` development.
+Content is synced with MaterialX `1.39.5` release .
 
 Content includes:
 * Node definition library with image and node graph previews. 

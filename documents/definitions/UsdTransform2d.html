@@ -752,7 +752,10 @@ Category: UsdTransform2d
 <div id="ND_UsdTransform2d_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph IMP_UsdTransform2d
-    IMP_UsdTransform2d_placement[placement]
+    IMP_UsdTransform2d_N_applyscale[N_applyscale]
+    IMP_UsdTransform2d_N_invrot[N_invrot]
+    IMP_UsdTransform2d_N_applyrot[N_applyrot]
+    IMP_UsdTransform2d_N_applyoffset[N_applyoffset]
     style IMP_UsdTransform2d_out  fill:#0C0, color:#FFF
     IMP_UsdTransform2d_out([out])
     style IMP_UsdTransform2d_in  fill:#09D, color:#FFF
@@ -764,11 +767,14 @@ graph TB
     style IMP_UsdTransform2d_translation  fill:#09D, color:#FFF
     IMP_UsdTransform2d_translation([translation])
     end
-    IMP_UsdTransform2d_in --"texcoord"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_scale --"scale"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_rotation --"rotate"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_translation --"offset"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_placement --> IMP_UsdTransform2d_out
+    IMP_UsdTransform2d_in --"in1"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_scale --"in2"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_rotation --"in2"--> IMP_UsdTransform2d_N_invrot
+    IMP_UsdTransform2d_N_applyscale --"in"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_invrot --"amount"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_applyrot --"in1"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_translation --"in2"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_N_applyoffset --> IMP_UsdTransform2d_out
 
 
 </div></code></pre>

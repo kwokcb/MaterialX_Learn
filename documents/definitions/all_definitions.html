@@ -2799,10 +2799,9 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf[transmission_bsdf]
     IMPL_gltf_pbr_surfaceshader_reflection_bsdf[reflection_bsdf]
     IMPL_gltf_pbr_surfaceshader_transmission_mix[transmission_mix]
-    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[tf_reflection_bsdf]
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[tf_dielectric_bsdf]
-    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix_iridescent_dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection[mix_iridescent_dielectric_reflection]
+    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[tf_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix_iridescent_metal_bsdf]
@@ -2931,8 +2930,6 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
     IMPL_gltf_pbr_surfaceshader_transmission --"mix"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
@@ -2940,11 +2937,11 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection --"top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
@@ -2958,7 +2955,7 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_metal_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_metallic --"mix"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_r
@@ -6960,7 +6957,7 @@ Category: open_pbr_surface
 <div class="col-sm card-text"><b>Library </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">bxdf</button></div>
 <div class="col-sm card-text"><b>Node Group </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0">pbr</button></div>
 <div class="col-sm card-text"><b>Type </b> <button type="button" class="btn btn-sm btn-outline-secondary pt-0 pb-0"> surfaceshader</button></div>
-<div class="col-sm card-text"> <b>Version : </b>1.1 (default) </div>
+<div class="col-sm card-text"> <b>Version : </b>1.1.1 (default) </div>
 </div>
 <div class="row"><div class="col card-text"><b>Description :</b> OpenPBR Surface Shading Model</div></div>
 <div class="row">
@@ -9180,7 +9177,6 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix[dielectric_reflection_tf_mix]
     NG_open_pbr_surface_surfaceshader_dielectric_base[dielectric_base]
     NG_open_pbr_surface_surfaceshader_metal_reflectivity[metal_reflectivity]
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor[metal_edgecolor]
     NG_open_pbr_surface_surfaceshader_metal_bsdf[metal_bsdf]
     NG_open_pbr_surface_surfaceshader_metal_bsdf_tf[metal_bsdf_tf]
     NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix[metal_bsdf_tf_mix]
@@ -9437,17 +9433,15 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_substrate --"base"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_base_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
     NG_open_pbr_surface_surfaceshader_base_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
-    NG_open_pbr_surface_surfaceshader_specular_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
-    NG_open_pbr_surface_surfaceshader_specular_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
     NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
+    NG_open_pbr_surface_surfaceshader_specular_color --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
+    NG_open_pbr_surface_surfaceshader_specular_color --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
@@ -15168,7 +15162,10 @@ Category: UsdTransform2d
 <div id="ND_UsdTransform2d_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph IMP_UsdTransform2d
-    IMP_UsdTransform2d_placement[placement]
+    IMP_UsdTransform2d_N_applyscale[N_applyscale]
+    IMP_UsdTransform2d_N_invrot[N_invrot]
+    IMP_UsdTransform2d_N_applyrot[N_applyrot]
+    IMP_UsdTransform2d_N_applyoffset[N_applyoffset]
     style IMP_UsdTransform2d_out  fill:#0C0, color:#FFF
     IMP_UsdTransform2d_out([out])
     style IMP_UsdTransform2d_in  fill:#09D, color:#FFF
@@ -15180,11 +15177,14 @@ graph TB
     style IMP_UsdTransform2d_translation  fill:#09D, color:#FFF
     IMP_UsdTransform2d_translation([translation])
     end
-    IMP_UsdTransform2d_in --"texcoord"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_scale --"scale"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_rotation --"rotate"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_translation --"offset"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_placement --> IMP_UsdTransform2d_out
+    IMP_UsdTransform2d_in --"in1"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_scale --"in2"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_rotation --"in2"--> IMP_UsdTransform2d_N_invrot
+    IMP_UsdTransform2d_N_applyscale --"in"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_invrot --"amount"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_applyrot --"in1"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_translation --"in2"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_N_applyoffset --> IMP_UsdTransform2d_out
 
 
 </div></code></pre>
@@ -22823,6 +22823,18 @@ Category: standard_surface_to_gltf_pbr
 <div style="font-size: 70%">clearcoat_roughness_out</div>
 </div>
 <div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_out_genglsl.png>
+<div style="font-size: 70%">iridescence_out</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_ior_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_ior_out_genglsl.png>
+<div style="font-size: 70%">iridescence_ior_out</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
+<img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_thickness_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_iridescence_thickness_out_genglsl.png>
+<div style="font-size: 70%">iridescence_thickness_out</div>
+</div>
+<div class="col ps-0 pe-0 ms-0 me-0">
 <img loading="lazy" src="../../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_dispersion_out_genglsl.png" class="img-thumbnail thumbnail-padding rounded float-left" width="100%" alt=../resources/mtlx/nodedef_materials/material_standard_surface_to_gltf_pbr_dispersion_out_genglsl.png>
 <div style="font-size: 70%">dispersion_out</div>
 </div>
@@ -22909,6 +22921,10 @@ Category: standard_surface_to_gltf_pbr
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_thin_walled" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_thin_walled" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >thin_walled</div></li>
 <li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_thin_film_thickness" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_thin_film_thickness" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >thin_film_thickness</div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_thin_film_IOR" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_thin_film_IOR" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" >thin_film_IOR</div></li>
+<li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_base_color_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_base_color_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>base_color_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_metallic_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_metallic_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>metallic_out</b></div></li>
@@ -22940,6 +22956,12 @@ Category: standard_surface_to_gltf_pbr
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_clearcoat_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_clearcoat_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>clearcoat_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_clearcoat_roughness_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>clearcoat_roughness_out</b></div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_iridescence_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_iridescence_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>iridescence_out</b></div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_iridescence_ior_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_iridescence_ior_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>iridescence_ior_out</b></div></li>
+<li class="nav-item dropdown-item" role="presentation">
+ <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_iridescence_thickness_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_iridescence_thickness_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>iridescence_thickness_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
  <div class="nav-item "  data-bs-toggle="tab" data-bs-target="#pills-ND_standard_surface_to_gltf_pbr_dispersion_out" role="tab" aria-controls="pills-ND_standard_surface_to_gltf_pbr_dispersion_out" aria-selected="true"  onclick="document.getElementById('ND_standard_surface_to_gltf_pbr_menu').textContent = this.textContent;" ><b>dispersion_out</b></div></li>
 <li class="nav-item dropdown-item" role="presentation">
@@ -23465,6 +23487,42 @@ Category: standard_surface_to_gltf_pbr
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_thin_film_thickness"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_thin_film_thickness-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_standard_surface_to_gltf_pbr_thin_film_thickness" type="number" class="form-control form-control-sm" step="0.01" value="0" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_thin_film_IOR"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_thin_film_IOR-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value  </label>
+      <div class="col">
+          <input id="ND_standard_surface_to_gltf_pbr_thin_film_IOR" type="number" class="form-control form-control-sm" step="0.01" value="1.5" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_base_color_out"
   role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_base_color_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -23641,6 +23699,39 @@ Category: standard_surface_to_gltf_pbr
  </div>
 </div>
 <div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_iridescence_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_iridescence_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_iridescence_ior_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_iridescence_ior_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_iridescence_thickness_out"
+  role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_iridescence_thickness_out-tab" tabindex="0">
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-10">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="float">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
  <div class="tab-pane " id="pills-ND_standard_surface_to_gltf_pbr_dispersion_out"
   role="tabpanel" aria-labelledby="pills-ND_standard_surface_to_gltf_pbr_dispersion_out-tab" tabindex="0">
   <div class="form-group row g-2">
@@ -23746,7 +23837,8 @@ graph TB
     style NG_standard_surface_to_gltf_pbr_baseColor  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_baseColor{baseColor}
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor[transmissionBaseColor]
-    NG_standard_surface_to_gltf_pbr_base_color[base_color]
+    NG_standard_surface_to_gltf_pbr_transmissionWeightSq[transmissionWeightSq]
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix[transmissionBaseColorMix]
     NG_standard_surface_to_gltf_pbr_metallic[metallic]
     NG_standard_surface_to_gltf_pbr_roughness_anisotropy[roughness_anisotropy]
     NG_standard_surface_to_gltf_pbr_separate_roughness[separate_roughness]
@@ -23778,6 +23870,9 @@ graph TB
     NG_standard_surface_to_gltf_pbr_dispersion_from_abbe[dispersion_from_abbe]
     style NG_standard_surface_to_gltf_pbr_dispersion  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_dispersion{dispersion}
+    NG_standard_surface_to_gltf_pbr_iridescence[iridescence]
+    NG_standard_surface_to_gltf_pbr_iridescence_ior[iridescence_ior]
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness[iridescence_thickness]
     NG_standard_surface_to_gltf_pbr_normal[normal]
     NG_standard_surface_to_gltf_pbr_tangent[tangent]
     NG_standard_surface_to_gltf_pbr_opacity_luminance[opacity_luminance]
@@ -23816,6 +23911,12 @@ graph TB
     NG_standard_surface_to_gltf_pbr_clearcoat_out([clearcoat_out])
     style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_out([iridescence_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_ior_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_ior_out([iridescence_ior_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_thickness_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness_out([iridescence_thickness_out])
     style NG_standard_surface_to_gltf_pbr_dispersion_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_dispersion_out([dispersion_out])
     style NG_standard_surface_to_gltf_pbr_emissive_out  fill:#0C0, color:#FFF
@@ -23832,6 +23933,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_alpha_mode_out([alpha_mode_out])
     style NG_standard_surface_to_gltf_pbr_coat_color  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_coat_color([coat_color])
+    style NG_standard_surface_to_gltf_pbr_base_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_base_color([base_color])
     style NG_standard_surface_to_gltf_pbr_base  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_base([base])
     style NG_standard_surface_to_gltf_pbr_coat  fill:#09D, color:#FFF
@@ -23872,6 +23975,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_specular_IOR([specular_IOR])
     style NG_standard_surface_to_gltf_pbr_transmission_dispersion  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission_dispersion([transmission_dispersion])
+    style NG_standard_surface_to_gltf_pbr_thin_film_thickness  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness([thin_film_thickness])
+    style NG_standard_surface_to_gltf_pbr_thin_film_IOR  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_thin_film_IOR([thin_film_IOR])
     style NG_standard_surface_to_gltf_pbr_normal:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_normal:in([normal:in])
     style NG_standard_surface_to_gltf_pbr_tangent:in  fill:#09D, color:#FFF
@@ -23898,9 +24005,11 @@ graph TB
     NG_standard_surface_to_gltf_pbr_mixedBaseColor --"in2"--> NG_standard_surface_to_gltf_pbr_baseColor
     NG_standard_surface_to_gltf_pbr_transmission_depth --"value1"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColor
     NG_standard_surface_to_gltf_pbr_transmission_color --"in2"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColor
-    NG_standard_surface_to_gltf_pbr_transmission --"value1"--> NG_standard_surface_to_gltf_pbr_base_color
-    NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
-    NG_standard_surface_to_gltf_pbr_baseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color
+    NG_standard_surface_to_gltf_pbr_transmission --"in1"--> NG_standard_surface_to_gltf_pbr_transmissionWeightSq
+    NG_standard_surface_to_gltf_pbr_transmission --"in2"--> NG_standard_surface_to_gltf_pbr_transmissionWeightSq
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"fg"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
+    NG_standard_surface_to_gltf_pbr_baseColor --"bg"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
+    NG_standard_surface_to_gltf_pbr_transmissionWeightSq --"mix"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
     NG_standard_surface_to_gltf_pbr_metalness --"in"--> NG_standard_surface_to_gltf_pbr_metallic
     NG_standard_surface_to_gltf_pbr_specular_roughness --"roughness"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
     NG_standard_surface_to_gltf_pbr_specular_anisotropy --"anisotropy"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
@@ -23941,12 +24050,16 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmission_dispersion --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion_from_abbe
     NG_standard_surface_to_gltf_pbr_transmission_dispersion --"value1"--> NG_standard_surface_to_gltf_pbr_dispersion
     NG_standard_surface_to_gltf_pbr_dispersion_from_abbe --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"value1"--> NG_standard_surface_to_gltf_pbr_iridescence
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"value1"--> NG_standard_surface_to_gltf_pbr_iridescence_ior
+    NG_standard_surface_to_gltf_pbr_thin_film_IOR --"in1"--> NG_standard_surface_to_gltf_pbr_iridescence_ior
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"in"--> NG_standard_surface_to_gltf_pbr_iridescence_thickness
     NG_standard_surface_to_gltf_pbr_normal:in --"in"--> NG_standard_surface_to_gltf_pbr_normal
     NG_standard_surface_to_gltf_pbr_tangent:in --"in"--> NG_standard_surface_to_gltf_pbr_tangent
     NG_standard_surface_to_gltf_pbr_opacity --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance
     NG_standard_surface_to_gltf_pbr_opacity_luminance --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance_float
     NG_standard_surface_to_gltf_pbr_opacity_luminance_float --"value1"--> NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance
-    NG_standard_surface_to_gltf_pbr_base_color --> NG_standard_surface_to_gltf_pbr_base_color_out
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix --> NG_standard_surface_to_gltf_pbr_base_color_out
     NG_standard_surface_to_gltf_pbr_metallic --> NG_standard_surface_to_gltf_pbr_metallic_out
     NG_standard_surface_to_gltf_pbr_roughness --> NG_standard_surface_to_gltf_pbr_roughness_out
     NG_standard_surface_to_gltf_pbr_specular --> NG_standard_surface_to_gltf_pbr_specular_out
@@ -23962,6 +24075,9 @@ graph TB
     NG_standard_surface_to_gltf_pbr_sqrt_sheen_roughness --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
     NG_standard_surface_to_gltf_pbr_clearcoat --> NG_standard_surface_to_gltf_pbr_clearcoat_out
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out
+    NG_standard_surface_to_gltf_pbr_iridescence --> NG_standard_surface_to_gltf_pbr_iridescence_out
+    NG_standard_surface_to_gltf_pbr_iridescence_ior --> NG_standard_surface_to_gltf_pbr_iridescence_ior_out
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness --> NG_standard_surface_to_gltf_pbr_iridescence_thickness_out
     NG_standard_surface_to_gltf_pbr_dispersion --> NG_standard_surface_to_gltf_pbr_dispersion_out
     NG_standard_surface_to_gltf_pbr_emissive --> NG_standard_surface_to_gltf_pbr_emissive_out
     NG_standard_surface_to_gltf_pbr_emissive_strength --> NG_standard_surface_to_gltf_pbr_emissive_strength_out
@@ -30481,6 +30597,7 @@ Category: dielectric_bsdf
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_tint" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_tint" aria-selected="true">tint</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_ior" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_ior" aria-selected="true">ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_roughness" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_retroreflective" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_retroreflective" aria-selected="true">retroreflective</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_thinfilm_thickness" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_thinfilm_thickness" aria-selected="true">thinfilm_thickness</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_thinfilm_ior" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_thinfilm_ior" aria-selected="true">thinfilm_ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_dielectric_bsdf_normal" type="button" role="tab" aria-controls="pills-ND_dielectric_bsdf_normal" aria-selected="true">normal</button>
@@ -30581,6 +30698,28 @@ Category: dielectric_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_dielectric_bsdf_retroreflective"
+  role="tabpanel" aria-labelledby="pills-ND_dielectric_bsdf_retroreflective-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_dielectric_bsdf_retroreflective" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
  </div>
@@ -30777,7 +30916,7 @@ Category: dielectric_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_dielectric_bsdf(mxp_weight:{{weight}}, mxp_tint:{{tint}}, mxp_ior:{{ior}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) </textarea>
+        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_dielectric_bsdf(mxp_weight:{{weight}}, mxp_tint:{{tint}}, mxp_ior:{{ior}}, mxp_roughness:{{roughness}}, mxp_retroreflective:{{retroreflective}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) </textarea>
     </div>
   </div>
 <hr>
@@ -30838,6 +30977,7 @@ Category: conductor_bsdf
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_ior" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_ior" aria-selected="true">ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_extinction" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_extinction" aria-selected="true">extinction</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_roughness" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_retroreflective" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_retroreflective" aria-selected="true">retroreflective</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_thickness" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_thickness" aria-selected="true">thinfilm_thickness</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_ior" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_ior" aria-selected="true">thinfilm_ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_normal" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_normal" aria-selected="true">normal</button>
@@ -30945,6 +31085,28 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_conductor_bsdf_retroreflective"
+  role="tabpanel" aria-labelledby="pills-ND_conductor_bsdf_retroreflective-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_conductor_bsdf_retroreflective" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
  </div>
@@ -31108,7 +31270,7 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}) </textarea>
+        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_retroreflective:{{retroreflective}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}) </textarea>
     </div>
   </div>
 <hr>
@@ -31164,6 +31326,7 @@ Category: generalized_schlick_bsdf
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_color90" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_color90" aria-selected="true">color90</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_exponent" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_exponent" aria-selected="true">exponent</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_roughness" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_retroreflective" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_retroreflective" aria-selected="true">retroreflective</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_thickness" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_thickness" aria-selected="true">thinfilm_thickness</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_thinfilm_ior" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_thinfilm_ior" aria-selected="true">thinfilm_ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_generalized_schlick_bsdf_normal" type="button" role="tab" aria-controls="pills-ND_generalized_schlick_bsdf_normal" aria-selected="true">normal</button>
@@ -31316,6 +31479,28 @@ Category: generalized_schlick_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_generalized_schlick_bsdf_retroreflective"
+  role="tabpanel" aria-labelledby="pills-ND_generalized_schlick_bsdf_retroreflective-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_generalized_schlick_bsdf_retroreflective" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
  </div>
@@ -31512,7 +31697,7 @@ Category: generalized_schlick_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_generalized_schlick_bsdf(mxp_weight:{{weight}}, mxp_color0:{{color0}}, mxp_color82:{{color82}}, mxp_color90:{{color90}}, mxp_exponent:{{exponent}},mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) </textarea>
+        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_generalized_schlick_bsdf(mxp_weight:{{weight}}, mxp_color0:{{color0}}, mxp_color82:{{color82}}, mxp_color90:{{color90}}, mxp_exponent:{{exponent}},mxp_roughness:{{roughness}}, mxp_retroreflective:{{retroreflective}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}, mxp_scatter_mode:{{scatter_mode}}, mxp_base:{{base}}, mxp_top_weight:{{top_weight}}) </textarea>
     </div>
   </div>
 <hr>
@@ -75667,6 +75852,27 @@ Category: flake2d
     </div>
   </div>
 <hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_flake2d.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake2d.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake2d">
+   </div>
+  </div>
+<hr>
 </details>
 </p>
 </div>
@@ -76040,6 +76246,27 @@ Category: flake3d
       <textarea class="form-control form-control-sm" rows="3"
         style="resize: none;" disabled>materialx::stdlib_{{MDL_VERSION_SUFFIX}}::mx_flake3d(mxp_size:{{size}}, mxp_roughness:{{roughness}}, mxp_coverage:{{coverage}}, mxp_position:{{position}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_bitangent:{{bitangent}}) </textarea>
     </div>
+  </div>
+<hr>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Target:</label>
+   <div class="col-2">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="genosl">
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">File:</label>
+   <div class="col-8">
+  <a href="https://github.com/AcademySoftwareFoundation/MaterialX/tree/main/libraries/stdlib/genosl/mx_flake3d.osl" target="_blank">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake3d.osl">
+  </a>
+   </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Function:</label>
+   <div class="col-4">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="mx_flake3d">
+   </div>
   </div>
 <hr>
 </details>
@@ -157202,6 +157429,7 @@ graph TB
 <div id="ND_convert_color3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_convert_color3_surfaceshader
+    style NG_convert_color3_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_color3_surfaceshader_surface[surface]
     style NG_convert_color3_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_color3_surfaceshader_out([out])
@@ -157300,6 +157528,7 @@ graph TB
 <div id="ND_convert_color4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_convert_color4_surfaceshader
+    style NG_convert_color4_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_color4_surfaceshader_surface[surface]
     NG_convert_color4_surfaceshader_extract[extract]
     NG_convert_color4_surfaceshader_convert[convert]
@@ -157393,6 +157622,7 @@ graph TB
 graph TB
     subgraph NG_convert_float_surfaceshader
     NG_convert_float_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_float_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_float_surfaceshader_surface[surface]
     style NG_convert_float_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_float_surfaceshader_out([out])
@@ -157483,6 +157713,7 @@ graph TB
 <div id="ND_convert_vector2_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_convert_vector2_surfaceshader
+    style NG_convert_vector2_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector2_surfaceshader_surface[surface]
     NG_convert_vector2_surfaceshader_vec2_to_vec3[vec2_to_vec3]
     NG_convert_vector2_surfaceshader_vec3_to_color3[vec3_to_color3]
@@ -157579,6 +157810,7 @@ graph TB
 <div id="ND_convert_vector3_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_convert_vector3_surfaceshader
+    style NG_convert_vector3_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector3_surfaceshader_surface[surface]
     NG_convert_vector3_surfaceshader_vec3_to_color3[vec3_to_color3]
     style NG_convert_vector3_surfaceshader_out  fill:#0C0, color:#FFF
@@ -157676,6 +157908,7 @@ graph TB
 <div id="ND_convert_vector4_surfaceshader_mrender_mermaid_input" class="mermaid" hidden>
 graph TB
     subgraph NG_convert_vector4_surfaceshader
+    style NG_convert_vector4_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector4_surfaceshader_surface[surface]
     NG_convert_vector4_surfaceshader_vec4_to_color4[vec4_to_color4]
     NG_convert_vector4_surfaceshader_color4_to_float[color4_to_float]
@@ -157772,6 +158005,7 @@ graph TB
     subgraph NG_convert_integer_surfaceshader
     NG_convert_integer_surfaceshader_int_to_float[int_to_float]
     NG_convert_integer_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_integer_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_integer_surfaceshader_surface[surface]
     style NG_convert_integer_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_integer_surfaceshader_out([out])
@@ -157863,6 +158097,7 @@ graph TB
     subgraph NG_convert_boolean_surfaceshader
     NG_convert_boolean_surfaceshader_bool_to_float[bool_to_float]
     NG_convert_boolean_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_boolean_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_boolean_surfaceshader_surface[surface]
     style NG_convert_boolean_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_boolean_surfaceshader_out([out])
@@ -161000,7 +161235,7 @@ Category: extract
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+        style="resize: none;" disabled>mx_extract_matrix33({{in}}, {{index}}) </textarea>
     </div>
   </div>
 <hr>
@@ -161212,7 +161447,7 @@ Category: extract
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>mx_extract({{in}}, {{index}}) </textarea>
+        style="resize: none;" disabled>mx_extract_matrix44({{in}}, {{index}}) </textarea>
     </div>
   </div>
 <hr>

@@ -18417,6 +18417,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_convert_color3_surfaceshader
+    style NG_convert_color3_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_color3_surfaceshader_surface[surface]
     style NG_convert_color3_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_color3_surfaceshader_out([out])
@@ -18446,6 +18447,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_convert_color4_surfaceshader
+    style NG_convert_color4_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_color4_surfaceshader_surface[surface]
     NG_convert_color4_surfaceshader_extract[extract]
     NG_convert_color4_surfaceshader_convert[convert]
@@ -18481,6 +18483,7 @@ graph TB
 graph TB
     subgraph NG_convert_float_surfaceshader
     NG_convert_float_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_float_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_float_surfaceshader_surface[surface]
     style NG_convert_float_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_float_surfaceshader_out([out])
@@ -18511,6 +18514,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_convert_vector2_surfaceshader
+    style NG_convert_vector2_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector2_surfaceshader_surface[surface]
     NG_convert_vector2_surfaceshader_vec2_to_vec3[vec2_to_vec3]
     NG_convert_vector2_surfaceshader_vec3_to_color3[vec3_to_color3]
@@ -18544,6 +18548,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_convert_vector3_surfaceshader
+    style NG_convert_vector3_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector3_surfaceshader_surface[surface]
     NG_convert_vector3_surfaceshader_vec3_to_color3[vec3_to_color3]
     style NG_convert_vector3_surfaceshader_out  fill:#0C0, color:#FFF
@@ -18575,6 +18580,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph NG_convert_vector4_surfaceshader
+    style NG_convert_vector4_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_vector4_surfaceshader_surface[surface]
     NG_convert_vector4_surfaceshader_vec4_to_color4[vec4_to_color4]
     NG_convert_vector4_surfaceshader_color4_to_float[color4_to_float]
@@ -18613,6 +18619,7 @@ graph TB
     subgraph NG_convert_integer_surfaceshader
     NG_convert_integer_surfaceshader_int_to_float[int_to_float]
     NG_convert_integer_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_integer_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_integer_surfaceshader_surface[surface]
     style NG_convert_integer_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_integer_surfaceshader_out([out])
@@ -18646,6 +18653,7 @@ graph TB
     subgraph NG_convert_boolean_surfaceshader
     NG_convert_boolean_surfaceshader_bool_to_float[bool_to_float]
     NG_convert_boolean_surfaceshader_float_to_color3[float_to_color3]
+    style NG_convert_boolean_surfaceshader_surface  fill:#040, color:#FFF
     NG_convert_boolean_surfaceshader_surface[surface]
     style NG_convert_boolean_surfaceshader_out  fill:#0C0, color:#FFF
     NG_convert_boolean_surfaceshader_out([out])

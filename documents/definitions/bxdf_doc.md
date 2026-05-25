@@ -186,10 +186,9 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf[transmission_bsdf]
     IMPL_gltf_pbr_surfaceshader_reflection_bsdf[reflection_bsdf]
     IMPL_gltf_pbr_surfaceshader_transmission_mix[transmission_mix]
-    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf[dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf[tf_reflection_bsdf]
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf[tf_dielectric_bsdf]
-    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf[mix_iridescent_dielectric_bsdf]
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection[mix_iridescent_dielectric_reflection]
+    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf[iridescent_dielectric_bsdf]
     IMPL_gltf_pbr_surfaceshader_metal_bsdf[metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf[tf_metal_bsdf]
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf[mix_iridescent_metal_bsdf]
@@ -318,8 +317,6 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_diffuse_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
     IMPL_gltf_pbr_surfaceshader_transmission_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
     IMPL_gltf_pbr_surfaceshader_transmission --"mix"--> IMPL_gltf_pbr_surfaceshader_transmission_mix
-    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f0 --"color0"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_dielectric_f90 --"color90"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
@@ -327,11 +324,11 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_selected_tangent --"tangent"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_thickness --"thinfilm_thickness"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence_ior --"thinfilm_ior"--> IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"top"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_tf_dielectric_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
-    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_reflection_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_tf_reflection_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection
+    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_reflection --"top"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
+    IMPL_gltf_pbr_surfaceshader_transmission_mix --"base"--> IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf
     IMPL_gltf_pbr_surfaceshader_base_color --"color0"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_roughness_uv --"roughness"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_normal --"normal"--> IMPL_gltf_pbr_surfaceshader_metal_bsdf
@@ -345,7 +342,7 @@ graph TB
     IMPL_gltf_pbr_surfaceshader_metal_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_tf_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
     IMPL_gltf_pbr_surfaceshader_iridescence --"mix"--> IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf
-    IMPL_gltf_pbr_surfaceshader_mix_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
+    IMPL_gltf_pbr_surfaceshader_iridescent_dielectric_bsdf --"bg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_mix_iridescent_metal_bsdf --"fg"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_metallic --"mix"--> IMPL_gltf_pbr_surfaceshader_base_mix
     IMPL_gltf_pbr_surfaceshader_sheen_color --"in"--> IMPL_gltf_pbr_surfaceshader_sheen_color_r
@@ -1097,7 +1094,7 @@ graph TB
 * *Nodedef*: ND_open_pbr_surface_surfaceshader
 * *Type*: surfaceshader
 * *Group*: pbr
-* *Version*: 1.1. Is default: True
+* *Version*: 1.1.1. Is default: True
 * *Doc*: OpenPBR Surface Shading Model
 * *Nodegraph*: NG_open_pbr_surface_surfaceshader
 
@@ -1175,7 +1172,6 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_reflection_tf_mix[dielectric_reflection_tf_mix]
     NG_open_pbr_surface_surfaceshader_dielectric_base[dielectric_base]
     NG_open_pbr_surface_surfaceshader_metal_reflectivity[metal_reflectivity]
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor[metal_edgecolor]
     NG_open_pbr_surface_surfaceshader_metal_bsdf[metal_bsdf]
     NG_open_pbr_surface_surfaceshader_metal_bsdf_tf[metal_bsdf_tf]
     NG_open_pbr_surface_surfaceshader_metal_bsdf_tf_mix[metal_bsdf_tf_mix]
@@ -1432,17 +1428,15 @@ graph TB
     NG_open_pbr_surface_surfaceshader_dielectric_substrate --"base"--> NG_open_pbr_surface_surfaceshader_dielectric_base
     NG_open_pbr_surface_surfaceshader_base_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
     NG_open_pbr_surface_surfaceshader_base_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_reflectivity
-    NG_open_pbr_surface_surfaceshader_specular_color --"in1"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
-    NG_open_pbr_surface_surfaceshader_specular_weight --"in2"--> NG_open_pbr_surface_surfaceshader_metal_edgecolor
     NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
+    NG_open_pbr_surface_surfaceshader_specular_color --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf
     NG_open_pbr_surface_surfaceshader_specular_weight --"weight"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_metal_reflectivity --"color0"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
-    NG_open_pbr_surface_surfaceshader_metal_edgecolor --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
+    NG_open_pbr_surface_surfaceshader_specular_color --"color82"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_main_roughness --"roughness"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_geometry_normal --"normal"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
     NG_open_pbr_surface_surfaceshader_geometry_tangent --"tangent"--> NG_open_pbr_surface_surfaceshader_metal_bsdf_tf
@@ -2874,7 +2868,10 @@ graph TB
 ```mermaid
 graph TB
     subgraph IMP_UsdTransform2d
-    IMP_UsdTransform2d_placement[placement]
+    IMP_UsdTransform2d_N_applyscale[N_applyscale]
+    IMP_UsdTransform2d_N_invrot[N_invrot]
+    IMP_UsdTransform2d_N_applyrot[N_applyrot]
+    IMP_UsdTransform2d_N_applyoffset[N_applyoffset]
     style IMP_UsdTransform2d_out  fill:#0C0, color:#FFF
     IMP_UsdTransform2d_out([out])
     style IMP_UsdTransform2d_in  fill:#09D, color:#FFF
@@ -2886,11 +2883,14 @@ graph TB
     style IMP_UsdTransform2d_translation  fill:#09D, color:#FFF
     IMP_UsdTransform2d_translation([translation])
     end
-    IMP_UsdTransform2d_in --"texcoord"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_scale --"scale"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_rotation --"rotate"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_translation --"offset"--> IMP_UsdTransform2d_placement
-    IMP_UsdTransform2d_placement --> IMP_UsdTransform2d_out
+    IMP_UsdTransform2d_in --"in1"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_scale --"in2"--> IMP_UsdTransform2d_N_applyscale
+    IMP_UsdTransform2d_rotation --"in2"--> IMP_UsdTransform2d_N_invrot
+    IMP_UsdTransform2d_N_applyscale --"in"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_invrot --"amount"--> IMP_UsdTransform2d_N_applyrot
+    IMP_UsdTransform2d_N_applyrot --"in1"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_translation --"in2"--> IMP_UsdTransform2d_N_applyoffset
+    IMP_UsdTransform2d_N_applyoffset --> IMP_UsdTransform2d_out
 ```
  
 
@@ -4295,7 +4295,8 @@ graph TB
     style NG_standard_surface_to_gltf_pbr_baseColor  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_baseColor{baseColor}
     NG_standard_surface_to_gltf_pbr_transmissionBaseColor[transmissionBaseColor]
-    NG_standard_surface_to_gltf_pbr_base_color[base_color]
+    NG_standard_surface_to_gltf_pbr_transmissionWeightSq[transmissionWeightSq]
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix[transmissionBaseColorMix]
     NG_standard_surface_to_gltf_pbr_metallic[metallic]
     NG_standard_surface_to_gltf_pbr_roughness_anisotropy[roughness_anisotropy]
     NG_standard_surface_to_gltf_pbr_separate_roughness[separate_roughness]
@@ -4327,6 +4328,9 @@ graph TB
     NG_standard_surface_to_gltf_pbr_dispersion_from_abbe[dispersion_from_abbe]
     style NG_standard_surface_to_gltf_pbr_dispersion  fill:#C72, color:#FFF
     NG_standard_surface_to_gltf_pbr_dispersion{dispersion}
+    NG_standard_surface_to_gltf_pbr_iridescence[iridescence]
+    NG_standard_surface_to_gltf_pbr_iridescence_ior[iridescence_ior]
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness[iridescence_thickness]
     NG_standard_surface_to_gltf_pbr_normal[normal]
     NG_standard_surface_to_gltf_pbr_tangent[tangent]
     NG_standard_surface_to_gltf_pbr_opacity_luminance[opacity_luminance]
@@ -4365,6 +4369,12 @@ graph TB
     NG_standard_surface_to_gltf_pbr_clearcoat_out([clearcoat_out])
     style NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out([clearcoat_roughness_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_out([iridescence_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_ior_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_ior_out([iridescence_ior_out])
+    style NG_standard_surface_to_gltf_pbr_iridescence_thickness_out  fill:#0C0, color:#FFF
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness_out([iridescence_thickness_out])
     style NG_standard_surface_to_gltf_pbr_dispersion_out  fill:#0C0, color:#FFF
     NG_standard_surface_to_gltf_pbr_dispersion_out([dispersion_out])
     style NG_standard_surface_to_gltf_pbr_emissive_out  fill:#0C0, color:#FFF
@@ -4381,6 +4391,8 @@ graph TB
     NG_standard_surface_to_gltf_pbr_alpha_mode_out([alpha_mode_out])
     style NG_standard_surface_to_gltf_pbr_coat_color  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_coat_color([coat_color])
+    style NG_standard_surface_to_gltf_pbr_base_color  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_base_color([base_color])
     style NG_standard_surface_to_gltf_pbr_base  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_base([base])
     style NG_standard_surface_to_gltf_pbr_coat  fill:#09D, color:#FFF
@@ -4421,6 +4433,10 @@ graph TB
     NG_standard_surface_to_gltf_pbr_specular_IOR([specular_IOR])
     style NG_standard_surface_to_gltf_pbr_transmission_dispersion  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_transmission_dispersion([transmission_dispersion])
+    style NG_standard_surface_to_gltf_pbr_thin_film_thickness  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness([thin_film_thickness])
+    style NG_standard_surface_to_gltf_pbr_thin_film_IOR  fill:#09D, color:#FFF
+    NG_standard_surface_to_gltf_pbr_thin_film_IOR([thin_film_IOR])
     style NG_standard_surface_to_gltf_pbr_normal:in  fill:#09D, color:#FFF
     NG_standard_surface_to_gltf_pbr_normal:in([normal:in])
     style NG_standard_surface_to_gltf_pbr_tangent:in  fill:#09D, color:#FFF
@@ -4447,9 +4463,11 @@ graph TB
     NG_standard_surface_to_gltf_pbr_mixedBaseColor --"in2"--> NG_standard_surface_to_gltf_pbr_baseColor
     NG_standard_surface_to_gltf_pbr_transmission_depth --"value1"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColor
     NG_standard_surface_to_gltf_pbr_transmission_color --"in2"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColor
-    NG_standard_surface_to_gltf_pbr_transmission --"value1"--> NG_standard_surface_to_gltf_pbr_base_color
-    NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"in1"--> NG_standard_surface_to_gltf_pbr_base_color
-    NG_standard_surface_to_gltf_pbr_baseColor --"in2"--> NG_standard_surface_to_gltf_pbr_base_color
+    NG_standard_surface_to_gltf_pbr_transmission --"in1"--> NG_standard_surface_to_gltf_pbr_transmissionWeightSq
+    NG_standard_surface_to_gltf_pbr_transmission --"in2"--> NG_standard_surface_to_gltf_pbr_transmissionWeightSq
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColor --"fg"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
+    NG_standard_surface_to_gltf_pbr_baseColor --"bg"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
+    NG_standard_surface_to_gltf_pbr_transmissionWeightSq --"mix"--> NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix
     NG_standard_surface_to_gltf_pbr_metalness --"in"--> NG_standard_surface_to_gltf_pbr_metallic
     NG_standard_surface_to_gltf_pbr_specular_roughness --"roughness"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
     NG_standard_surface_to_gltf_pbr_specular_anisotropy --"anisotropy"--> NG_standard_surface_to_gltf_pbr_roughness_anisotropy
@@ -4490,12 +4508,16 @@ graph TB
     NG_standard_surface_to_gltf_pbr_transmission_dispersion --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion_from_abbe
     NG_standard_surface_to_gltf_pbr_transmission_dispersion --"value1"--> NG_standard_surface_to_gltf_pbr_dispersion
     NG_standard_surface_to_gltf_pbr_dispersion_from_abbe --"in2"--> NG_standard_surface_to_gltf_pbr_dispersion
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"value1"--> NG_standard_surface_to_gltf_pbr_iridescence
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"value1"--> NG_standard_surface_to_gltf_pbr_iridescence_ior
+    NG_standard_surface_to_gltf_pbr_thin_film_IOR --"in1"--> NG_standard_surface_to_gltf_pbr_iridescence_ior
+    NG_standard_surface_to_gltf_pbr_thin_film_thickness --"in"--> NG_standard_surface_to_gltf_pbr_iridescence_thickness
     NG_standard_surface_to_gltf_pbr_normal:in --"in"--> NG_standard_surface_to_gltf_pbr_normal
     NG_standard_surface_to_gltf_pbr_tangent:in --"in"--> NG_standard_surface_to_gltf_pbr_tangent
     NG_standard_surface_to_gltf_pbr_opacity --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance
     NG_standard_surface_to_gltf_pbr_opacity_luminance --"in"--> NG_standard_surface_to_gltf_pbr_opacity_luminance_float
     NG_standard_surface_to_gltf_pbr_opacity_luminance_float --"value1"--> NG_standard_surface_to_gltf_pbr_alpha_mode_from_opacity_luminance
-    NG_standard_surface_to_gltf_pbr_base_color --> NG_standard_surface_to_gltf_pbr_base_color_out
+    NG_standard_surface_to_gltf_pbr_transmissionBaseColorMix --> NG_standard_surface_to_gltf_pbr_base_color_out
     NG_standard_surface_to_gltf_pbr_metallic --> NG_standard_surface_to_gltf_pbr_metallic_out
     NG_standard_surface_to_gltf_pbr_roughness --> NG_standard_surface_to_gltf_pbr_roughness_out
     NG_standard_surface_to_gltf_pbr_specular --> NG_standard_surface_to_gltf_pbr_specular_out
@@ -4511,6 +4533,9 @@ graph TB
     NG_standard_surface_to_gltf_pbr_sqrt_sheen_roughness --> NG_standard_surface_to_gltf_pbr_sheen_roughness_out
     NG_standard_surface_to_gltf_pbr_clearcoat --> NG_standard_surface_to_gltf_pbr_clearcoat_out
     NG_standard_surface_to_gltf_pbr_clearcoat_roughness --> NG_standard_surface_to_gltf_pbr_clearcoat_roughness_out
+    NG_standard_surface_to_gltf_pbr_iridescence --> NG_standard_surface_to_gltf_pbr_iridescence_out
+    NG_standard_surface_to_gltf_pbr_iridescence_ior --> NG_standard_surface_to_gltf_pbr_iridescence_ior_out
+    NG_standard_surface_to_gltf_pbr_iridescence_thickness --> NG_standard_surface_to_gltf_pbr_iridescence_thickness_out
     NG_standard_surface_to_gltf_pbr_dispersion --> NG_standard_surface_to_gltf_pbr_dispersion_out
     NG_standard_surface_to_gltf_pbr_emissive --> NG_standard_surface_to_gltf_pbr_emissive_out
     NG_standard_surface_to_gltf_pbr_emissive_strength --> NG_standard_surface_to_gltf_pbr_emissive_strength_out
@@ -4548,6 +4573,8 @@ graph TB
 | **tangent** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
 | **opacity** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **thin_walled** | boolean | False |  |  |  |  |  |  |  |  |  |  |
+| **thin_film_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
+| **thin_film_IOR** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | *base_color_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *metallic_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
@@ -4564,6 +4591,9 @@ graph TB
 | *sheen_roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *clearcoat_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *clearcoat_roughness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *iridescence_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *iridescence_ior_out* | float | None |  |  |  |  |  |  |  |  |  |  |
+| *iridescence_thickness_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *dispersion_out* | float | None |  |  |  |  |  |  |  |  |  |  |
 | *emissive_out* | color3 | None |  |  |  |  |  |  |  |  |  |  |
 | *emissive_strength_out* | float | None |  |  |  |  |  |  |  |  |  |  |

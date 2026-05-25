@@ -646,6 +646,7 @@ Category: conductor_bsdf
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_ior" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_ior" aria-selected="true">ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_extinction" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_extinction" aria-selected="true">extinction</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_roughness" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_roughness" aria-selected="true">roughness</button>
+<li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_retroreflective" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_retroreflective" aria-selected="true">retroreflective</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_thickness" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_thickness" aria-selected="true">thinfilm_thickness</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_thinfilm_ior" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_thinfilm_ior" aria-selected="true">thinfilm_ior</button>
 <li class="nav-item" role="presentation"> <button class="nav-link "  data-bs-toggle="pill" data-bs-target="#pills-ND_conductor_bsdf_normal" type="button" role="tab" aria-controls="pills-ND_conductor_bsdf_normal" aria-selected="true">normal</button>
@@ -753,6 +754,28 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Type</label>
    <div class="col-10">
      <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="vector2">
+   </div>
+  </div>
+ </div>
+</div>
+<div class="tab-content">
+ <div class="tab-pane " id="pills-ND_conductor_bsdf_retroreflective"
+  role="tabpanel" aria-labelledby="pills-ND_conductor_bsdf_retroreflective-tab" tabindex="0">
+  <div class="form-group row g-1">
+      <label
+          class="col-2 col-form-label col-form-label-sm">Value </label>
+      <div class="col-10">
+          <input id="ND_conductor_bsdf_retroreflective" type="text" class="form-control form-control-sm" value="false" disabled>
+      </div>
+  </div>
+  <div class="form-group row g-2">
+  <label class="col-2 col-form-label col-form-label-sm">Type</label>
+   <div class="col-8">
+     <input type="button" class="form-control form-control-sm btn btn-sm btn-outline-secondary pt-0 pb-0" value="boolean">
+   </div>
+   <div class="col-2">
+     <label>Uniform</label>
+     <input type="checkbox" class="form-check-input form-check-sm" disabled checked>
    </div>
   </div>
  </div>
@@ -916,7 +939,7 @@ Category: conductor_bsdf
   <label class="col-2 col-form-label col-form-label-sm">Code:</label>
     <div class="col-8">
       <textarea class="form-control form-control-sm" rows="3"
-        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}) </textarea>
+        style="resize: none;" disabled>materialx::pbrlib_{{MDL_VERSION_SUFFIX}}::mx_conductor_bsdf(mxp_weight:{{weight}}, mxp_ior:{{ior}}, mxp_extinction:{{extinction}}, mxp_roughness:{{roughness}}, mxp_retroreflective:{{retroreflective}}, mxp_thinfilm_thickness:{{thinfilm_thickness}}, mxp_thinfilm_ior:{{thinfilm_ior}}, mxp_normal:{{normal}}, mxp_tangent:{{tangent}}, mxp_distribution:{{distribution}}) </textarea>
     </div>
   </div>
 <hr>

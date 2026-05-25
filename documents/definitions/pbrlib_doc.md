@@ -77,6 +77,7 @@
 | **tint** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **retroreflective** | boolean | False |  |  |  |  |  |  |  |  |  | true |
 | **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
@@ -102,6 +103,7 @@
 | **ior** | color3 | 0.183, 0.421, 1.373 |  |  |  |  |  |  |  |  |  |  |
 | **extinction** | color3 | 3.424, 2.346, 1.77 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **retroreflective** | boolean | False |  |  |  |  |  |  |  |  |  | true |
 | **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
@@ -128,6 +130,7 @@
 | **color90** | color3 | 1, 1, 1 |  |  |  |  |  |  |  |  |  |  |
 | **exponent** | float | 5.0 |  |  |  |  |  |  |  |  |  |  |
 | **roughness** | vector2 | 0.05, 0.05 |  |  |  |  |  |  |  |  |  |  |
+| **retroreflective** | boolean | False |  |  |  |  |  |  |  |  |  | true |
 | **thinfilm_thickness** | float | 0.0 |  |  |  |  |  |  |  |  |  |  |
 | **thinfilm_ior** | float | 1.5 |  |  |  |  |  |  |  |  |  |  |
 | **normal** | vector3 | None |  |  |  |  |  |  |  |  |  |  |
